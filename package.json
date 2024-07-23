@@ -10,6 +10,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.51.11",
     "@types/styled-components": "^5.1.34",
     "@types/yup": "^0.32.0",
     "babel-plugin-styled-components": "^2.1.4",
