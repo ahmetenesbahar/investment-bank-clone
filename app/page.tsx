@@ -1,9 +1,9 @@
 "use client";
-
 import React from "react";
+import { NextPage } from "next";
 import { StyledButton } from "@/styles/styles";
 
-const Home: React.FC = () => {
+const Home: NextPage = () => {
   const handleClick = () => {
     alert("Button clicked!");
   };
