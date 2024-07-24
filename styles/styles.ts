@@ -104,7 +104,7 @@ export const LoginLogoContainer = styled.div`
 export const InputLogin = styled.input<Props>`
   border: 1px solid #d3d3d3;
   padding: 1px 2px 1px 15px;
-  width: 424px;
+  width: ${(props) => props.width || "424px"};
   height: 42px;
   outline: none;
   @media (max-width: 1024px) {
