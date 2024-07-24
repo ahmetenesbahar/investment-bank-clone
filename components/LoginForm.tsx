@@ -28,7 +28,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <FlexColumn>
         <Flex alignItems="center" width="100%" gap="5px">
           <Flex position="relative" alignItems="center" width="inherit">
@@ -68,7 +68,7 @@ const LoginForm: React.FC = () => {
         <Flex width="100%" alignItems="center" gap="5px">
           <Flex position="relative" alignItems="center" width="inherit">
             <LoginInput
-              name="customerNumber"
+              name="password"
               control={control}
               inputMode="numeric"
               noHover
@@ -118,12 +118,7 @@ const LoginForm: React.FC = () => {
         gap="8px"
         alignItems="center"
       >
-        <Button
-          type="submit"
-          padding="15px 40px"
-          margin="20px 0px 20px 0px"
-          onSubmit={handleSubmit}
-        >
+        <Button type="submit" padding="15px 40px" margin="20px 0px 20px 0px">
           Giriş
         </Button>
         <MarginBox />
