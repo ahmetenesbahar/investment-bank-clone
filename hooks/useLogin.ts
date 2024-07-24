@@ -25,6 +25,7 @@ const useLogin = () => {
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: yupResolver(validationSchema),
+    mode: "onChange",
   });
 
   const loginMutation = useMutation({
