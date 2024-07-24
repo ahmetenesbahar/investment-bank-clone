@@ -20,6 +20,8 @@ interface Props {
   borderTop?: string;
   borderRadius?: string;
   height?: string;
+  top?: string;
+  visible?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -154,6 +156,28 @@ export const SecurityBubble = styled.div<Props>`
     max-width: 100%;
     display: ${(props) => props.display};
   }
+`;
+
+export const HoverBubble = styled.div<Props>`
+  max-width: 430px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #fafafa;
+  position: absolute;
+  left: 800px;
+  top: ${(props) => props.top || "0"};
+  opacity: 1; /* Başlangıçta görünmez */
+  transition: opacity 0.3s ease-in-out;
+  visibility: ${(props) => props.visible};
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  ${(props) =>
+    props.display === "block" &&
+    `
+    opacity: 1;
+    visibility: visible;
+  `}
 `;
 
 export const ListItem = styled.div`
