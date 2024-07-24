@@ -21,25 +21,29 @@ const LoginForm: React.FC = () => {
     <Form>
       <FlexColumn>
         <Flex alignItems="center" width="100%" gap="5px">
-          <InputLogin
-            type="number"
-            placeholder="Müşteri Numaranız / TCKN / YKN"
-          />
-          <SwitchButton checked={isChecked} onChange={handleOnChange} />
+          <Flex position="relative" alignItems="center" width="inherit">
+            <InputLogin
+              type="number"
+              placeholder="Müşteri Numaranız / TCKN / YKN"
+            />
+            <SwitchButton checked={isChecked} onChange={handleOnChange} />
+          </Flex>
           <HelpBox>
-            <HelpImage src="https://www.isbank.com.tr/Internet/Omni/assets/img/information_icon.png" />
+            <HelpImage src="/assets/information_icon.png" />
           </HelpBox>
         </Flex>
         <Flex width="100%" alignItems="center" gap="5px">
-          <InputLogin
-            type="password"
-            pattern="[0-9]*"
-            inputMode="numeric"
-            noHover
-            placeholder="Şifre / Geçiçi Şifre"
-          />
+          <Flex position="relative" alignItems="center" width="inherit">
+            <InputLogin
+              type="password"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              noHover
+              placeholder="Şifre / Geçiçi Şifre"
+            />
+          </Flex>
           <HelpBox>
-            <HelpImage src="https://www.isbank.com.tr/Internet/Omni/assets/img/information_icon.png" />
+            <HelpImage src="/assets/information_icon.png" />
           </HelpBox>
         </Flex>
       </FlexColumn>
