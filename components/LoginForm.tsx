@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import {
   FlexColumn,
-  InputLogin,
+  LoginIcon,
   Flex,
   Form,
   HelpBox,
@@ -10,11 +10,16 @@ import {
   HoverBubble,
   Text,
   ListItem,
+  Button,
+  MarginBox,
 } from "@/styles/styles";
-
 import SwitchButton from "./shared/SwitchButton";
+import LoginInput from "./shared/LoginInput";
+import useLogin from "@/hooks/useLogin";
 
 const LoginForm: React.FC = () => {
+  const { control, handleSubmit, errors, isError, isSuccess, isPending } =
+    useLogin();
   const [isChecked, setIsChecked] = useState(false);
   const [isHovered, setIsHovered] = useState("");
 
@@ -27,9 +32,12 @@ const LoginForm: React.FC = () => {
       <FlexColumn>
         <Flex alignItems="center" width="100%" gap="5px">
           <Flex position="relative" alignItems="center" width="inherit">
-            <InputLogin
-              type="number"
+            <LoginInput
+              name="customerNumber"
+              control={control}
               placeholder="Müşteri Numaranız / TCKN / YKN"
+              type="number"
+              inputMode="numeric"
             />
             <SwitchButton checked={isChecked} onChange={handleOnChange} />
           </Flex>
@@ -59,11 +67,13 @@ const LoginForm: React.FC = () => {
 
         <Flex width="100%" alignItems="center" gap="5px">
           <Flex position="relative" alignItems="center" width="inherit">
-            <InputLogin
-              type="password"
-              pattern="[0-9]*"
+            <LoginInput
+              name="customerNumber"
+              control={control}
               inputMode="numeric"
               noHover
+              type="password"
+              pattern="[0-9]*"
               placeholder="Şifre / Geçiçi Şifre"
             />
           </Flex>
@@ -96,6 +106,28 @@ const LoginForm: React.FC = () => {
           </HoverBubble>
         </Flex>
       </FlexColumn>
+      <Flex width="100%" margin="1rem 0 0 0 ">
+        <Flex alignItems="center" gap="3px" cursor="pointer">
+          <LoginIcon src="/assets/login_icon.png" />
+          <Text color="#49a4e0">Şifrem Yok / Unuttum</Text>
+        </Flex>
+      </Flex>
+      <Flex
+        width="100%"
+        justifyContent="flex-end"
+        gap="8px"
+        alignItems="center"
+      >
+        <Button
+          type="submit"
+          padding="15px 40px"
+          margin="20px 0px 20px 0px"
+          onSubmit={handleSubmit}
+        >
+          Giriş
+        </Button>
+        <MarginBox />
+      </Flex>
     </Form>
   );
 };
