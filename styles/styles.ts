@@ -8,28 +8,33 @@ interface Props {
   color?: string;
   textAlign?: string;
   fontWeight?: string;
+  fontSize?: string;
   noHover?: boolean;
   responsive?: boolean;
   position?: string;
   checked?: boolean;
   margin?: string;
   gap?: string;
+  cursor?: string;
+  display?: string;
+  borderTop?: string;
 }
 
 export const Container = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
-  display: flex;
   height: 100vh;
+  overflow: hidden;
 `;
 
 export const Flex = styled.div<Props>`
   display: flex;
-  position: ${(props) => props.position || "relative"};
+  position: ${(props) => props.position || "static"};
   width: ${(props) => props.width || "auto"};
   justify-content: ${(props) => props.justifyContent || "flex-start"};
   align-items: ${(props) => props.alignItems || "flex-start"};
   padding: ${(props) => props.padding || "0"};
   gap: ${(props) => props.gap || "0"};
+  cursor: ${(props) => props.cursor || "auto"};
 `;
 export const LoginSidebarContainer = styled(Container)<Props>`
   width: 305px;
@@ -50,6 +55,8 @@ export const FlexColumn = styled.div<Props>`
   align-items: ${(props) => props.alignItems || "flex-start"};
   width: 100%;
   gap: 1rem;
+  margin: ${(props) => props.margin || "0"};
+  border-top: ${(props) => props.borderTop || "none"};
 `;
 
 export const LoginHeader = styled.h1`
@@ -60,6 +67,13 @@ export const LoginHeader = styled.h1`
   font-size: 1.625rem;
   width: 424px;
   text-align: start;
+  @media (max-width: 1024px) {
+    font-size: 22px;
+    margin-top: 2.5rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const LoginLogoContainer = styled.div`
@@ -94,8 +108,8 @@ export const InputLogin = styled.input<Props>`
 `;
 
 export const Text = styled.p<Props>`
-  color: ${(props) => props.color || " #49a4e0"};
-  font-size: ${(props) => props.width || "14px;"};
+  color: ${(props) => props.color || " #535353"};
+  font-size: ${(props) => props.fontSize || "14px;"};
   cursor: pointer;
   text-align: ${(props) => props.textAlign || "left"};
   font-weight: ${(props) => props.fontWeight || "400"};
@@ -120,11 +134,12 @@ export const SecurityBubble = styled.div<Props>`
   padding: 10px;
   margin-top: 10px;
   background-color: #ebebeb;
+  display: ${(props) => props.display || "none"};
 
   @media (max-width: 1024px) {
     width: 100%;
     max-width: 100%;
-    height: 142px;
+    display: ${(props) => props.display};
   }
 `;
 
@@ -132,19 +147,22 @@ export const ListItem = styled.div`
   display: flex;    
   font-size: 13.5px;
   margin-bottom: 5px;
+  justify-content: flex-start;
   gap: 5px;
+  line-height: 1.5;
+  
 
   
   &::before {
     content: "•"; 
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    justify-content: center;
+    width: 5px;
+    height: 18px;
     font-size: 20px;
     color: #08335e;
-    margin-right: 5px; 
+ 
 `;
 
 export const Form = styled.form<Props>`
@@ -156,7 +174,7 @@ export const SwitchContainer = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
-  right: 60px;
+  right: 10px;
   width: 76px;
   height: 24px;
   @media (max-width: 1024px) {
@@ -240,7 +258,7 @@ export const HelpBox = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 44px;
+  width: 48px;
   height: 42px;
   margin-left: 2px;
   background-color: #fafafa;
@@ -254,4 +272,26 @@ export const HelpImage = styled.img<Props>``;
 
 export const MarginBox = styled(HelpBox)<Props>`
   background-color: transparent;
+`;
+
+export const ResponsiveLoginText = styled(Text)<Props>`
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+  }
+`;
+
+export const MobileLoginLogoContainer = styled.img<Props>`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const LoginIcon = styled.img<Props>`
+  display: ${(props) => props.display || "block"};
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
 `;
