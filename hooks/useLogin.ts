@@ -55,3 +55,5 @@ const useLogin = () => {
     isPending: loginMutation.isPending,
   };
 };
+
+export default useLogin;
