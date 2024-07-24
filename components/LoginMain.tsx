@@ -11,6 +11,7 @@ import {
   SecurityBubble,
   ListItem,
   Form,
+  MarginBox,
 } from "@/styles/styles";
 import LoginForm from "./LoginForm";
 
@@ -18,17 +19,20 @@ const LoginMain: NextPage = () => {
   return (
     <Container padding="1.2rem">
       <FlexColumn alignItems="center" justifyContent="center">
-        <LoginHeader>
-          Türkiye İş Bankası Bireysel İnternet Şubenize Hoş Geldiniz !
-        </LoginHeader>
+        <Flex width="100%">
+          <LoginHeader>
+            Türkiye İş Bankası Bireysel İnternet Şubenize Hoş Geldiniz !
+          </LoginHeader>
+        </Flex>
         <LoginForm />
         <Flex width="100%">
           <Text>Şifrem Yok / Unuttum</Text>
         </Flex>
-        <Flex width="100%" justifyContent="flex-end">
+        <Flex width="100%" justifyContent="flex-end" gap="5px">
           <Button type="submit" padding="15px 40px">
             Giriş
           </Button>
+          <MarginBox />
         </Flex>
         <FlexColumn>
           <FlexColumn>
