@@ -49,23 +49,7 @@ const LoginMain: NextPage = () => {
           <LoginHeader>{headerText}</LoginHeader>
         </Flex>
         <LoginForm />
-        <Flex width="100%">
-          <Flex alignItems="center" gap="3px" cursor="pointer">
-            <LoginIcon src="/assets/login_icon.png" />
-            <Text color="#49a4e0">Şifrem Yok / Unuttum</Text>
-          </Flex>
-        </Flex>
-        <Flex
-          width="100%"
-          justifyContent="flex-end"
-          gap="8px"
-          alignItems="center"
-        >
-          <Button type="submit" padding="15px 40px" margin="20px 0px 20px 0px">
-            Giriş
-          </Button>
-          <MarginBox />
-        </Flex>
+
         <FlexColumn width="100%">
           <FlexColumn>
             <Flex width="100%">
