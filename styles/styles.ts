@@ -8,10 +8,12 @@ interface Props {
   color?: string;
   textAlign?: string;
   fontWeight?: string;
-  disabled?: boolean;
+  noHover?: boolean;
   responsive?: boolean;
   position?: string;
   checked?: boolean;
+  margin?: string;
+  gap?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -26,6 +28,8 @@ export const Flex = styled.div<Props>`
   width: ${(props) => props.width || "auto"};
   justify-content: ${(props) => props.justifyContent || "flex-start"};
   align-items: ${(props) => props.alignItems || "flex-start"};
+  padding: ${(props) => props.padding || "0"};
+  gap: ${(props) => props.gap || "0"};
 `;
 export const LoginSidebarContainer = styled(Container)<Props>`
   width: 305px;
@@ -52,9 +56,10 @@ export const LoginHeader = styled.h1`
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #08335e;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1.625rem;
   width: 424px;
+  text-align: start;
 `;
 
 export const LoginLogoContainer = styled.div`
@@ -78,7 +83,7 @@ export const InputLogin = styled.input<Props>`
   }
   &:hover {
     border: ${(props) =>
-      props.disabled ? "1px solid #d3d3d3" : "1px solid #94d3e2"};
+      props.noHover ? "1px solid #d3d3d3" : "1px solid #94d3e2"};
   }
 
   &::-webkit-outer-spin-button,
@@ -103,7 +108,7 @@ export const Button = styled.button<Props>`
   color: ${(props) => props.color || "#fff"};
   background-color: ${(props) => props.color || "#08335e"};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
-  margin: 0.5rem 0;
+  margin: ${(props) => props.margin || "0"};
 
   @media (max-width: 768px) {
     width: 100%;
@@ -151,21 +156,40 @@ export const SwitchContainer = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
-  right: 0;
+  right: 60px;
+  width: 76px;
+  height: 24px;
+  @media (max-width: 1024px) {
+    right: 10px;
+  }
 `;
 
 export const SwitchInput = styled.input`
+  position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1; /* Ensure it sits on top for click events */
+
+  &:checked + span:before {
+    transform: translate(50px);
+  }
+
+  &:checked + span + label {
+    transform: ${(props) =>
+      props.checked ? "translate(50px, -50%)" : "translate(0, -50%)"};
+    transition: transform 0.4s;
+  }
 `;
 
 export const SwitchSlider = styled.span<Props>`
   position: relative;
   display: inline-block;
-  width: 50px;
+  width: 76px;
   height: 24px;
-  background-color: ${(props) => (props.checked ? "#4caf50" : "#ccc")};
+  background-color: ${(props) => (props.checked ? "#F85931" : "#999999")};
   border-radius: 24px;
   transition: background-color 0.3s;
 
@@ -178,8 +202,56 @@ export const SwitchSlider = styled.span<Props>`
     background-color: white;
     transition: transform 0.3s;
     transform: ${(props) =>
-      props.checked ? "translateX(26px)" : "translateX(0)"};
+      props.checked ? "translateX(52px)" : "translateX(0)"};
     top: 2px;
     left: 2px;
   }
+`;
+
+export const SwitchLabel = styled.label<{ checked: boolean }>`
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  transform: ${(props) =>
+    props.checked ? "translate(50px, -50%)" : "translate(0, -50%)"};
+  opacity: ${(props) =>
+    props.checked ? "0" : "1"}; /* Hide the text when checked */
+  transition: transform 0.4s, opacity 0.4s;
+`;
+
+export const SwitchLabelLeft = styled(SwitchLabel)<Props>`
+  margin-left: 3px;
+
+  transform: ${(props) =>
+    props.checked ? "translate(-50px, -50%)" : "translate(0, -50%)"};
+  opacity: ${(props) =>
+    props.checked ? "0" : "1"}; /* Hide the text when checked */
+  transition: transform 0.4s, opacity 0.4s;
+`;
+
+export const HelpBox = styled.div<Props>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 42px;
+  margin-left: 2px;
+  background-color: #fafafa;
+  z-index: 1;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const HelpImage = styled.img<Props>``;
+
+export const MarginBox = styled(HelpBox)<Props>`
+  background-color: transparent;
 `;
