@@ -10,18 +10,14 @@ export const metadata: Metadata = {
   description: "İş Bankası",
 };
 
-const queryClient = new QueryClient();
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <html lang="tr">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </QueryClientProvider>
+    <html lang="tr">
+      <body className={inter.className}>{children}</body>
+    </html>
   );
 }
