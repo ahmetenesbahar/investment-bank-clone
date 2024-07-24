@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// Custom hook to handle media queries and window resize
 const useMediaQuery = () => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
