@@ -6,12 +6,14 @@ import {
   Form,
   HelpBox,
   HelpImage,
+  SecurityBubble,
 } from "@/styles/styles";
 
 import SwitchButton from "./shared/SwitchButton";
 
 const LoginForm: React.FC = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [isHovered, setIsHovered] = useState("");
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
@@ -28,7 +30,10 @@ const LoginForm: React.FC = () => {
             />
             <SwitchButton checked={isChecked} onChange={handleOnChange} />
           </Flex>
-          <HelpBox>
+          <HelpBox
+            onMouseEnter={() => setIsHovered("customerNumber")}
+            onMouseLeave={() => setIsHovered("")}
+          >
             <HelpImage src="/assets/information_icon.png" />
           </HelpBox>
         </Flex>
@@ -42,7 +47,10 @@ const LoginForm: React.FC = () => {
               placeholder="Şifre / Geçiçi Şifre"
             />
           </Flex>
-          <HelpBox>
+          <HelpBox
+            onMouseEnter={() => setIsHovered("password")}
+            onMouseLeave={() => setIsHovered("")}
+          >
             <HelpImage src="/assets/information_icon.png" />
           </HelpBox>
         </Flex>

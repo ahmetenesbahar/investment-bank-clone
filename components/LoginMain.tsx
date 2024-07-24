@@ -5,17 +5,18 @@ import {
   LoginHeader,
   FlexColumn,
   Container,
-  InputLogin,
+  Link,
   Flex,
   Text,
   Button,
   SecurityBubble,
   ListItem,
-  Form,
+  LoginContainer,
   MarginBox,
   ResponsiveLoginText,
   MobileLoginLogoContainer,
   LoginIcon,
+  Footer,
 } from "@/styles/styles";
 import LoginForm from "./LoginForm";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -36,8 +37,13 @@ const LoginMain: NextPage = () => {
   }, [windowWidth]);
 
   return (
-    <Container padding="1.2rem">
-      <FlexColumn alignItems="center" justifyContent="center">
+    <Container padding="1.2rem" width="100%">
+      <LoginContainer
+        alignItems="center"
+        justifyContent="center"
+        width="500px"
+        padding="0 20px 0 0 "
+      >
         <MobileLoginLogoContainer src="/assets/mobile_header.png" />
         <Flex width="100%">
           <LoginHeader>{headerText}</LoginHeader>
@@ -49,13 +55,18 @@ const LoginMain: NextPage = () => {
             <Text color="#49a4e0">Şifrem Yok / Unuttum</Text>
           </Flex>
         </Flex>
-        <Flex width="100%" justifyContent="flex-end" gap="5px">
+        <Flex
+          width="100%"
+          justifyContent="flex-end"
+          gap="8px"
+          alignItems="center"
+        >
           <Button type="submit" padding="15px 40px" margin="20px 0px 20px 0px">
             Giriş
           </Button>
           <MarginBox />
         </Flex>
-        <FlexColumn>
+        <FlexColumn width="100%">
           <FlexColumn>
             <Flex width="100%">
               <Flex
@@ -106,6 +117,7 @@ const LoginMain: NextPage = () => {
                 <Text color="#49a4e0">Güvenlik</Text>
               </Flex>
             </Flex>
+
             <SecurityBubble display="block">
               <ListItem>
                 Kişisel bilgilerinizi hiçbir şekilde kimseyle paylaşmayın,
@@ -122,24 +134,59 @@ const LoginMain: NextPage = () => {
               </ListItem>
               <ListItem>
                 Adres çubuğuna
-                <a href="https://www.isbank.com.tr/" target="_blank">
+                <Link
+                  color="#49a4e0"
+                  href="https://www.isbank.com.tr/"
+                  target="_blank"
+                >
                   www.isbank.com.tr
-                </a>
+                </Link>
                 yazarak giriş yapın.
               </ListItem>
               <ListItem>
                 Detaylı bilgiye ulaşmak için
-                <a
+                <Link
+                  color="#49a4e0"
                   href="https://www.isbank.com.tr/guvenlik-ipuclari"
                   target="_blank"
                 >
                   tıklayın.
-                </a>
+                </Link>
               </ListItem>
             </SecurityBubble>
           </FlexColumn>
         </FlexColumn>
-      </FlexColumn>
+      </LoginContainer>
+      <Footer>
+        <Flex
+          width="100%"
+          borderTop="1px solid #d3d3d3"
+          justifyContent="space-between"
+          height="50px"
+        >
+          <Flex
+            justifyContent="space-between"
+            gap="10px"
+            alignItems="center"
+            height="100%"
+          >
+            <Text color="#afb0b1">©2024 Türkiye İş Bankası A.Ş</Text>
+          </Flex>
+          <Flex
+            justifyContent="space-between"
+            gap="10px"
+            alignItems="center"
+            height="100%"
+          >
+            <Text color="#49a4e0" cursor="pointer">
+              Bize Ulaşın
+            </Text>
+            <Text color="#49a4e0" cursor="pointer">
+              English
+            </Text>
+          </Flex>
+        </Flex>
+      </Footer>
     </Container>
   );
 };

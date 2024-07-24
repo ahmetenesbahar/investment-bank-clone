@@ -18,12 +18,14 @@ interface Props {
   cursor?: string;
   display?: string;
   borderTop?: string;
+  borderRadius?: string;
+  height?: string;
 }
 
 export const Container = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
+  width: ${(props) => props.width || "100%"};
   height: 100vh;
-  overflow: hidden;
 `;
 
 export const Flex = styled.div<Props>`
@@ -35,7 +37,10 @@ export const Flex = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   gap: ${(props) => props.gap || "0"};
   cursor: ${(props) => props.cursor || "auto"};
+  border-top: ${(props) => props.borderTop || "none"};
+  height: ${(props) => props.height || "auto"};
 `;
+
 export const LoginSidebarContainer = styled(Container)<Props>`
   width: 305px;
   padding-left: 2rem;
@@ -53,10 +58,18 @@ export const FlexColumn = styled.div<Props>`
   flex-direction: column;
   justify-content: ! ${(props) => props.justifyContent || "flex-start"};
   align-items: ${(props) => props.alignItems || "flex-start"};
-  width: 100%;
-  gap: 1rem;
+  width: ${(props) => props.width || "auto"};
+  gap: ${(props) => props.gap || "1rem"};
+  padding: ${(props) => props.padding || "0"};
   margin: ${(props) => props.margin || "0"};
   border-top: ${(props) => props.borderTop || "none"};
+  border-radius: ${(props) => props.borderRadius || "0"};
+`;
+
+export const LoginContainer = styled(FlexColumn)<Props>`
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const LoginHeader = styled.h1`
@@ -110,7 +123,7 @@ export const InputLogin = styled.input<Props>`
 export const Text = styled.p<Props>`
   color: ${(props) => props.color || " #535353"};
   font-size: ${(props) => props.fontSize || "14px;"};
-  cursor: pointer;
+  cursor: ${(props) => props.cursor || "auto"};
   text-align: ${(props) => props.textAlign || "left"};
   font-weight: ${(props) => props.fontWeight || "400"};
 `;
@@ -293,5 +306,22 @@ export const LoginIcon = styled.img<Props>`
 
   @media (max-width: 1024px) {
     display: block;
+  }
+`;
+
+export const Footer = styled.div<Props>`
+  margin-top: 12rem;
+  @media (max-width: 1440px) {
+    margin-top: 8rem;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 4rem;
+  }
+`;
+
+export const Link = styled.a<Props>`
+  color: ${(props) => props.color || "#000"};
+  &visited {
+    color: ${(props) => props.color || "#000"};
   }
 `;
