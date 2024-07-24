@@ -41,6 +41,7 @@ export const Flex = styled.div<Props>`
   cursor: ${(props) => props.cursor || "auto"};
   border-top: ${(props) => props.borderTop || "none"};
   height: ${(props) => props.height || "auto"};
+  margin: ${(props) => props.margin || "0"};
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -138,6 +139,7 @@ export const Button = styled.button<Props>`
   background-color: ${(props) => props.color || "#08335e"};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
   margin: ${(props) => props.margin || "0"};
+  cursor: pointer;
 
   @media (max-width: 768px) {
     width: 100%;
