@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useController } from "react-hook-form";
 import { InputLogin, Flex, FlexColumn } from "@/styles/styles";
 import Keyboard from "./Keyboard";
-
+import useMediaQuery from "@/hooks/useMediaQuery";
 interface LoginInputProps {
   name: string;
   control: any;
@@ -34,6 +34,8 @@ const LoginInput: React.FC<LoginInputProps> = ({
     rules: { pattern: pattern ? new RegExp(pattern) : undefined },
   });
 
+  const windowWidth = useMediaQuery();
+
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(keyboard || false);
   const inputRef = useRef<HTMLDivElement>(null);
 
@@ -62,7 +64,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
   }, []);
 
   return (
-    <FlexColumn width="100%" position="relative" ref={inputRef}>
+    <FlexColumn width="100%" ref={inputRef}>
       <InputLogin
         {...field}
         type={type}
@@ -81,11 +83,11 @@ const LoginInput: React.FC<LoginInputProps> = ({
           <span style={{ color: "red" }}>{error.message}</span>
         </Flex>
       )}
-      {name === "password" && isKeyboardVisible && (
+      {name === "password" && isKeyboardVisible && windowWidth > 768 && (
         <Flex
           position="absolute"
+          right="100px"
           bottom="-195px"
-          width="100%"
           justifyContent="center"
         >
           <Keyboard onKeyPress={handleKeyPress} />
