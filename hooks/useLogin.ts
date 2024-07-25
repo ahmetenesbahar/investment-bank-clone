@@ -6,8 +6,10 @@ import axios, { AxiosResponse } from "axios";
 import { LoginRequestBody, LoginResponse } from "@/types/api";
 
 const validationSchema = Yup.object().shape({
-  customerNumber: Yup.number().required("Müşteri Numarası zorunludur"),
-  password: Yup.number().required("Şifre zorunludur"),
+  customerNumber: Yup.number().required(
+    "Müşteri numaranızı / TCKN / YKN giriniz."
+  ),
+  password: Yup.number().required("Şifrenizi giriniz."),
 });
 
 const useLogin = () => {
@@ -17,7 +19,6 @@ const useLogin = () => {
     formState: { errors },
   } = useForm<LoginRequestBody>({
     resolver: yupResolver(validationSchema),
-    mode: "onChange",
   });
 
   const loginMutation = useMutation({
