@@ -3,34 +3,26 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios, { AxiosResponse } from "axios";
+import { LoginRequestBody, LoginResponse } from "@/types/api";
 
 const validationSchema = Yup.object().shape({
   customerNumber: Yup.number().required("Müşteri Numarası zorunludur"),
   password: Yup.number().required("Şifre zorunludur"),
 });
 
-interface LoginFormData {
-  customerNumber: number;
-  password: number;
-}
-
-interface LoginResponse {
-  // Response türüne göre güncelle
-}
-
 const useLogin = () => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>({
+  } = useForm<LoginRequestBody>({
     resolver: yupResolver(validationSchema),
     mode: "onChange",
   });
 
   const loginMutation = useMutation({
     mutationFn: async (
-      data: LoginFormData
+      data: LoginRequestBody
     ): Promise<AxiosResponse<LoginResponse>> => {
       const response = await axios.post<LoginResponse>("/api/login", data);
       return response;
@@ -43,7 +35,7 @@ const useLogin = () => {
     },
   });
 
-  const onSubmit = (data: LoginFormData) => {
+  const onSubmit = (data: LoginRequestBody) => {
     loginMutation.mutate(data);
   };
 
