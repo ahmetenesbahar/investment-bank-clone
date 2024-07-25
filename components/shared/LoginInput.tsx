@@ -1,6 +1,6 @@
 import React from "react";
 import { useController } from "react-hook-form";
-import { InputLogin } from "@/styles/styles";
+import { InputLogin, Flex, FlexColumn } from "@/styles/styles";
 
 interface LoginInputProps {
   name: string;
@@ -9,7 +9,7 @@ interface LoginInputProps {
   type?: string;
   pattern?: string;
   inputMode?: string;
-  noHover?: boolean;
+  hover?: boolean;
 }
 
 const LoginInput: React.FC<LoginInputProps> = ({
@@ -18,7 +18,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
   placeholder,
   type = "text",
   pattern,
-  noHover,
+  hover,
 }) => {
   const {
     field,
@@ -30,17 +30,18 @@ const LoginInput: React.FC<LoginInputProps> = ({
   });
 
   return (
-    <div>
+    <FlexColumn width="100%">
       <InputLogin
         {...field}
         type={type}
         placeholder={placeholder}
         pattern={pattern}
         aria-invalid={!!error}
-        noHover={noHover}
+        hover={hover}
+        error={!!error}
       />
       {error && <span>{error.message}</span>}
-    </div>
+    </FlexColumn>
   );
 };
 

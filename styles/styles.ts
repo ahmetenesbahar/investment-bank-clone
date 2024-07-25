@@ -9,7 +9,7 @@ interface Props {
   textAlign?: string;
   fontWeight?: string;
   fontSize?: string;
-  noHover?: boolean;
+  hover?: boolean;
   responsive?: boolean;
   position?: string;
   checked?: boolean;
@@ -22,6 +22,7 @@ interface Props {
   height?: string;
   top?: string;
   visible?: string;
+  error?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -103,23 +104,25 @@ export const LoginLogoContainer = styled.div`
 `;
 
 export const InputLogin = styled.input<Props>`
-  border: 1px solid #d3d3d3;
+  border: 1px solid ${(props) => (props.error ? "red" : "#d3d3d3")};
   padding: 1px 2px 1px 15px;
   width: ${(props) => props.width || "424px"};
   height: 42px;
   outline: none;
+
   @media (max-width: 1024px) {
     width: 100%;
   }
+
   &:hover {
     border: ${(props) =>
-      props.noHover ? "1px solid #d3d3d3" : "1px solid #94d3e2"};
+      !props.error && props.hover ? "1px solid #94d3e2" : undefined};
   }
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0; /* Safari and Chrome */
+    margin: 0;
   }
 `;
 
@@ -173,6 +176,7 @@ export const HoverBubble = styled.div<Props>`
   visibility: ${(props) => props.visible};
   opacity: 0;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  display: ${(props) => props.display || "none"};
 
   ${(props) =>
     props.display === "block" &&

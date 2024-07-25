@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import "@/app/globals.css";
 import { Container, Flex } from "@/styles/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 

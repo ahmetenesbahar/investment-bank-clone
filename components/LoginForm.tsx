@@ -38,6 +38,7 @@ const LoginForm: React.FC = () => {
               placeholder="Müşteri Numaranız / TCKN / YKN"
               type="number"
               inputMode="numeric"
+              hover
             />
             <SwitchButton checked={isChecked} onChange={handleOnChange} />
           </Flex>
@@ -71,7 +72,6 @@ const LoginForm: React.FC = () => {
               name="password"
               control={control}
               inputMode="numeric"
-              noHover
               type="password"
               pattern="[0-9]*"
               placeholder="Şifre / Geçiçi Şifre"
