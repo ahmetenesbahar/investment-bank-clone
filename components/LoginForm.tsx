@@ -22,6 +22,7 @@ const LoginForm: React.FC = () => {
     useLogin();
   const [isChecked, setIsChecked] = useState(false);
   const [isHovered, setIsHovered] = useState("");
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
@@ -30,7 +31,12 @@ const LoginForm: React.FC = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <FlexColumn>
-        <Flex alignItems="center" width="100%" gap="5px">
+        <Flex
+          alignItems="center"
+          width="100%"
+          gap="5px"
+          margin={errors.customerNumber ? "0 0 1rem 0" : "0"}
+        >
           <Flex position="relative" alignItems="center" width="inherit">
             <LoginInput
               name="customerNumber"
@@ -66,7 +72,12 @@ const LoginForm: React.FC = () => {
           </HoverBubble>
         </Flex>
 
-        <Flex width="100%" alignItems="center" gap="5px">
+        <Flex
+          width="100%"
+          alignItems="center"
+          gap="5px"
+          margin={errors.password ? "0 0 1rem 0" : "0"}
+        >
           <Flex position="relative" alignItems="center" width="inherit">
             <LoginInput
               name="password"
