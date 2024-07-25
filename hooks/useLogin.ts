@@ -19,6 +19,7 @@ const useLogin = () => {
     formState: { errors },
   } = useForm<LoginRequestBody>({
     resolver: yupResolver(validationSchema),
+    mode: "onSubmit",
   });
 
   const loginMutation = useMutation({

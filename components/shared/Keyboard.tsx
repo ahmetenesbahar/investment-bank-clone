@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { set } from "react-hook-form";
 import styled from "styled-components";
 
 const KeyboardContainer = styled.div`
@@ -52,21 +53,39 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyPress }) => {
     "9",
   ]);
 
+  const [toggleShuffle, setToggleShuffle] = useState(false);
+
   const handleBackspace = () => {
-    console.log("Backspace pressed");
     onKeyPress("backspace");
   };
 
+  const shuffleKeys = () => {
+    if (toggleShuffle) {
+      const shuffledKeys = keys.sort(() => Math.random() - 0.5);
+      setKeys(shuffledKeys);
+    }
+  };
+
   const handleShuffle = () => {
-    console.log("Shuffle pressed");
-    const shuffledKeys = [...keys].sort(() => Math.random() - 0.5);
-    setKeys(shuffledKeys);
+    if (toggleShuffle) {
+      setKeys(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
+      setToggleShuffle(false);
+    } else {
+      setToggleShuffle(true);
+      shuffleKeys();
+    }
   };
 
   return (
     <KeyboardContainer>
       {keys.slice(1, 10).map((key) => (
-        <Key key={key} onClick={() => onKeyPress(key)}>
+        <Key
+          key={key}
+          onClick={() => {
+            onKeyPress(key);
+            shuffleKeys();
+          }}
+        >
           {key}
         </Key>
       ))}
@@ -74,7 +93,13 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyPress }) => {
         <img src="/assets/numpad_random.png" alt="shuffle" />
       </SpecialKey>
       {keys.slice(0, 1).map((key) => (
-        <Key key={key} onClick={() => onKeyPress(key)}>
+        <Key
+          key={key}
+          onClick={() => {
+            onKeyPress(key);
+            shuffleKeys();
+          }}
+        >
           {key}
         </Key>
       ))}
