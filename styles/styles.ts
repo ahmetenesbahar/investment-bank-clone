@@ -23,6 +23,10 @@ interface Props {
   top?: string;
   visible?: string;
   error?: boolean;
+  bottom?: string;
+  right?: string;
+  left?: string;
+  transform?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -43,6 +47,11 @@ export const Flex = styled.div<Props>`
   border-top: ${(props) => props.borderTop || "none"};
   height: ${(props) => props.height || "auto"};
   margin: ${(props) => props.margin || "0"};
+  bottom: ${(props) => props.bottom};
+  right: ${(props) => props.right};
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  transform: ${(props) => props.transform};
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -109,6 +118,7 @@ export const InputLogin = styled.input<Props>`
   width: ${(props) => props.width || "424px"};
   height: 42px;
   outline: none;
+  margin: ${(props) => props.margin || "0"};
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -354,4 +364,11 @@ export const Link = styled.a<Props>`
   &visited {
     color: ${(props) => props.color || "#000"};
   }
+`;
+
+export const KeyboardDiv = styled.div<Props>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
