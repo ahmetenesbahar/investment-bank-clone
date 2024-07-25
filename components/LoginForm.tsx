@@ -86,6 +86,7 @@ const LoginForm: React.FC = () => {
               type="password"
               pattern="[0-9]*"
               placeholder="Şifre / Geçiçi Şifre"
+              maxLength={4}
             />
           </Flex>
           <HelpBox
@@ -120,7 +121,9 @@ const LoginForm: React.FC = () => {
       <Flex width="100%" margin="1rem 0 0 0 ">
         <Flex alignItems="center" gap="3px" cursor="pointer">
           <LoginIcon src="/assets/login_icon.png" />
-          <Text color="#49a4e0">Şifrem Yok / Unuttum</Text>
+          <Text color="#49a4e0" cursor="pointer">
+            Şifrem Yok / Unuttum
+          </Text>
         </Flex>
       </Flex>
       <Flex

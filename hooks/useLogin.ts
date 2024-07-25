@@ -6,10 +6,14 @@ import axios, { AxiosResponse } from "axios";
 import { LoginRequestBody, LoginResponse } from "@/types/api";
 
 const validationSchema = Yup.object().shape({
-  customerNumber: Yup.number().required(
-    "Müşteri numaranızı / TCKN / YKN giriniz."
-  ),
-  password: Yup.number().required("Şifrenizi giriniz."),
+  customerNumber: Yup.number()
+    .nullable()
+    .transform((value, originalValue) => (originalValue === "" ? null : value))
+    .required("Müşteri numaranızı / TCKN / YKN giriniz."),
+  password: Yup.number()
+    .nullable()
+    .transform((value, originalValue) => (originalValue === "" ? null : value))
+    .required("Şifrenizi giriniz."),
 });
 
 const useLogin = () => {

@@ -13,6 +13,7 @@ interface LoginInputProps {
   hover?: boolean;
   keyboard?: boolean;
   onClick?: () => void;
+  maxLength?: number;
 }
 
 const LoginInput: React.FC<LoginInputProps> = ({
@@ -24,6 +25,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
   hover,
   keyboard,
   onClick,
+  maxLength,
 }) => {
   const {
     field,
@@ -41,17 +43,18 @@ const LoginInput: React.FC<LoginInputProps> = ({
 
   const handleKeyPress = (key: string) => {
     let newValue: string;
-
     const currentValue = field.value || "";
 
     if (key === "backspace") {
       newValue = currentValue.slice(0, -1);
+      field.onChange(newValue, { shouldValidate: false });
     } else {
-      newValue = currentValue + key;
+      if (currentValue.length < 4) {
+        newValue = currentValue + key;
+        field.onChange(newValue);
+        console.log(`Current value: ${newValue}`);
+      }
     }
-
-    field.onChange(newValue);
-    console.log(`Current value: ${newValue}`);
   };
   const handleClickOutside = (event: MouseEvent) => {
     if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
@@ -74,10 +77,11 @@ const LoginInput: React.FC<LoginInputProps> = ({
         aria-invalid={!!error}
         hover={hover}
         error={!!error}
+        maxLength={maxLength}
         onClick={() => {
           setIsKeyboardVisible(!isKeyboardVisible);
-          if (onClick) onClick();
         }}
+        inputMode="numeric"
       />
       {error && (
         <Flex position="absolute" bottom="-24px" width="100%">

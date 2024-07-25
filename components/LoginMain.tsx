@@ -60,7 +60,7 @@ const LoginMain: NextPage = () => {
                 onClick={(e) => setHelp(!help)}
               >
                 <LoginIcon src="/assets/info_icon.png" display="none" />
-                <ResponsiveLoginText color="#49a4e0">
+                <ResponsiveLoginText color="#49a4e0" cursor="pointer">
                   Yardım / Bilgi
                 </ResponsiveLoginText>
               </Flex>
@@ -98,7 +98,9 @@ const LoginMain: NextPage = () => {
             <Flex width="100%">
               <Flex alignItems="center" gap="3px" cursor="pointer">
                 <LoginIcon src="/assets/lock_icon.png" />
-                <Text color="#49a4e0">Güvenlik</Text>
+                <Text color="#49a4e0" cursor="pointer">
+                  Güvenlik
+                </Text>
               </Flex>
             </Flex>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { set } from "react-hook-form";
 import styled from "styled-components";
 
@@ -60,6 +60,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyPress }) => {
   };
 
   const shuffleKeys = () => {
+    console.log(toggleShuffle);
     if (toggleShuffle) {
       const shuffledKeys = keys.sort(() => Math.random() - 0.5);
       setKeys(shuffledKeys);
@@ -72,6 +73,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyPress }) => {
       setToggleShuffle(false);
     } else {
       setToggleShuffle(true);
+      console.log(toggleShuffle);
       shuffleKeys();
     }
   };
