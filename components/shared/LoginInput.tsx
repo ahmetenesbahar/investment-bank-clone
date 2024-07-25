@@ -42,16 +42,17 @@ const LoginInput: React.FC<LoginInputProps> = ({
   const handleKeyPress = (key: string) => {
     let newValue: string;
 
+    const currentValue = field.value || "";
+
     if (key === "backspace") {
-      newValue = field.value.slice(0, -1);
+      newValue = currentValue.slice(0, -1);
     } else {
-      newValue = field.value + key;
+      newValue = currentValue + key;
     }
 
     field.onChange(newValue);
     console.log(`Current value: ${newValue}`);
   };
-
   const handleClickOutside = (event: MouseEvent) => {
     if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
       setIsKeyboardVisible(false);
