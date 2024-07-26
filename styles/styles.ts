@@ -32,7 +32,6 @@ interface Props {
 export const Container = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   width: ${(props) => props.width || "100%"};
-  height: 100vh;
 `;
 
 export const Flex = styled.div<Props>`

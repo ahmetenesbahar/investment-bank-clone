@@ -22,7 +22,6 @@ const LoginForm: React.FC = () => {
     useLogin();
   const [isChecked, setIsChecked] = useState(false);
   const [isHovered, setIsHovered] = useState("");
-  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);

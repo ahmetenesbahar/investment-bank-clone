@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useController } from "react-hook-form";
-import { InputLogin, Flex, FlexColumn } from "@/styles/styles";
+import { InputLogin, Flex, FlexColumn, Text } from "@/styles/styles";
 import Keyboard from "./Keyboard";
 import useMediaQuery from "@/hooks/useMediaQuery";
 interface LoginInputProps {
@@ -85,7 +85,9 @@ const LoginInput: React.FC<LoginInputProps> = ({
       />
       {error && (
         <Flex position="absolute" bottom="-24px" width="100%">
-          <span style={{ color: "red" }}>{error.message}</span>
+          <Text color="red" fontSize="14px">
+            {error.message}
+          </Text>
         </Flex>
       )}
       {name === "password" && isKeyboardVisible && windowWidth > 768 && (
