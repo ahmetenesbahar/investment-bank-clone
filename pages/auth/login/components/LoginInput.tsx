@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useController } from "react-hook-form";
 import { InputLogin, Flex, FlexColumn, Text } from "@/styles/styles";
-import Keyboard from "./Keyboard";
+import Keyboard from "@/components/Keyboard";
 import useMediaQuery from "@/hooks/useMediaQuery";
 interface LoginInputProps {
   name: string;

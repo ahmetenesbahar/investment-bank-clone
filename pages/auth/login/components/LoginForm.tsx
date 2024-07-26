@@ -13,9 +13,9 @@ import {
   Button,
   MarginBox,
 } from "@/styles/styles";
-import SwitchButton from "./shared/SwitchButton";
-import LoginInput from "./shared/LoginInput";
-import useLogin from "@/hooks/useLogin";
+import SwitchButton from "../../../../components/SwitchButton";
+import LoginInput from "./LoginInput";
+import useLogin from "@/pages/auth/login/hooks/useLogin";
 
 const LoginForm: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
