@@ -15,7 +15,7 @@ import {
 } from "@/styles/styles";
 import SwitchButton from "../../../../components/SwitchButton";
 import LoginInput from "./LoginInput";
-import useLogin from "@/pages/auth/login/hooks/useLogin";
+import useLogin from "../hooks/useLogin";
 
 const LoginForm: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
