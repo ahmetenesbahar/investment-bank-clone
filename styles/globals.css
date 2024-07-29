@@ -9,3 +9,11 @@ body {
   font-family: "Montserrat", sans-serif;
   margin: 0 !important;
 }
+
+a {
+  color: #49a4e0 !important;
+}
+
+a:visited {
+  color: inherit;
+}
