@@ -22,16 +22,12 @@ import LoginForm from "./LoginForm";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation, Trans } from "next-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ReactMarkdown from "react-markdown";
 
 const LoginMain: NextPage = () => {
   const { t } = useTranslation("common");
   const [help, setHelp] = useState(false);
   const windowWidth = useMediaQuery();
-  let headerText =
-    " Türkiye İş Bankası Bireysel İnternet Şubenize Hoş Geldiniz !";
-  if (windowWidth < 1024) {
-    headerText = "İnternet Şubenize Hoş Geldiniz !";
-  }
 
   useEffect(() => {
     if (windowWidth > 1024) {
@@ -101,32 +97,10 @@ const LoginMain: NextPage = () => {
               <ListItem>{t("Do not check remember password")}</ListItem>
               <ListItem>{t("Use licensed antivirus software")}</ListItem>
               <ListItem>
-                <Trans
-                  i18nKey="Correct url"
-                  components={{
-                    1: (
-                      <Link
-                        color="#49a4e0"
-                        href="https://www.isbank.com.tr/"
-                        target="_blank"
-                      ></Link>
-                    ),
-                  }}
-                />
+                <ReactMarkdown>{t("Correct url")}</ReactMarkdown>
               </ListItem>
               <ListItem>
-                <Trans
-                  i18nKey="infoLink"
-                  components={{
-                    1: (
-                      <Link
-                        color="#49a4e0"
-                        href="https://www.isbank.com.tr/guvenlik-ipuclari"
-                        target="_blank"
-                      ></Link>
-                    ),
-                  }}
-                />
+                <ReactMarkdown>{t("infoLink")}</ReactMarkdown>
               </ListItem>
             </SecurityBubble>
           </FlexColumn>

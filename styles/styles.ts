@@ -201,7 +201,6 @@ export const ListItem = styled.div`
   font-size: 13.5px;
   margin-bottom: 5px;
   justify-content: flex-start;
-  gap: 5px;
   line-height: 1.5;
   
 
@@ -215,6 +214,7 @@ export const ListItem = styled.div`
     height: 18px;
     font-size: 20px;
     color: #08335e;
+    padding-right: 5px;
  
 `;
 
@@ -360,6 +360,8 @@ export const Footer = styled.div<Props>`
 
 export const Link = styled.a<Props>`
   color: ${(props) => props.color || "#000"};
+  padding-left: 5px;
+  padding-right: 5px;
   &visited {
     color: ${(props) => props.color || "#000"};
   }
