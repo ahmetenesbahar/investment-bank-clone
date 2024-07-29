@@ -60,7 +60,6 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyPress }) => {
   };
 
   const shuffleKeys = () => {
-    console.log(toggleShuffle);
     if (toggleShuffle) {
       const shuffledKeys = keys.sort(() => Math.random() - 0.5);
       setKeys(shuffledKeys);
@@ -73,7 +72,6 @@ const Keyboard: React.FC<KeyboardProps> = ({ onKeyPress }) => {
       setToggleShuffle(false);
     } else {
       setToggleShuffle(true);
-      console.log(toggleShuffle);
       shuffleKeys();
     }
   };

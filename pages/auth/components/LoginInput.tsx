@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useController } from "react-hook-form";
 import { InputLogin, Flex, FlexColumn, Text } from "@/styles/styles";
-import Keyboard from "./Keyboard";
+import Keyboard from "@/components/Keyboard";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface LoginInputProps {
@@ -55,7 +55,6 @@ const LoginInput: React.FC<LoginInputProps> = ({
       if (currentValue.length < 4) {
         newValue = currentValue + key;
         field.onChange(newValue);
-        console.log(`Current value: ${newValue}`);
       }
     }
   };
@@ -79,10 +78,6 @@ const LoginInput: React.FC<LoginInputProps> = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  useEffect(() => {
-    console.log(`Field value: ${field.value}`);
-  }, [field.value]);
 
   return (
     <FlexColumn width="100%" ref={inputRef}>
