@@ -20,8 +20,10 @@ import {
 } from "@/styles/styles";
 import LoginForm from "./LoginForm";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslation } from "next-i18next";
 
 const LoginMain: NextPage = () => {
+  const { t } = useTranslation("common");
   const [help, setHelp] = useState(false);
   const windowWidth = useMediaQuery();
   let headerText =
@@ -46,7 +48,7 @@ const LoginMain: NextPage = () => {
       >
         <MobileLoginLogoContainer src="/assets/mobile_header.png" />
         <Flex width="100%">
-          <LoginHeader>{headerText}</LoginHeader>
+          <LoginHeader>{t("login")}</LoginHeader>
         </Flex>
         <LoginForm />
 

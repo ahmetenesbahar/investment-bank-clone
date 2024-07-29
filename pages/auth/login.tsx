@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginSidebar from "@/components/LoginSidebar";
 import LoginMain from "@/components/LoginMain";
 
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticProps } from "next";
+
 const queryClient = new QueryClient();
 
 const LoginPage: NextPage = () => {
@@ -21,3 +24,9 @@ const LoginPage: NextPage = () => {
 };
 
 export default LoginPage;
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale as string, ["common"])),
+  },
+});
