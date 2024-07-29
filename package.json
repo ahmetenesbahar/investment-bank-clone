@@ -21,6 +21,7 @@
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.5",
     "next": "14.2.5",
+    "next-i18next": "^15.3.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.52.1",
