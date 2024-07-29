@@ -154,7 +154,7 @@ const LoginMain: NextPage = () => {
             height="100%"
           >
             <Text color="#49a4e0" cursor="pointer">
-              Bize Ulaşın
+              {t("Contact us")}
             </Text>
             <LanguageSwitcher />
           </Flex>
