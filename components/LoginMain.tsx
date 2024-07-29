@@ -21,6 +21,7 @@ import {
 import LoginForm from "./LoginForm";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation, Trans } from "next-i18next";
+import LanguageSwitcher from "./shared/LanguageSwitcher";
 
 const LoginMain: NextPage = () => {
   const { t } = useTranslation("common");
@@ -155,9 +156,7 @@ const LoginMain: NextPage = () => {
             <Text color="#49a4e0" cursor="pointer">
               Bize Ulaşın
             </Text>
-            <Text color="#49a4e0" cursor="pointer">
-              English
-            </Text>
+            <LanguageSwitcher />
           </Flex>
         </Flex>
       </Footer>
