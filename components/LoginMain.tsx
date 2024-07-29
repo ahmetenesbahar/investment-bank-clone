@@ -20,8 +20,11 @@ import {
 } from "@/styles/styles";
 import LoginForm from "./LoginForm";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslation, Trans } from "next-i18next";
+import LanguageSwitcher from "./shared/LanguageSwitcher";
 
 const LoginMain: NextPage = () => {
+  const { t } = useTranslation("common");
   const [help, setHelp] = useState(false);
   const windowWidth = useMediaQuery();
   let headerText =
@@ -46,7 +49,9 @@ const LoginMain: NextPage = () => {
       >
         <MobileLoginLogoContainer src="/assets/mobile_header.png" />
         <Flex width="100%">
-          <LoginHeader>{headerText}</LoginHeader>
+          <LoginHeader>
+            {windowWidth < 1024 ? t("mobileLoginWelcome") : t("loginWelcome")}
+          </LoginHeader>
         </Flex>
         <LoginForm />
 
@@ -61,36 +66,23 @@ const LoginMain: NextPage = () => {
               >
                 <LoginIcon src="/assets/info_icon.png" display="none" />
                 <ResponsiveLoginText color="#49a4e0" cursor="pointer">
-                  Yardım / Bilgi
+                  {t("help")}/{t("information")}
                 </ResponsiveLoginText>
               </Flex>
             </Flex>
             <SecurityBubble display={help ? "block" : "none"}>
               <FlexColumn>
                 <div>
-                  <Text fontWeight="600">Müşteri Numarası</Text>
-                  <Text>
-                    Müşteri Numaranızı bilmiyor veya hatırlamıyorsanız,
-                    Bankamatik kartınız üzerinde ve kredi kartı ekstrelerinde
-                    görebilirsiniz. Ayrıca 0850 724 0 724 numaralı Telefon
-                    Şubemizi arayarak müşteri temsilcisinden de öğrenebilirsiniz
-                  </Text>
+                  <Text fontWeight="600">{t("customerNumber")}</Text>
+                  <Text>{t("Don't know customer number?")}</Text>
                 </div>
                 <div>
-                  <Text fontWeight="600">Müşteri Şifresi</Text>
-                  <Text>
-                    Müşteri Şifreniz yoksa veya unuttuysanız, şifrenizi
-                  </Text>
-                  <ListItem>
-                    Bankamatik/Kredi kartınız bulunuyorsa Anında Şifre
-                    uygulamasından,
-                  </ListItem>
-                  <ListItem>Bankamatiklerden,</ListItem>
-                  <ListItem>724 0 724 numaralı Telefon Şubesi'nden,</ListItem>
-                  <ListItem>
-                    Şubelerimizden ve çağrı merkezimizden Geçici Şifre alarak
-                    belirleyebilirsiniz.
-                  </ListItem>
+                  <Text fontWeight="600">{t("customerPassword")}</Text>
+                  <Text>{t("Don't have customer password?")}</Text>
+                  <ListItem>{t("If you have card")}</ListItem>
+                  <ListItem>{t("From ATM")}</ListItem>
+                  <ListItem>{t("From Telephone Branch")}</ListItem>
+                  <ListItem>{t("From Branch")}</ListItem>
                 </div>
               </FlexColumn>
             </SecurityBubble>
@@ -99,45 +91,42 @@ const LoginMain: NextPage = () => {
               <Flex alignItems="center" gap="3px" cursor="pointer">
                 <LoginIcon src="/assets/lock_icon.png" />
                 <Text color="#49a4e0" cursor="pointer">
-                  Güvenlik
+                  {t("security")}
                 </Text>
               </Flex>
             </Flex>
 
             <SecurityBubble display="block">
+              <ListItem>{t("Do not share personal information")}</ListItem>
+              <ListItem>{t("Do not check remember password")}</ListItem>
+              <ListItem>{t("Use licensed antivirus software")}</ListItem>
               <ListItem>
-                Kişisel bilgilerinizi hiçbir şekilde kimseyle paylaşmayın,
-                Bankamız çalışanı dahil hiç kimsenin yönlendirmesiyle işlem
-                yapmayın.
+                <Trans
+                  i18nKey="Correct url"
+                  components={{
+                    1: (
+                      <Link
+                        color="#49a4e0"
+                        href="https://www.isbank.com.tr/"
+                        target="_blank"
+                      ></Link>
+                    ),
+                  }}
+                />
               </ListItem>
               <ListItem>
-                Kullandığınız tarayıcıda şifre saklama tercihi sunulursa kabul
-                etmeyin, şifrenizi tarayıcıya kaydetmeyin.
-              </ListItem>
-              <ListItem>
-                Mutlaka lisanslı işletim sistemi ve antivirüs yazılımı kullanın
-                ve düzenli olarak güncelleyin.
-              </ListItem>
-              <ListItem>
-                Adres çubuğuna
-                <Link
-                  color="#49a4e0"
-                  href="https://www.isbank.com.tr/"
-                  target="_blank"
-                >
-                  www.isbank.com.tr
-                </Link>
-                yazarak giriş yapın.
-              </ListItem>
-              <ListItem>
-                Detaylı bilgiye ulaşmak için
-                <Link
-                  color="#49a4e0"
-                  href="https://www.isbank.com.tr/guvenlik-ipuclari"
-                  target="_blank"
-                >
-                  tıklayın.
-                </Link>
+                <Trans
+                  i18nKey="infoLink"
+                  components={{
+                    1: (
+                      <Link
+                        color="#49a4e0"
+                        href="https://www.isbank.com.tr/guvenlik-ipuclari"
+                        target="_blank"
+                      ></Link>
+                    ),
+                  }}
+                />
               </ListItem>
             </SecurityBubble>
           </FlexColumn>
@@ -165,11 +154,9 @@ const LoginMain: NextPage = () => {
             height="100%"
           >
             <Text color="#49a4e0" cursor="pointer">
-              Bize Ulaşın
+              {t("Contact us")}
             </Text>
-            <Text color="#49a4e0" cursor="pointer">
-              English
-            </Text>
+            <LanguageSwitcher />
           </Flex>
         </Flex>
       </Footer>

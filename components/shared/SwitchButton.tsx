@@ -6,6 +6,7 @@ import {
   SwitchLabel,
   SwitchLabelLeft,
 } from "@/styles/styles";
+import { useTranslation } from "next-i18next";
 
 interface SwitchButtonProps {
   checked: boolean;
@@ -13,12 +14,19 @@ interface SwitchButtonProps {
 }
 
 const SwitchButton: React.FC<SwitchButtonProps> = ({ checked, onChange }) => {
+  const { t } = useTranslation("common");
+  const isEnglishText = t("Remember").length > 7;
+
   return (
     <SwitchContainer>
       <SwitchInput type="checkbox" checked={checked} onChange={onChange} />
       <SwitchSlider checked={checked} />
-      <SwitchLabel checked={checked}>Hatırla</SwitchLabel>
-      <SwitchLabelLeft checked={!checked}>Hatırla</SwitchLabelLeft>
+      <SwitchLabel checked={checked} isEnglish={isEnglishText}>
+        {t("Remember")}
+      </SwitchLabel>
+      <SwitchLabelLeft checked={!checked} isEnglish={isEnglishText}>
+        {t("Remember")}
+      </SwitchLabelLeft>
     </SwitchContainer>
   );
 };

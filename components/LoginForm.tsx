@@ -16,10 +16,12 @@ import {
 import SwitchButton from "./shared/SwitchButton";
 import LoginInput from "./shared/LoginInput";
 import useLogin from "@/hooks/useLogin";
+import { useTranslation } from "next-i18next";
 
 const LoginForm: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
     useLogin();
+  const { t } = useTranslation("common");
   const [isChecked, setIsChecked] = useState(false);
   const [isHovered, setIsHovered] = useState("");
 
@@ -40,7 +42,7 @@ const LoginForm: React.FC = () => {
             <LoginInput
               name="customerNumber"
               control={control}
-              placeholder="Müşteri Numaranız / TCKN / YKN"
+              placeholder={t("Login Customer Number Placeholder")}
               type="number"
               inputMode="numeric"
               hover
@@ -60,13 +62,8 @@ const LoginForm: React.FC = () => {
             display={isHovered === "customerNumber" ? "block" : "none"}
           >
             <div>
-              <Text fontWeight="600">Müşteri Numarası</Text>
-              <Text>
-                Müşteri Numaranızı bilmiyor veya hatırlamıyorsanız, Bankamatik
-                kartınız üzerinde ve kredi kartı ekstrelerinde görebilirsiniz.
-                Ayrıca 0850 724 0 724 numaralı Telefon Şubemizi arayarak müşteri
-                temsilcisinden de öğrenebilirsiniz
-              </Text>
+              <Text fontWeight="600">{t("customerNumber")}</Text>
+              <Text>{t("Don't know customer number?")}</Text>
             </div>
           </HoverBubble>
         </Flex>
@@ -84,7 +81,7 @@ const LoginForm: React.FC = () => {
               inputMode="numeric"
               type="password"
               pattern="[0-9]*"
-              placeholder="Şifre / Geçiçi Şifre"
+              placeholder={t("Login Password Placeholder")}
               maxLength={4}
             />
           </Flex>
@@ -101,18 +98,12 @@ const LoginForm: React.FC = () => {
             display={isHovered === "password" ? "block" : "none"}
           >
             <div>
-              <Text fontWeight="600">Müşteri Şifresi</Text>
-              <Text>Müşteri Şifreniz yoksa veya unuttuysanız, şifrenizi</Text>
-              <ListItem>
-                Bankamatik/Kredi kartınız bulunuyorsa Anında Şifre
-                uygulamasından,
-              </ListItem>
-              <ListItem>Bankamatiklerden,</ListItem>
-              <ListItem>724 0 724 numaralı Telefon Şubesi'nden,</ListItem>
-              <ListItem>
-                Şubelerimizden ve çağrı merkezimizden Geçici Şifre alarak
-                belirleyebilirsiniz.
-              </ListItem>
+              <Text fontWeight="600">{t("customerPassword")}</Text>
+              <Text>{t("Don't have customer password?")}</Text>
+              <ListItem>{t("If you have card")}</ListItem>
+              <ListItem>{t("From ATM")}</ListItem>
+              <ListItem>{t("From Telephone Branch")} </ListItem>
+              <ListItem>{t("From Branch")}</ListItem>
             </div>
           </HoverBubble>
         </Flex>
@@ -121,7 +112,7 @@ const LoginForm: React.FC = () => {
         <Flex alignItems="center" gap="3px" cursor="pointer">
           <LoginIcon src="/assets/login_icon.png" />
           <Text color="#49a4e0" cursor="pointer">
-            Şifrem Yok / Unuttum
+            {t("Forgot Password")}
           </Text>
         </Flex>
       </Flex>
@@ -132,7 +123,7 @@ const LoginForm: React.FC = () => {
         alignItems="center"
       >
         <Button type="submit" padding="15px 40px" margin="20px 0px 20px 0px">
-          Giriş
+          {t("login")}
         </Button>
         <MarginBox />
       </Flex>
