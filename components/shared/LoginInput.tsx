@@ -34,6 +34,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
   } = useController({
     name,
     control,
+    defaultValue: "",
     rules: { pattern: pattern ? new RegExp(pattern) : undefined },
   });
 
@@ -41,6 +42,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
 
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(keyboard || false);
   const inputRef = useRef<HTMLDivElement>(null);
+  const patternRegex = pattern ? new RegExp(pattern) : null;
 
   const handleKeyPress = (key: string) => {
     let newValue: string;
@@ -63,10 +65,24 @@ const LoginInput: React.FC<LoginInputProps> = ({
     }
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+
+    if (patternRegex && !patternRegex.test(newValue)) {
+      return;
+    }
+
+    field.onChange(newValue);
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    console.log(`Field value: ${field.value}`);
+  }, [field.value]);
 
   return (
     <FlexColumn width="100%" ref={inputRef}>
@@ -82,7 +98,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
         onClick={() => {
           setIsKeyboardVisible(!isKeyboardVisible);
         }}
-        inputMode="numeric"
+        onChange={(e) => handleInputChange(e)}
       />
       {error && (
         <Flex position="absolute" bottom="-24px" width="100%">

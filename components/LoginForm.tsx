@@ -80,7 +80,7 @@ const LoginForm: React.FC = () => {
               control={control}
               inputMode="numeric"
               type="password"
-              pattern="[0-9]*"
+              pattern="^[0-9]*$"
               placeholder={t("Login Password Placeholder")}
               maxLength={4}
             />
