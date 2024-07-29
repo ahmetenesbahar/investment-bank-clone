@@ -27,6 +27,7 @@ interface Props {
   right?: string;
   left?: string;
   transform?: string;
+  isEnglish?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -227,7 +228,7 @@ export const SwitchContainer = styled.label`
   align-items: center;
   cursor: pointer;
   right: 10px;
-  width: 76px;
+  width: 84px;
   height: 24px;
   @media (max-width: 1024px) {
     right: 10px;
@@ -241,10 +242,10 @@ export const SwitchInput = styled.input`
   height: 100%;
   opacity: 0;
   cursor: pointer;
-  z-index: 1; /* Ensure it sits on top for click events */
+  z-index: 1;
 
   &:checked + span:before {
-    transform: translate(50px);
+    transform: translate(60px);
   }
 
   &:checked + span + label {
@@ -257,7 +258,7 @@ export const SwitchInput = styled.input`
 export const SwitchSlider = styled.span<Props>`
   position: relative;
   display: inline-block;
-  width: 76px;
+  width: 84px;
   height: 24px;
   background-color: ${(props) => (props.checked ? "#F85931" : "#999999")};
   border-radius: 24px;
@@ -278,15 +279,15 @@ export const SwitchSlider = styled.span<Props>`
   }
 `;
 
-export const SwitchLabel = styled.label<{ checked: boolean }>`
+export const SwitchLabel = styled.label<Props>`
   position: absolute;
   top: 50%;
   left: 4px;
   width: 50px;
   height: 20px;
   line-height: 20px;
-  margin-left: 20px;
-  font-size: 13px;
+  margin-left: ${(props) => (props.isEnglish ? "18px" : "20px")};
+  font-size: ${(props) => (props.isEnglish ? "10px" : "13px")};
   font-weight: 500;
   color: white;
   transform: ${(props) =>
@@ -297,12 +298,11 @@ export const SwitchLabel = styled.label<{ checked: boolean }>`
 `;
 
 export const SwitchLabelLeft = styled(SwitchLabel)<Props>`
-  margin-left: 3px;
+  margin-left: ${(props) => (props.isEnglish ? "0" : "3px")};
 
   transform: ${(props) =>
     props.checked ? "translate(-50px, -50%)" : "translate(0, -50%)"};
-  opacity: ${(props) =>
-    props.checked ? "0" : "1"}; /* Hide the text when checked */
+  opacity: ${(props) => (props.checked ? "0" : "1")};
   transition: transform 0.4s, opacity 0.4s;
 `;
 
