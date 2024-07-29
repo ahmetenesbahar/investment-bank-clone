@@ -21,7 +21,7 @@ import {
 import LoginForm from "./LoginForm";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation, Trans } from "next-i18next";
-import LanguageSwitcher from "./shared/LanguageSwitcher";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const LoginMain: NextPage = () => {
   const { t } = useTranslation("common");

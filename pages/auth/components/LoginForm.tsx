@@ -13,8 +13,8 @@ import {
   Button,
   MarginBox,
 } from "@/styles/styles";
-import SwitchButton from "./shared/SwitchButton";
-import LoginInput from "./shared/LoginInput";
+import SwitchButton from "@/components/SwitchButton";
+import LoginInput from "./LoginInput";
 import useLogin from "@/hooks/useLogin";
 import { useTranslation } from "next-i18next";
 
