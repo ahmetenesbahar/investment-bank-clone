@@ -6,7 +6,7 @@ import ForgotPasswordMain from "./components/ForgotPasswordMain";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 
-import { Container, Flex } from "@/styles/styles";
+import { Container, ForgotPasswordContainer, Flex } from "@/styles/styles";
 
 import { TabProvider } from "./context/TabContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -26,9 +26,9 @@ const ForgotPasswordPage: NextPage = () => {
           >
             <Navbar />
           </Flex>
-          <Flex justifyContent="center" margin="40px 0 0 0">
+          <ForgotPasswordContainer justifyContent="center" margin="40px 0 0 0">
             <ForgotPasswordMain />
-          </Flex>
+          </ForgotPasswordContainer>
         </Container>
       </QueryClientProvider>
     </TabProvider>
