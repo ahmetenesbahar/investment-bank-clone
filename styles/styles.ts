@@ -28,17 +28,23 @@ interface Props {
   left?: string;
   transform?: string;
   isEnglish?: boolean;
+  backgroundColor?: string;
+  borderBottom?: string;
+  triangleLeft?: string;
 }
 
 export const Container = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   width: ${(props) => props.width || "100%"};
+  background-color: ${(props) => props.backgroundColor || "#fff"};
+  height: 100vh;
 `;
 
 export const Flex = styled.div<Props>`
   display: flex;
   position: ${(props) => props.position || "static"};
   width: ${(props) => props.width || "auto"};
+  height: ${(props) => props.height || "auto"};
   justify-content: ${(props) => props.justifyContent || "flex-start"};
   align-items: ${(props) => props.alignItems || "flex-start"};
   padding: ${(props) => props.padding || "0"};
@@ -52,6 +58,8 @@ export const Flex = styled.div<Props>`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   transform: ${(props) => props.transform};
+  background-color: ${(props) => props.backgroundColor || "transparent"};
+  border-bottom: ${(props) => props.borderBottom || "none"};
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -77,6 +85,8 @@ export const FlexColumn = styled.div<Props>`
   margin: ${(props) => props.margin || "0"};
   border-top: ${(props) => props.borderTop || "none"};
   border-radius: ${(props) => props.borderRadius || "0"};
+  background-color: ${(props) => props.backgroundColor || "transparent"};
+  position: ${(props) => props.position || "static"};
 `;
 
 export const LoginContainer = styled(FlexColumn)<Props>`
@@ -175,11 +185,13 @@ export const SecurityBubble = styled.div<Props>`
 
 export const HoverBubble = styled.div<Props>`
   max-width: 430px;
-  padding: 10px;
+  z-index: 1 !important;
+  padding: ${(props) => props.padding || "10px"};
   margin-top: 10px;
-  background-color: #fafafa;
+  width: ${(props) => props.width || "100%"};
+  background-color: ${(props) => props.backgroundColor || "#fafafa"};
   position: absolute;
-  left: 800px;
+  left: ${(props) => props.left || "800px"};
   top: ${(props) => props.top || "0"};
   opacity: 1; /* Başlangıçta görünmez */
   transition: opacity 0.3s ease-in-out;
@@ -194,6 +206,20 @@ export const HoverBubble = styled.div<Props>`
     opacity: 1;
     visibility: visible;
   `}
+`;
+
+export const HoverBubbleWithTriangle = styled(HoverBubble)<Props>`
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: ${(props) => props.triangleLeft || "50%"};
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent
+      ${(props) => props.backgroundColor || "#fafafa"} transparent;
+  }
 `;
 
 export const ListItem = styled.div`
@@ -372,4 +398,21 @@ export const KeyboardDiv = styled.div<Props>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const SecondaryHeader = styled.h2<Props>`
+  color: ${(props) => props.color || "#08335e"};
+  font-weight: ${(props) => props.fontWeight || "500"};
+  font-size: ${(props) => props.fontSize || "22px"};
+  margin: ${(props) => props.margin || "0"};
+  text-align: ${(props) => props.textAlign || "left"};
+  border-bottom: ${(props) => props.borderBottom || "none"};
+  width: ${(props) => props.width || "100%"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const VerticalLine = styled.div<Props>`
+  border-right: 1px solid #e5e5e5;
+  height: ${(props) => props.height || "100%"};
+  margin: ${(props) => props.margin || "0"};
 `;
