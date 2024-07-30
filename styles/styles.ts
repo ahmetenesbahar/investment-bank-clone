@@ -39,7 +39,8 @@ export const Container = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   width: ${(props) => props.width || "100%"};
   background-color: ${(props) => props.backgroundColor || "#fff"};
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 `;
 
 export const Flex = styled.div<Props>`
