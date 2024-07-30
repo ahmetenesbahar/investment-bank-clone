@@ -32,6 +32,7 @@ interface Props {
   borderBottom?: string;
   triangleLeft?: string;
   responsiveFull?: boolean;
+  triangleRight?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -208,12 +209,13 @@ export const SecurityBubble = styled.div<Props>`
 export const HoverBubble = styled.div<Props>`
   max-width: 430px;
   z-index: 1 !important;
+  position: absolute !important;
   padding: ${(props) => props.padding || "10px"};
   margin-top: 10px;
   width: ${(props) => props.width || "100%"};
   background-color: ${(props) => props.backgroundColor || "#fafafa"};
-  position: absolute;
   left: ${(props) => props.left || "800px"};
+  right: ${(props) => props.right || "0"};
   top: ${(props) => props.top || "0"};
   opacity: 1; /* Başlangıçta görünmez */
   transition: opacity 0.3s ease-in-out;
@@ -236,6 +238,7 @@ export const HoverBubbleWithTriangle = styled(HoverBubble)<Props>`
     position: absolute;
     top: -20px;
     left: ${(props) => props.triangleLeft || "50%"};
+    right: ${(props) => props.triangleRight || "50%"};
     transform: translateX(-50%);
     border-width: 10px;
     border-style: solid;
