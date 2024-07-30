@@ -31,6 +31,7 @@ interface Props {
   backgroundColor?: string;
   borderBottom?: string;
   triangleLeft?: string;
+  responsiveFull?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -60,6 +61,13 @@ export const Flex = styled.div<Props>`
   transform: ${(props) => props.transform};
   background-color: ${(props) => props.backgroundColor || "transparent"};
   border-bottom: ${(props) => props.borderBottom || "none"};
+  ${(props) =>
+    props.responsiveFull &&
+    `
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
+    `}
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -87,6 +95,14 @@ export const FlexColumn = styled.div<Props>`
   border-radius: ${(props) => props.borderRadius || "0"};
   background-color: ${(props) => props.backgroundColor || "transparent"};
   position: ${(props) => props.position || "static"};
+
+  ${(props) =>
+    props.responsiveFull &&
+    `
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
+    `}
 `;
 
 export const LoginContainer = styled(FlexColumn)<Props>`
@@ -162,11 +178,17 @@ export const Button = styled.button<Props>`
   background-color: ${(props) => props.color || "#08335e"};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
   margin: ${(props) => props.margin || "0"};
+  font-size: ${(props) => props.fontSize || "14px"};
+  font-weight: ${(props) => props.fontWeight || "500"};
   cursor: pointer;
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+  ${(props) =>
+    props.responsiveFull &&
+    `
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    `}
 `;
 
 export const SecurityBubble = styled.div<Props>`
@@ -385,12 +407,7 @@ export const Footer = styled.div<Props>`
 `;
 
 export const Link = styled.a<Props>`
-  color: ${(props) => props.color || "#000"};
-  padding-left: 5px;
-  padding-right: 5px;
-  &visited {
-    color: ${(props) => props.color || "#000"};
-  }
+  margin: ${(props) => props.margin || "0"};
 `;
 
 export const KeyboardDiv = styled.div<Props>`
@@ -411,8 +428,30 @@ export const SecondaryHeader = styled.h2<Props>`
   padding: ${(props) => props.padding || "0"};
 `;
 
+export const SecondaryHeaderForgotPassword = styled(SecondaryHeader)<Props>`
+  @media (max-width: 1280px) {
+    font-size: 14px;
+  }
+`;
+
 export const VerticalLine = styled.div<Props>`
   border-right: 1px solid #e5e5e5;
   height: ${(props) => props.height || "100%"};
   margin: ${(props) => props.margin || "0"};
+`;
+
+export const ForgotPasswordInput = styled(InputLogin)<Props>`
+  @media (max-width: 1024px) {
+    max-width: 424px;
+  }
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
+
+export const ForgotPasswordContainer = styled(Flex)<Props>`
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-top: 2px;
+  }
 `;

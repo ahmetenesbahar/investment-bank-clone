@@ -11,6 +11,8 @@ export interface LoginResponse {
 export interface ForgotPasswordRequestBody {
   customerNumber: number;
   phoneNumber: number;
+  commercialNumber?: number | null;
+  captcha: string;
 }
 
 export interface ForgotPasswordResponse {
