@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios, { AxiosResponse } from "axios";
 import { ForgotPasswordRequestBody, ForgotPasswordResponse } from "@/types/api";
 
-const validationSchema = Yup.object().shape({
+const generalValidationSchema = Yup.object().shape({
   customerNumber: Yup.number()
     .nullable()
     .transform((value, originalValue) => (originalValue === "" ? null : value))
@@ -13,48 +13,67 @@ const validationSchema = Yup.object().shape({
   phoneNumber: Yup.number()
     .nullable()
     .transform((value, originalValue) => (originalValue === "" ? null : value))
-    .required("Şifrenizi giriniz."),
+    .required("Cep telefonu numaranızı giriniz."),
+  captcha: Yup.string().required("Doğrulama kodunu giriniz."),
 });
 
-const useForgotPassword = () => {
+const commercialValidationSchema = Yup.object().shape({
+  customerNumber: Yup.number()
+    .nullable()
+    .transform((value, originalValue) => (originalValue === "" ? null : value))
+    .required("Kullanıcı kodunuzu / TCKN / YKN giriniz."),
+  commercialNumber: Yup.number()
+    .nullable()
+    .transform((value, originalValue) => (originalValue === "" ? null : value))
+    .required("Ticari numaranızı giriniz."),
+  phoneNumber: Yup.number()
+    .nullable()
+    .transform((value, originalValue) => (originalValue === "" ? null : value))
+    .required("Şifrenizi giriniz."),
+  captcha: Yup.string().required("Doğrulama kodunu giriniz."),
+});
+
+const useForgotPassword = (type: string) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<ForgotPasswordRequestBody>({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(
+      type === "general" ? generalValidationSchema : commercialValidationSchema
+    ),
     mode: "onSubmit",
   });
 
-  const loginMutation = useMutation({
+  const forgotPasswordMutation = useMutation({
     mutationFn: async (
       data: ForgotPasswordRequestBody
     ): Promise<AxiosResponse<ForgotPasswordResponse>> => {
       const response = await axios.post<ForgotPasswordResponse>(
-        "/api/login",
+        "/api/forgotPassword",
         data
       );
       return response;
     },
     onSuccess: (data) => {
-      console.log("Login successful:", data);
+      console.log("Instant PIN successful:", data);
     },
     onError: (error) => {
-      console.error("Login failed:", error);
+      console.error("Instant PIN failed:", error);
     },
   });
 
   const onSubmit = (data: ForgotPasswordRequestBody) => {
-    loginMutation.mutate(data);
+    forgotPasswordMutation.mutate(data);
   };
 
   return {
     control,
     handleSubmit: handleSubmit(onSubmit),
     errors,
-    isError: loginMutation.isError,
-    isSuccess: loginMutation.isSuccess,
-    isPending: loginMutation.isPending,
+    isError: forgotPasswordMutation.isError,
+    isSuccess: forgotPasswordMutation.isSuccess,
+    isPending: forgotPasswordMutation.isPending,
   };
 };
 
