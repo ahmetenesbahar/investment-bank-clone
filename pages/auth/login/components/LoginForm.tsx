@@ -131,7 +131,12 @@ const LoginForm: React.FC = () => {
         gap="8px"
         alignItems="center"
       >
-        <Button type="submit" padding="15px 40px" margin="20px 0px 20px 0px">
+        <Button
+          type="submit"
+          padding="15px 40px"
+          margin="20px 0px 20px 0px"
+          responsiveFull
+        >
           {t("login")}
         </Button>
         <MarginBox />
