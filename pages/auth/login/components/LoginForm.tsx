@@ -15,8 +15,9 @@ import {
 } from "@/styles/styles";
 import SwitchButton from "@/components/SwitchButton";
 import LoginInput from "./LoginInput";
-import useLogin from "@/hooks/useLogin";
+import useLogin from "../hooks/useLogin";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
@@ -24,9 +25,16 @@ const LoginForm: React.FC = () => {
   const { t } = useTranslation("common");
   const [isChecked, setIsChecked] = useState(false);
   const [isHovered, setIsHovered] = useState("");
+  const router = useRouter();
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
+  };
+
+  const handleForgotPasswordClick = () => {
+    const currentLang = router.locale || "tr";
+    router.push(`/${currentLang}/auth/forgot-password`);
+    console.log(currentLang);
   };
 
   return (
@@ -109,7 +117,14 @@ const LoginForm: React.FC = () => {
         </Flex>
       </FlexColumn>
       <Flex width="100%" margin="1rem 0 0 0 ">
-        <Flex alignItems="center" gap="3px" cursor="pointer">
+        <Flex
+          alignItems="center"
+          gap="3px"
+          cursor="pointer"
+          onClick={() => {
+            handleForgotPasswordClick();
+          }}
+        >
           <LoginIcon src="/assets/login_icon.png" />
           <Text color="#49a4e0" cursor="pointer">
             {t("Forgot Password")}
@@ -122,7 +137,12 @@ const LoginForm: React.FC = () => {
         gap="8px"
         alignItems="center"
       >
-        <Button type="submit" padding="15px 40px" margin="20px 0px 20px 0px">
+        <Button
+          type="submit"
+          padding="15px 40px"
+          margin="20px 0px 20px 0px"
+          responsiveFull
+        >
           {t("login")}
         </Button>
         <MarginBox />
