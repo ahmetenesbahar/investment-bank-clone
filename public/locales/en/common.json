@@ -23,5 +23,17 @@
   "Login Password Placeholder": "PIN / Tempoary PIN",
   "Login Customer Number Placeholder": "Customer No / T.C. / Foreigners ID",
   "Remember": "Remember",
-  "Contact us": "Contact Us"
+  "Contact us": "Contact Us",
+  "Instant PIN": "Instant PIN",
+  "Personal": "Personal",
+  "Commercial": "Commercial",
+  "Seccure": "Seccure",
+  "Commercial Customer Number": "Commercial Customer Number",
+  "Commercial Customer Number Info": " You can learn your commercial customer number from your branch or from customer representative by calling 0850 724 0 724 Telephone Branch.",
+  "Customer Number / TCKN / YKN": "Customer No / T.C. / Foreigners ID",
+  "Customer Number Info": "You can login with your user code (personal customer number), T.C. or foreigners ID number. Your user code (personal customer number) displayed on your personal Bankamatik card or personal credit card receipts.",
+  "Mobile Phone Number": "Mobile Phone Number",
+  "Mobile Phone Number Info": "If you are a subscriber of a local mobile operator, enter your mobile phone number as 5xxxxxxxxx without any blanks. If you are a subscriber of an abroad mobile operator, enter the country and the operator code without any space, '00' or '+'.",
+  "Confirmation Code": "Confirmation Code",
+  "Continue": "Continue"
 }

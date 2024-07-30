@@ -23,5 +23,17 @@
   "Login Password Placeholder": "Şifre / Geçiçi Şifre",
   "Login Customer Number Placeholder": "Müşteri Numaranız / TCKN / YKN",
   "Remember": "Hatırla",
-  "Contact us": "Bize Ulaşın"
+  "Contact us": "Bize Ulaşın",
+  "Instant PIN": "Anında Şifre",
+  "Personal": "Bireysel",
+  "Commercial": "Ticari",
+  "Seccure": "Güvenli",
+  "Commercial Customer Number": "Ticari Müşteri Numaranız",
+  "Commercial Customer Number Info": " Ticari Müşteri Numaranızı bilmiyor veya hatırlamıyorsanız,şubenizden veya 0 850 724 0 724 numaralı Telefon Şubemizi arayarak müşteri temsilcisinden öğrenebilirsiniz.",
+  "Customer Number / TCKN / YKN": "Kullanıcı Kodu / TCKN / YKN",
+  "Customer Number Info": "  Müşteri Numaranız, T.C. Kimlik Numaranız veya Yabancı Kimlik Numaranız ile giriş yapabilirsiniz. Müşteri Numaranızı Bankamatik kartınız üzerinde ve kredi kartı ekstrelerinizde görebilirsiniz.Ayrıca 0850 724 0 724 numaralı Telefon Şubemizi arayarak müşteri temsilcisinden öğrenebilirsiniz",
+  "Mobile Phone Number": " Cep Telefonu Numaranız",
+  "Mobile Phone Number Info": "  Cep telefonu numaranız; bir yurt içi mobil operatöre ait ise 5XXXXXXXXX şeklinde bir yurt dışı mobil operatörlere ait ise başında 00 ve + olmaksızın ülke kodu ve operatör kodu ile boşluksuz olarak giriniz.",
+  "Confirmation Code": " Doğrulama Kodu",
+  "Continue": "Devam"
 }
