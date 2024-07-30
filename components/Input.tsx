@@ -1,10 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useController } from "react-hook-form";
-import { InputLogin, Flex, FlexColumn, Text } from "@/styles/styles";
+import {
+  InputLogin,
+  ForgotPasswordInput,
+  Flex,
+  FlexColumn,
+  Text,
+} from "@/styles/styles";
 import Keyboard from "@/components/Keyboard";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
-interface LoginInputProps {
+interface InputProps {
   name: string;
   control: any;
   placeholder: string;
@@ -15,9 +21,11 @@ interface LoginInputProps {
   keyboard?: boolean;
   onClick?: () => void;
   maxLength?: number;
+  width?: string;
+  inputType?: string;
 }
 
-const LoginInput: React.FC<LoginInputProps> = ({
+const Input: React.FC<InputProps> = ({
   name,
   control,
   placeholder,
@@ -27,6 +35,8 @@ const LoginInput: React.FC<LoginInputProps> = ({
   keyboard,
   onClick,
   maxLength,
+  width,
+  inputType = "inputLogin",
 }) => {
   const {
     field,
@@ -79,9 +89,12 @@ const LoginInput: React.FC<LoginInputProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const InputComponent =
+    inputType === "inputLogin" ? InputLogin : ForgotPasswordInput;
+
   return (
     <FlexColumn width="100%" ref={inputRef}>
-      <InputLogin
+      <InputComponent
         {...field}
         type={type}
         placeholder={placeholder}
@@ -90,13 +103,14 @@ const LoginInput: React.FC<LoginInputProps> = ({
         hover={hover}
         error={!!error}
         maxLength={maxLength}
+        width={width}
         onClick={() => {
           setIsKeyboardVisible(!isKeyboardVisible);
         }}
         onChange={(e) => handleInputChange(e)}
       />
       {error && (
-        <Flex position="absolute" bottom="-24px" width="100%">
+        <Flex width="100%">
           <Text color="red" fontSize="14px">
             {error.message}
           </Text>
@@ -116,4 +130,4 @@ const LoginInput: React.FC<LoginInputProps> = ({
   );
 };
 
-export default LoginInput;
+export default Input;
