@@ -9,7 +9,12 @@ import { useTab } from "../context/TabContext";
 const ForgotPasswordMain: React.FC = () => {
   const { tab } = useTab();
   return (
-    <FlexColumn width="788px" padding="20px" backgroundColor="#fff">
+    <FlexColumn
+      width="788px"
+      padding="20px"
+      backgroundColor="#fff"
+      responsiveFull
+    >
       <Header />
       <Tabs />
       {tab === "bireysel" ? <InputBireysel /> : <InputTicari />}
