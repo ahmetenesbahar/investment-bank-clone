@@ -31,6 +31,12 @@ const LoginForm: React.FC = () => {
     setIsChecked(event.target.checked);
   };
 
+  const handleForgotPasswordClick = () => {
+    const currentLang = router.locale || "tr";
+    router.push(`/${currentLang}/auth/forgot-password`);
+    console.log(currentLang);
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       <FlexColumn>
@@ -116,7 +122,7 @@ const LoginForm: React.FC = () => {
           gap="3px"
           cursor="pointer"
           onClick={() => {
-            router.push("/auth/forgot-password");
+            handleForgotPasswordClick();
           }}
         >
           <LoginIcon src="/assets/login_icon.png" />

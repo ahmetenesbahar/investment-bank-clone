@@ -1,9 +1,11 @@
 import React from "react";
 import { Flex, Text, VerticalLine } from "@/styles/styles";
 import { useTab } from "../context/TabContext";
+import { useTranslation } from "next-i18next";
 
 const Tabs: React.FC = () => {
   const { tab, handleTabChange } = useTab();
+  const { t } = useTranslation();
   return (
     <Flex alignItems="center" width="100%" borderBottom="1px solid #e5e5e5">
       <Flex
@@ -17,7 +19,7 @@ const Tabs: React.FC = () => {
           color={tab === "bireysel" ? "#1c345c" : "#555555"}
           fontWeight={tab === "bireysel" ? "700" : "400"}
         >
-          Bireysel
+          {t("Personal")}
         </Text>
       </Flex>
       <VerticalLine height="26px" />
@@ -32,7 +34,7 @@ const Tabs: React.FC = () => {
           color={tab === "ticari" ? "#1c345c" : "#555555"}
           fontWeight={tab === "ticari" ? "700" : "400"}
         >
-          Ticari
+          {t("Commercial")}
         </Text>
       </Flex>
       <VerticalLine height="26px" />

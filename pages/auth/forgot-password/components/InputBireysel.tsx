@@ -10,19 +10,24 @@ import {
 } from "@/styles/styles";
 import Input from "@/components/Input";
 import useForgotPassword from "../hooks/useForgotPassword";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 const InputBireysel: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
     useForgotPassword("general");
   const [isHovered, setIsHovered] = useState("");
+  const { t } = useTranslation();
+  const router = useRouter();
+  const currentLang = router.locale;
 
   return (
     <Form width="100%" onSubmit={handleSubmit}>
       <FlexColumn width="100%">
-        <FlexColumn position="relative" width="100%">
-          <Flex gap="8px">
+        <FlexColumn width="100%">
+          <Flex gap="8px" position="relative">
             <Text fontWeight="700" color="#1c345c">
-              Müşteri Numaranız / TCKN / YKN
+              {t("Customer Number / TCKN / YKN")}
             </Text>
             <img
               src="/assets/infoForgot_icon.png"
@@ -30,6 +35,17 @@ const InputBireysel: React.FC = () => {
               onMouseEnter={() => setIsHovered("customerNumber")}
               onMouseLeave={() => setIsHovered("")}
             />
+            <HoverBubbleWithTriangle
+              display={isHovered === "customerNumber" ? "block" : "none"}
+              left={currentLang === "en" ? "42%" : "32%"}
+              top="150%"
+              backgroundColor="#1c345c"
+              width="300px"
+              padding="18px 21px 21px 21px"
+              triangleLeft="50%"
+            >
+              <Text color="#fff">{t("Customer Number Info")}</Text>
+            </HoverBubbleWithTriangle>
           </Flex>
           <Input
             name="customerNumber"
@@ -38,28 +54,11 @@ const InputBireysel: React.FC = () => {
             pattern="^[0-9]*$"
             inputType="forgotPassword"
           />
-          <HoverBubbleWithTriangle
-            display={isHovered === "customerNumber" ? "block" : "none"}
-            left="50%"
-            top="50%"
-            backgroundColor="#1c345c"
-            width="300px"
-            padding="18px 21px 21px 21px"
-            triangleLeft="45px"
-          >
-            <Text color="#fff">
-              Müşteri Numaranız, T.C. Kimlik Numaranız veya Yabancı Kimlik
-              Numaranız ile giriş yapabilirsiniz. Müşteri Numaranızı Bankamatik
-              kartınız üzerinde ve kredi kartı ekstrelerinizde görebilirsiniz.
-              Ayrıca 0850 724 0 724 numaralı Telefon Şubemizi arayarak müşteri
-              temsilcisinden öğrenebilirsiniz
-            </Text>
-          </HoverBubbleWithTriangle>
         </FlexColumn>
-        <FlexColumn position="relative" width="100%">
-          <Flex gap="8px">
+        <FlexColumn width="100%">
+          <Flex gap="8px" position="relative">
             <Text fontWeight="700" color="#1c345c">
-              Cep Telefonu Numaranız
+              {t("Mobile Phone Number")}
             </Text>
             <img
               src="/assets/infoForgot_icon.png"
@@ -67,6 +66,17 @@ const InputBireysel: React.FC = () => {
               onMouseEnter={() => setIsHovered("phoneNumber")}
               onMouseLeave={() => setIsHovered("")}
             />
+            <HoverBubbleWithTriangle
+              display={isHovered === "phoneNumber" ? "block" : "none"}
+              left={currentLang === "en" ? "17%" : "23%"}
+              top="150%"
+              backgroundColor="#1c345c"
+              width="300px"
+              padding="18px 21px 21px 21px"
+              triangleLeft="50%"
+            >
+              <Text color="#fff">{t("Mobile Phone Number Info")}</Text>
+            </HoverBubbleWithTriangle>
           </Flex>
           <Input
             name="phoneNumber"
@@ -75,26 +85,10 @@ const InputBireysel: React.FC = () => {
             pattern="^[0-9]*$"
             inputType="forgotPassword"
           />
-          <HoverBubbleWithTriangle
-            display={isHovered === "phoneNumber" ? "block" : "none"}
-            left="35%"
-            top="50%"
-            backgroundColor="#1c345c"
-            width="300px"
-            padding="18px 21px 21px 21px"
-            triangleLeft="50px"
-          >
-            <Text color="#fff">
-              Cep telefonu numaranız; bir yurt içi mobil operatöre ait ise
-              5XXXXXXXXX şeklinde, bir yurt dışı mobil operatörlere ait ise
-              başında 00 ve + olmaksızın ülke kodu ve operatör kodu ile
-              boşluksuz olarak giriniz.
-            </Text>
-          </HoverBubbleWithTriangle>
         </FlexColumn>
         <FlexColumn width="100%">
           <Text fontWeight="700" color="#1c345c">
-            Doğrulama Kodu
+            {t("Confirmation Code")}
           </Text>
           <Flex gap="8px">
             <img src="/assets/captcha.jpeg" alt="" />
@@ -118,7 +112,7 @@ const InputBireysel: React.FC = () => {
             fontSize="14px"
             type="submit"
           >
-            Devam
+            {t("Continue")}
           </Button>
         </Flex>
       </FlexColumn>

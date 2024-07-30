@@ -1,7 +1,9 @@
 import React from "react";
 import { Flex, FlexColumn, Text, Link } from "@/styles/styles";
+import { useTranslation } from "next-i18next";
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <Flex
       justifyContent="space-between"
@@ -22,7 +24,7 @@ const Navbar: React.FC = () => {
       >
         <img src="/assets/lock.png" alt="" />
         <Text color="#00428a" fontSize="11px" fontWeight="500">
-          Güvenli
+          {t("Secure")}
         </Text>
       </FlexColumn>
     </Flex>
