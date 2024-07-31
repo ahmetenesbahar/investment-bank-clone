@@ -3,6 +3,7 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios, { AxiosResponse } from "axios";
+import Cookies from "js-cookie";
 import { LoginRequestBody, LoginResponse } from "@/types/api";
 
 const validationSchema = Yup.object().shape({
@@ -35,6 +36,12 @@ const useLogin = () => {
     },
     onSuccess: (data) => {
       console.log("Login successful:", data);
+      if (data.data.token) {
+        Cookies.set("userToken", data.data.token, { expires: 0 });
+      }
+      if (data.data.user) {
+        Cookies.set("userInfo", JSON.stringify(data.data.user), { expires: 0 });
+      }
     },
     onError: (error) => {
       console.error("Login failed:", error);

@@ -1,23 +1,18 @@
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import styles from "@/styles/Home.module.css";
+import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { GetStaticProps } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  return (
-    <>
-      <Link href={"/auth/login"} locale="tr">
-        123
-      </Link>
-    </>
-  );
+  return null;
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale as string, ["common"])),
-  },
-});
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  return {
+    redirect: {
+      destination: "/auth/login",
+      permanent: false,
+    },
+    props: {
+      ...(await serverSideTranslations(locale as string, ["common"])),
+    },
+  };
+};
