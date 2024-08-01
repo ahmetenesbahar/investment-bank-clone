@@ -3,8 +3,8 @@ import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios, { AxiosResponse } from "axios";
-import Cookies from "js-cookie";
 import { LoginRequestBody, LoginResponse } from "@/types/api";
+import { useRouter } from "next/router";
 
 const validationSchema = Yup.object().shape({
   customerNumber: Yup.number()
@@ -18,6 +18,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const useLogin = () => {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -26,6 +27,10 @@ const useLogin = () => {
     resolver: yupResolver(validationSchema),
     mode: "onSubmit",
   });
+
+  const setCookie = (name: string, value: string) => {
+    document.cookie = `${name}=${encodeURIComponent(value)};path=/`;
+  };
 
   const loginMutation = useMutation({
     mutationFn: async (
@@ -36,12 +41,12 @@ const useLogin = () => {
     },
     onSuccess: (data) => {
       console.log("Login successful:", data);
-      if (data.data.token) {
-        Cookies.set("userToken", data.data.token, { expires: 0 });
+      if (data.data.token && data.data.user) {
+        setCookie("token", data.data.token);
+        setCookie("user", JSON.stringify(data.data.user));
       }
-      if (data.data.user) {
-        Cookies.set("userInfo", JSON.stringify(data.data.user), { expires: 0 });
-      }
+
+      router.push("/dashboard");
     },
     onError: (error) => {
       console.error("Login failed:", error);
