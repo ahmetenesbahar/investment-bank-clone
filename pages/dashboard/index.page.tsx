@@ -7,7 +7,7 @@ import { Container, Flex } from "@/styles/styles";
 
 const Dashboard: NextPage = () => {
   return (
-    <Container>
+    <Container backgroundColor="#f2f2f2">
       <Navbar />
       <Flex>
         <Sidebar />

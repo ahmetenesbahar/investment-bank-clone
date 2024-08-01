@@ -37,6 +37,7 @@ const Navbar: React.FC = () => {
     <Flex
       justifyContent="space-between"
       boxShadow="0px 4px 8px rgba(0, 0, 0, 0.1)"
+      backgroundColor="#fff"
     >
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5 ">
