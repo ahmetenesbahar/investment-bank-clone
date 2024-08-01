@@ -22,6 +22,7 @@ interface Props {
   borderBottom?: string;
   borderLeft?: string;
   borderRadius?: string;
+  border?: string;
   height?: string;
   top?: string;
   visible?: string;
@@ -192,10 +193,10 @@ export const Text = styled.p<Props>`
 
 export const Button = styled.button<Props>`
   outline: none;
-  border: none;
+  border: ${(props) => props.border || "none"};
   width: ${(props) => props.width || "auto"};
   color: ${(props) => props.color || "#fff"};
-  background-color: ${(props) => props.color || "#08335e"};
+  background-color: ${(props) => props.backgroundColor || "#08335e"};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
   margin: ${(props) => props.margin || "0"};
   font-size: ${(props) => props.fontSize || "14px"};
@@ -500,6 +501,10 @@ export const Icon = styled.img<Props>`
   &:hover {
     color: ${(props) => props.hoverBackground && "transparent"};
   }
+`;
+
+export const FullBorderFlex = styled(Flex)<Props>`
+  border: ${(props) => props.border || "none"};
 `;
 
 export const NavbarAvatarDiv = styled(Flex)<Props>``;
