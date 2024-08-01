@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
         </Flex>
         <SearchBar />
       </Flex>
-      <Flex>
+      <Flex height="44px">
         {iconData.map((icon, index) => (
           <Flex
             key={index}
