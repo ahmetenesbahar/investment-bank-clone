@@ -36,7 +36,13 @@ const LoginMain: NextPage = () => {
   }, [windowWidth]);
 
   return (
-    <Container padding="1.2rem" width="100%">
+    <Container
+      padding="1.2rem"
+      width="100%"
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+    >
       <LoginContainer
         alignItems="center"
         justifyContent="center"

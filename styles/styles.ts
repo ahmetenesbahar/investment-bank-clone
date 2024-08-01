@@ -33,6 +33,7 @@ interface Props {
   triangleLeft?: string;
   responsiveFull?: boolean;
   triangleRight?: string;
+  flexDirection?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -41,6 +42,9 @@ export const Container = styled.div<Props>`
   background-color: ${(props) => props.backgroundColor || "#fff"};
   min-height: 100vh;
   height: auto;
+  display: ${(props) => props.display || "block"};
+  justify-content: ${(props) => props.justifyContent || "flex-start"};
+  flex-direction: ${(props) => props.flexDirection || "row"};
 `;
 
 export const Flex = styled.div<Props>`
@@ -400,15 +404,7 @@ export const LoginIcon = styled.img<Props>`
   }
 `;
 
-export const Footer = styled.div<Props>`
-  margin-top: 12rem;
-  @media (max-width: 1440px) {
-    margin-top: 8rem;
-  }
-  @media (max-width: 1024px) {
-    margin-top: 4rem;
-  }
-`;
+export const Footer = styled.div<Props>``;
 
 export const Link = styled.a<Props>`
   margin: ${(props) => props.margin || "0"};
