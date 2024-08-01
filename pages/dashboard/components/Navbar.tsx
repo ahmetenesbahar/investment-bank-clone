@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Flex, Icon, LogoutDiv, NavbarAvatarDiv, Text } from "@/styles/styles";
 import SearchBar from "./SearchBar";
 import useUser from "@/hooks/useGetUser";
@@ -7,6 +7,7 @@ const Navbar: React.FC = () => {
   const user = useUser();
   const today = new Date();
 
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [userAvatarMenu, setUserAvatarMenu] = useState(false);
 
   const formatDateTime = (date: Date) => {
@@ -18,8 +19,25 @@ const Navbar: React.FC = () => {
 
     return `${day}.${month}.${year} ${hours}:${minutes}`;
   };
+
+  const iconData = [
+    { src: "assets/kampanyalar.png" },
+    { src: "assets/edevlet.png" },
+    { src: "assets/header_islemlistesi.png" },
+    { src: "assets/header_mail.png" },
+    { src: "assets/header_bildirim.png" },
+    { src: "assets/header_favourite.png" },
+    {
+      src: "assets/hesaplama_araclarim_icon.png",
+    },
+    { src: "assets/print_icon.png" },
+  ];
+
   return (
-    <Flex justifyContent="space-between">
+    <Flex
+      justifyContent="space-between"
+      boxShadow="0px 4px 8px rgba(0, 0, 0, 0.1)"
+    >
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5 ">
           <img src="assets/header_logo.png" alt="" />
@@ -27,26 +45,16 @@ const Navbar: React.FC = () => {
         <SearchBar />
       </Flex>
       <Flex>
-        <Icon src="assets/kampanyalar.png" borderLeft="1px solid #e5e5e5 " />
-        <Icon src="assets/edevlet.png" borderLeft="1px solid #e5e5e5 " />
-        <Icon
-          src="assets/header_islemlistesi.png"
-          borderLeft="1px solid #e5e5e5 "
-        />
-        <Icon src="assets/header_mail.png" borderLeft="1px solid #e5e5e5 " />
-        <Icon
-          src="assets/header_bildirim.png"
-          borderLeft="1px solid #e5e5e5 "
-        />
-        <Icon
-          src="assets/header_favourite.png"
-          borderLeft="1px solid #e5e5e5 "
-        />
-        <Icon
-          src="assets/hesaplama_araclarim_icon.png"
-          borderLeft="1px solid #e5e5e5 "
-        />
-        <Icon src="assets/print_icon.png" borderLeft="1px solid #e5e5e5 " />
+        {iconData.map((icon, index) => (
+          <Flex
+            key={index}
+            onMouseEnter={() => setActiveIndex(index)}
+            onMouseLeave={() => setActiveIndex(null)}
+            backgroundColor={activeIndex === index ? "#F2F9FF" : "transparent"}
+          >
+            <Icon src={icon.src} borderLeft={"1px solid #e5e5e5 "} />
+          </Flex>
+        ))}
         <NavbarAvatarDiv
           cursor="pointer"
           onMouseEnter={() => setUserAvatarMenu(true)}
