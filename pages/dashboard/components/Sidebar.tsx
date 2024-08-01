@@ -81,10 +81,9 @@ const Sidebar: React.FC = () => {
   return (
     <Flex
       width="226px"
-      height="100vh"
+      height="calc(100vh - 44px)"
       backgroundColor="#08335e"
       flexDirection="column"
-      position="fixed"
     >
       {sidebarItems.map((item, index) => (
         <Flex
