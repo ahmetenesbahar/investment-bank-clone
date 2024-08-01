@@ -18,6 +18,9 @@ interface Props {
   cursor?: string;
   display?: string;
   borderTop?: string;
+  borderRight?: string;
+  borderBottom?: string;
+  borderLeft?: string;
   borderRadius?: string;
   height?: string;
   top?: string;
@@ -29,11 +32,14 @@ interface Props {
   transform?: string;
   isEnglish?: boolean;
   backgroundColor?: string;
-  borderBottom?: string;
   triangleLeft?: string;
   responsiveFull?: boolean;
   triangleRight?: string;
   flexDirection?: string;
+  placeholderColor?: string;
+  active?: boolean;
+  hoverBackground?: string;
+  boxShadow?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -49,6 +55,7 @@ export const Container = styled.div<Props>`
 
 export const Flex = styled.div<Props>`
   display: flex;
+  flex-direction: ${(props) => props.flexDirection || "row"};
   position: ${(props) => props.position || "static"};
   width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
@@ -57,7 +64,6 @@ export const Flex = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   gap: ${(props) => props.gap || "0"};
   cursor: ${(props) => props.cursor || "auto"};
-  border-top: ${(props) => props.borderTop || "none"};
   height: ${(props) => props.height || "auto"};
   margin: ${(props) => props.margin || "0"};
   bottom: ${(props) => props.bottom};
@@ -66,7 +72,12 @@ export const Flex = styled.div<Props>`
   left: ${(props) => props.left};
   transform: ${(props) => props.transform};
   background-color: ${(props) => props.backgroundColor || "transparent"};
+  border-top: ${(props) => props.borderTop || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
+  border-right: ${(props) => props.borderRight || "none"};
+  border-left: ${(props) => props.borderLeft || "none"};
+  border-radius: ${(props) => props.borderRadius || "0"};
+  box-shadow: ${(props) => props.boxShadow || "none"};
   ${(props) =>
     props.responsiveFull &&
     `
@@ -74,6 +85,9 @@ export const Flex = styled.div<Props>`
         width: 100%;
       }
     `}
+
+    &:hover {
+    background-color: ${(props) => props.hoverBackground && "transparent"};
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -455,3 +469,39 @@ export const ForgotPasswordContainer = styled(Flex)<Props>`
     margin-top: 2px;
   }
 `;
+
+export const SearchBarInput = styled.input<Props>`
+  outline: none;
+  focus: none;
+  border: none;
+  width: ${(props) => props.width || "100%"};
+  padding: ${(props) => props.padding || "0"};
+  font-size: ${(props) => props.fontSize || "14px"};
+  &::placeholder {
+    color: ${(props) => props.placeholderColor || "#000"};
+    font-weight: ${(props) => props.fontWeight || "400"};
+  }
+`;
+export const SearchBarCloseIcon = styled.img<Props>`
+  cursor: pointer;
+  display: ${(props) => (props.active ? "block" : "none")};
+`;
+
+export const Icon = styled.img<Props>`
+  position: ${(props) => props.position || "static"};
+  right: ${(props) => props.right || "0"};
+  width: ${(props) => props.width || "auto"};
+  height: ${(props) => props.height || "auto"};
+  border-right: ${(props) => props.borderRight || "none"};
+  border-left: ${(props) => props.borderLeft || "none"};
+  border-top: ${(props) => props.borderTop || "none"};
+  border-bottom: ${(props) => props.borderBottom || "none"};
+  cursor: pointer;
+  &:hover {
+    color: ${(props) => props.hoverBackground && "transparent"};
+  }
+`;
+
+export const NavbarAvatarDiv = styled(Flex)<Props>``;
+
+export const LogoutDiv = styled(Flex)<Props>``;
