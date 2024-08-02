@@ -5,17 +5,20 @@ import Main from "./components/Main";
 import Navbar from "./components/Navbar";
 import { Container, Flex } from "@/styles/styles";
 import { TabProvider } from "./context/TabContext";
+import { PageProvider } from "./context/PageContext";
 const Dashboard: NextPage = () => {
   return (
-    <TabProvider>
-      <Container backgroundColor="#f2f2f2">
-        <Navbar />
-        <Flex>
-          <Sidebar />
-          <Main />
-        </Flex>
-      </Container>
-    </TabProvider>
+    <PageProvider>
+      <TabProvider>
+        <Container backgroundColor="#f2f2f2">
+          <Navbar />
+          <Flex>
+            <Sidebar />
+            <Main />
+          </Flex>
+        </Container>
+      </TabProvider>
+    </PageProvider>
   );
 };
 
