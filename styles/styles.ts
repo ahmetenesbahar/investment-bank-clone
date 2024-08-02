@@ -41,6 +41,9 @@ interface Props {
   active?: boolean;
   hoverBackground?: string;
   boxShadow?: string;
+  textTransform?: string;
+  hoverColor?: string;
+  textDecoration?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -73,6 +76,7 @@ export const Flex = styled.div<Props>`
   left: ${(props) => props.left};
   transform: ${(props) => props.transform};
   background-color: ${(props) => props.backgroundColor || "transparent"};
+  border: ${(props) => props.border || "0"};
   border-top: ${(props) => props.borderTop || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
   border-right: ${(props) => props.borderRight || "none"};
@@ -86,9 +90,6 @@ export const Flex = styled.div<Props>`
         width: 100%;
       }
     `}
-
-    &:hover {
-    background-color: ${(props) => props.hoverBackground && "transparent"};
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -184,17 +185,32 @@ export const InputLogin = styled.input<Props>`
 `;
 
 export const Text = styled.p<Props>`
-  color: ${(props) => props.color || " #535353"};
-  font-size: ${(props) => props.fontSize || "14px;"};
+  color: ${(props) => props.color || "#535353"};
+  font-size: ${(props) => props.fontSize || "14px"};
   cursor: ${(props) => props.cursor || "auto"};
   text-align: ${(props) => props.textAlign || "left"};
   font-weight: ${(props) => props.fontWeight || "400"};
+  padding: ${(props) => props.padding || "0"};
+  border-bottom: ${(props) => props.borderBottom || "none"};
+  border-right: ${(props) => props.borderRight || "none"};
+  text-transform: ${(props) => props.textTransform || "none"};
+  text-decoration: ${(props) => props.textDecoration || "none"};
+
+  ${(props) =>
+    props.hover &&
+    `
+    &:hover {
+      color: ${props.hoverColor || "#000"};
+      background-color: ${props.hoverBackground || "transparent"};
+    }
+  `}
 `;
 
 export const Button = styled.button<Props>`
   outline: none;
   border: ${(props) => props.border || "none"};
   width: ${(props) => props.width || "auto"};
+  height: ${(props) => props.height || "auto"};
   color: ${(props) => props.color || "#fff"};
   background-color: ${(props) => props.backgroundColor || "#08335e"};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
@@ -498,6 +514,7 @@ export const Icon = styled.img<Props>`
   border-top: ${(props) => props.borderTop || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
   cursor: pointer;
+  transform: ${(props) => props.transform || "0"};
   &:hover {
     color: ${(props) => props.hoverBackground && "transparent"};
   }
@@ -510,3 +527,37 @@ export const FullBorderFlex = styled(Flex)<Props>`
 export const NavbarAvatarDiv = styled(Flex)<Props>``;
 
 export const LogoutDiv = styled(Flex)<Props>``;
+
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+export const Th = styled.th<Props>`
+  padding: 15px;
+  border-bottom: ${(props) => props.borderBottom || "none"};
+  font-weight: 600;
+  color: #7288aa;
+  font-size: 14px;
+  text-align: left;
+`;
+
+export const Td = styled.td<Props>`
+  padding: 15px;
+  border-bottom: ${(props) => props.borderBottom || "none"};
+  color: #000;
+  font-size: 14px;
+`;
+
+export const Tr = styled.tr<Props>`
+  cursor: ${(props) => (props.cursor ? "pointer" : "auto")};
+  background-color: ${(props) => props.backgroundColor || "transparent"};
+  height: ${(props) => props.height || "auto"};
+  border-bottom: ${(props) => props.borderBottom || "none"};
+  border-top: ${(props) => props.borderTop || "none"};
+  border-left: ${(props) => props.borderLeft || "none"};
+  border-right: ${(props) => props.borderRight || "none"};
+  &:hover {
+    background-color: ${(props) => props.hoverBackground || "transparent"};
+  }
+`;
