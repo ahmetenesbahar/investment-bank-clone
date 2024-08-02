@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  Flex,
-  Text,
-  Table,
-  Td,
-  Th,
-  Icon,
-  Tr,
-  VerticalLine,
-  Button,
-} from "@/styles/styles";
+import { Flex, Text, Table, Td, Th, Tr, Button } from "@/styles/styles";
 import useUser from "@/hooks/useGetUser";
 import { usePage } from "../context/PageContext";
 import SelectBox from "./SelectBox";
@@ -19,7 +9,6 @@ const EditAccounts: React.FC = () => {
   console.log(user);
 
   const { handlePageChange } = usePage();
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const accountTypes = [
     { label: "Vadesiz TL", value: "vadesizTl" },
@@ -40,8 +29,8 @@ const EditAccounts: React.FC = () => {
       <Table>
         <thead>
           <Tr borderBottom="1px solid #e5e5e5 ">
-            <Th>Hesap Türü</Th>
-            <Th>Hesap Adı / Hesap No</Th>
+            <Th width="153px">Hesap Türü</Th>
+            <Th width="298">Hesap Adı / Hesap No</Th>
             <Th>Net Bakiye</Th>
           </Tr>
         </thead>
@@ -49,10 +38,10 @@ const EditAccounts: React.FC = () => {
           {user?.accounts.map((account: any, index: number) => (
             <React.Fragment key={index}>
               <Tr borderBottom="1px solid #e5e5e5 ">
-                <Td>
-                  <SelectBox options={accountTypes} width="135px" />
+                <Td padding="15px">
+                  <SelectBox options={accountTypes} width="120px" />
                 </Td>
-                <Td>
+                <Td padding="15px">
                   <SelectBox options={accountNumbers} />
                 </Td>
                 <Td>
@@ -75,7 +64,7 @@ const EditAccounts: React.FC = () => {
             </React.Fragment>
           ))}
           <Tr>
-            <Td colSpan={3} borderBottom="1px solid #e5e5e5 ">
+            <Td colSpan={3} borderBottom="1px solid #e5e5e5 " padding="15px">
               <Flex alignItems="center">
                 <Text fontWeight="450" color="#000">
                   Henüz bir yatırım hesabınız yok, hemen açabilirsiniz.

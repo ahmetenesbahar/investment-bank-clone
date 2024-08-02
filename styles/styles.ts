@@ -539,14 +539,16 @@ export const Th = styled.th<Props>`
   font-weight: 600;
   color: #7288aa;
   font-size: 14px;
+  width: ${(props) => props.width || "auto"};
   text-align: left;
 `;
 
 export const Td = styled.td<Props>`
-  padding: 15px;
+  padding: ${(props) => props.padding || "0"};
   border-bottom: ${(props) => props.borderBottom || "none"};
   color: #000;
   font-size: 14px;
+  width: ${(props) => props.width || "auto"};
 `;
 
 export const Tr = styled.tr<Props>`

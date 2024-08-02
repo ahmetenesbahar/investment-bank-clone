@@ -57,7 +57,7 @@ const Balance: React.FC = () => {
                   activeIndex === index ? "1px solid #009ff2" : "none"
                 }
               >
-                <Td>
+                <Td padding="15px">
                   <Text
                     textTransform="capitalize"
                     fontWeight="450"
@@ -113,7 +113,7 @@ const Balance: React.FC = () => {
                     activeIndex === index ? "1px solid #009ff2" : "none"
                   }
                 >
-                  <Td colSpan={3}>
+                  <Td colSpan={3} padding="15px">
                     <Flex justifyContent="center" alignItems="center" gap="5px">
                       <Text
                         fontWeight="450"
@@ -157,7 +157,7 @@ const Balance: React.FC = () => {
             </React.Fragment>
           ))}
           <Tr>
-            <Td colSpan={3} borderBottom="1px solid #e5e5e5 ">
+            <Td colSpan={3} borderBottom="1px solid #e5e5e5 " padding="15px">
               <Flex alignItems="center">
                 <Text fontWeight="450" color="#000">
                   Henüz bir yatırım hesabınız yok, hemen açabilirsiniz.
