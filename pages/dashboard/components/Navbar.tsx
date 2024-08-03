@@ -1,11 +1,20 @@
-import React, { useState } from "react";
-import { Flex, Icon, LogoutDiv, NavbarAvatarDiv, Text } from "@/styles/styles";
+import React, { useState, useEffect } from "react";
+import {
+  Flex,
+  Icon,
+  LogoutDiv,
+  NavbarAvatarDiv,
+  Text,
+  NavbarContainer,
+} from "@/styles/styles";
 import SearchBar from "./SearchBar";
 import useUser from "@/hooks/useGetUser";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 const Navbar: React.FC = () => {
   const user = useUser();
   const today = new Date();
+  const width = useMediaQuery();
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [userAvatarMenu, setUserAvatarMenu] = useState(false);
@@ -34,108 +43,138 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <Flex
+    <NavbarContainer
       justifyContent="space-between"
-      boxShadow="0px 4px 8px rgba(0, 0, 0, 0.1)"
       backgroundColor="#fff"
+      alignItems="center"
     >
       <Flex justifyContent="center" alignItems="center">
-        <Flex borderRight="1px solid #e5e5e5 ">
-          <img src="assets/header_logo.png" alt="" />
-        </Flex>
-        <SearchBar />
-      </Flex>
-      <Flex height="44px">
-        {iconData.map((icon, index) => (
-          <Flex
-            key={index}
-            onMouseEnter={() => setActiveIndex(index)}
-            onMouseLeave={() => setActiveIndex(null)}
-            backgroundColor={activeIndex === index ? "#F2F9FF" : "transparent"}
-          >
-            <Icon src={icon.src} borderLeft={"1px solid #e5e5e5 "} />
-          </Flex>
-        ))}
-        <NavbarAvatarDiv
-          cursor="pointer"
-          onMouseEnter={() => setUserAvatarMenu(true)}
-          onMouseLeave={() => setUserAvatarMenu(false)}
-          position="relative"
-        >
-          <Icon
-            src="/assets/DefaultProfilePic.jpg"
-            width="44px"
-            height="44px"
-          />
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            width="220px"
-            padding="5px 10px"
-            cursor="pointer"
-          >
-            <Text
-              color="#024487"
-              fontWeight="600"
-              cursor="pointer"
-            >{`${user?.firstName} ${user?.lastName}`}</Text>
-            <Text
-              color="#024487"
-              fontWeight="500"
-              cursor="pointer"
-            >{`Son Giriş : ${formatDateTime(today)}`}</Text>
-          </Flex>
-
-          {userAvatarMenu && (
+        <Flex borderRight="1px solid #e5e5e5">
+          {width > 1024 ? (
+            <img src="assets/header_logo.png" alt="" />
+          ) : (
             <Flex
-              position="absolute"
-              width="264px"
-              bottom="-84px"
-              flexDirection="column"
-              gap="3px"
+              justifyContent="center"
+              height="44px"
+              alignItems="center"
+              padding="10px"
             >
-              <Flex
-                backgroundColor="#F2F9FF"
-                width="100%"
-                padding="10px"
-                cursor="pointer "
-              >
-                <Text fontWeight="400" color="#024487" cursor="pointer ">
-                  Fotoğraf Yükleyin
-                </Text>
-              </Flex>
-              <Flex
-                backgroundColor="#F2F9FF"
-                width="100%"
-                borderBottom="5px solid #024487"
-                padding="10px"
-                justifyContent="space-between"
-                cursor="pointer"
-              >
-                <Text fontWeight="400" color="#024487" cursor="pointer">
-                  Profilinizi Güncelleyin
-                </Text>
-                <Text cursor="pointer " color="#024487">
-                  100%
-                </Text>
-              </Flex>
+              <Text color="#234970" fontWeight="500">
+                Menü
+              </Text>
             </Flex>
           )}
-        </NavbarAvatarDiv>
-        <LogoutDiv
-          backgroundColor="#F2F9FF"
-          justifyContent="center"
-          alignItems="center"
-          padding="0px 10px"
-          cursor="pointer"
-        >
-          <Text fontWeight="500" cursor="pointer" color="#08335e">
-            Çıkış
-          </Text>
-          <Icon src="/assets/header_logout.png" />
-        </LogoutDiv>
+        </Flex>
+        {width > 1280 && <SearchBar />}
       </Flex>
-    </Flex>
+
+      {width > 1024 && (
+        <Flex height="44px">
+          {iconData.map((icon, index) => (
+            <Flex
+              key={index}
+              onMouseEnter={() => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex(null)}
+              backgroundColor={
+                activeIndex === index ? "#F2F9FF" : "transparent"
+              }
+            >
+              <Icon src={icon.src} borderLeft={"1px solid #e5e5e5"} />
+            </Flex>
+          ))}
+          <NavbarAvatarDiv
+            cursor="pointer"
+            onMouseEnter={() => setUserAvatarMenu(true)}
+            onMouseLeave={() => setUserAvatarMenu(false)}
+            position="relative"
+          >
+            <Icon
+              src="/assets/DefaultProfilePic.jpg"
+              width="44px"
+              height="44px"
+            />
+            <Flex
+              flexDirection="column"
+              justifyContent="center"
+              width="220px"
+              padding="5px 10px"
+              cursor="pointer"
+            >
+              <Text
+                color="#024487"
+                fontWeight="600"
+                cursor="pointer"
+              >{`${user?.firstName} ${user?.lastName}`}</Text>
+              <Text
+                color="#024487"
+                fontWeight="500"
+                cursor="pointer"
+              >{`Son Giriş : ${formatDateTime(today)}`}</Text>
+            </Flex>
+
+            {userAvatarMenu && (
+              <Flex
+                position="absolute"
+                width="264px"
+                bottom="-84px"
+                flexDirection="column"
+                gap="3px"
+              >
+                <Flex
+                  backgroundColor="#F2F9FF"
+                  width="100%"
+                  padding="10px"
+                  cursor="pointer "
+                >
+                  <Text fontWeight="400" color="#024487" cursor="pointer ">
+                    Fotoğraf Yükleyin
+                  </Text>
+                </Flex>
+                <Flex
+                  backgroundColor="#F2F9FF"
+                  width="100%"
+                  borderBottom="5px solid #024487"
+                  padding="10px"
+                  justifyContent="space-between"
+                  cursor="pointer"
+                >
+                  <Text fontWeight="400" color="#024487" cursor="pointer">
+                    Profilinizi Güncelleyin
+                  </Text>
+                  <Text cursor="pointer " color="#024487">
+                    100%
+                  </Text>
+                </Flex>
+              </Flex>
+            )}
+          </NavbarAvatarDiv>
+          <LogoutDiv
+            backgroundColor="#F2F9FF"
+            justifyContent="center"
+            alignItems="center"
+            padding="0px 10px"
+            cursor="pointer"
+          >
+            <Text fontWeight="500" cursor="pointer" color="#08335e">
+              Çıkış
+            </Text>
+            <Icon src="/assets/header_logout.png" />
+          </LogoutDiv>
+        </Flex>
+      )}
+
+      {width < 1024 && (
+        <Flex>
+          <img src="assets/header_logo.png" alt="" />
+        </Flex>
+      )}
+
+      {width < 1024 && (
+        <Flex backgroundColor="#F2F9FF" width="55px" justifyContent="center">
+          <Icon src="/assets/header_logout.png" />
+        </Flex>
+      )}
+    </NavbarContainer>
   );
 };
 

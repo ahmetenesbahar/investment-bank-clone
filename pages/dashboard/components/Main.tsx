@@ -1,19 +1,19 @@
 import React from "react";
 import DashboardLeft from "./DashboardLeft";
 import DashboardRight from "./DashboardRight";
-import { Flex } from "@/styles/styles";
+import { DashboardMainContainer } from "@/styles/styles";
 
 const Main: React.FC = () => {
   return (
-    <Flex
+    <DashboardMainContainer
       backgroundColor="#fff"
       width="960px"
       height="632px"
-      margin="40px 10px"
+      margin="40px 20px 40px 10px"
     >
       <DashboardLeft />
       <DashboardRight />
-    </Flex>
+    </DashboardMainContainer>
   );
 };
 

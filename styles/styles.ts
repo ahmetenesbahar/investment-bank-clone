@@ -499,32 +499,41 @@ export const SearchBarInput = styled.input<Props>`
     font-weight: ${(props) => props.fontWeight || "400"};
   }
 `;
-export const SearchBarCloseIcon = styled.img<Props>`
-  cursor: pointer;
-  display: ${(props) => (props.active ? "block" : "none")};
-`;
-
 export const Icon = styled.img<Props>`
   position: ${(props) => props.position || "static"};
+
+  ${(props) =>
+    props.left &&
+    `
+      left: ${props.left};
+  `}
   right: ${(props) => props.right || "0"};
-  width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
   border-right: ${(props) => props.borderRight || "none"};
   border-left: ${(props) => props.borderLeft || "none"};
   border-top: ${(props) => props.borderTop || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
+  margin: ${(props) => props.margin || "0"};
   cursor: pointer;
   transform: ${(props) => props.transform || "0"};
   &:hover {
     color: ${(props) => props.hoverBackground && "transparent"};
   }
 `;
+export const SearchBarCloseIcon = styled(Icon)<Props>`
+  cursor: pointer;
+  display: ${(props) => (props.active ? "block" : "none")};
+`;
 
 export const FullBorderFlex = styled(Flex)<Props>`
   border: ${(props) => props.border || "none"};
 `;
 
-export const NavbarAvatarDiv = styled(Flex)<Props>``;
+export const NavbarAvatarDiv = styled(Flex)<Props>`
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
 
 export const LogoutDiv = styled(Flex)<Props>``;
 
@@ -562,4 +571,23 @@ export const Tr = styled.tr<Props>`
   &:hover {
     background-color: ${(props) => props.hoverBackground || "transparent"};
   }
+`;
+export const DashboardSidebarContainer = styled(Flex)<Props>`
+  max-width: 226px;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const DashboardMainContainer = styled(Flex)<Props>`
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin: 0;
+    margin-top: 3px;
+  }
+`;
+
+export const NavbarContainer = styled(Flex)<Props>`
+  z-index: 1;
+   boxShadow="0 1px 3px 0 rgba(50, 50, 50, 0.1)"
 `;
