@@ -240,43 +240,43 @@ const smallSidebarItems = [
   {
     icon: "/assets/icon_kampanyalar.png",
     hoveredIcon: "/assets/icon_kampanyalar_selected.png",
-    label: "Ayarlar",
+    label: "Kampanyalar",
     arrow: "/assets/menu_arrow.png",
   },
   {
     icon: "/assets/icon_bizeulasin.png",
     hoveredIcon: "/assets/icon_bizeulasin_selected.png",
-    label: "Ayarlar",
+    label: "Bize Ulaşın",
     arrow: "/assets/menu_arrow.png",
   },
   {
     icon: "/assets/icon_sikkullanilanlar.png",
     hoveredIcon: "/assets/icon_sikkullanilanlar_selected.png",
-    label: "Ayarlar",
+    label: "Sık Kullanılanlar",
     arrow: "/assets/menu_arrow.png",
   },
   {
     icon: "/assets/icon_fvo.png",
     hoveredIcon: "/assets/icon_fvo_selected.png",
-    label: "Ayarlar",
+    label: "Fiyat ve Oranlar",
     arrow: "/assets/menu_arrow.png",
   },
   {
     icon: "/assets/icon_bildirim.png",
     hoveredIcon: "/assets/icon_bildirim_selected.png",
-    label: "Ayarlar",
+    label: "Bildirimler",
     arrow: "/assets/menu_arrow.png",
   },
   {
     icon: "/assets/icon_islemlistesi.png",
     hoveredIcon: "/assets/icon_islemlistesi_selected.png",
-    label: "Ayarlar",
+    label: "İşlem Listesi",
     arrow: "/assets/menu_arrow.png",
   },
   {
     icon: "/assets/icon_edevlet.png",
     hoveredIcon: "/assets/icon_edevlet_selected.png",
-    label: "Ayarlar",
+    label: "E-Devlet",
     arrow: "/assets/menu_arrow.png",
   },
 ];
@@ -284,9 +284,10 @@ const smallSidebarItems = [
 const Sidebar: React.FC = () => {
   const { menu } = usePage();
   const user = useUser();
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const width = useMediaQuery();
   const today = new Date();
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeMenu, setActiveMenu] = useState<boolean>(false);
 
   const itemsToRender =
     width <= 1024
@@ -315,9 +316,16 @@ const Sidebar: React.FC = () => {
       backgroundColor={width <= 1280 ? "#1C345C" : "#08335e"}
       flexDirection="column"
       width="100%"
+      zIndex="2"
     >
       {width < 1280 && (
-        <Flex width="100%">
+        <Flex
+          width="100%"
+          position="sticky"
+          zIndex="100"
+          top="0"
+          backgroundColor="#08335e"
+        >
           <SearchBar />
         </Flex>
       )}
@@ -350,39 +358,80 @@ const Sidebar: React.FC = () => {
 
       {width < 1024 && (
         <>
-          <Flex backgroundColor="#fff" width="100%" gap="3px">
-            <Flex>
-              <Icon
-                width="44px"
-                height="44px"
-                src="/assets/DefaultProfilePic.jpg"
-              />
-            </Flex>
-            <Flex
-              height="100%"
-              width="100%"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Flex
-                flexDirection="column"
-                justifyContent="center"
-                height="100%"
-              >
-                <Text
-                  color="#024487"
-                  fontWeight="700"
-                  cursor="pointer"
-                >{`${user?.firstName} ${user?.lastName}`}</Text>
-                <Text
-                  color="#024487"
-                  fontWeight="500"
-                  fontSize="12px"
-                  cursor="pointer"
-                >{`Son Giriş : ${formatDateTime(today)}`}</Text>
+          <Flex
+            backgroundColor="#fff"
+            width="100%"
+            flexDirection="column"
+            onClick={() => {
+              setActiveMenu(!activeMenu);
+            }}
+          >
+            <Flex gap="3px" width="100%">
+              <Flex>
+                <Icon
+                  width="44px"
+                  height="44px"
+                  src="/assets/DefaultProfilePic.jpg"
+                />
               </Flex>
-              <Icon src="/assets/lower_arrow_dark_blue.png" />
+              <Flex
+                height="100%"
+                width="100%"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Flex
+                  flexDirection="column"
+                  justifyContent="center"
+                  height="100%"
+                >
+                  <Text
+                    color="#024487"
+                    fontWeight="700"
+                    cursor="pointer"
+                  >{`${user?.firstName} ${user?.lastName}`}</Text>
+                  <Text
+                    color="#024487"
+                    fontWeight="500"
+                    fontSize="12px"
+                    cursor="pointer"
+                  >{`Son Giriş : ${formatDateTime(today)}`}</Text>
+                </Flex>
+                <Icon
+                  src="/assets/lower_arrow_dark_blue.png"
+                  transform={activeMenu ? "rotate(180deg)" : "rotate(0deg)"}
+                />
+              </Flex>
             </Flex>
+            {activeMenu && (
+              <>
+                <Flex
+                  backgroundColor="#F2F9FF"
+                  width="100%"
+                  padding="10px"
+                  cursor="pointer "
+                >
+                  <Text fontWeight="400" color="#024487" cursor="pointer ">
+                    Fotoğraf Yükleyin
+                  </Text>
+                </Flex>
+                <Flex
+                  backgroundColor="#F2F9FF"
+                  width="100%"
+                  borderBottom="5px solid #024487"
+                  padding="10px"
+                  justifyContent="space-between"
+                  cursor="pointer"
+                >
+                  <Text fontWeight="400" color="#024487" cursor="pointer">
+                    Profilinizi Güncelleyin
+                  </Text>
+                  <Text cursor="pointer " color="#024487">
+                    100%
+                  </Text>
+                </Flex>
+              </>
+            )}
           </Flex>
           <Flex backgroundColor="#F2F9FF" width="100%" alignItems="center">
             <Icon src="/assets/header_logout.png" />

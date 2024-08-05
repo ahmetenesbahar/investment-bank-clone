@@ -44,6 +44,7 @@ interface Props {
   textTransform?: string;
   hoverColor?: string;
   textDecoration?: string;
+  zIndex?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -83,6 +84,7 @@ export const Flex = styled.div<Props>`
   border-left: ${(props) => props.borderLeft || "none"};
   border-radius: ${(props) => props.borderRadius || "0"};
   box-shadow: ${(props) => props.boxShadow || "none"};
+  z-index: ${(props) => props.zIndex || "0"};
   ${(props) =>
     props.responsiveFull &&
     `
