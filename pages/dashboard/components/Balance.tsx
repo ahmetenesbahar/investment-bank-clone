@@ -77,6 +77,7 @@ const Balance: React.FC = () => {
                     justifyContent="space-between"
                     alignItems="center"
                     cursor="pointer"
+                    padding="0 15px"
                   >
                     <Flex gap="4px" cursor="pointer">
                       <Text fontWeight="450" color="#000" cursor="pointer">
