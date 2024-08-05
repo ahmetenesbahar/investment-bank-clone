@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select, { SingleValue } from "react-select";
 
 interface SelectBoxProps {
@@ -8,6 +8,7 @@ interface SelectBoxProps {
   ) => void;
   value?: SingleValue<{ value: string; label: string }>;
   width?: string;
+  defaultValue?: SingleValue<{ value: string; label: string }> | undefined;
 }
 
 const SelectBox: React.FC<SelectBoxProps> = ({
@@ -15,12 +16,33 @@ const SelectBox: React.FC<SelectBoxProps> = ({
   onChange,
   value,
   width,
+  defaultValue,
 }) => {
+  const [selectedValue, setSelectedValue] = useState<
+    SingleValue<{ value: string; label: string }>
+  >(defaultValue ?? null);
+
+  useEffect(() => {
+    if (value) {
+      setSelectedValue(value);
+    }
+  }, [value]);
+
+  const handleChange = (
+    option: SingleValue<{ value: string; label: string }>
+  ) => {
+    setSelectedValue(option);
+    if (onChange) {
+      onChange(option);
+    }
+  };
+
   return (
     <Select
       options={options}
-      onChange={onChange}
-      value={value}
+      onChange={handleChange}
+      value={selectedValue}
+      placeholder=""
       components={{ IndicatorSeparator: () => null }}
       styles={{
         container: (provided) => ({
