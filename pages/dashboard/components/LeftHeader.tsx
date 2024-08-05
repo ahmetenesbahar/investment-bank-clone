@@ -49,17 +49,16 @@ const LeftHeader: React.FC = () => {
         justifyContent="space-between"
       >
         <Droppable droppableId="tabs" direction="horizontal">
-          {(provided: any) => (
+          {(provided) => (
             <Flex
               ref={provided.innerRef}
               {...provided.droppableProps}
               alignItems="center"
               justifyContent="space-between"
-              overflowX="auto"
             >
               {tabs.map((tabId, index) => (
                 <Draggable key={tabId} draggableId={tabId} index={index}>
-                  {(provided: any) => (
+                  {(provided) => (
                     <Flex
                       ref={provided.innerRef}
                       {...provided.draggableProps}
