@@ -1,8 +1,6 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { PieChart } from "@mui/x-charts/PieChart";
+import { Flex, VerticalLine } from "@/styles/styles";
 
 interface ChartProps {
   labels: string[];
@@ -11,41 +9,33 @@ interface ChartProps {
 }
 
 const Chart: React.FC<ChartProps> = ({ labels, backgroundColor, data }) => {
-  const chartData = {
-    labels: data.map((item) => item.label),
-    datasets: [
-      {
-        data: data.map((item) => item.value),
-        backgroundColor: backgroundColor,
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "right" as const,
-        labels: {
-          usePointStyle: true,
-          pointStyle: "square",
-        },
-      },
-      tooltip: {
-        callbacks: {
-          label: function (tooltipItem: any) {
-            return `${tooltipItem.label}: ${tooltipItem.raw}`;
-          },
-        },
-      },
-    },
-  };
-
   return (
-    <div>
-      <Doughnut data={chartData} options={chartOptions} />
-    </div>
+    <Flex width="100%" position="relative">
+      <Flex
+        backgroundColor="#fff"
+        width="4px"
+        height="20px"
+        position="absolute"
+        left="150px"
+        top="10%"
+        zIndex="999"
+      />
+      <PieChart
+        series={[
+          {
+            paddingAngle: 5,
+            innerRadius: 60,
+            outerRadius: 80,
+            data,
+          },
+        ]}
+        width={400}
+        height={200}
+        slotProps={{
+          legend: { itemMarkHeight: 12, itemMarkWidth: 12 },
+        }}
+      />
+    </Flex>
   );
 };
 

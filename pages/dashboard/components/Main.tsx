@@ -7,7 +7,6 @@ const Main: React.FC = () => {
   return (
     <DashboardMainContainer
       backgroundColor="#fff"
-      width="960px"
       height="632px"
       margin="40px 20px 40px 10px"
     >
