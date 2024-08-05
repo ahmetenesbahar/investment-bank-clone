@@ -516,7 +516,7 @@ export const Icon = styled.img<Props>`
   border-top: ${(props) => props.borderTop || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
   margin: ${(props) => props.margin || "0"};
-  cursor: pointer;
+  cursor: ${(props) => props.cursor || "pointer"};
   transform: ${(props) => props.transform || "0"};
   &:hover {
     color: ${(props) => props.hoverBackground && "transparent"};

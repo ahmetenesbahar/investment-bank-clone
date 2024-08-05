@@ -5,9 +5,12 @@ import Balance from "./Balance";
 import EditAccounts from "./EditAccounts";
 import { usePage } from "../context/PageContext";
 import ChartTab from "./ChartTab";
+import { useTab } from "../context/TabContext";
+import CreditCards from "./CreditCards";
 
 const DashboardLeft: React.FC = () => {
   const { page } = usePage();
+  const { tab } = useTab();
   return (
     <Flex
       borderRight="1px solid #e5e5e5 "
@@ -16,7 +19,13 @@ const DashboardLeft: React.FC = () => {
       flexDirection="column"
     >
       <LeftHeader />
-      {page === "editAccounts" ? <EditAccounts /> : <Balance />}
+      {tab === "myCreditCards" ? (
+        <CreditCards />
+      ) : page === "editAccounts" ? (
+        <EditAccounts />
+      ) : (
+        <Balance />
+      )}
       <ChartTab />
     </Flex>
   );
