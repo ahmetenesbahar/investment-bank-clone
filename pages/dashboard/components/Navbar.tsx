@@ -10,11 +10,13 @@ import {
 import SearchBar from "./SearchBar";
 import useUser from "@/hooks/useGetUser";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { usePage } from "../context/PageContext";
 
 const Navbar: React.FC = () => {
   const user = useUser();
   const today = new Date();
   const width = useMediaQuery();
+  const { handleOpenMenu, menu } = usePage();
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [userAvatarMenu, setUserAvatarMenu] = useState(false);
@@ -41,6 +43,9 @@ const Navbar: React.FC = () => {
     },
     { src: "assets/print_icon.png" },
   ];
+  useEffect(() => {
+    console.log("navbar", menu);
+  }, [menu]);
 
   return (
     <NavbarContainer
@@ -58,8 +63,12 @@ const Navbar: React.FC = () => {
               height="44px"
               alignItems="center"
               padding="10px"
+              cursor="pointer"
+              onClick={() => {
+                handleOpenMenu();
+              }}
             >
-              <Text color="#234970" fontWeight="500">
+              <Text color="#234970" fontWeight="500" cursor="pointer">
                 Menü
               </Text>
             </Flex>
