@@ -19,7 +19,7 @@ const LeftHeader: React.FC = () => {
   const { page } = usePage();
   const { t } = useTranslation();
   const [tabs, setTabs] = useState(initialTabs);
-  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const onDragEnd = (result: any) => {
     if (!result.destination) {
@@ -49,7 +49,7 @@ const LeftHeader: React.FC = () => {
         justifyContent="space-between"
       >
         <Droppable droppableId="tabs" direction="horizontal">
-          {(provided) => (
+          {(provided: any) => (
             <Flex
               ref={provided.innerRef}
               {...provided.droppableProps}
@@ -58,25 +58,25 @@ const LeftHeader: React.FC = () => {
             >
               {tabs.map((tabId, index) => (
                 <Draggable key={tabId} draggableId={tabId} index={index}>
-                  {(provided) => (
+                  {(provided: any) => (
                     <Flex
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       padding="1rem"
                       width="170px"
-                      cursor="pointer"
+                      cursor="grab"
                       justifyContent="space-between"
                       alignItems="center"
-                      onMouseEnter={() => setHoveredTab(tabId)}
-                      onMouseLeave={() => setHoveredTab(null)}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
                       borderBottom={
                         tab === tabId ? "2px solid #1c345c" : "none"
                       }
                       onClick={() => handleTabChange(tabId)}
                     >
                       <Text
-                        cursor="pointer"
+                        cursor="grab"
                         color={tab === tabId ? "#1c345c" : "#555555"}
                         fontWeight={tab === tabId ? "700" : "400"}
                       >
@@ -84,8 +84,8 @@ const LeftHeader: React.FC = () => {
                           ? "Hesaplarım"
                           : "Kredi Kartlarım"}
                       </Text>
-                      {hoveredTab === tabId && (
-                        <Icon src="/assets/tab_drag.png" />
+                      {hoveredIndex === index && (
+                        <Icon src="/assets/tab_drag.png" cursor="grab" />
                       )}
                     </Flex>
                   )}
