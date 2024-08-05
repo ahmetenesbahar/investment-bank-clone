@@ -39,10 +39,18 @@ const EditAccounts: React.FC = () => {
             <React.Fragment key={index}>
               <Tr borderBottom="1px solid #e5e5e5 ">
                 <Td padding="15px">
-                  <SelectBox options={accountTypes} width="120px" />
+                  <SelectBox
+                    options={accountTypes}
+                    width="133px"
+                    defaultValue={accountTypes[0]}
+                  />
                 </Td>
                 <Td padding="15px">
-                  <SelectBox options={accountNumbers} />
+                  <SelectBox
+                    options={accountNumbers}
+                    width="200px"
+                    defaultValue={accountNumbers[0]}
+                  />
                 </Td>
                 <Td>
                   <Flex
@@ -64,11 +72,14 @@ const EditAccounts: React.FC = () => {
             </React.Fragment>
           ))}
           <Tr>
-            <Td colSpan={3} borderBottom="1px solid #e5e5e5 " padding="15px">
+            <Td colSpan={3} borderBottom="1px solid #e5e5e5 ">
               <Flex alignItems="center">
-                <Text fontWeight="450" color="#000">
-                  Henüz bir yatırım hesabınız yok, hemen açabilirsiniz.
-                </Text>
+                <Td padding="15px">
+                  <SelectBox options={accountTypes} width="133px" />
+                </Td>
+                <Td padding="15px">
+                  <SelectBox options={accountNumbers} width="200px" />
+                </Td>
               </Flex>
             </Td>
           </Tr>
@@ -77,23 +88,33 @@ const EditAccounts: React.FC = () => {
       <Flex
         width="100%"
         alignItems="center"
-        justifyContent="space-between"
-        padding="15px 0 15px 15px"
+        padding="10px 0 10px 15px"
         borderBottom="1px solid #e5e5e5 "
+        gap="10px"
       >
-        <Text
-          color="#69a6e1"
-          textDecoration="underline"
-          cursor="pointer"
+        <Button
+          backgroundColor="#f34509"
+          color="#fff"
+          border="1px solid #C1C9D3"
+          padding="0.6rem 2rem"
+          width="120px"
           onClick={() => {
             handlePageChange("");
           }}
         >
-          Hesapları Düzenle
-        </Text>
-        <Button border="1px solid #C1C9D3" backgroundColor="transparent">
+          Kaydet
+        </Button>
+        <Button
+          border="1px solid #C1C9D3"
+          backgroundColor="transparent"
+          padding="0.6rem 2rem"
+          width="120px"
+          onClick={() => {
+            handlePageChange("");
+          }}
+        >
           <Text color="#69a6e1" cursor="pointer" textAlign="center">
-            Hesaplarıma Git
+            İptal
           </Text>
         </Button>
       </Flex>
