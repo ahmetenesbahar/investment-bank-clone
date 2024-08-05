@@ -576,7 +576,8 @@ export const Tr = styled.tr<Props>`
 `;
 export const DashboardSidebarContainer = styled(Flex)<Props>`
   overflow: auto;
-  max-width: 226px;
+  flex-shrink: 0;
+  width: 226px;
   @media (max-width: 1024px) {
     display ${(props) => (props.display ? props.display : "none")};
     position: absolute;

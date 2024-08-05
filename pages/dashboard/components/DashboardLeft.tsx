@@ -11,7 +11,7 @@ const DashboardLeft: React.FC = () => {
   return (
     <Flex
       borderRight="1px solid #e5e5e5 "
-      // width="620px"
+      width="100%"
       padding="0 20px 0 0"
       flexDirection="column"
     >
