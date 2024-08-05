@@ -12,7 +12,7 @@ import { useTranslation } from "next-i18next";
 import { usePage } from "../context/PageContext";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 
-const initialTabs = ["hesaplarım", "kredi kartım"];
+const initialTabs = ["myAccounts", "myCreditCards"];
 
 const LeftHeader: React.FC = () => {
   const { tab, handleTabChange } = useTab();
@@ -80,7 +80,7 @@ const LeftHeader: React.FC = () => {
                         color={tab === tabId ? "#1c345c" : "#555555"}
                         fontWeight={tab === tabId ? "700" : "400"}
                       >
-                        {tabId === "hesaplarım"
+                        {tabId === "myAccounts"
                           ? "Hesaplarım"
                           : "Kredi Kartlarım"}
                       </Text>
@@ -114,7 +114,9 @@ const LeftHeader: React.FC = () => {
                   color="#69a6e1"
                   cursor="pointer"
                 >
-                  Vadeli Hesap Aç
+                  {tab === "myAccounts"
+                    ? " Vadeli Hesap Aç"
+                    : "Yeni Kart Başvurusu"}
                 </Text>
               </Button>
             </FullBorderFlex>

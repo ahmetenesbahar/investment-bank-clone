@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 const TabContext = createContext({
-  tab: "hesaplarım",
+  tab: "myAccounts",
   handleTabChange: (tabValue: string) => {},
 });
 
@@ -12,7 +12,7 @@ interface TabProviderProps {
 export const useTab = () => useContext(TabContext);
 
 export const TabProvider: React.FC<TabProviderProps> = ({ children }) => {
-  const [tab, setTab] = useState("hesaplarım");
+  const [tab, setTab] = useState("myAccounts");
 
   const handleTabChange = (tabValue: string) => {
     setTab(tabValue);
