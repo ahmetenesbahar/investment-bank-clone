@@ -11,7 +11,7 @@ const DashboardRight: React.FC = () => {
       alignItems="center"
     >
       <Calendar />
-      <Flex padding="0 12px 6px 12px" width="100%">
+      <Flex padding="0 12px 20px 12px" width="100%" zIndex="0">
         <FullBorderFlex
           justifyContent="center"
           alignItems="center"

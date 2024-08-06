@@ -197,6 +197,7 @@ export const Text = styled.p<Props>`
   border-right: ${(props) => props.borderRight || "none"};
   text-transform: ${(props) => props.textTransform || "none"};
   text-decoration: ${(props) => props.textDecoration || "none"};
+  z-index: ${(props) => props.zIndex || "0"};
 
   ${(props) =>
     props.hover &&

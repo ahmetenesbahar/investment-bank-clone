@@ -43,9 +43,6 @@ const Navbar: React.FC = () => {
     },
     { src: "assets/print_icon.png" },
   ];
-  useEffect(() => {
-    console.log("navbar", menu);
-  }, [menu]);
 
   return (
     <NavbarContainer

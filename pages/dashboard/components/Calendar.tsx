@@ -3,14 +3,12 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import Select, { SingleValue } from "react-select";
-import { FormControl, SelectChangeEvent } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Dayjs from "dayjs";
 import "dayjs/locale/tr";
 import { Flex } from "@/styles/styles";
-import { set } from "react-hook-form";
 
-const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
+const StyledDateCalendar = styled(DateCalendar)(() => ({
   ".MuiPickersDay-root": {
     color: "#6da9e4",
     fontSize: "14px",
@@ -24,11 +22,9 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
     },
     "&.MuiPickersDay-dayOutsideMonth": {
       color: "#000",
+      opacity: 0.5,
     },
   },
-  ".MuiPickersCalendarHeader-root": {},
-
-  ".MuiDayCalendar-header": {},
   ".MuiTypography-root": {
     "&.MuiDayCalendar-weekDayLabel": {
       fontWeight: "600",
@@ -38,29 +34,38 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
       height: "15px",
     },
   },
-
   ".MuiButtonBase-root": {
     "&.MuiPickersArrowSwitcher-previousIconButton": {
       position: "absolute",
-      left: "0",
-      top: "12px",
+      left: "5px",
+      top: "10px",
+      background: "#f2f9fe",
+      color: "#000",
+      borderRadius: "0px",
+      width: "25px",
+      height: "38px",
     },
     "&.MuiPickersArrowSwitcher-nextIconButton": {
       position: "absolute",
-      left: "150px",
-      top: "12px",
+      left: "180px",
+      top: "10px",
+      background: "#f2f9fe",
+      color: "#000",
+      borderRadius: "0px",
+      width: "25px",
+      height: "38px",
     },
   },
-
-  ".MuiMonthCalendar-root": {
-    flexDirection: "column",
-    position: "absolute",
-    top: "100px",
-    width: "50px",
-  },
-
   ".MuiPickersCalendarHeader-labelContainer": {
     display: "none",
+  },
+  ".MuiPickersSlideTransition-root": {
+    minHeight: "200px",
+  },
+  "&.MuiDateCalendar-root": {
+    height: "auto !important",
+    paddingBottom: "20px",
+    paddingTop: "10px",
   },
 }));
 
@@ -96,18 +101,19 @@ const Calendar: React.FC = () => {
 
   const [selectedYearValue, setSelectedYearValue] = useState<
     SingleValue<{ value: number; label: string }>
-  >({ value: displayedYear, label: years[displayedYear]?.label });
+  >({
+    value: displayedYear,
+    label: displayedYear.toString(),
+  });
 
   const handleMonthChange = (
     option: SingleValue<{ value: number; label: string }>
   ) => {
     if (option) {
       const newMonth = option.value;
-      const newDate = Dayjs()
-        .year(displayedYear)
-        .month(newMonth)
-        .startOf("month");
-      setSelectedDate(newDate);
+      setSelectedMonthValue(option);
+      setDisplayedMonth(newMonth);
+      setSelectedDate((prevDate) => prevDate.month(newMonth));
     }
   };
 
@@ -115,12 +121,10 @@ const Calendar: React.FC = () => {
     option: SingleValue<{ value: number; label: string }>
   ) => {
     if (option) {
-      const newMonth = option.value;
-      const newDate = Dayjs()
-        .year(displayedYear)
-        .month(newMonth)
-        .startOf("month");
-      setSelectedDate(newDate);
+      const newYear = option.value;
+      setSelectedYearValue(option);
+      setDisplayedYear(newYear);
+      setSelectedDate((prevDate) => prevDate.year(newYear));
     }
   };
 
@@ -139,13 +143,10 @@ const Calendar: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(displayedMonth + 1, displayedYear);
-  }, [displayedMonth, displayedYear]);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="tr">
       <Flex position="relative">
-        <Flex>
+        <Flex zIndex="2">
           <Select
             options={months}
             components={{ IndicatorSeparator: () => null }}
@@ -155,18 +156,66 @@ const Calendar: React.FC = () => {
               container: (provided) => ({
                 ...provided,
                 position: "absolute",
-                left: "35px",
+                left: "40px",
                 top: "10px",
                 zIndex: 999,
+                fontSize: "10px",
+                color: "#000",
+                width: "118px",
+              }),
+              control: (provided, state) => ({
+                ...provided,
+                borderRadius: "0px",
+                border: state.isFocused ? provided.border : provided.border,
+                boxShadow: "none",
+                borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+                "&:hover": {
+                  borderColor: state.isFocused
+                    ? "#c1c9d3"
+                    : provided.borderColor,
+                },
+              }),
+              singleValue: (provided) => ({
+                ...provided,
+                fontSize: "14px",
+                whiteSpace: "normal",
+                color: "#000",
+                fontWeight: 450,
               }),
               menu: (provided) => ({
                 ...provided,
                 zIndex: 999,
+                marginTop: "0px",
+              }),
+              menuList: (provided) => ({
+                ...provided,
+                padding: 0,
+                height: "150px",
+              }),
+              option: (provided, state) => ({
+                ...provided,
+                backgroundColor: state.isFocused
+                  ? "#F2F9FF"
+                  : state.isSelected
+                  ? "transparent"
+                  : "white",
+                color: state.isSelected
+                  ? "#000"
+                  : state.isFocused
+                  ? "#000"
+                  : "black",
+                cursor: "pointer",
+                fontSize: "14px",
+              }),
+              dropdownIndicator: (provided) => ({
+                ...provided,
+                color: "#000",
+                width: "33px",
               }),
             }}
           />
         </Flex>
-        <Flex>
+        <Flex zIndex="2">
           <Select
             options={years}
             components={{ IndicatorSeparator: () => null }}
@@ -179,12 +228,61 @@ const Calendar: React.FC = () => {
                 right: "25px",
                 top: "10px",
               }),
+              control: (provided, state) => ({
+                ...provided,
+                borderRadius: "0px",
+                border: state.isFocused ? provided.border : provided.border,
+                boxShadow: "none",
+                borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+                "&:hover": {
+                  borderColor: state.isFocused
+                    ? "#c1c9d3"
+                    : provided.borderColor,
+                },
+              }),
+              singleValue: (provided) => ({
+                ...provided,
+                fontSize: "14px",
+                whiteSpace: "normal",
+                color: "#000",
+                fontWeight: 450,
+              }),
+              menu: (provided) => ({
+                ...provided,
+                zIndex: 999,
+                marginTop: "0px",
+              }),
+              menuList: (provided) => ({
+                ...provided,
+                padding: 0,
+                zIndex: 999,
+                height: "150px",
+              }),
+              option: (provided, state) => ({
+                ...provided,
+                backgroundColor: state.isFocused
+                  ? "#F2F9FF"
+                  : state.isSelected
+                  ? "transparent"
+                  : "white",
+                color: state.isSelected
+                  ? "#000"
+                  : state.isFocused
+                  ? "#000"
+                  : "black",
+                cursor: "pointer",
+                fontSize: "14px",
+              }),
+              dropdownIndicator: (provided) => ({
+                ...provided,
+                color: "#000",
+              }),
             }}
           />
         </Flex>
         <StyledDateCalendar
           value={selectedDate}
-          onChange={handleMonthChange}
+          onChange={(newDate) => setSelectedDate(newDate || Dayjs())}
           onMonthChange={handleCalendarViewChange}
           onYearChange={handleCalendarViewChange}
           showDaysOutsideCurrentMonth
