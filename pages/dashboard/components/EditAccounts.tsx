@@ -71,16 +71,12 @@ const EditAccounts: React.FC = () => {
               </Tr>
             </React.Fragment>
           ))}
-          <Tr>
-            <Td colSpan={3} borderBottom="1px solid #e5e5e5 ">
-              <Flex alignItems="center">
-                <Td padding="15px" width="234px">
-                  <SelectBox options={accountTypes} width="133px" />
-                </Td>
-                <Td padding="15px">
-                  <SelectBox options={accountNumbers} width="200px" />
-                </Td>
-              </Flex>
+          <Tr borderBottom="1px solid #e5e5e5 ">
+            <Td padding="15px">
+              <SelectBox options={accountTypes} width="133px" />
+            </Td>
+            <Td padding="15px">
+              <SelectBox options={accountNumbers} width="200px" />
             </Td>
           </Tr>
         </tbody>

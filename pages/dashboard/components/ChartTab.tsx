@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text, Button } from "@/styles/styles";
+import { Flex, ChartDiv, Text, Button } from "@/styles/styles";
 import Chart from "./Chart";
 import useUser from "@/hooks/useGetUser";
 import useCurrency from "../hooks/useCurrency";
@@ -34,7 +34,7 @@ const ChartTab: React.FC = () => {
       <Text fontWeight="700" color="#1c345c">
         Finansal Durumum
       </Text>
-      <Flex>
+      <ChartDiv width="90%">
         <Chart
           labels={data.map((item) => item.label)}
           backgroundColor={["#49A5E0"]}
@@ -47,7 +47,7 @@ const ChartTab: React.FC = () => {
           chartText="Borçlarım"
           data={cardData}
         />
-      </Flex>
+      </ChartDiv>
 
       <Flex
         width="100%"

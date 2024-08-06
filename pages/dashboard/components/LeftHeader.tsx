@@ -11,11 +11,13 @@ import { useTab } from "../context/TabContext";
 import { useTranslation } from "next-i18next";
 import { usePage } from "../context/PageContext";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 const initialTabs = ["myAccounts", "myCreditCards"];
 
 const LeftHeader: React.FC = () => {
   const { tab, handleTabChange } = useTab();
+  const width = useMediaQuery();
   const { page } = usePage();
   const { t } = useTranslation();
   const [tabs, setTabs] = useState(initialTabs);
@@ -45,7 +47,7 @@ const LeftHeader: React.FC = () => {
         alignItems="center"
         width="100%"
         borderBottom="1px solid #e5e5e5"
-        padding="10px 0 0 0"
+        padding={width >= 768 ? "10px 20px 0 0" : "0 10px 0 10px"}
         justifyContent="space-between"
       >
         <Droppable droppableId="tabs" direction="horizontal">
@@ -96,32 +98,37 @@ const LeftHeader: React.FC = () => {
             </Flex>
           )}
         </Droppable>
-        {page !== "editAccounts" && (
-          <Flex padding="0 0 6px 0">
-            <FullBorderFlex
-              justifyContent="center"
-              alignItems="center"
-              border="1px solid #C1C9D3"
-              padding="10px "
-              gap="10px"
-              cursor="pointer"
-            >
-              <Icon src="/assets/plus_blue.png" />
-              <Button backgroundColor="#fff" padding="0">
-                <Text
-                  fontSize="14px"
-                  fontWeight="600"
-                  color="#69a6e1"
-                  cursor="pointer"
-                >
-                  {tab === "myAccounts"
-                    ? " Vadeli Hesap Aç"
-                    : "Yeni Kart Başvurusu"}
-                </Text>
-              </Button>
-            </FullBorderFlex>
-          </Flex>
-        )}
+        {page !== "editAccounts" &&
+          (width >= 768 ? (
+            <Flex padding="0 0 6px 0">
+              <FullBorderFlex
+                justifyContent="center"
+                alignItems="center"
+                border="1px solid #C1C9D3"
+                padding="10px "
+                gap="10px"
+                cursor="pointer"
+              >
+                <Icon src="/assets/plus_blue.png" />
+                <Button backgroundColor="#fff" padding="0">
+                  <Text
+                    fontSize="14px"
+                    fontWeight="600"
+                    color="#69a6e1"
+                    cursor="pointer"
+                  >
+                    {tab === "myAccounts"
+                      ? " Vadeli Hesap Aç"
+                      : "Yeni Kart Başvurusu"}
+                  </Text>
+                </Button>
+              </FullBorderFlex>
+            </Flex>
+          ) : (
+            <Flex backgroundColor="#5a9aed" padding="10px 12px">
+              <Icon src="/assets/white_plus_icon.png" width="15px" />
+            </Flex>
+          ))}
       </Flex>
     </DragDropContext>
   );

@@ -5,11 +5,7 @@ import { DashboardMainContainer } from "@/styles/styles";
 
 const Main: React.FC = () => {
   return (
-    <DashboardMainContainer
-      backgroundColor="#fff"
-      height="632px"
-      margin="40px 20px 40px 10px"
-    >
+    <DashboardMainContainer backgroundColor="#fff" margin="40px 20px 40px 10px">
       <DashboardLeft />
       <DashboardRight />
     </DashboardMainContainer>

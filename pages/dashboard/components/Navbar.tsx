@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
     >
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5">
-          {width > 1024 ? (
+          {width >= 1024 ? (
             <img src="assets/header_logo.png" alt="" />
           ) : (
             <Flex
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
         {width > 1280 && <SearchBar />}
       </Flex>
 
-      {width > 1024 && (
+      {width >= 1024 && (
         <Flex height="44px">
           {iconData.map((icon, index) => (
             <Flex
@@ -99,24 +99,26 @@ const Navbar: React.FC = () => {
               width="44px"
               height="44px"
             />
-            <Flex
-              flexDirection="column"
-              justifyContent="center"
-              width="220px"
-              padding="5px 10px"
-              cursor="pointer"
-            >
-              <Text
-                color="#024487"
-                fontWeight="600"
+            {width >= 1280 && (
+              <Flex
+                flexDirection="column"
+                justifyContent="center"
+                width="220px"
+                padding="5px 10px"
                 cursor="pointer"
-              >{`${user?.firstName} ${user?.lastName}`}</Text>
-              <Text
-                color="#024487"
-                fontWeight="500"
-                cursor="pointer"
-              >{`Son Giriş : ${formatDateTime(today)}`}</Text>
-            </Flex>
+              >
+                <Text
+                  color="#024487"
+                  fontWeight="600"
+                  cursor="pointer"
+                >{`${user?.firstName} ${user?.lastName}`}</Text>
+                <Text
+                  color="#024487"
+                  fontWeight="500"
+                  cursor="pointer"
+                >{`Son Giriş : ${formatDateTime(today)}`}</Text>
+              </Flex>
+            )}
 
             {userAvatarMenu && (
               <Flex

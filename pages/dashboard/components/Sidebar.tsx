@@ -290,7 +290,7 @@ const Sidebar: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false);
 
   const itemsToRender =
-    width <= 1024
+    width < 1024
       ? smallSidebarItems
       : width <= 1280
       ? mediumSidebarItems
@@ -306,7 +306,7 @@ const Sidebar: React.FC = () => {
     return `${day}.${month}.${year} ${hours}:${minutes}`;
   };
 
-  if (!menu && width <= 1024) {
+  if (!menu && width < 1024) {
     return null;
   }
 
@@ -315,7 +315,6 @@ const Sidebar: React.FC = () => {
       height="calc(100vh - 44px)"
       backgroundColor={width <= 1280 ? "#1C345C" : "#08335e"}
       flexDirection="column"
-      width="500px"
       zIndex="2"
     >
       {width < 1280 && (
@@ -356,7 +355,7 @@ const Sidebar: React.FC = () => {
         </Flex>
       ))}
 
-      {width <= 1024 && (
+      {width < 1024 && (
         <>
           <Flex
             backgroundColor="#fff"

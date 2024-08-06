@@ -533,7 +533,7 @@ export const FullBorderFlex = styled(Flex)<Props>`
 `;
 
 export const NavbarAvatarDiv = styled(Flex)<Props>`
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     display: none;
   }
 `;
@@ -579,21 +579,29 @@ export const DashboardSidebarContainer = styled(Flex)<Props>`
   overflow: auto;
   flex-shrink: 0;
   width: 226px;
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     display ${(props) => (props.display ? props.display : "none")};
     position: absolute;
   }
 `;
 
 export const DashboardMainContainer = styled(Flex)<Props>`
-  @media (max-width: 1024px) {
+  @media (max-width: 1280px) {
+    flex-wrap: wrap;
+  }
+  @media (max-width: 1023px) {
     width: 100%;
-    margin: 0;
-    margin-top: 3px;
+    margin: 1px 0;
   }
 `;
 
 export const NavbarContainer = styled(Flex)<Props>`
   z-index: 1;
    boxShadow="0 1px 3px 0 rgba(50, 50, 50, 0.1)"
+`;
+
+export const ChartDiv = styled(Flex)<Props>`
+  @media (max-width: 1280px) {
+    justify-content: space-between;
+  }
 `;

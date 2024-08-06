@@ -12,12 +12,7 @@ const DashboardLeft: React.FC = () => {
   const { page } = usePage();
   const { tab } = useTab();
   return (
-    <Flex
-      borderRight="1px solid #e5e5e5 "
-      width="100%"
-      padding="0 20px 0 0"
-      flexDirection="column"
-    >
+    <Flex borderRight="1px solid #e5e5e5 " width="100%" flexDirection="column">
       <LeftHeader />
       {tab === "myCreditCards" ? (
         <CreditCards />
