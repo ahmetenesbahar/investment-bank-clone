@@ -66,7 +66,7 @@ const LeftHeader: React.FC = () => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       padding="1rem"
-                      width="170px"
+                      width={width <= 768 ? "auto" : "170px"}
                       cursor="grab"
                       justifyContent="space-between"
                       alignItems="center"
