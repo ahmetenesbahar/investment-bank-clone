@@ -67,7 +67,6 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
     height: "auto !important",
     paddingBottom: "20px",
     paddingTop: "10px",
-    margin: "0",
     width: "90%",
   },
   ".MuiDayCalendar-root": {
@@ -168,7 +167,7 @@ const Calendar: React.FC = () => {
   return (
     <Flex
       position="relative"
-      width={width < 768 ? "100%" : "auto"}
+      width={width < 768 ? "100%" : "320px"}
       justifyContent={width < 768 ? "center" : "start"}
     >
       <Flex zIndex="2">
