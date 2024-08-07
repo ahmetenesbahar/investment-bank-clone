@@ -580,8 +580,7 @@ export const DashboardSidebarContainer = styled(Flex)<Props>`
   flex-shrink: 0;
   width: 226px;
   @media (max-width: 1023px) {
-    display ${(props) => (props.display ? props.display : "none")};
-    position: absolute;
+    position: fixed;
   }
 `;
 
@@ -594,6 +593,7 @@ export const DashboardMainContainer = styled(Flex)<Props>`
   @media (max-width: 1023px) {
     width: 100%;
     margin: 1px 0;
+    margin-top: 45px;
   }
 `;
 
