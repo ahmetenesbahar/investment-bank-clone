@@ -63,10 +63,19 @@ MUI (Material UI)
 React Query
 Day.js
 
+<ul>
+<li>Next.js</li>
+<li>TypeScript</li>
+<li>React</li>
+<li>React Hook Form</li>
+<li>Yup</li>
+<li>Styled Components</li>
+<li>Axios</li>
+<li>MUI (Material UI)</li>
+<li>React Query</li>
+<li>Day.js</li>
+</ul>
+
 # Contributing
 
 Contributions are welcome! If you have any ideas or suggestions, please open an issue or submit a pull request.
-
-```
-
-```
