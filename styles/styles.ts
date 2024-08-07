@@ -586,6 +586,8 @@ export const DashboardSidebarContainer = styled(Flex)<Props>`
 `;
 
 export const DashboardMainContainer = styled(Flex)<Props>`
+  margin-top: 80px;
+  margin-left: 236px;
   @media (max-width: 1280px) {
     flex-wrap: wrap;
   }

@@ -312,10 +312,12 @@ const Sidebar: React.FC = () => {
 
   return (
     <DashboardSidebarContainer
-      height=" 100vh "
+      height=" 100 "
       backgroundColor={width <= 1280 ? "#1C345C" : "#08335e"}
       flexDirection="column"
       zIndex="2"
+      position="fixed"
+      top="44px"
     >
       {width < 1280 && (
         <Flex

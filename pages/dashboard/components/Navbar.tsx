@@ -49,6 +49,8 @@ const Navbar: React.FC = () => {
       justifyContent="space-between"
       backgroundColor="#fff"
       alignItems="center"
+      position="fixed"
+      width="100%"
     >
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5">
