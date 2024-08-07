@@ -312,7 +312,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <DashboardSidebarContainer
-      height="calc(100vh - 44px)"
+      height=" 100vh "
       backgroundColor={width <= 1280 ? "#1C345C" : "#08335e"}
       flexDirection="column"
       zIndex="2"
