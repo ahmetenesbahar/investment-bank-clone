@@ -7,11 +7,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 const Main: React.FC = () => {
   const width = useMediaQuery();
   return (
-    <DashboardMainContainer
-      backgroundColor="#fff"
-      margin="40px 20px 40px 10px"
-      height="100vh"
-    >
+    <DashboardMainContainer backgroundColor="#fff" margin="40px 20px 40px 10px">
       <DashboardLeft />
       <DashboardRight />
     </DashboardMainContainer>
