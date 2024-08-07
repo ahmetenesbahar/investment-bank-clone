@@ -15,11 +15,11 @@ To get started with the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/bank-clone.git
+   git clone https://github.com/yourusername/investment-bank-clone.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd bank-clone
+   cd investment-bank-clone
    ```
 3. Install the dependencies:
    ```bash
