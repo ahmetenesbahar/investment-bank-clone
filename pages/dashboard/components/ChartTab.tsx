@@ -5,8 +5,10 @@ import useUser from "@/hooks/useGetUser";
 import useCurrency from "../hooks/useCurrency";
 import { usePage } from "../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslation } from "next-i18next";
 
 const ChartTab: React.FC = () => {
+  const { t } = useTranslation();
   const width = useMediaQuery();
   const user = useUser();
   const currency = useCurrency(user);
@@ -15,14 +17,14 @@ const ChartTab: React.FC = () => {
 
   const data = [
     {
-      label: "Vadesiz Hesap",
+      label: `${t("Current Account")}`,
       value: currency,
     },
   ];
 
   const cardData = [
     {
-      label: "Kredi Kartı",
+      label: `${t("Credit Card")}`,
       value: 0,
     },
   ];
@@ -37,19 +39,19 @@ const ChartTab: React.FC = () => {
       {width >= 768 ? (
         <>
           <Text fontWeight="700" color="#1c345c">
-            Finansal Durumum
+            {t("Financial Status")}
           </Text>
           <ChartDiv width="90%">
             <Chart
               labels={data.map((item) => item.label)}
               backgroundColor={["#49A5E0"]}
               data={data}
-              chartText="Varlıklarım"
+              chartText={t("My Assets")}
             />
             <Chart
               labels={data.map((item) => item.label)}
               backgroundColor={["#B23508"]}
-              chartText="Borçlarım"
+              chartText={t("My Debts")}
               data={cardData}
             />
           </ChartDiv>
@@ -71,7 +73,7 @@ const ChartTab: React.FC = () => {
                 color={tab === 0 ? "#1c345c" : "#555555"}
                 fontWeight={tab === 0 ? "700" : "400"}
               >
-                Varlıklarım
+                {t("My Assets")}
               </Text>
             </Flex>
             <VerticalLine height="26px" />
@@ -85,7 +87,7 @@ const ChartTab: React.FC = () => {
                 color={tab === 1 ? "#1c345c" : "#555555"}
                 fontWeight={tab === 1 ? "700" : "400"}
               >
-                Borçlarım
+                {t("My Debts")}
               </Text>
             </Flex>
             <VerticalLine height="26px" />
@@ -96,13 +98,13 @@ const ChartTab: React.FC = () => {
                 labels={data.map((item) => item.label)}
                 backgroundColor={["#49A5E0"]}
                 data={data}
-                chartText="Varlıklarım"
+                chartText={t("My Assets")}
               />
             ) : (
               <Chart
                 labels={data.map((item) => item.label)}
                 backgroundColor={["#B23508"]}
-                chartText="Borçlarım"
+                chartText={t("My Debts")}
                 data={cardData}
               />
             )}
@@ -125,7 +127,7 @@ const ChartTab: React.FC = () => {
             handleHideNumbers();
           }}
         >
-          Sayıları {hideNumbers ? "Göster" : "Gizle"}
+          {hideNumbers ? `${t("Hide Ammount")}` : `${t("Show Ammount")}`}
         </Text>
         <Button
           border="1px solid #C1C9D3"
@@ -133,7 +135,7 @@ const ChartTab: React.FC = () => {
           padding="0.6rem 1rem"
         >
           <Text color="#69a6e1" cursor="pointer" textAlign="center">
-            Finansal Durum Detayı
+            {t("Financial Status Details")}
           </Text>
         </Button>
       </Flex>

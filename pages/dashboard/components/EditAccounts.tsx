@@ -3,17 +3,19 @@ import { Flex, Text, Table, Td, Th, Tr, Button } from "@/styles/styles";
 import useUser from "@/hooks/useGetUser";
 import { usePage } from "../context/PageContext";
 import SelectBox from "./SelectBox";
+import { useTranslation } from "next-i18next";
 
 const EditAccounts: React.FC = () => {
+  const { t } = useTranslation();
   const user = useUser();
   console.log(user);
 
   const { handlePageChange } = usePage();
 
   const accountTypes = [
-    { label: "Vadesiz TL", value: "vadesizTl" },
-    { label: "Vadesiz Döviz", value: "vadesizDoviz" },
-    { label: "Vadesiz Altın", value: "vadesizAltın" },
+    { label: `${t("Current TL")}`, value: "vadesizTl" },
+    { label: `${t("Current FC")}`, value: "vadesizDoviz" },
+    { label: `${t("Current Gold")}`, value: "vadesizAltın" },
   ];
 
   const accountNumbers = user?.accounts.map((account: any) => {
@@ -29,9 +31,9 @@ const EditAccounts: React.FC = () => {
       <Table>
         <thead>
           <Tr borderBottom="1px solid #e5e5e5 ">
-            <Th width="206px">Hesap Türü</Th>
-            <Th width="298">Hesap Adı / Hesap No</Th>
-            <Th width="225px">Net Bakiye</Th>
+            <Th width="206px">{t("Account Type")}</Th>
+            <Th width="298">{t("Nickname / Account Number")}</Th>
+            <Th width="225px">{t("Net Balance")}</Th>
           </Tr>
         </thead>
         <tbody>
@@ -98,7 +100,7 @@ const EditAccounts: React.FC = () => {
             handlePageChange("");
           }}
         >
-          Kaydet
+          {t("Save")}
         </Button>
         <Button
           border="1px solid #C1C9D3"
@@ -110,7 +112,7 @@ const EditAccounts: React.FC = () => {
           }}
         >
           <Text color="#69a6e1" cursor="pointer" textAlign="center">
-            İptal
+            {t("Cancel")}
           </Text>
         </Button>
       </Flex>

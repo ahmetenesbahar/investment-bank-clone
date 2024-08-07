@@ -1,7 +1,9 @@
 import React from "react";
 import { Flex, Table, Text, Th, Tr, Td } from "@/styles/styles";
+import { useTranslation } from "next-i18next";
 
 const CreditCards: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <Flex
       flexDirection="column"
@@ -12,9 +14,9 @@ const CreditCards: React.FC = () => {
       <Table>
         <thead>
           <Tr borderBottom={"1px solid #e5e5e5 "}>
-            <Th>Kart Numarası</Th>
-            <Th>Kart Türü</Th>
-            <Th>Kullanılabilir Limit</Th>
+            <Th>{t("Card Number")}</Th>
+            <Th>{t("Card Type")}</Th>
+            <Th>{t("Available Limit")}</Th>
           </Tr>
         </thead>
         <tbody>
@@ -22,7 +24,7 @@ const CreditCards: React.FC = () => {
             <Td colSpan={3} borderBottom="1px solid #e5e5e5 " padding="15px">
               <Flex alignItems="center">
                 <Text fontWeight="450" color="#000">
-                  Kart bilgileriniz şu anda gösterilemiyor
+                  {t("Your card information cannot be displayed.")}
                 </Text>
               </Flex>
             </Td>
