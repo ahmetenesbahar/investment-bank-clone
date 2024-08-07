@@ -290,7 +290,7 @@ const Sidebar: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false);
 
   const itemsToRender =
-    width <= 1024
+    width < 1024
       ? smallSidebarItems
       : width <= 1280
       ? mediumSidebarItems
@@ -312,11 +312,12 @@ const Sidebar: React.FC = () => {
 
   return (
     <DashboardSidebarContainer
-      height="calc(100vh - 44px)"
+      height=" 100 "
       backgroundColor={width <= 1280 ? "#1C345C" : "#08335e"}
       flexDirection="column"
-      width="100%"
       zIndex="2"
+      position="fixed"
+      top="44px"
     >
       {width < 1280 && (
         <Flex
