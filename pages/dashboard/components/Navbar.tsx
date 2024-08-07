@@ -11,12 +11,14 @@ import SearchBar from "./SearchBar";
 import useUser from "@/hooks/useGetUser";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { usePage } from "../context/PageContext";
+import { useTranslation } from "next-i18next";
 
 const Navbar: React.FC = () => {
   const user = useUser();
   const today = new Date();
   const width = useMediaQuery();
-  const { handleOpenMenu, menu } = usePage();
+  const { handleOpenMenu } = usePage();
+  const { t } = useTranslation();
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [userAvatarMenu, setUserAvatarMenu] = useState(false);
@@ -32,16 +34,16 @@ const Navbar: React.FC = () => {
   };
 
   const iconData = [
-    { src: "assets/kampanyalar.png" },
-    { src: "assets/edevlet.png" },
-    { src: "assets/header_islemlistesi.png" },
-    { src: "assets/header_mail.png" },
-    { src: "assets/header_bildirim.png" },
-    { src: "assets/header_favourite.png" },
+    { src: "/assets/kampanyalar.png" },
+    { src: "/assets/edevlet.png" },
+    { src: "/assets/header_islemlistesi.png" },
+    { src: "/assets/header_mail.png" },
+    { src: "/assets/header_bildirim.png" },
+    { src: "/assets/header_favourite.png" },
     {
-      src: "assets/hesaplama_araclarim_icon.png",
+      src: "/assets/hesaplama_araclarim_icon.png",
     },
-    { src: "assets/print_icon.png" },
+    { src: "/assets/print_icon.png" },
   ];
 
   return (
@@ -55,7 +57,7 @@ const Navbar: React.FC = () => {
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5">
           {width >= 1024 ? (
-            <img src="assets/header_logo.png" alt="" />
+            <img src="/assets/header_logo.png" alt="" />
           ) : (
             <Flex
               justifyContent="center"
@@ -68,7 +70,7 @@ const Navbar: React.FC = () => {
               }}
             >
               <Text color="#234970" fontWeight="500" cursor="pointer">
-                Menü
+                {t("Menu")}
               </Text>
             </Flex>
           )}
@@ -114,11 +116,9 @@ const Navbar: React.FC = () => {
                   fontWeight="600"
                   cursor="pointer"
                 >{`${user?.firstName} ${user?.lastName}`}</Text>
-                <Text
-                  color="#024487"
-                  fontWeight="500"
-                  cursor="pointer"
-                >{`Son Giriş : ${formatDateTime(today)}`}</Text>
+                <Text color="#024487" fontWeight="500" cursor="pointer">{`${t(
+                  "Last Login"
+                )} : ${formatDateTime(today)}`}</Text>
               </Flex>
             )}
 
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                   cursor="pointer "
                 >
                   <Text fontWeight="400" color="#024487" cursor="pointer ">
-                    Fotoğraf Yükleyin
+                    {t("Upload Photo")}
                   </Text>
                 </Flex>
                 <Flex
@@ -149,7 +149,7 @@ const Navbar: React.FC = () => {
                   cursor="pointer"
                 >
                   <Text fontWeight="400" color="#024487" cursor="pointer">
-                    Profilinizi Güncelleyin
+                    {t("Update Your Profile")}
                   </Text>
                   <Text cursor="pointer " color="#024487">
                     100%
@@ -166,7 +166,7 @@ const Navbar: React.FC = () => {
             cursor="pointer"
           >
             <Text fontWeight="500" cursor="pointer" color="#08335e">
-              Çıkış
+              {t("logout")}
             </Text>
             <Icon src="/assets/header_logout.png" />
           </LogoutDiv>
@@ -175,7 +175,7 @@ const Navbar: React.FC = () => {
 
       {width < 1024 && (
         <Flex>
-          <img src="assets/header_logo.png" alt="" />
+          <img src="/assets/header_logo.png" alt="" />
         </Flex>
       )}
 

@@ -83,8 +83,8 @@ const LeftHeader: React.FC = () => {
                         fontWeight={tab === tabId ? "700" : "400"}
                       >
                         {tabId === "myAccounts"
-                          ? "Hesaplarım"
-                          : "Kredi Kartlarım"}
+                          ? `${t("My Accounts")}`
+                          : `${t("My Credit Cards")}`}
                       </Text>
                       {hoveredIndex === index && (
                         <Icon src="/assets/tab_drag.png" cursor="grab" />
@@ -118,8 +118,8 @@ const LeftHeader: React.FC = () => {
                     cursor="pointer"
                   >
                     {tab === "myAccounts"
-                      ? " Vadeli Hesap Aç"
-                      : "Yeni Kart Başvurusu"}
+                      ? `${t("Open Time Deposit")}`
+                      : `${t("Apply For Credit Card")}`}
                   </Text>
                 </Button>
               </FullBorderFlex>

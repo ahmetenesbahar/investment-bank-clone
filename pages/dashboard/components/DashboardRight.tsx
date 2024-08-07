@@ -2,8 +2,10 @@ import React from "react";
 import Calendar from "./Calendar";
 import { Flex, Icon, Text, Button, FullBorderFlex } from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslation } from "next-i18next";
 
 const DashboardRight: React.FC = () => {
+  const { t } = useTranslation();
   const width = useMediaQuery();
   return (
     <Flex
@@ -16,7 +18,7 @@ const DashboardRight: React.FC = () => {
       {width < 1280 && (
         <Flex width="100%" padding="0 20px">
           <Text fontWeight="700" color="#1c345c">
-            Ajandam
+            {t("My Agenda")}
           </Text>
         </Flex>
       )}
@@ -39,7 +41,7 @@ const DashboardRight: React.FC = () => {
               color="#69a6e1"
               cursor="pointer"
             >
-              Yeni Not Ekle
+              {t("Add Note")}
             </Text>
           </Button>
         </FullBorderFlex>

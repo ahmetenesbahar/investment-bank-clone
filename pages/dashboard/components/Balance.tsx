@@ -13,10 +13,12 @@ import {
 import useUser from "@/hooks/useGetUser";
 import { usePage } from "../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslation } from "next-i18next";
 
 const Balance: React.FC = () => {
   const user = useUser();
   const width = useMediaQuery();
+  const { t } = useTranslation();
   const { handlePageChange } = usePage();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -39,9 +41,9 @@ const Balance: React.FC = () => {
                   activeIndex === 0 ? "1px solid #009ff2" : "1px solid #e5e5e5 "
                 }
               >
-                <Th>Hesap Türü</Th>
-                <Th>Hesap Adı / Hesap No</Th>
-                <Th>Net Bakiye</Th>
+                <Th>{t("Account Type")}</Th>
+                <Th>{t("Nickname / Account Number")}</Th>
+                <Th>{t("Net Balance")}</Th>
               </Tr>
             </thead>
             <tbody>
@@ -143,7 +145,7 @@ const Balance: React.FC = () => {
                             hoverBackground="#e0f0ff"
                             hoverColor="#0079b2"
                           >
-                            Havale
+                            {t("Transfer")}
                           </Text>
                           <VerticalLine width="1px" height="16px" />
                           <Text
@@ -167,7 +169,7 @@ const Balance: React.FC = () => {
                             hoverBackground="#e0f0ff"
                             hoverColor="#0079b2"
                           >
-                            Hesap Hareketleri
+                            {t("Account Activities")}
                           </Text>
                         </Flex>
                       </Td>
@@ -183,7 +185,9 @@ const Balance: React.FC = () => {
                 >
                   <Flex alignItems="center">
                     <Text fontWeight="450" color="#000">
-                      Henüz bir yatırım hesabınız yok, hemen açabilirsiniz.
+                      {t(
+                        "You don't have any investment account, click to open."
+                      )}
                     </Text>
                   </Flex>
                 </Td>
@@ -205,11 +209,11 @@ const Balance: React.FC = () => {
                 handlePageChange("editAccounts");
               }}
             >
-              Hesapları Düzenle
+              {t("Edit Accounts")}
             </Text>
             <Button border="1px solid #C1C9D3" backgroundColor="transparent">
               <Text color="#69a6e1" cursor="pointer" textAlign="center">
-                Hesaplarıma Git
+                {t("My Accounts")}
               </Text>
             </Button>
           </Flex>
@@ -305,7 +309,7 @@ const Balance: React.FC = () => {
                       hoverBackground="#e0f0ff"
                       hoverColor="#0079b2"
                     >
-                      Havale
+                      {t("Transfer")}
                     </Text>
                     <VerticalLine width="1px" height="16px" />
                     <Text
@@ -329,7 +333,7 @@ const Balance: React.FC = () => {
                       hoverBackground="#e0f0ff"
                       hoverColor="#0079b2"
                     >
-                      Hesap Hareketleri
+                      {t("Account Activities")}
                     </Text>
                   </Flex>
                 </Flex>
@@ -342,7 +346,7 @@ const Balance: React.FC = () => {
             padding="20px 10px"
           >
             <Text color="#000" fontWeight="450">
-              Henüz bir yatırım hesabınız yok, hemen açabilirsiniz.
+              {t("You don't have any investment account, click to open.")}
             </Text>
           </Flex>
           <Flex width="100%" padding="10px 10px">
@@ -353,7 +357,7 @@ const Balance: React.FC = () => {
               padding="10px"
             >
               <Text color="#69a6e1" cursor="pointer" textAlign="center">
-                Hesaplarıma Git
+                {t("My Accounts")}
               </Text>
             </Button>
           </Flex>

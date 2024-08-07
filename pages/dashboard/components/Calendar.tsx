@@ -8,6 +8,9 @@ import Dayjs from "dayjs";
 import "dayjs/locale/tr";
 import { Flex } from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useTranslation } from "next-i18next";
+import { getMonths } from "../utils/months";
+import { useRouter } from "next/router";
 
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
@@ -88,23 +91,12 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   },
 }));
 
-const months = [
-  { value: 0, label: "Ocak" },
-  { value: 1, label: "Şubat" },
-  { value: 2, label: "Mart" },
-  { value: 3, label: "Nisan" },
-  { value: 4, label: "Mayıs" },
-  { value: 5, label: "Haziran" },
-  { value: 6, label: "Temmuz" },
-  { value: 7, label: "Ağustos" },
-  { value: 8, label: "Eylül" },
-  { value: 9, label: "Ekim" },
-  { value: 10, label: "Kasım" },
-  { value: 11, label: "Aralık" },
-];
-
 const Calendar: React.FC = () => {
+  const { t } = useTranslation();
+  const months = getMonths(t);
   const width = useMediaQuery();
+  const router = useRouter();
+  const currentLang = router.locale;
 
   const currentYear = Dayjs().year();
   const [selectedDate, setSelectedDate] = useState(Dayjs());
@@ -301,7 +293,10 @@ const Calendar: React.FC = () => {
           }}
         />
       </Flex>
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="tr">
+      <LocalizationProvider
+        dateAdapter={AdapterDayjs}
+        adapterLocale={currentLang}
+      >
         <StyledDateCalendar
           value={selectedDate}
           onChange={(newDate) => setSelectedDate(newDate || Dayjs())}

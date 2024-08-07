@@ -5,9 +5,13 @@ import {
   Flex,
   Icon,
 } from "@/styles/styles";
+
 import useMediaQuery from "@/hooks/useMediaQuery";
 
+import { useTranslation } from "next-i18next";
+
 const SearchBar: React.FC = () => {
+  const { t } = useTranslation();
   const [closeIcon, setCloseIcon] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef<HTMLDivElement>(null);
@@ -46,7 +50,7 @@ const SearchBar: React.FC = () => {
           <Icon src="/assets/search_icon.png" alt="" margin="0 0 0 5px" />
           <SearchBarInput
             padding=" 0 2px 0 10px"
-            placeholder="İşlem Ara..."
+            placeholder={t("Find Transaction")}
             placeholderColor="#ABABAB"
             fontWeight="400"
             width="100%"
@@ -79,7 +83,7 @@ const SearchBar: React.FC = () => {
             />
             <SearchBarInput
               padding="8px 30px"
-              placeholder="İşlem Ara..."
+              placeholder={t("Find Transaction")}
               placeholderColor="#ABABAB"
               fontWeight="400"
               width="100%"
