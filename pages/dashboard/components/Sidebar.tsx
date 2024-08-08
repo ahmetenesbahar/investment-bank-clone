@@ -61,7 +61,10 @@ const Sidebar: React.FC = () => {
           onMouseLeave={() => setActiveIndex(null)}
           backgroundColor={activeIndex === index ? "#072E54" : "transparent"}
         >
-          <Icon src={activeIndex === index ? item.hoveredIcon : item.icon} />
+          <Icon
+            src={activeIndex === index ? item.hoveredIcon : item.icon}
+            alt="sidebarIcon"
+          />
           <Text color="#fff" fontWeight="400" cursor="pointer">
             {item.label}
           </Text>
@@ -87,6 +90,7 @@ const Sidebar: React.FC = () => {
                   width="44px"
                   height="44px"
                   src="/assets/DefaultProfilePic.jpg"
+                  alt="profilePic"
                 />
               </Flex>
               <Flex
@@ -114,6 +118,7 @@ const Sidebar: React.FC = () => {
                 </Flex>
                 <Icon
                   src="/assets/lower_arrow_dark_blue.png"
+                  alt="lowerArrow"
                   transform={activeMenu ? "rotate(180deg)" : "rotate(0deg)"}
                 />
               </Flex>
@@ -154,7 +159,7 @@ const Sidebar: React.FC = () => {
             alignItems="center"
             margin="0 0 44px 0"
           >
-            <Icon src="/assets/header_logout.png" />
+            <Icon src="/assets/header_logout.png" alt="logoutIcon" />
             <Text fontWeight="500" cursor="pointer" color="#08335e">
               {t("logout")}
             </Text>

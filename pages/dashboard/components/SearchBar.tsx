@@ -47,7 +47,11 @@ const SearchBar: React.FC = () => {
     <Flex justifyContent="center" alignItems="center" ref={searchRef}>
       {width > 1280 ? (
         <>
-          <Icon src="/assets/search_icon.png" alt="" margin="0 0 0 5px" />
+          <Icon
+            src="/assets/search_icon.png"
+            alt="searchIcon"
+            margin="0 0 0 5px"
+          />
           <SearchBarInput
             padding=" 0 2px 0 10px"
             placeholder={t("Find Transaction")}
@@ -59,7 +63,7 @@ const SearchBar: React.FC = () => {
           />
           <SearchBarCloseIcon
             src="/assets/close_icon.png"
-            alt=""
+            alt="closeIcon"
             active={closeIcon}
             onClick={() => {
               setSearchValue("");
@@ -77,7 +81,7 @@ const SearchBar: React.FC = () => {
           >
             <Icon
               src="/assets/blue_search_icon.png"
-              alt=""
+              alt="searchIcon"
               position="absolute"
               left="14px"
             />
@@ -92,6 +96,7 @@ const SearchBar: React.FC = () => {
             />
             <SearchBarCloseIcon
               src="/assets/responsive_close_icon.png"
+              alt="closeIcon"
               position="absolute"
               right="28px"
               active={closeIcon}

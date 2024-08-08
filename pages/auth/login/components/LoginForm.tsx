@@ -60,7 +60,10 @@ const LoginForm: React.FC = () => {
             onMouseEnter={() => setIsHovered("customerNumber")}
             onMouseLeave={() => setIsHovered("")}
           >
-            <HelpImage src="/assets/information_icon.png" />
+            <HelpImage
+              src="/assets/information_icon.png"
+              alt="information_icon"
+            />
           </HelpBox>
 
           <HoverBubble
@@ -96,7 +99,10 @@ const LoginForm: React.FC = () => {
             onMouseEnter={() => setIsHovered("password")}
             onMouseLeave={() => setIsHovered("")}
           >
-            <HelpImage src="/assets/information_icon.png" />
+            <HelpImage
+              src="/assets/information_icon.png"
+              alt="information_icon"
+            />
           </HelpBox>
 
           <HoverBubble
@@ -124,7 +130,7 @@ const LoginForm: React.FC = () => {
             handleForgotPasswordClick();
           }}
         >
-          <LoginIcon src="/assets/login_icon.png" />
+          <LoginIcon src="/assets/login_icon.png" alt="login_icon" />
           <Text color="#49a4e0" cursor="pointer">
             {t("Forgot Password")}
           </Text>

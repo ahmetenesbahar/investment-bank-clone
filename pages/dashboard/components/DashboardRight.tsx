@@ -33,7 +33,7 @@ const DashboardRight: React.FC = () => {
           width="100%"
           cursor="pointer"
         >
-          <Icon src="/assets/plus_blue.png" />
+          <Icon src="/assets/plus_blue.png" alt="plus_icon" />
           <Button backgroundColor="#fff" padding="0">
             <Text
               fontSize="14px"

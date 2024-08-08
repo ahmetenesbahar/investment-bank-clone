@@ -85,7 +85,11 @@ const LeftHeader: React.FC = () => {
                           : `${t("My Credit Cards")}`}
                       </Text>
                       {hoveredIndex === index && (
-                        <Icon src="/assets/tab_drag.png" cursor="grab" />
+                        <Icon
+                          src="/assets/tab_drag.png"
+                          cursor="grab"
+                          alt="grapIcon"
+                        />
                       )}
                     </Flex>
                   )}
@@ -107,7 +111,7 @@ const LeftHeader: React.FC = () => {
                 gap="10px"
                 cursor="pointer"
               >
-                <Icon src="/assets/plus_blue.png" />
+                <Icon src="/assets/plus_blue.png" alt="plusIcon" />
                 <Button backgroundColor="#fff" padding="0">
                   <Text
                     fontSize="14px"
@@ -124,7 +128,11 @@ const LeftHeader: React.FC = () => {
             </Flex>
           ) : (
             <Flex backgroundColor="#5a9aed" padding="10px 12px">
-              <Icon src="/assets/white_plus_icon.png" width="15px" />
+              <Icon
+                src="/assets/white_plus_icon.png"
+                alt="plusIcon"
+                width="15px"
+              />
             </Flex>
           ))}
       </Flex>
