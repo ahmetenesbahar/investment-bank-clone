@@ -29,7 +29,7 @@ const InputTicari: React.FC = () => {
             </Text>
             <img
               src="/assets/infoForgot_icon.png"
-              alt=""
+              alt="infoForgot_icon"
               onMouseEnter={() => setIsHovered("commercialNumber")}
               onMouseLeave={() => setIsHovered("")}
             />
@@ -61,7 +61,7 @@ const InputTicari: React.FC = () => {
             </Text>
             <img
               src="/assets/infoForgot_icon.png"
-              alt=""
+              alt="infoForgot_icon"
               onMouseEnter={() => setIsHovered("customerNumber")}
               onMouseLeave={() => setIsHovered("")}
             />
@@ -92,7 +92,7 @@ const InputTicari: React.FC = () => {
             </Text>
             <img
               src="/assets/infoForgot_icon.png"
-              alt=""
+              alt="infoForgot_icon"
               onMouseEnter={() => setIsHovered("phoneNumber")}
               onMouseLeave={() => setIsHovered("")}
             />
@@ -121,9 +121,9 @@ const InputTicari: React.FC = () => {
             {t("Confirmation Code")}
           </Text>
           <Flex gap="8px">
-            <img src="/assets/captcha.jpeg" alt="" />
+            <img src="/assets/captcha.jpeg" alt="Captcha" />
             <Flex cursor="pointer">
-              <img src="/assets/refresh.png" alt="" />
+              <img src="/assets/refresh.png" alt="RefreshIcon" />
             </Flex>
           </Flex>
           <Input

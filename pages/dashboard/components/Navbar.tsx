@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5">
           {width >= 1024 ? (
-            <img src="/assets/header_logo.png" alt="" />
+            <img src="/assets/header_logo.png" alt="isbankLogo" />
           ) : (
             <Flex
               justifyContent="center"
@@ -80,7 +80,11 @@ const Navbar: React.FC = () => {
                 activeIndex === index ? "#F2F9FF" : "transparent"
               }
             >
-              <Icon src={icon.src} borderLeft={"1px solid #e5e5e5"} />
+              <Icon
+                src={icon.src}
+                borderLeft={"1px solid #e5e5e5"}
+                alt="NavbarIcon"
+              />
             </Flex>
           ))}
           <NavbarAvatarDiv
@@ -91,6 +95,7 @@ const Navbar: React.FC = () => {
           >
             <Icon
               src="/assets/DefaultProfilePic.jpg"
+              alt="ProfilePic"
               width="44px"
               height="44px"
             />
@@ -159,20 +164,20 @@ const Navbar: React.FC = () => {
             <Text fontWeight="500" cursor="pointer" color="#08335e">
               {t("logout")}
             </Text>
-            <Icon src="/assets/header_logout.png" />
+            <Icon src="/assets/header_logout.png" alt="logoutIcon" />
           </LogoutDiv>
         </Flex>
       )}
 
       {width < 1024 && (
         <Flex>
-          <img src="/assets/header_logo.png" alt="" />
+          <img src="/assets/header_logo.png" alt="isbankLogo" />
         </Flex>
       )}
 
       {width < 1024 && (
         <Flex backgroundColor="#F2F9FF" width="55px" justifyContent="center">
-          <Icon src="/assets/header_logout.png" />
+          <Icon src="/assets/header_logout.png" alt="logoutIcon" />
         </Flex>
       )}
     </NavbarContainer>

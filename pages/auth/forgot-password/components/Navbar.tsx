@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
       responsiveFull
     >
       <Link href="https://www.isbank.com.tr/" margin="0 0 0 25px ">
-        <img src="/assets/isbank_logo.png" alt="" />
+        <img src="/assets/isbank_logo.png" alt="isbank_logo" />
       </Link>
 
       <FlexColumn
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
         gap="3px"
         margin="0 25px 0  0"
       >
-        <img src="/assets/lock.png" alt="" />
+        <img src="/assets/lock.png" alt="lockIcon" />
         <Text color="#00428a" fontSize="11px" fontWeight="500">
           {t("Secure")}
         </Text>

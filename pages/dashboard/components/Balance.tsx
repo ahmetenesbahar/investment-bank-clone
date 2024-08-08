@@ -98,6 +98,7 @@ const Balance: React.FC = () => {
                         </Flex>
                         <Icon
                           src="/assets/lower_arrow_dark_blue.png"
+                          alt="lower_arrow"
                           transform={
                             activeIndex === index
                               ? "rotate(180deg)"
@@ -267,6 +268,7 @@ const Balance: React.FC = () => {
                 </Flex>
                 <Icon
                   src="/assets/lower_arrow_dark_blue.png"
+                  alt="lower_arrow"
                   transform={
                     activeIndex === index ? "rotate(180deg)" : "rotate(0deg)"
                   }
