@@ -1,3 +1,29 @@
-const colors = {};
-
-export default colors;
+export const colors = {
+  white: "#FFF",
+  secondaryWhite: "#f2f2f2",
+  black: "#000",
+  loginHeaderBlue: "#08335e",
+  secondaryBlue: "#1c345c",
+  borderColor: "#e5e5e5",
+  secondaryBorderColor: "#d3d3d3",
+  lightBlue: "#94d3e2",
+  grayText: "#535353",
+  darkGray: "#999999",
+  grayBackground: "#ebebeb",
+  secondaryGrayBackground: "#fafafa",
+  orange: "#F85931",
+  secondaryOrange: "#f34509",
+  tableHeaderColor: "#7288aa",
+  specialBlue: "#49a5e0",
+  borderBlue: "#009ff2",
+  hoverBlue: "#0079b2",
+  textBlue: "#69a6e1",
+  darkBlue: "#10213c",
+  secondaryDarkBlue: "#072E54",
+  secondaryHoverBlue: "#e0f0ff",
+  hoverWhite: "#F2F9FF",
+  calendarGreen: "#68BE47",
+  zeroValue: "#E0E0E0",
+  brown: "#B23508",
+  placeholderGray: "#ABABAB",
+};

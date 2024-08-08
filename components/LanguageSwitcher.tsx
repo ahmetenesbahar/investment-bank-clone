@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import { Text } from "@/styles/styles";
+import { colors } from "@/styles/colors";
 
 const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
@@ -16,7 +17,7 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <div>
       <Text
-        color="#49a4e0"
+        color={colors.specialBlue}
         cursor="pointer"
         onClick={() => changeLanguage(currentLanguage === "en" ? "tr" : "en")}
       >

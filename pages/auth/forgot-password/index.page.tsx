@@ -11,18 +11,20 @@ import { Container, ForgotPasswordContainer, Flex } from "@/styles/styles";
 import { TabProvider } from "./context/TabContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { colors } from "@/styles/colors";
+
 const queryClient = new QueryClient();
 
 const ForgotPasswordPage: NextPage = () => {
   return (
     <TabProvider>
       <QueryClientProvider client={queryClient}>
-        <Container backgroundColor="#f2f2f2">
+        <Container backgroundColor={colors.secondaryWhite}>
           <Flex
             justifyContent="center"
             alignItems="center"
             width="100%"
-            backgroundColor="#fff"
+            backgroundColor={colors.white}
           >
             <Navbar />
           </Flex>

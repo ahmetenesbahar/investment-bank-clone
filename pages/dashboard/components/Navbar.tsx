@@ -14,6 +14,7 @@ import { usePage } from "../context/PageContext";
 import { useTranslation } from "next-i18next";
 import { formatDateTime } from "../utils/formatting";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 const Navbar: React.FC = () => {
   const user = useUser();
@@ -41,13 +42,13 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer
       justifyContent="space-between"
-      backgroundColor="#fff"
+      backgroundColor={colors.white}
       alignItems="center"
       position="fixed"
       width="100%"
     >
       <Flex justifyContent="center" alignItems="center">
-        <Flex borderRight="1px solid #e5e5e5">
+        <Flex borderRight={`1px solid ${colors.borderColor}`}>
           {width >= breakpoints.lg ? (
             <img src="/assets/header_logo.png" alt="isbankLogo" />
           ) : (
@@ -61,7 +62,11 @@ const Navbar: React.FC = () => {
                 handleOpenMenu();
               }}
             >
-              <Text color="#234970" fontWeight="500" cursor="pointer">
+              <Text
+                color={colors.secondaryBlue}
+                fontWeight="500"
+                cursor="pointer"
+              >
                 {t("Menu")}
               </Text>
             </Flex>
@@ -78,12 +83,12 @@ const Navbar: React.FC = () => {
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
               backgroundColor={
-                activeIndex === index ? "#F2F9FF" : "transparent"
+                activeIndex === index ? `${colors.hoverWhite}` : "transparent"
               }
             >
               <Icon
                 src={icon.src}
-                borderLeft={"1px solid #e5e5e5"}
+                borderLeft={`1px solid ${colors.borderColor}`}
                 alt="NavbarIcon"
               />
             </Flex>
@@ -109,13 +114,15 @@ const Navbar: React.FC = () => {
                 cursor="pointer"
               >
                 <Text
-                  color="#024487"
+                  color={colors.secondaryBlue}
                   fontWeight="600"
                   cursor="pointer"
                 >{`${user?.firstName} ${user?.lastName}`}</Text>
-                <Text color="#024487" fontWeight="500" cursor="pointer">{`${t(
-                  "Last Login"
-                )} : ${formatDateTime(today)}`}</Text>
+                <Text
+                  color={colors.secondaryBlue}
+                  fontWeight="500"
+                  cursor="pointer"
+                >{`${t("Last Login")} : ${formatDateTime(today)}`}</Text>
               </Flex>
             )}
 
@@ -128,27 +135,35 @@ const Navbar: React.FC = () => {
                 gap="3px"
               >
                 <Flex
-                  backgroundColor="#F2F9FF"
+                  backgroundColor={colors.hoverWhite}
                   width="100%"
                   padding="10px"
                   cursor="pointer "
                 >
-                  <Text fontWeight="400" color="#024487" cursor="pointer ">
+                  <Text
+                    fontWeight="400"
+                    color={colors.secondaryBlue}
+                    cursor="pointer "
+                  >
                     {t("Upload Photo")}
                   </Text>
                 </Flex>
                 <Flex
-                  backgroundColor="#F2F9FF"
+                  backgroundColor={colors.hoverWhite}
                   width="100%"
-                  borderBottom="5px solid #024487"
+                  borderBottom={`5px solid ${colors.secondaryBlue}`}
                   padding="10px"
                   justifyContent="space-between"
                   cursor="pointer"
                 >
-                  <Text fontWeight="400" color="#024487" cursor="pointer">
+                  <Text
+                    fontWeight="400"
+                    color={colors.secondaryBlue}
+                    cursor="pointer"
+                  >
                     {t("Update Your Profile")}
                   </Text>
-                  <Text cursor="pointer " color="#024487">
+                  <Text cursor="pointer " color={colors.secondaryBlue}>
                     100%
                   </Text>
                 </Flex>
@@ -156,13 +171,17 @@ const Navbar: React.FC = () => {
             )}
           </NavbarAvatarDiv>
           <LogoutDiv
-            backgroundColor="#F2F9FF"
+            backgroundColor={colors.hoverWhite}
             justifyContent="center"
             alignItems="center"
             padding="0px 10px"
             cursor="pointer"
           >
-            <Text fontWeight="500" cursor="pointer" color="#08335e">
+            <Text
+              fontWeight="500"
+              cursor="pointer"
+              color={colors.loginHeaderBlue}
+            >
               {t("logout")}
             </Text>
             <Icon src="/assets/header_logout.png" alt="logoutIcon" />
@@ -177,7 +196,11 @@ const Navbar: React.FC = () => {
       )}
 
       {width < breakpoints.lg && (
-        <Flex backgroundColor="#F2F9FF" width="55px" justifyContent="center">
+        <Flex
+          backgroundColor={colors.hoverWhite}
+          width="55px"
+          justifyContent="center"
+        >
           <Icon src="/assets/header_logout.png" alt="logoutIcon" />
         </Flex>
       )}

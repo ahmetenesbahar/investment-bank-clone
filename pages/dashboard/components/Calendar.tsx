@@ -12,13 +12,14 @@ import { useTranslation } from "next-i18next";
 import { getMonths } from "../utils/months";
 import { useRouter } from "next/router";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
-    color: "#6da9e4",
+    color: `${colors.textBlue}`,
     fontSize: "14px",
     "&.Mui-selected": {
-      backgroundColor: "#68BE47 !important",
+      backgroundColor: `${colors.calendarGreen} !important`,
       color: "white",
     },
     "&.MuiPickersDay-today": {
@@ -26,14 +27,14 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
       border: "1px solid lightblue",
     },
     "&.MuiPickersDay-dayOutsideMonth": {
-      color: "#000",
+      color: `${colors.black}`,
       opacity: 0.5,
     },
   },
   ".MuiTypography-root": {
     "&.MuiDayCalendar-weekDayLabel": {
       fontWeight: "600",
-      color: "#234970",
+      color: `${colors.loginHeaderBlue}`,
       textTransform: "uppercase",
       textDecoration: "underline dotted",
       height: "15px",
@@ -44,8 +45,8 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
       position: "absolute",
       left: "5px",
       top: "10px",
-      background: "#f2f9fe",
-      color: "#000",
+      background: `${colors.hoverWhite}`,
+      color: `${colors.black}`,
       borderRadius: "0px",
       width: "25px",
       height: "38px",
@@ -54,8 +55,8 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
       position: "absolute",
       left: "180px",
       top: "10px",
-      background: "#f2f9fe",
-      color: "#000",
+      background: `${colors.hoverWhite}`,
+      color: `${colors.black}`,
       borderRadius: "0px",
       width: "25px",
       height: "38px",
@@ -177,7 +178,7 @@ const Calendar: React.FC = () => {
               top: "10px",
               zIndex: 999,
               fontSize: "10px",
-              color: "#000",
+              color: `${colors.black}`,
               width: "118px",
             }),
             control: (provided, state) => ({
@@ -185,16 +186,20 @@ const Calendar: React.FC = () => {
               borderRadius: "0px",
               border: state.isFocused ? provided.border : provided.border,
               boxShadow: "none",
-              borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+              borderColor: state.isFocused
+                ? ` ${colors.borderColor}`
+                : provided.borderColor,
               "&:hover": {
-                borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+                borderColor: state.isFocused
+                  ? `  ${colors.borderColor}`
+                  : provided.borderColor,
               },
             }),
             singleValue: (provided) => ({
               ...provided,
               fontSize: "14px",
               whiteSpace: "normal",
-              color: "#000",
+              color: `${colors.black}`,
               fontWeight: 450,
             }),
             menu: (provided) => ({
@@ -210,21 +215,21 @@ const Calendar: React.FC = () => {
             option: (provided, state) => ({
               ...provided,
               backgroundColor: state.isFocused
-                ? "#F2F9FF"
+                ? `${colors.hoverWhite}`
                 : state.isSelected
                 ? "transparent"
                 : "white",
               color: state.isSelected
-                ? "#000"
+                ? `${colors.black}`
                 : state.isFocused
-                ? "#000"
+                ? `${colors.black}`
                 : "black",
               cursor: "pointer",
               fontSize: "14px",
             }),
             dropdownIndicator: (provided) => ({
               ...provided,
-              color: "#000",
+              color: `${colors.black}`,
               width: "33px",
             }),
           }}
@@ -249,16 +254,20 @@ const Calendar: React.FC = () => {
               borderRadius: "0px",
               border: state.isFocused ? provided.border : provided.border,
               boxShadow: "none",
-              borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+              borderColor: state.isFocused
+                ? ` ${colors.borderColor}`
+                : provided.borderColor,
               "&:hover": {
-                borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+                borderColor: state.isFocused
+                  ? ` ${colors.borderColor}`
+                  : provided.borderColor,
               },
             }),
             singleValue: (provided) => ({
               ...provided,
               fontSize: "14px",
               whiteSpace: "normal",
-              color: "#000",
+              color: `${colors.black}`,
               fontWeight: 450,
             }),
             menu: (provided) => ({
@@ -275,21 +284,21 @@ const Calendar: React.FC = () => {
             option: (provided, state) => ({
               ...provided,
               backgroundColor: state.isFocused
-                ? "#F2F9FF"
+                ? `${colors.hoverWhite}`
                 : state.isSelected
                 ? "transparent"
                 : "white",
               color: state.isSelected
-                ? "#000"
+                ? `${colors.black}`
                 : state.isFocused
-                ? "#000"
+                ? `${colors.black}`
                 : "black",
               cursor: "pointer",
               fontSize: "14px",
             }),
             dropdownIndicator: (provided) => ({
               ...provided,
-              color: "#000",
+              color: `${colors.black}`,
             }),
           }}
         />

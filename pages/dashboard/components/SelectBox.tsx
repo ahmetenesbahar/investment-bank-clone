@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select, { SingleValue } from "react-select";
+import { colors } from "@/styles/colors";
 
 interface SelectBoxProps {
   options: { value: string; label: string }[];
@@ -54,19 +55,27 @@ const SelectBox: React.FC<SelectBoxProps> = ({
           borderRadius: "0px",
           border: state.isFocused ? provided.border : provided.border,
           boxShadow: "none",
-          borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+          borderColor: state.isFocused
+            ? `  ${colors.borderColor}`
+            : provided.borderColor,
           "&:hover": {
-            borderColor: state.isFocused ? "#c1c9d3" : provided.borderColor,
+            borderColor: state.isFocused
+              ? `  ${colors.borderColor}`
+              : provided.borderColor,
           },
         }),
         option: (provided, state) => ({
           ...provided,
           backgroundColor: state.isFocused
-            ? "#F2F9FF"
+            ? `${colors.hoverWhite}`
             : state.isSelected
             ? "transparent"
             : "white",
-          color: state.isSelected ? "#000" : state.isFocused ? "#000" : "black",
+          color: state.isSelected
+            ? `${colors.black}`
+            : state.isFocused
+            ? `${colors.black}`
+            : "black",
           cursor: "pointer",
           fontSize: "14px",
         }),
@@ -82,7 +91,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
           ...provided,
           fontSize: "14px",
           whiteSpace: "normal",
-          color: "#000",
+          color: `${colors.black}`,
           fontWeight: 450,
         }),
         dropdownIndicator: (provided) => ({

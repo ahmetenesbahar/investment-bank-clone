@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 interface Props {
   justifyContent?: string;
@@ -51,7 +52,7 @@ interface Props {
 export const Container = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   width: ${(props) => props.width || "100%"};
-  background-color: ${(props) => props.backgroundColor || "#fff"};
+  background-color: ${(props) => props.backgroundColor || colors.white};
   min-height: 100vh;
   height: auto;
   display: ${(props) => props.display || "block"};
@@ -204,7 +205,7 @@ export const Text = styled.p<Props>`
     props.hover &&
     `
     &:hover {
-      color: ${props.hoverColor || "#000"};
+      color: ${props.hoverColor || colors.black};
       background-color: ${props.hoverBackground || "transparent"};
     }
   `}
@@ -215,8 +216,9 @@ export const Button = styled.button<Props>`
   border: ${(props) => props.border || "none"};
   width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
-  color: ${(props) => props.color || "#fff"};
-  background-color: ${(props) => props.backgroundColor || "#08335e"};
+  color: ${(props) => props.color || colors.white};
+  background-color: ${(props) =>
+    props.backgroundColor || colors.loginHeaderBlue};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
   margin: ${(props) => props.margin || "0"};
   font-size: ${(props) => props.fontSize || "14px"};
@@ -453,7 +455,7 @@ export const KeyboardDiv = styled.div<Props>`
 `;
 
 export const SecondaryHeader = styled.h2<Props>`
-  color: ${(props) => props.color || "#08335e"};
+  color: ${(props) => props.color || colors.loginHeaderBlue};
   font-weight: ${(props) => props.fontWeight || "500"};
   font-size: ${(props) => props.fontSize || "22px"};
   margin: ${(props) => props.margin || "0"};
@@ -470,7 +472,7 @@ export const SecondaryHeaderForgotPassword = styled(SecondaryHeader)<Props>`
 `;
 
 export const VerticalLine = styled.div<Props>`
-  border-right: 1px solid #e5e5e5;
+  border-right: 1px solid ${colors.borderColor};
   height: ${(props) => props.height || "100%"};
   margin: ${(props) => props.margin || "0"};
 `;
@@ -499,7 +501,7 @@ export const SearchBarInput = styled.input<Props>`
   padding: ${(props) => props.padding || "0"};
   font-size: ${(props) => props.fontSize || "14px"};
   &::placeholder {
-    color: ${(props) => props.placeholderColor || "#000"};
+    color: ${(props) => props.placeholderColor || colors.black};
     font-weight: ${(props) => props.fontWeight || "400"};
   }
 `;

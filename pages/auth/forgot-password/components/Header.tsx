@@ -1,6 +1,7 @@
 import React from "react";
 import { FlexColumn, SecondaryHeaderForgotPassword } from "@/styles/styles";
 import { useTranslation } from "next-i18next";
+import { colors } from "@/styles/colors";
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -8,7 +9,7 @@ const Header: React.FC = () => {
     <FlexColumn width="100%">
       <SecondaryHeaderForgotPassword
         fontWeight="600"
-        borderBottom="1px solid #e5e5e5"
+        borderBottom={`1px solid ${colors.borderColor}`}
         padding="0 0 20px 0"
       >
         {t("Instant PIN")}

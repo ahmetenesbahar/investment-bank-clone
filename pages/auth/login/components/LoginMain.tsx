@@ -24,6 +24,7 @@ import { useTranslation, Trans } from "next-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ReactMarkdown from "react-markdown";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 const LoginMain: NextPage = () => {
   const { t } = useTranslation("common");
@@ -74,7 +75,10 @@ const LoginMain: NextPage = () => {
                   display="none"
                   alt="info_icon"
                 />
-                <ResponsiveLoginText color="#49a4e0" cursor="pointer">
+                <ResponsiveLoginText
+                  color={colors.specialBlue}
+                  cursor="pointer"
+                >
                   {t("help")}/{t("information")}
                 </ResponsiveLoginText>
               </Flex>
@@ -99,7 +103,7 @@ const LoginMain: NextPage = () => {
             <Flex width="100%">
               <Flex alignItems="center" gap="3px" cursor="pointer">
                 <LoginIcon src="/assets/lock_icon.png" alt="lock_icon" />
-                <Text color="#49a4e0" cursor="pointer">
+                <Text color={colors.specialBlue} cursor="pointer">
                   {t("security")}
                 </Text>
               </Flex>
@@ -122,7 +126,7 @@ const LoginMain: NextPage = () => {
       <Footer>
         <Flex
           width="100%"
-          borderTop="1px solid #d3d3d3"
+          borderTop={`1px solid ${colors.secondaryBorderColor}`}
           justifyContent="space-between"
           height="50px"
         >
@@ -132,7 +136,7 @@ const LoginMain: NextPage = () => {
             alignItems="center"
             height="100%"
           >
-            <Text color="#afb0b1">©2024 Türkiye İş Bankası A.Ş</Text>
+            <Text color={colors.darkGray}>©2024 Türkiye İş Bankası A.Ş</Text>
           </Flex>
           <Flex
             justifyContent="space-between"
@@ -140,7 +144,7 @@ const LoginMain: NextPage = () => {
             alignItems="center"
             height="100%"
           >
-            <Text color="#49a4e0" cursor="pointer">
+            <Text color={colors.specialBlue} cursor="pointer">
               {t("Contact us")}
             </Text>
             <LanguageSwitcher />

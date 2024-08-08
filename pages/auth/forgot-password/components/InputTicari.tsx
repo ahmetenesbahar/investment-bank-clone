@@ -11,6 +11,7 @@ import Input from "@/components/Input";
 import useForgotPassword from "../hooks/useForgotPassword";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { colors } from "@/styles/colors";
 
 const InputTicari: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
@@ -24,7 +25,7 @@ const InputTicari: React.FC = () => {
       <FlexColumn width="100%">
         <FlexColumn width="100%">
           <Flex gap="8px" position="relative">
-            <Text fontWeight="700" color="#1c345c">
+            <Text fontWeight="700" color={colors.secondaryBlue}>
               {t("Commercial Customer Number")}
             </Text>
             <img
@@ -38,12 +39,14 @@ const InputTicari: React.FC = () => {
               display={isHovered === "commercialNumber" ? "block" : "none"}
               left={currentLang === "en" ? "38%" : "23%"}
               top="150%"
-              backgroundColor="#1c345c"
+              backgroundColor={colors.secondaryBlue}
               width="300px"
               padding="18px 21px 21px 21px"
               triangleLeft="50%"
             >
-              <Text color="#fff">{t("Commercial Customer Number Info")}</Text>
+              <Text color={colors.white}>
+                {t("Commercial Customer Number Info")}
+              </Text>
             </HoverBubbleWithTriangle>
           </Flex>
           <Input
@@ -56,7 +59,7 @@ const InputTicari: React.FC = () => {
         </FlexColumn>
         <FlexColumn position="relative" width="100%">
           <Flex gap="8px" position="relative">
-            <Text fontWeight="700" color="#1c345c">
+            <Text fontWeight="700" color={colors.secondaryBlue}>
               {t("Customer Number / TCKN / YKN")}
             </Text>
             <img
@@ -69,12 +72,12 @@ const InputTicari: React.FC = () => {
               display={isHovered === "customerNumber" ? "block" : "none"}
               left={currentLang === "en" ? "42%" : "32%"}
               top="150%"
-              backgroundColor="#1c345c"
+              backgroundColor={colors.secondaryBlue}
               width="300px"
               padding="18px 21px 21px 21px"
               triangleLeft="50%"
             >
-              <Text color="#fff">{t("Customer Number Info")}</Text>
+              <Text color={colors.white}>{t("Customer Number Info")}</Text>
             </HoverBubbleWithTriangle>
           </Flex>
           <Input
@@ -87,7 +90,7 @@ const InputTicari: React.FC = () => {
         </FlexColumn>
         <FlexColumn width="100%">
           <Flex gap="8px" position="relative">
-            <Text fontWeight="700" color="#1c345c">
+            <Text fontWeight="700" color={colors.secondaryBlue}>
               {t("Mobile Phone Number")}
             </Text>
             <img
@@ -100,12 +103,12 @@ const InputTicari: React.FC = () => {
               display={isHovered === "phoneNumber" ? "block" : "none"}
               left={currentLang === "en" ? "17%" : "23%"}
               top="150%"
-              backgroundColor="#1c345c"
+              backgroundColor={colors.secondaryBlue}
               width="300px"
               padding="18px 21px 21px 21px"
               triangleLeft="50%"
             >
-              <Text color="#fff">{t("Mobile Phone Number Info")}</Text>
+              <Text color={colors.white}>{t("Mobile Phone Number Info")}</Text>
             </HoverBubbleWithTriangle>
           </Flex>
           <Input
@@ -117,7 +120,7 @@ const InputTicari: React.FC = () => {
           />
         </FlexColumn>
         <FlexColumn width="100%">
-          <Text fontWeight="700" color="#1c345c">
+          <Text fontWeight="700" color={colors.secondaryBlue}>
             {t("Confirmation Code")}
           </Text>
           <Flex gap="8px">
