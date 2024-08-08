@@ -14,12 +14,21 @@ import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
 
+enum TabEnum {
+  MyAccounts = "myAccounts",
+  MyCreditCards = "myCreditCards",
+}
+
 const LeftHeader: React.FC = () => {
   const { tab, handleTabChange } = useTab();
   const width = useMediaQuery();
   const { page } = usePage();
   const { t } = useTranslation();
-  const [tabs, setTabs] = useState(["myAccounts", "myCreditCards"]);
+  const [tabs, setTabs] = useState<TabEnum[]>([
+    TabEnum.MyAccounts,
+    TabEnum.MyCreditCards,
+  ]);
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const onDragEnd = (result: any) => {
