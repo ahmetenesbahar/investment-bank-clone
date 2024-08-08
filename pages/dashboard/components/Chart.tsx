@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Flex, Text } from "@/styles/styles";
 import { usePage } from "../context/PageContext";
+import { colors } from "@/styles/colors";
 
 interface ChartProps {
   labels: string[];
@@ -29,7 +30,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
         justifyContent="center"
       >
         <Flex
-          backgroundColor="#fff"
+          backgroundColor={colors.white}
           width="4px"
           height="20px"
           position="absolute"
@@ -45,13 +46,13 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <Text color="#000" fontWeight="500" fontSize="12px">
+          <Text color={colors.black} fontWeight="500" fontSize="12px">
             {chartText}
           </Text>
-          <Text fontWeight="700" color="#000" fontSize="16px">
+          <Text fontWeight="700" color={colors.black} fontSize="16px">
             {!hideNumbers && totalValue}
           </Text>
-          <Text textAlign="center" color="#000" fontWeight="500">
+          <Text textAlign="center" color={colors.black} fontWeight="500">
             {!hideNumbers && "TL"}
           </Text>
         </Flex>
@@ -69,7 +70,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           slotProps={{
             legend: { hidden: true },
           }}
-          colors={isValueZero ? ["#E0E0E0"] : backgroundColor}
+          colors={isValueZero ? [`${colors.zeroValue}`] : backgroundColor}
           tooltip={{}}
         />
 
@@ -89,7 +90,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
             <Text>{chartLabels}</Text>
           </Flex>
           <Flex width="100%" alignItems="center" justifyContent="center">
-            <Text fontWeight="700" color="#000" fontSize="14px">
+            <Text fontWeight="700" color={colors.black} fontSize="14px">
               {!hideNumbers && `${totalValue} TL`}
             </Text>
           </Flex>

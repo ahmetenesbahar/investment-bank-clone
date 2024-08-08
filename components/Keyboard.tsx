@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { colors } from "@/styles/colors";
 
 const KeyboardContainer = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const KeyboardContainer = styled.div`
   height: 184px;
   margin: 0 auto;
   gap: 1px;
-  background-color: #fff;
+  background-color: ${colors.white};
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -21,14 +22,14 @@ const Key = styled.button`
   cursor: pointer;
   outline: none;
   border: none;
-  background-color: #adb5bd;
+  background-color: ${colors.secondaryBorderColor};
   font-weight: 600;
   font-size: 14px;
-  color: #fff;
+  color: ${colors.white};
 `;
 
 const SpecialKey = styled(Key)`
-  background-color: #49a5e0;
+  background-color: ${colors.specialBlue};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -8,6 +8,7 @@ import { useTranslation } from "next-i18next";
 import { getSidebarItems, getSmallSidebarItems } from "../utils/sidebarItems";
 import { formatDateTime } from "../utils/formatting";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
@@ -29,7 +30,11 @@ const Sidebar: React.FC = () => {
   return (
     <DashboardSidebarContainer
       height=" 100% "
-      backgroundColor={width <= breakpoints.xl ? "#1C345C" : "#08335e"}
+      backgroundColor={
+        width <= breakpoints.xl
+          ? `${colors.secondaryBlue}`
+          : `${colors.loginHeaderBlue}`
+      }
       flexDirection="column"
       zIndex="2"
       position="fixed"
@@ -41,7 +46,7 @@ const Sidebar: React.FC = () => {
           position="sticky"
           zIndex="100"
           top="0"
-          backgroundColor="#08335e"
+          backgroundColor={colors.loginHeaderBlue}
         >
           <SearchBar />
         </Flex>
@@ -52,7 +57,9 @@ const Sidebar: React.FC = () => {
           padding="8px 10px"
           gap="20px"
           borderBottom={
-            width <= breakpoints.xl ? "1px solid #10213c" : "1px solid #072E54"
+            width <= breakpoints.xl
+              ? `1px solid ${colors.darkBlue}`
+              : `1px solid ${colors.secondaryDarkBlue}`
           }
           justifyContent="start"
           alignItems="center"
@@ -61,13 +68,17 @@ const Sidebar: React.FC = () => {
           width="100%"
           onMouseEnter={() => setActiveIndex(index)}
           onMouseLeave={() => setActiveIndex(null)}
-          backgroundColor={activeIndex === index ? "#072E54" : "transparent"}
+          backgroundColor={
+            activeIndex === index
+              ? `${colors.secondaryDarkBlue}`
+              : "transparent"
+          }
         >
           <Icon
             src={activeIndex === index ? item.hoveredIcon : item.icon}
             alt="sidebarIcon"
           />
-          <Text color="#fff" fontWeight="400" cursor="pointer">
+          <Text color={colors.white} fontWeight="400" cursor="pointer">
             {item.label}
           </Text>
           {item.arrow && (
@@ -79,7 +90,7 @@ const Sidebar: React.FC = () => {
       {width < breakpoints.lg && (
         <>
           <Flex
-            backgroundColor="#fff"
+            backgroundColor={colors.white}
             width="100%"
             flexDirection="column"
             onClick={() => {
@@ -107,12 +118,12 @@ const Sidebar: React.FC = () => {
                   height="100%"
                 >
                   <Text
-                    color="#024487"
+                    color={colors.secondaryBlue}
                     fontWeight="700"
                     cursor="pointer"
                   >{`${user?.firstName} ${user?.lastName}`}</Text>
                   <Text
-                    color="#024487"
+                    color={colors.secondaryBlue}
                     fontWeight="500"
                     fontSize="12px"
                     cursor="pointer"
@@ -128,27 +139,35 @@ const Sidebar: React.FC = () => {
             {activeMenu && (
               <>
                 <Flex
-                  backgroundColor="#F2F9FF"
+                  backgroundColor={colors.hoverWhite}
                   width="100%"
                   padding="10px"
                   cursor="pointer "
                 >
-                  <Text fontWeight="400" color="#024487" cursor="pointer ">
+                  <Text
+                    fontWeight="400"
+                    color={colors.secondaryBlue}
+                    cursor="pointer "
+                  >
                     {t("Upload Photo")}
                   </Text>
                 </Flex>
                 <Flex
-                  backgroundColor="#F2F9FF"
+                  backgroundColor={colors.hoverWhite}
                   width="100%"
-                  borderBottom="5px solid #024487"
+                  borderBottom={`5px solid ${colors.secondaryBlue}`}
                   padding="10px"
                   justifyContent="space-between"
                   cursor="pointer"
                 >
-                  <Text fontWeight="400" color="#024487" cursor="pointer">
+                  <Text
+                    fontWeight="400"
+                    color={colors.secondaryBlue}
+                    cursor="pointer"
+                  >
                     {t("Update Your Profile")}
                   </Text>
-                  <Text cursor="pointer " color="#024487">
+                  <Text cursor="pointer " color={colors.secondaryBlue}>
                     100%
                   </Text>
                 </Flex>
@@ -156,13 +175,17 @@ const Sidebar: React.FC = () => {
             )}
           </Flex>
           <Flex
-            backgroundColor="#F2F9FF"
+            backgroundColor={colors.hoverWhite}
             width="100%"
             alignItems="center"
             margin="0 0 44px 0"
           >
             <Icon src="/assets/header_logout.png" alt="logoutIcon" />
-            <Text fontWeight="500" cursor="pointer" color="#08335e">
+            <Text
+              fontWeight="500"
+              cursor="pointer"
+              color={colors.loginHeaderBlue}
+            >
               {t("logout")}
             </Text>
           </Flex>

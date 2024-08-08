@@ -5,6 +5,7 @@ import InputBireysel from "./InputBireysel";
 import InputTicari from "./InputTicari";
 import { FlexColumn } from "@/styles/styles";
 import { useTab } from "../context/TabContext";
+import { colors } from "@/styles/colors";
 
 const ForgotPasswordMain: React.FC = () => {
   const { tab } = useTab();
@@ -12,7 +13,7 @@ const ForgotPasswordMain: React.FC = () => {
     <FlexColumn
       width="788px"
       padding="20px"
-      backgroundColor="#fff"
+      backgroundColor={colors.white}
       responsiveFull
     >
       <Header />

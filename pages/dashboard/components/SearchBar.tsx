@@ -10,6 +10,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 
 import { useTranslation } from "next-i18next";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 const SearchBar: React.FC = () => {
   const { t } = useTranslation();
@@ -56,7 +57,7 @@ const SearchBar: React.FC = () => {
           <SearchBarInput
             padding=" 0 2px 0 10px"
             placeholder={t("Find Transaction")}
-            placeholderColor="#ABABAB"
+            placeholderColor={colors.placeholderGray}
             fontWeight="400"
             width="100%"
             value={searchValue}
@@ -78,7 +79,7 @@ const SearchBar: React.FC = () => {
             position="relative"
             alignItems="center"
             padding="8px 24px 8px 10px"
-            borderBottom="1px solid #10213c"
+            borderBottom={`1px solid ${colors.darkBlue}`}
           >
             <Icon
               src="/assets/blue_search_icon.png"
@@ -89,7 +90,7 @@ const SearchBar: React.FC = () => {
             <SearchBarInput
               padding="8px 30px"
               placeholder={t("Find Transaction")}
-              placeholderColor="#ABABAB"
+              placeholderColor={colors.placeholderGray}
               fontWeight="400"
               width="100%"
               value={searchValue}

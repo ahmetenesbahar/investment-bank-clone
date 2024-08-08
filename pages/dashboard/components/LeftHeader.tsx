@@ -13,6 +13,7 @@ import { usePage } from "../context/PageContext";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 enum TabEnum {
   MyAccounts = "myAccounts",
@@ -54,7 +55,7 @@ const LeftHeader: React.FC = () => {
       <Flex
         alignItems="center"
         width="100%"
-        borderBottom="1px solid #e5e5e5"
+        borderBottom={`1px solid ${colors.borderColor}`}
         padding={width >= breakpoints.md ? "10px 20px 0 0" : "0 10px 0 10px"}
         justifyContent="space-between"
       >
@@ -81,13 +82,19 @@ const LeftHeader: React.FC = () => {
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
                       borderBottom={
-                        tab === tabId ? "2px solid #1c345c" : "none"
+                        tab === tabId
+                          ? `2px solid ${colors.secondaryBlue}`
+                          : "none"
                       }
                       onClick={() => handleTabChange(tabId)}
                     >
                       <Text
                         cursor="grab"
-                        color={tab === tabId ? "#1c345c" : "#555555"}
+                        color={
+                          tab === tabId
+                            ? `${colors.secondaryBlue}`
+                            : `${colors.grayText}`
+                        }
                         fontWeight={tab === tabId ? "700" : "400"}
                       >
                         {tabId === "myAccounts"
@@ -116,17 +123,17 @@ const LeftHeader: React.FC = () => {
               <FullBorderFlex
                 justifyContent="center"
                 alignItems="center"
-                border="1px solid #C1C9D3"
+                border={`1px solid  ${colors.borderColor}`}
                 padding="10px "
                 gap="10px"
                 cursor="pointer"
               >
                 <Icon src="/assets/plus_blue.png" alt="plusIcon" />
-                <Button backgroundColor="#fff" padding="0">
+                <Button backgroundColor={colors.white} padding="0">
                   <Text
                     fontSize="14px"
                     fontWeight="600"
-                    color="#69a6e1"
+                    color={colors.textBlue}
                     cursor="pointer"
                   >
                     {tab === "myAccounts"
@@ -137,7 +144,7 @@ const LeftHeader: React.FC = () => {
               </FullBorderFlex>
             </Flex>
           ) : (
-            <Flex backgroundColor="#5a9aed" padding="10px 12px">
+            <Flex backgroundColor={colors.borderBlue} padding="10px 12px">
               <Icon
                 src="/assets/white_plus_icon.png"
                 alt="plusIcon"

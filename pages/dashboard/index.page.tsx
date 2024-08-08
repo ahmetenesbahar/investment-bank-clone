@@ -13,11 +13,13 @@ import { PageProvider } from "./context/PageContext";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 
+import { colors } from "@/styles/colors";
+
 const Dashboard: NextPage = () => {
   return (
     <PageProvider>
       <TabProvider>
-        <Container backgroundColor="#f2f2f2">
+        <Container backgroundColor={colors.secondaryWhite}>
           <Navbar />
           <Flex>
             <Sidebar />

@@ -16,6 +16,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
 import { formatIBAN } from "../utils/formatting";
 import { breakpoints } from "@/utils/constants";
+import { colors } from "@/styles/colors";
 
 enum ActiveIndexEnum {
   None = -1,
@@ -41,8 +42,8 @@ const Balance: React.FC = () => {
               <Tr
                 borderBottom={
                   activeIndex === ActiveIndexEnum.Account1
-                    ? "1px solid #009ff2"
-                    : "1px solid #e5e5e5"
+                    ? `1px solid ${colors.borderBlue}`
+                    : `1px solid ${colors.borderColor}`
                 }
               >
                 <Th>{t("Account Type")}</Th>
@@ -54,9 +55,11 @@ const Balance: React.FC = () => {
               {user?.accounts.map((account: any, index: number) => (
                 <React.Fragment key={index}>
                   <Tr
-                    hoverBackground="#F2F9FF"
+                    hoverBackground={colors.hoverWhite}
                     backgroundColor={
-                      activeIndex === index ? "#F2F9FF" : "transparent"
+                      activeIndex === index
+                        ? `${colors.hoverWhite}`
+                        : "transparent"
                     }
                     cursor="pointer"
                     onClick={() => {
@@ -67,30 +70,40 @@ const Balance: React.FC = () => {
                     borderBottom={
                       activeIndex === index || activeIndex === index + 1
                         ? "none"
-                        : "1px solid #e5e5e5"
+                        : `1px solid ${colors.borderColor}`
                     }
                     borderTop={
-                      activeIndex === index ? "1px solid #009ff2" : "none"
+                      activeIndex === index
+                        ? `1px solid ${colors.borderBlue}`
+                        : "none"
                     }
                     borderLeft={
-                      activeIndex === index ? "1px solid #009ff2" : "none"
+                      activeIndex === index
+                        ? `1px solid ${colors.borderBlue}`
+                        : "none"
                     }
                     borderRight={
-                      activeIndex === index ? "1px solid #009ff2" : "none"
+                      activeIndex === index
+                        ? `1px solid ${colors.borderBlue}`
+                        : "none"
                     }
                   >
                     <Td padding="15px">
                       <Text
                         textTransform="capitalize"
                         fontWeight="450"
-                        color="#000"
+                        color={colors.black}
                         cursor="pointer"
                       >
                         {account.accountType}
                       </Text>
                     </Td>
                     <Td>
-                      <Text fontWeight="450" color="#000" cursor="pointer">
+                      <Text
+                        fontWeight="450"
+                        color={colors.black}
+                        cursor="pointer"
+                      >
                         {formatIBAN(account.iban)}
                       </Text>
                     </Td>
@@ -102,10 +115,18 @@ const Balance: React.FC = () => {
                         padding="0 15px"
                       >
                         <Flex gap="4px" cursor="pointer">
-                          <Text fontWeight="450" color="#000" cursor="pointer">
+                          <Text
+                            fontWeight="450"
+                            color={colors.black}
+                            cursor="pointer"
+                          >
                             {account.balance}
                           </Text>
-                          <Text fontWeight="450" color="#000" cursor="pointer">
+                          <Text
+                            fontWeight="450"
+                            color={colors.black}
+                            cursor="pointer"
+                          >
                             {account.currency}
                           </Text>
                         </Flex>
@@ -124,17 +145,25 @@ const Balance: React.FC = () => {
                   {activeIndex === index && (
                     <Tr
                       backgroundColor={
-                        activeIndex === index ? "#F2F9FF" : "transparent"
+                        activeIndex === index
+                          ? `${colors.hoverWhite}`
+                          : "transparent"
                       }
-                      hoverBackground="#F2F9FF"
+                      hoverBackground={colors.hoverWhite}
                       borderBottom={
-                        activeIndex === index ? "1px solid #009ff2" : "none"
+                        activeIndex === index
+                          ? `1px solid ${colors.borderBlue}`
+                          : "none"
                       }
                       borderLeft={
-                        activeIndex === index ? "1px solid #009ff2" : "none"
+                        activeIndex === index
+                          ? `1px solid ${colors.borderBlue}`
+                          : "none"
                       }
                       borderRight={
-                        activeIndex === index ? "1px solid #009ff2" : "none"
+                        activeIndex === index
+                          ? `1px solid ${colors.borderBlue}`
+                          : "none"
                       }
                     >
                       <Td colSpan={3} padding="15px">
@@ -145,36 +174,36 @@ const Balance: React.FC = () => {
                         >
                           <Text
                             fontWeight="450"
-                            color="#009ff2"
+                            color={colors.borderBlue}
                             padding="0 5px"
                             cursor="pointer"
                             hover
-                            hoverBackground="#e0f0ff"
-                            hoverColor="#0079b2"
+                            hoverBackground={colors.secondaryHoverBlue}
+                            hoverColor={colors.hoverBlue}
                           >
                             {t("Transfer")}
                           </Text>
                           <VerticalLine width="1px" height="16px" />
                           <Text
                             fontWeight="450"
-                            color="#009ff2"
+                            color={colors.borderBlue}
                             padding="0 5px"
                             cursor="pointer"
                             hover
-                            hoverBackground="#e0f0ff"
-                            hoverColor="#0079b2"
+                            hoverBackground={colors.secondaryHoverBlue}
+                            hoverColor={colors.hoverBlue}
                           >
                             EFT
                           </Text>
                           <VerticalLine width="1px" height="16px" />
                           <Text
                             fontWeight="450"
-                            color="#009ff2"
+                            color={colors.borderBlue}
                             padding="0 5px"
                             cursor="pointer"
                             hover
-                            hoverBackground="#e0f0ff"
-                            hoverColor="#0079b2"
+                            hoverBackground={colors.secondaryHoverBlue}
+                            hoverColor={colors.hoverBlue}
                           >
                             {t("Account Activities")}
                           </Text>
@@ -187,11 +216,11 @@ const Balance: React.FC = () => {
               <Tr>
                 <Td
                   colSpan={3}
-                  borderBottom="1px solid #e5e5e5 "
+                  borderBottom={`1px solid ${colors.borderColor}`}
                   padding="15px"
                 >
                   <Flex alignItems="center">
-                    <Text fontWeight="450" color="#000">
+                    <Text fontWeight="450" color={colors.black}>
                       {t(
                         "You don't have any investment account, click to open."
                       )}
@@ -206,10 +235,10 @@ const Balance: React.FC = () => {
             alignItems="center"
             justifyContent="space-between"
             padding="15px 20px 15px 15px"
-            borderBottom="1px solid #e5e5e5 "
+            borderBottom={`1px solid ${colors.borderColor}`}
           >
             <Text
-              color="#69a6e1"
+              color={colors.textBlue}
               textDecoration="underline"
               cursor="pointer"
               onClick={() => {
@@ -218,8 +247,11 @@ const Balance: React.FC = () => {
             >
               {t("Edit Accounts")}
             </Text>
-            <Button border="1px solid #C1C9D3" backgroundColor="transparent">
-              <Text color="#69a6e1" cursor="pointer" textAlign="center">
+            <Button
+              border={`1px solid  ${colors.borderColor}`}
+              backgroundColor="transparent"
+            >
+              <Text color={colors.textBlue} cursor="pointer" textAlign="center">
                 {t("My Accounts")}
               </Text>
             </Button>
@@ -232,7 +264,7 @@ const Balance: React.FC = () => {
               <Flex
                 padding="10px"
                 backgroundColor={
-                  activeIndex === index ? "#F2F9FF" : "transparent"
+                  activeIndex === index ? `${colors.hoverWhite}` : "transparent"
                 }
                 justifyContent="space-between"
                 alignItems="center"
@@ -245,21 +277,29 @@ const Balance: React.FC = () => {
                 borderBottom={
                   activeIndex === index || activeIndex === index + 1
                     ? "none"
-                    : "1px solid #e5e5e5"
+                    : `1px solid ${colors.borderColor}`
                 }
-                borderTop={activeIndex === index ? "1px solid #009ff2" : "none"}
+                borderTop={
+                  activeIndex === index
+                    ? `1px solid ${colors.borderBlue}`
+                    : "none"
+                }
                 borderLeft={
-                  activeIndex === index ? "1px solid #009ff2" : "none"
+                  activeIndex === index
+                    ? `1px solid ${colors.borderBlue}`
+                    : "none"
                 }
                 borderRight={
-                  activeIndex === index ? "1px solid #009ff2" : "none"
+                  activeIndex === index
+                    ? `1px solid ${colors.borderBlue}`
+                    : "none"
                 }
               >
                 <Flex flexDirection="column" gap="8px" width="100%">
                   <Text
                     textTransform="capitalize"
                     fontWeight="700"
-                    color="#000"
+                    color={colors.black}
                     cursor="pointer"
                   >
                     {account.accountType}
@@ -267,16 +307,24 @@ const Balance: React.FC = () => {
                   <Text
                     textTransform="capitalize"
                     fontWeight="450"
-                    color="#000"
+                    color={colors.black}
                     cursor="pointer"
                   >
                     {formatIBAN(account.iban)}
                   </Text>
                   <Flex gap="4px" cursor="pointer">
-                    <Text fontWeight="450" color="#000" cursor="pointer">
+                    <Text
+                      fontWeight="450"
+                      color={colors.black}
+                      cursor="pointer"
+                    >
                       {account.balance}
                     </Text>
-                    <Text fontWeight="450" color="#000" cursor="pointer">
+                    <Text
+                      fontWeight="450"
+                      color={colors.black}
+                      cursor="pointer"
+                    >
                       {account.currency}
                     </Text>
                   </Flex>
@@ -296,50 +344,58 @@ const Balance: React.FC = () => {
                   alignItems="center"
                   padding="10px 0"
                   backgroundColor={
-                    activeIndex === index ? "#F2F9FF" : "transparent"
+                    activeIndex === index
+                      ? `${colors.hoverWhite}`
+                      : "transparent"
                   }
                   borderBottom={
-                    activeIndex === index ? "1px solid #009ff2" : "none"
+                    activeIndex === index
+                      ? `1px solid ${colors.borderBlue}`
+                      : "none"
                   }
                   borderLeft={
-                    activeIndex === index ? "1px solid #009ff2" : "none"
+                    activeIndex === index
+                      ? `1px solid ${colors.borderBlue}`
+                      : "none"
                   }
                   borderRight={
-                    activeIndex === index ? "1px solid #009ff2" : "none"
+                    activeIndex === index
+                      ? `1px solid ${colors.borderBlue}`
+                      : "none"
                   }
                 >
                   <Text
                     fontWeight="450"
-                    color="#009ff2"
+                    color={colors.borderBlue}
                     padding="0 5px"
                     cursor="pointer"
                     hover
-                    hoverBackground="#e0f0ff"
-                    hoverColor="#0079b2"
+                    hoverBackground={colors.secondaryHoverBlue}
+                    hoverColor={colors.hoverBlue}
                   >
                     {t("Transfer")}
                   </Text>
                   <VerticalLine width="1px" height="16px" />
                   <Text
                     fontWeight="450"
-                    color="#009ff2"
+                    color={colors.borderBlue}
                     padding="0 5px"
                     cursor="pointer"
                     hover
-                    hoverBackground="#e0f0ff"
-                    hoverColor="#0079b2"
+                    hoverBackground={colors.secondaryHoverBlue}
+                    hoverColor={colors.hoverBlue}
                   >
                     EFT
                   </Text>
                   <VerticalLine width="1px" height="16px" />
                   <Text
                     fontWeight="450"
-                    color="#009ff2"
+                    color={colors.borderBlue}
                     padding="0 5px"
                     cursor="pointer"
                     hover
-                    hoverBackground="#e0f0ff"
-                    hoverColor="#0079b2"
+                    hoverBackground={colors.secondaryHoverBlue}
+                    hoverColor={colors.hoverBlue}
                   >
                     {t("Account Activities")}
                   </Text>
@@ -351,10 +407,11 @@ const Balance: React.FC = () => {
             justifyContent="space-between"
             alignItems="center"
             padding="15px"
-            borderBottom="1px solid #e5e5e5"
+            width="100%"
+            borderBottom={`1px solid ${colors.borderColor}`}
           >
             <Text
-              color="#69a6e1"
+              color={colors.textBlue}
               textDecoration="underline"
               cursor="pointer"
               onClick={() => {
@@ -363,8 +420,11 @@ const Balance: React.FC = () => {
             >
               {t("Edit Accounts")}
             </Text>
-            <Button border="1px solid #C1C9D3" backgroundColor="transparent">
-              <Text color="#69a6e1" cursor="pointer" textAlign="center">
+            <Button
+              border={`1px solid  ${colors.borderColor}`}
+              backgroundColor="transparent"
+            >
+              <Text color={colors.textBlue} cursor="pointer" textAlign="center">
                 {t("My Accounts")}
               </Text>
             </Button>

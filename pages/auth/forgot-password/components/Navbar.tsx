@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, FlexColumn, Text, Link } from "@/styles/styles";
 import { useTranslation } from "next-i18next";
+import { colors } from "@/styles/colors";
 
 const Navbar: React.FC = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const Navbar: React.FC = () => {
         margin="0 25px 0  0"
       >
         <img src="/assets/lock.png" alt="lockIcon" />
-        <Text color="#00428a" fontSize="11px" fontWeight="500">
+        <Text color={colors.specialBlue} fontSize="11px" fontWeight="500">
           {t("Secure")}
         </Text>
       </FlexColumn>

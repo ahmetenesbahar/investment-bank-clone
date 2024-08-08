@@ -5,6 +5,7 @@ import { usePage } from "../context/PageContext";
 import SelectBox from "./SelectBox";
 import { useTranslation } from "next-i18next";
 import { formatAccountNumbers } from "../utils/formatting";
+import { colors } from "@/styles/colors";
 
 const EditAccounts: React.FC = () => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ const EditAccounts: React.FC = () => {
     <Flex flexDirection="column" width="100%">
       <Table>
         <thead>
-          <Tr borderBottom="1px solid #e5e5e5 ">
+          <Tr borderBottom={`1px solid ${colors.borderColor}`}>
             <Th width="206px">{t("Account Type")}</Th>
             <Th width="298">{t("Nickname / Account Number")}</Th>
             <Th width="225px">{t("Net Balance")}</Th>
@@ -31,7 +32,7 @@ const EditAccounts: React.FC = () => {
         <tbody>
           {user?.accounts.map((account: any, index: number) => (
             <React.Fragment key={index}>
-              <Tr borderBottom="1px solid #e5e5e5 ">
+              <Tr borderBottom={`1px solid ${colors.borderColor}`}>
                 <Td padding="15px">
                   <SelectBox
                     options={accountTypes}
@@ -53,10 +54,18 @@ const EditAccounts: React.FC = () => {
                     cursor="pointer"
                   >
                     <Flex gap="4px" cursor="pointer">
-                      <Text fontWeight="450" color="#000" cursor="pointer">
+                      <Text
+                        fontWeight="450"
+                        color={colors.black}
+                        cursor="pointer"
+                      >
                         {account.balance}
                       </Text>
-                      <Text fontWeight="450" color="#000" cursor="pointer">
+                      <Text
+                        fontWeight="450"
+                        color={colors.black}
+                        cursor="pointer"
+                      >
                         {account.currency}
                       </Text>
                     </Flex>
@@ -65,7 +74,7 @@ const EditAccounts: React.FC = () => {
               </Tr>
             </React.Fragment>
           ))}
-          <Tr borderBottom="1px solid #e5e5e5 ">
+          <Tr borderBottom={`1px solid ${colors.borderColor}`}>
             <Td padding="15px">
               <SelectBox options={accountTypes} width="133px" />
             </Td>
@@ -79,13 +88,13 @@ const EditAccounts: React.FC = () => {
         width="100%"
         alignItems="center"
         padding="10px 0 10px 15px"
-        borderBottom="1px solid #e5e5e5 "
+        borderBottom={`1px solid ${colors.borderColor}`}
         gap="10px"
       >
         <Button
-          backgroundColor="#f34509"
-          color="#fff"
-          border="1px solid #C1C9D3"
+          backgroundColor={colors.secondaryOrange}
+          color={colors.white}
+          border={`1px solid  ${colors.borderColor}`}
           padding="0.6rem 2rem"
           width="120px"
           onClick={() => {
@@ -95,7 +104,7 @@ const EditAccounts: React.FC = () => {
           {t("Save")}
         </Button>
         <Button
-          border="1px solid #C1C9D3"
+          border={`1px solid  ${colors.borderColor}`}
           backgroundColor="transparent"
           padding="0.6rem 2rem"
           width="120px"
@@ -103,7 +112,7 @@ const EditAccounts: React.FC = () => {
             handlePageChange("");
           }}
         >
-          <Text color="#69a6e1" cursor="pointer" textAlign="center">
+          <Text color={colors.textBlue} cursor="pointer" textAlign="center">
             {t("Cancel")}
           </Text>
         </Button>

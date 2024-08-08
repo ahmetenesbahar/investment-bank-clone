@@ -18,6 +18,7 @@ import LoginInput from "./LoginInput";
 import useLogin from "../hooks/useLogin";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { colors } from "@/styles/colors";
 
 const LoginForm: React.FC = () => {
   const { control, handleSubmit, errors, isError, isSuccess, isPending } =
@@ -131,7 +132,7 @@ const LoginForm: React.FC = () => {
           }}
         >
           <LoginIcon src="/assets/login_icon.png" alt="login_icon" />
-          <Text color="#49a4e0" cursor="pointer">
+          <Text color={colors.specialBlue} cursor="pointer">
             {t("Forgot Password")}
           </Text>
         </Flex>
