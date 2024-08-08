@@ -10,7 +10,7 @@ const LanguageSwitcher: React.FC = () => {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
-    router.push(router.asPath, undefined, { locale: lng });
+    router.replace(router.asPath, undefined, { locale: lng });
   };
 
   return (

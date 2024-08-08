@@ -33,8 +33,7 @@ const LoginForm: React.FC = () => {
 
   const handleForgotPasswordClick = () => {
     const currentLang = router.locale || "tr";
-    router.push(`/${currentLang}/auth/forgot-password`);
-    console.log(currentLang);
+    router.replace(`/${currentLang}/auth/forgot-password`);
   };
 
   return (

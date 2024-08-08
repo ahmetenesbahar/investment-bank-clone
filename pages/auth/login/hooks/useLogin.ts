@@ -46,7 +46,7 @@ const useLogin = () => {
         setCookie("user", JSON.stringify(data.data.user));
       }
 
-      router.push("/dashboard");
+      router.replace("/dashboard");
     },
     onError: (error) => {
       console.error("Login failed:", error);
