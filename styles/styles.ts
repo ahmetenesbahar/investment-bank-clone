@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "@/utils/constants";
 
 interface Props {
   justifyContent?: string;
@@ -88,7 +89,7 @@ export const Flex = styled.div<Props>`
   ${(props) =>
     props.responsiveFull &&
     `
-      @media (max-width: 1024px) {
+      @media (max-width: ${breakpoints.lg}px) {
         width: 100%;
       }
     `}
@@ -98,10 +99,10 @@ export const LoginSidebarContainer = styled(Container)<Props>`
   width: 305px;
   padding-left: 2rem;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     width: 217px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.md}px) {
     display: none;
   }
 `;
@@ -123,14 +124,14 @@ export const FlexColumn = styled.div<Props>`
   ${(props) =>
     props.responsiveFull &&
     `
-      @media (max-width: 1024px) {
+      @media (max-width: ${breakpoints.lg}px) {
         width: 100%;
       }
     `}
 `;
 
 export const LoginContainer = styled(FlexColumn)<Props>`
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     width: 100%;
   }
 `;
@@ -143,11 +144,11 @@ export const LoginHeader = styled.h1`
   font-size: 1.625rem;
   width: 424px;
   text-align: start;
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     font-size: 22px;
     margin-top: 2.5rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.md}px) {
     font-size: 18px;
   }
 `;
@@ -170,7 +171,7 @@ export const InputLogin = styled.input<Props>`
   outline: none;
   margin: ${(props) => props.margin || "0"};
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     width: 100%;
   }
 
@@ -225,7 +226,7 @@ export const Button = styled.button<Props>`
   ${(props) =>
     props.responsiveFull &&
     `
-      @media (max-width: 768px) {
+      @media (max-width: ${breakpoints.md}px) {
         width: 100%;
       }
     `}
@@ -238,7 +239,7 @@ export const SecurityBubble = styled.div<Props>`
   background-color: #ebebeb;
   display: ${(props) => props.display || "none"};
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     width: 100%;
     max-width: 100%;
     display: ${(props) => props.display};
@@ -320,7 +321,7 @@ export const SwitchContainer = styled.label`
   right: 10px;
   width: 84px;
   height: 24px;
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     right: 10px;
   }
 `;
@@ -405,7 +406,7 @@ export const HelpBox = styled.div<Props>`
   margin-left: 2px;
   background-color: #fafafa;
   z-index: 1;
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     display: none;
   }
 `;
@@ -418,14 +419,14 @@ export const MarginBox = styled(HelpBox)<Props>`
 
 export const ResponsiveLoginText = styled(Text)<Props>`
   display: none;
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     display: block;
   }
 `;
 
 export const MobileLoginLogoContainer = styled.img<Props>`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.md}px) {
     display: block;
   }
 `;
@@ -433,7 +434,7 @@ export const MobileLoginLogoContainer = styled.img<Props>`
 export const LoginIcon = styled.img<Props>`
   display: ${(props) => props.display || "block"};
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     display: block;
   }
 `;
@@ -463,7 +464,7 @@ export const SecondaryHeader = styled.h2<Props>`
 `;
 
 export const SecondaryHeaderForgotPassword = styled(SecondaryHeader)<Props>`
-  @media (max-width: 1280px) {
+  @media (max-width: ${breakpoints.xl}px) {
     font-size: 14px;
   }
 `;
@@ -475,16 +476,16 @@ export const VerticalLine = styled.div<Props>`
 `;
 
 export const ForgotPasswordInput = styled(InputLogin)<Props>`
-  @media (max-width: 1024px) {
+  @media (max-width: ${breakpoints.lg}px) {
     max-width: 424px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.md}px) {
     max-width: 100%;
   }
 `;
 
 export const ForgotPasswordContainer = styled(Flex)<Props>`
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.md}px) {
     margin: 0;
     margin-top: 2px;
   }
@@ -587,10 +588,10 @@ export const DashboardSidebarContainer = styled(Flex)<Props>`
 export const DashboardMainContainer = styled(Flex)<Props>`
   margin-top: 80px;
   margin-left: 236px;
-  @media (max-width: 1280px) {
+  @media (max-width: ${breakpoints.xl}px) {
     flex-wrap: wrap;
   }
-  @media (max-width: 1023px) {
+  @media (max-width: ${breakpoints.lg}px) {
     width: 100%;
     margin: 1px 0;
     margin-top: 45px;
@@ -603,7 +604,7 @@ export const NavbarContainer = styled(Flex)<Props>`
 `;
 
 export const ChartDiv = styled(Flex)<Props>`
-  @media (max-width: 1280px) {
+  @media (max-width: ${breakpoints.xl}px) {
     justify-content: space-between;
   }
 `;

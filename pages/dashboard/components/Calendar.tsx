@@ -11,6 +11,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
 import { getMonths } from "../utils/months";
 import { useRouter } from "next/router";
+import { breakpoints } from "@/utils/constants";
 
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
@@ -159,8 +160,8 @@ const Calendar: React.FC = () => {
   return (
     <Flex
       position="relative"
-      width={width < 768 ? "100%" : "320px"}
-      justifyContent={width < 768 ? "center" : "start"}
+      width={width < breakpoints.md ? "100%" : "320px"}
+      justifyContent={width < breakpoints.md ? "center" : "start"}
     >
       <Flex zIndex="2">
         <Select
@@ -239,8 +240,8 @@ const Calendar: React.FC = () => {
             container: (provided) => ({
               ...provided,
               position: "absolute",
-              left: width < 768 ? "205px" : undefined,
-              right: width >= 768 ? "25px" : undefined,
+              left: width < breakpoints.md ? "205px" : undefined,
+              right: width >= breakpoints.md ? "25px" : undefined,
               top: "10px",
             }),
             control: (provided, state) => ({

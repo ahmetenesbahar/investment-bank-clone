@@ -13,6 +13,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { usePage } from "../context/PageContext";
 import { useTranslation } from "next-i18next";
 import { formatDateTime } from "../utils/formatting";
+import { breakpoints } from "@/utils/constants";
 
 const Navbar: React.FC = () => {
   const user = useUser();
@@ -47,7 +48,7 @@ const Navbar: React.FC = () => {
     >
       <Flex justifyContent="center" alignItems="center">
         <Flex borderRight="1px solid #e5e5e5">
-          {width >= 1024 ? (
+          {width >= breakpoints.lg ? (
             <img src="/assets/header_logo.png" alt="isbankLogo" />
           ) : (
             <Flex
@@ -66,10 +67,10 @@ const Navbar: React.FC = () => {
             </Flex>
           )}
         </Flex>
-        {width > 1280 && <SearchBar />}
+        {width > breakpoints.xl && <SearchBar />}
       </Flex>
 
-      {width >= 1024 && (
+      {width >= breakpoints.lg && (
         <Flex height="44px">
           {iconData.map((icon, index) => (
             <Flex
@@ -99,7 +100,7 @@ const Navbar: React.FC = () => {
               width="44px"
               height="44px"
             />
-            {width >= 1280 && (
+            {width >= breakpoints.xl && (
               <Flex
                 flexDirection="column"
                 justifyContent="center"
@@ -169,13 +170,13 @@ const Navbar: React.FC = () => {
         </Flex>
       )}
 
-      {width < 1024 && (
+      {width < breakpoints.lg && (
         <Flex>
           <img src="/assets/header_logo.png" alt="isbankLogo" />
         </Flex>
       )}
 
-      {width < 1024 && (
+      {width < breakpoints.lg && (
         <Flex backgroundColor="#F2F9FF" width="55px" justifyContent="center">
           <Icon src="/assets/header_logout.png" alt="logoutIcon" />
         </Flex>

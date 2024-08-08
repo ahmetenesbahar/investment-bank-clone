@@ -6,6 +6,7 @@ import useCurrency from "../hooks/useCurrency";
 import { usePage } from "../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
+import { breakpoints } from "@/utils/constants";
 
 const ChartTab: React.FC = () => {
   const { t } = useTranslation();
@@ -36,7 +37,7 @@ const ChartTab: React.FC = () => {
       padding="15px"
       position="relative"
     >
-      {width >= 768 ? (
+      {width >= breakpoints.md ? (
         <>
           <Text fontWeight="700" color="#1c345c">
             {t("Financial Status")}
@@ -116,7 +117,7 @@ const ChartTab: React.FC = () => {
         width="100%"
         justifyContent="space-between"
         alignItems="center"
-        borderBottom={width >= 1024 ? "1px solid #e5e5e5" : ""}
+        borderBottom={width >= breakpoints.lg ? "1px solid #e5e5e5" : ""}
         padding="10px 5px"
       >
         <Text

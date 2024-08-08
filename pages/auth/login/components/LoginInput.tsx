@@ -3,6 +3,7 @@ import { useController } from "react-hook-form";
 import { InputLogin, Flex, FlexColumn, Text } from "@/styles/styles";
 import Keyboard from "@/components/Keyboard";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { breakpoints } from "@/utils/constants";
 
 interface LoginInputProps {
   name: string;
@@ -102,16 +103,18 @@ const LoginInput: React.FC<LoginInputProps> = ({
           </Text>
         </Flex>
       )}
-      {name === "password" && isKeyboardVisible && windowWidth > 768 && (
-        <Flex
-          position="absolute"
-          right="100px"
-          bottom="-195px"
-          justifyContent="center"
-        >
-          <Keyboard onKeyPress={handleKeyPress} />
-        </Flex>
-      )}
+      {name === "password" &&
+        isKeyboardVisible &&
+        windowWidth > breakpoints.md && (
+          <Flex
+            position="absolute"
+            right="100px"
+            bottom="-195px"
+            justifyContent="center"
+          >
+            <Keyboard onKeyPress={handleKeyPress} />
+          </Flex>
+        )}
     </FlexColumn>
   );
 };

@@ -15,6 +15,7 @@ import { usePage } from "../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
 import { formatIBAN } from "../utils/formatting";
+import { breakpoints } from "@/utils/constants";
 
 const Balance: React.FC = () => {
   const user = useUser();
@@ -25,7 +26,7 @@ const Balance: React.FC = () => {
 
   return (
     <Flex flexDirection="column" width="100%">
-      {width >= 768 ? (
+      {width >= breakpoints.md ? (
         <>
           <Table>
             <thead>

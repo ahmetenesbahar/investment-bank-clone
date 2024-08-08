@@ -7,6 +7,7 @@ import useUser from "@/hooks/useGetUser";
 import { useTranslation } from "next-i18next";
 import { getSidebarItems, getSmallSidebarItems } from "../utils/sidebarItems";
 import { formatDateTime } from "../utils/formatting";
+import { breakpoints } from "@/utils/constants";
 
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
@@ -18,22 +19,23 @@ const Sidebar: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<boolean>(false);
   const sidebarItems = getSidebarItems(t);
   const smallSidebarItems = getSmallSidebarItems(t);
-  const itemsToRender = width < 1024 ? smallSidebarItems : sidebarItems;
+  const itemsToRender =
+    width < breakpoints.lg ? smallSidebarItems : sidebarItems;
 
-  if (!menu && width < 1024) {
+  if (!menu && width < breakpoints.lg) {
     return null;
   }
 
   return (
     <DashboardSidebarContainer
       height=" 100% "
-      backgroundColor={width <= 1280 ? "#1C345C" : "#08335e"}
+      backgroundColor={width <= breakpoints.xl ? "#1C345C" : "#08335e"}
       flexDirection="column"
       zIndex="2"
       position="fixed"
       top="44px"
     >
-      {width < 1280 && (
+      {width < breakpoints.xl && (
         <Flex
           width="100%"
           position="sticky"
@@ -50,7 +52,7 @@ const Sidebar: React.FC = () => {
           padding="8px 10px"
           gap="20px"
           borderBottom={
-            width <= 1280 ? "1px solid #10213c" : "1px solid #072E54"
+            width <= breakpoints.xl ? "1px solid #10213c" : "1px solid #072E54"
           }
           justifyContent="start"
           alignItems="center"
@@ -74,7 +76,7 @@ const Sidebar: React.FC = () => {
         </Flex>
       ))}
 
-      {width < 1024 && (
+      {width < breakpoints.lg && (
         <>
           <Flex
             backgroundColor="#fff"
