@@ -17,12 +17,20 @@ import { useTranslation } from "next-i18next";
 import { formatIBAN } from "../utils/formatting";
 import { breakpoints } from "@/utils/constants";
 
+enum ActiveIndexEnum {
+  None = -1,
+  Account1 = 0,
+  Account2 = 1,
+}
+
 const Balance: React.FC = () => {
   const user = useUser();
   const width = useMediaQuery();
   const { t } = useTranslation();
   const { handlePageChange } = usePage();
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<ActiveIndexEnum>(
+    ActiveIndexEnum.None
+  );
 
   return (
     <Flex flexDirection="column" width="100%">
@@ -32,7 +40,9 @@ const Balance: React.FC = () => {
             <thead>
               <Tr
                 borderBottom={
-                  activeIndex === 0 ? "1px solid #009ff2" : "1px solid #e5e5e5 "
+                  activeIndex === ActiveIndexEnum.Account1
+                    ? "1px solid #009ff2"
+                    : "1px solid #e5e5e5"
                 }
               >
                 <Th>{t("Account Type")}</Th>
@@ -50,7 +60,9 @@ const Balance: React.FC = () => {
                     }
                     cursor="pointer"
                     onClick={() => {
-                      setActiveIndex(activeIndex === index ? null : index);
+                      setActiveIndex(
+                        activeIndex === index ? ActiveIndexEnum.None : index
+                      );
                     }}
                     borderBottom={
                       activeIndex === index || activeIndex === index + 1
@@ -226,7 +238,9 @@ const Balance: React.FC = () => {
                 alignItems="center"
                 width="100%"
                 onClick={() => {
-                  setActiveIndex(activeIndex === index ? null : index);
+                  setActiveIndex(
+                    activeIndex === index ? ActiveIndexEnum.None : index
+                  );
                 }}
                 borderBottom={
                   activeIndex === index || activeIndex === index + 1
@@ -284,7 +298,6 @@ const Balance: React.FC = () => {
                   backgroundColor={
                     activeIndex === index ? "#F2F9FF" : "transparent"
                   }
-                  hoverBackground="#F2F9FF"
                   borderBottom={
                     activeIndex === index ? "1px solid #009ff2" : "none"
                   }
@@ -295,63 +308,62 @@ const Balance: React.FC = () => {
                     activeIndex === index ? "1px solid #009ff2" : "none"
                   }
                 >
-                  <Flex justifyContent="center" alignItems="center" gap="5px">
-                    <Text
-                      fontWeight="450"
-                      color="#009ff2"
-                      padding="0 5px"
-                      cursor="pointer"
-                      hover
-                      hoverBackground="#e0f0ff"
-                      hoverColor="#0079b2"
-                    >
-                      {t("Transfer")}
-                    </Text>
-                    <VerticalLine width="1px" height="16px" />
-                    <Text
-                      fontWeight="450"
-                      color="#009ff2"
-                      padding="0 5px"
-                      cursor="pointer"
-                      hover
-                      hoverBackground="#e0f0ff"
-                      hoverColor="#0079b2"
-                    >
-                      EFT
-                    </Text>
-                    <VerticalLine width="1px" height="16px" />
-                    <Text
-                      fontWeight="450"
-                      color="#009ff2"
-                      padding="0 5px"
-                      cursor="pointer"
-                      hover
-                      hoverBackground="#e0f0ff"
-                      hoverColor="#0079b2"
-                    >
-                      {t("Account Activities")}
-                    </Text>
-                  </Flex>
+                  <Text
+                    fontWeight="450"
+                    color="#009ff2"
+                    padding="0 5px"
+                    cursor="pointer"
+                    hover
+                    hoverBackground="#e0f0ff"
+                    hoverColor="#0079b2"
+                  >
+                    {t("Transfer")}
+                  </Text>
+                  <VerticalLine width="1px" height="16px" />
+                  <Text
+                    fontWeight="450"
+                    color="#009ff2"
+                    padding="0 5px"
+                    cursor="pointer"
+                    hover
+                    hoverBackground="#e0f0ff"
+                    hoverColor="#0079b2"
+                  >
+                    EFT
+                  </Text>
+                  <VerticalLine width="1px" height="16px" />
+                  <Text
+                    fontWeight="450"
+                    color="#009ff2"
+                    padding="0 5px"
+                    cursor="pointer"
+                    hover
+                    hoverBackground="#e0f0ff"
+                    hoverColor="#0079b2"
+                  >
+                    {t("Account Activities")}
+                  </Text>
                 </Flex>
               )}
             </React.Fragment>
           ))}
           <Flex
-            width="100%"
+            justifyContent="space-between"
+            alignItems="center"
+            padding="15px"
             borderBottom="1px solid #e5e5e5"
-            padding="20px 10px"
           >
-            <Text color="#000" fontWeight="450">
-              {t("You don't have any investment account, click to open.")}
-            </Text>
-          </Flex>
-          <Flex width="100%" padding="10px 10px">
-            <Button
-              border="1px solid #C1C9D3"
-              backgroundColor="transparent"
-              width="100%"
-              padding="10px"
+            <Text
+              color="#69a6e1"
+              textDecoration="underline"
+              cursor="pointer"
+              onClick={() => {
+                handlePageChange("editAccounts");
+              }}
             >
+              {t("Edit Accounts")}
+            </Text>
+            <Button border="1px solid #C1C9D3" backgroundColor="transparent">
               <Text color="#69a6e1" cursor="pointer" textAlign="center">
                 {t("My Accounts")}
               </Text>
