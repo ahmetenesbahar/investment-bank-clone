@@ -14,6 +14,7 @@ import useUser from "@/hooks/useGetUser";
 import { usePage } from "../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
+import { formatIBAN } from "../utils/formatting";
 
 const Balance: React.FC = () => {
   const user = useUser();
@@ -21,14 +22,6 @@ const Balance: React.FC = () => {
   const { t } = useTranslation();
   const { handlePageChange } = usePage();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const formatIBAN = (iban: string) => {
-    const cleanedIban = iban.replace(/\s+/g, "").toUpperCase();
-
-    const formattedIban = cleanedIban.replace(/(.{4})/g, "$1 ").trim();
-
-    return formattedIban;
-  };
 
   return (
     <Flex flexDirection="column" width="100%">

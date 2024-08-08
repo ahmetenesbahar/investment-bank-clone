@@ -13,14 +13,12 @@ import { usePage } from "../context/PageContext";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
-const initialTabs = ["myAccounts", "myCreditCards"];
-
 const LeftHeader: React.FC = () => {
   const { tab, handleTabChange } = useTab();
   const width = useMediaQuery();
   const { page } = usePage();
   const { t } = useTranslation();
-  const [tabs, setTabs] = useState(initialTabs);
+  const [tabs, setTabs] = useState(["myAccounts", "myCreditCards"]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const onDragEnd = (result: any) => {

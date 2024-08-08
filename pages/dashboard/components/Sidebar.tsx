@@ -6,6 +6,7 @@ import { usePage } from "../context/PageContext";
 import useUser from "@/hooks/useGetUser";
 import { useTranslation } from "next-i18next";
 import { getSidebarItems, getSmallSidebarItems } from "../utils/sidebarItems";
+import { formatDateTime } from "../utils/formatting";
 
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
@@ -18,16 +19,6 @@ const Sidebar: React.FC = () => {
   const sidebarItems = getSidebarItems(t);
   const smallSidebarItems = getSmallSidebarItems(t);
   const itemsToRender = width < 1024 ? smallSidebarItems : sidebarItems;
-
-  const formatDateTime = (date: Date) => {
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
-  };
 
   if (!menu && width < 1024) {
     return null;

@@ -4,27 +4,19 @@ import useUser from "@/hooks/useGetUser";
 import { usePage } from "../context/PageContext";
 import SelectBox from "./SelectBox";
 import { useTranslation } from "next-i18next";
+import { formatAccountNumbers } from "../utils/formatting";
 
 const EditAccounts: React.FC = () => {
   const { t } = useTranslation();
   const user = useUser();
-  console.log(user);
-
   const { handlePageChange } = usePage();
+  const accountNumbers = formatAccountNumbers(user);
 
   const accountTypes = [
     { label: `${t("Current TL")}`, value: "vadesizTl" },
     { label: `${t("Current FC")}`, value: "vadesizDoviz" },
     { label: `${t("Current Gold")}`, value: "vadesizAltın" },
   ];
-
-  const accountNumbers = user?.accounts.map((account: any) => {
-    const last11 = account?.iban.slice(-11);
-    return {
-      label: `${last11.slice(0, 4)}-${last11.slice(4)}`,
-      value: account?.iban,
-    };
-  });
 
   return (
     <Flex flexDirection="column" width="100%">

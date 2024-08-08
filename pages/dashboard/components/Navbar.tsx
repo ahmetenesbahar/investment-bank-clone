@@ -12,6 +12,7 @@ import useUser from "@/hooks/useGetUser";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { usePage } from "../context/PageContext";
 import { useTranslation } from "next-i18next";
+import { formatDateTime } from "../utils/formatting";
 
 const Navbar: React.FC = () => {
   const user = useUser();
@@ -22,16 +23,6 @@ const Navbar: React.FC = () => {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [userAvatarMenu, setUserAvatarMenu] = useState(false);
-
-  const formatDateTime = (date: Date) => {
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
-  };
 
   const iconData = [
     { src: "/assets/kampanyalar.png" },
