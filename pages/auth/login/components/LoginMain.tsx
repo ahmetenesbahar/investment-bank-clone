@@ -23,6 +23,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation, Trans } from "next-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ReactMarkdown from "react-markdown";
+import { breakpoints } from "@/utils/constants";
 
 const LoginMain: NextPage = () => {
   const { t } = useTranslation("common");
@@ -30,7 +31,7 @@ const LoginMain: NextPage = () => {
   const windowWidth = useMediaQuery();
 
   useEffect(() => {
-    if (windowWidth > 1024) {
+    if (windowWidth > breakpoints.lg) {
       setHelp(false);
     }
   }, [windowWidth]);
@@ -52,7 +53,9 @@ const LoginMain: NextPage = () => {
         <MobileLoginLogoContainer src="/assets/mobile_header.png" />
         <Flex width="100%">
           <LoginHeader>
-            {windowWidth < 1024 ? t("mobileLoginWelcome") : t("loginWelcome")}
+            {windowWidth < breakpoints.lg
+              ? t("mobileLoginWelcome")
+              : t("loginWelcome")}
           </LoginHeader>
         </Flex>
         <LoginForm />

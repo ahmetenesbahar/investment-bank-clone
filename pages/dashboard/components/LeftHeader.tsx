@@ -12,6 +12,7 @@ import { useTranslation } from "next-i18next";
 import { usePage } from "../context/PageContext";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { breakpoints } from "@/utils/constants";
 
 const LeftHeader: React.FC = () => {
   const { tab, handleTabChange } = useTab();
@@ -45,7 +46,7 @@ const LeftHeader: React.FC = () => {
         alignItems="center"
         width="100%"
         borderBottom="1px solid #e5e5e5"
-        padding={width >= 768 ? "10px 20px 0 0" : "0 10px 0 10px"}
+        padding={width >= breakpoints.md ? "10px 20px 0 0" : "0 10px 0 10px"}
         justifyContent="space-between"
       >
         <Droppable droppableId="tabs" direction="horizontal">
@@ -64,7 +65,7 @@ const LeftHeader: React.FC = () => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       padding="1rem"
-                      width={width <= 768 ? "auto" : "170px"}
+                      width={width <= breakpoints.md ? "auto" : "170px"}
                       cursor="grab"
                       justifyContent="space-between"
                       alignItems="center"
@@ -101,7 +102,7 @@ const LeftHeader: React.FC = () => {
           )}
         </Droppable>
         {page !== "editAccounts" &&
-          (width >= 768 ? (
+          (width >= breakpoints.md ? (
             <Flex padding="0 0 6px 0">
               <FullBorderFlex
                 justifyContent="center"

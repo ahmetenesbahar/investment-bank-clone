@@ -9,6 +9,7 @@ import {
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 import { useTranslation } from "next-i18next";
+import { breakpoints } from "@/utils/constants";
 
 const SearchBar: React.FC = () => {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ const SearchBar: React.FC = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center" ref={searchRef}>
-      {width > 1280 ? (
+      {width > breakpoints.xl ? (
         <>
           <Icon
             src="/assets/search_icon.png"

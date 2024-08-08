@@ -9,6 +9,7 @@ import {
 } from "@/styles/styles";
 import Keyboard from "@/components/Keyboard";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { breakpoints } from "@/utils/constants";
 
 interface InputProps {
   name: string;
@@ -116,16 +117,18 @@ const Input: React.FC<InputProps> = ({
           </Text>
         </Flex>
       )}
-      {name === "password" && isKeyboardVisible && windowWidth > 768 && (
-        <Flex
-          position="absolute"
-          right="100px"
-          bottom="-195px"
-          justifyContent="center"
-        >
-          <Keyboard onKeyPress={handleKeyPress} />
-        </Flex>
-      )}
+      {name === "password" &&
+        isKeyboardVisible &&
+        windowWidth > breakpoints.md && (
+          <Flex
+            position="absolute"
+            right="100px"
+            bottom="-195px"
+            justifyContent="center"
+          >
+            <Keyboard onKeyPress={handleKeyPress} />
+          </Flex>
+        )}
     </FlexColumn>
   );
 };
