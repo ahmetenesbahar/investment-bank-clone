@@ -48,8 +48,8 @@ const LoginMain: NextPage = () => {
       <LoginContainer
         alignItems="center"
         justifyContent="center"
-        width="500px"
-        padding="0 20px 0 0 "
+        width="31.25rem"
+        padding="0 1.25rem 0 0 "
       >
         <MobileLoginLogoContainer src="/assets/mobile_header.png" />
         <Flex width="100%">
@@ -66,7 +66,7 @@ const LoginMain: NextPage = () => {
             <Flex width="100%">
               <Flex
                 alignItems="center"
-                gap="5px"
+                gap="0.313rem"
                 cursor="pointer"
                 onClick={(e) => setHelp(!help)}
               >
@@ -101,7 +101,7 @@ const LoginMain: NextPage = () => {
             </SecurityBubble>
 
             <Flex width="100%">
-              <Flex alignItems="center" gap="3px" cursor="pointer">
+              <Flex alignItems="center" gap="0.188rem" cursor="pointer">
                 <LoginIcon src="/assets/lock_icon.png" alt="lock_icon" />
                 <Text color={colors.specialBlue} cursor="pointer">
                   {t("security")}
@@ -126,13 +126,13 @@ const LoginMain: NextPage = () => {
       <Footer>
         <Flex
           width="100%"
-          borderTop={`1px solid ${colors.secondaryBorderColor}`}
+          borderTop={`0.063rem solid ${colors.secondaryBorderColor}`}
           justifyContent="space-between"
-          height="50px"
+          height="3.125rem"
         >
           <Flex
             justifyContent="space-between"
-            gap="10px"
+            gap="0.625rem"
             alignItems="center"
             height="100%"
           >
@@ -140,7 +140,7 @@ const LoginMain: NextPage = () => {
           </Flex>
           <Flex
             justifyContent="space-between"
-            gap="10px"
+            gap="0.625rem"
             alignItems="center"
             height="100%"
           >

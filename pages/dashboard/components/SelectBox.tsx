@@ -77,7 +77,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
             ? `${colors.black}`
             : "black",
           cursor: "pointer",
-          fontSize: "14px",
+          fontSize: "0.875rem",
         }),
         menu: (provided) => ({
           ...provided,
@@ -89,7 +89,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         }),
         singleValue: (provided) => ({
           ...provided,
-          fontSize: "14px",
+          fontSize: "0.875rem",
           whiteSpace: "normal",
           color: `${colors.black}`,
           fontWeight: 450,

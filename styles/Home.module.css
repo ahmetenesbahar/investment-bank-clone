@@ -97,7 +97,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -113,19 +113,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75px;
-  height: 75px;
-  padding: 25px 10px;
-  margin-left: 16px;
+  width: 4.688rem;
+  height: 4.688rem;
+  padding: 25px 0.625rem;
+  margin-left: 1rem;
   transform: translateZ(0);
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0px 2px 8px -1px #0000001a;
+  box-shadow: 0px 0.125rem 0.5rem -1px #0000001a;
 }
 
 .thirteen::before,
 .thirteen::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
 }
@@ -200,7 +200,7 @@
 
   .center::before {
     transform: none;
-    height: 300px;
+    height: 18.75rem;
   }
 
   .description {
@@ -232,7 +232,7 @@
       rgba(var(--callout-rgb), 0.5)
     );
     background-clip: padding-box;
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(1.5rem);
   }
 
   .description div {

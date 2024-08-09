@@ -97,11 +97,11 @@ export const Flex = styled.div<Props>`
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
-  width: 305px;
+  width: 19.063rem;
   padding-left: 2rem;
 
   @media (max-width: ${breakpoints.lg}px) {
-    width: 217px;
+    width: 13.563rem;
   }
   @media (max-width: ${breakpoints.md}px) {
     display: none;
@@ -143,20 +143,20 @@ export const LoginHeader = styled.h1`
   color: #08335e;
   font-weight: 500;
   font-size: 1.625rem;
-  width: 424px;
+  width: 26.5rem;
   text-align: start;
   @media (max-width: ${breakpoints.lg}px) {
-    font-size: 22px;
+    font-size: 1.375rem;
     margin-top: 2.5rem;
   }
   @media (max-width: ${breakpoints.md}px) {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 `;
 
 export const LoginLogoContainer = styled.div`
-  width: 58px;
-  height: 112px;
+  width: 3.625rem;
+  height: 7rem;
   background-color: #08335e;
   justify-content: center;
   align-items: end;
@@ -165,10 +165,10 @@ export const LoginLogoContainer = styled.div`
 `;
 
 export const InputLogin = styled.input<Props>`
-  border: 1px solid ${(props) => (props.error ? "red" : "#d3d3d3")};
-  padding: 1px 2px 1px 15px;
-  width: ${(props) => props.width || "424px"};
-  height: 42px;
+  border: 0.063rem solid ${(props) => (props.error ? "red" : "#d3d3d3")};
+  padding: 0.063rem 0.125rem 0.063rem 0.938rem;
+  width: ${(props) => props.width || "26.5rem"};
+  height: 2.625rem;
   outline: none;
   margin: ${(props) => props.margin || "0"};
 
@@ -178,7 +178,7 @@ export const InputLogin = styled.input<Props>`
 
   &:hover {
     border: ${(props) =>
-      !props.error && props.hover ? "1px solid #94d3e2" : undefined};
+      !props.error && props.hover ? "0.063rem solid #94d3e2" : undefined};
   }
 
   &::-webkit-outer-spin-button,
@@ -190,7 +190,7 @@ export const InputLogin = styled.input<Props>`
 
 export const Text = styled.p<Props>`
   color: ${(props) => props.color || "#535353"};
-  font-size: ${(props) => props.fontSize || "14px"};
+  font-size: ${(props) => props.fontSize || "0.875rem"};
   cursor: ${(props) => props.cursor || "auto"};
   text-align: ${(props) => props.textAlign || "left"};
   font-weight: ${(props) => props.fontWeight || "400"};
@@ -221,7 +221,7 @@ export const Button = styled.button<Props>`
     props.backgroundColor || colors.loginHeaderBlue};
   padding: ${(props) => props.padding || "0.5rem 1rem"};
   margin: ${(props) => props.margin || "0"};
-  font-size: ${(props) => props.fontSize || "14px"};
+  font-size: ${(props) => props.fontSize || "0.875rem"};
   font-weight: ${(props) => props.fontWeight || "500"};
   cursor: pointer;
 
@@ -235,9 +235,9 @@ export const Button = styled.button<Props>`
 `;
 
 export const SecurityBubble = styled.div<Props>`
-  max-width: 430px;
-  padding: 10px;
-  margin-top: 10px;
+  max-width: 26.875rem;
+  padding: 0.625rem;
+  margin-top: 0.625rem;
   background-color: #ebebeb;
   display: ${(props) => props.display || "none"};
 
@@ -249,11 +249,11 @@ export const SecurityBubble = styled.div<Props>`
 `;
 
 export const HoverBubble = styled.div<Props>`
-  max-width: 430px;
+  max-width: 26.875rem;
   z-index: 1 !important;
   position: absolute !important;
-  padding: ${(props) => props.padding || "10px"};
-  margin-top: 10px;
+  padding: ${(props) => props.padding || "0.625rem"};
+  margin-top: 0.625rem;
   width: ${(props) => props.width || "100%"};
   background-color: ${(props) => props.backgroundColor || "#fafafa"};
   left: ${(props) => props.left || "800px"};
@@ -278,11 +278,11 @@ export const HoverBubbleWithTriangle = styled(HoverBubble)<Props>`
   &::before {
     content: "";
     position: absolute;
-    top: -20px;
+    top: -1.25rem;
     left: ${(props) => props.triangleLeft || "50%"};
     right: ${(props) => props.triangleRight || "50%"};
     transform: translateX(-50%);
-    border-width: 10px;
+    border-width: 0.625rem;
     border-style: solid;
     border-color: transparent transparent
       ${(props) => props.backgroundColor || "#fafafa"} transparent;
@@ -292,7 +292,7 @@ export const HoverBubbleWithTriangle = styled(HoverBubble)<Props>`
 export const ListItem = styled.div`
   display: flex;    
   font-size: 13.5px;
-  margin-bottom: 5px;
+  margin-bottom: 0.313rem;
   justify-content: flex-start;
   line-height: 1.5;
   
@@ -303,11 +303,11 @@ export const ListItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 5px;
-    height: 18px;
-    font-size: 20px;
+    width: 0.313rem;
+    height: 1.125rem;
+    font-size: 1.25rem;
     color: #08335e;
-    padding-right: 5px;
+    padding-right: 0.313rem;
  
 `;
 
@@ -320,11 +320,11 @@ export const SwitchContainer = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
-  right: 10px;
-  width: 84px;
-  height: 24px;
+  right: 0.625rem;
+  width: 5.25rem;
+  height: 1.5rem;
   @media (max-width: ${breakpoints.lg}px) {
-    right: 10px;
+    right: 0.625rem;
   }
 `;
 
@@ -338,12 +338,12 @@ export const SwitchInput = styled.input`
   z-index: 1;
 
   &:checked + span:before {
-    transform: translate(60px);
+    transform: translate(3.75rem);
   }
 
   &:checked + span + label {
     transform: ${(props) =>
-      props.checked ? "translate(50px, -50%)" : "translate(0, -50%)"};
+      props.checked ? "translate(3.125rem, -50%)" : "translate(0, -50%)"};
     transition: transform 0.4s;
   }
 `;
@@ -351,50 +351,50 @@ export const SwitchInput = styled.input`
 export const SwitchSlider = styled.span<Props>`
   position: relative;
   display: inline-block;
-  width: 84px;
-  height: 24px;
+  width: 5.25rem;
+  height: 1.5rem;
   background-color: ${(props) => (props.checked ? "#F85931" : "#999999")};
-  border-radius: 24px;
+  border-radius: 1.5rem;
   transition: background-color 0.3s;
 
   &::before {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     border-radius: 50%;
     background-color: white;
     transition: transform 0.3s;
     transform: ${(props) =>
       props.checked ? "translateX(52px)" : "translateX(0)"};
-    top: 2px;
-    left: 2px;
+    top: 0.125rem;
+    left: 0.125rem;
   }
 `;
 
 export const SwitchLabel = styled.label<Props>`
   position: absolute;
   top: 50%;
-  left: 4px;
-  width: 50px;
-  height: 20px;
-  line-height: 20px;
-  margin-left: ${(props) => (props.isEnglish ? "18px" : "20px")};
-  font-size: ${(props) => (props.isEnglish ? "10px" : "13px")};
+  left: 0.25rem;
+  width: 3.125rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  margin-left: ${(props) => (props.isEnglish ? "1.125rem" : "1.25rem")};
+  font-size: ${(props) => (props.isEnglish ? "0.625rem" : "13px")};
   font-weight: 500;
   color: white;
   transform: ${(props) =>
-    props.checked ? "translate(50px, -50%)" : "translate(0, -50%)"};
+    props.checked ? "translate(3.125rem, -50%)" : "translate(0, -50%)"};
   opacity: ${(props) =>
     props.checked ? "0" : "1"}; /* Hide the text when checked */
   transition: transform 0.4s, opacity 0.4s;
 `;
 
 export const SwitchLabelLeft = styled(SwitchLabel)<Props>`
-  margin-left: ${(props) => (props.isEnglish ? "0" : "3px")};
+  margin-left: ${(props) => (props.isEnglish ? "0" : "0.188rem")};
 
   transform: ${(props) =>
-    props.checked ? "translate(-50px, -50%)" : "translate(0, -50%)"};
+    props.checked ? "translate(-3.125rem, -50%)" : "translate(0, -50%)"};
   opacity: ${(props) => (props.checked ? "0" : "1")};
   transition: transform 0.4s, opacity 0.4s;
 `;
@@ -403,9 +403,9 @@ export const HelpBox = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 48px;
-  height: 42px;
-  margin-left: 2px;
+  width: 3rem;
+  height: 2.625rem;
+  margin-left: 0.125rem;
   background-color: #fafafa;
   z-index: 1;
   @media (max-width: ${breakpoints.lg}px) {
@@ -457,7 +457,7 @@ export const KeyboardDiv = styled.div<Props>`
 export const SecondaryHeader = styled.h2<Props>`
   color: ${(props) => props.color || colors.loginHeaderBlue};
   font-weight: ${(props) => props.fontWeight || "500"};
-  font-size: ${(props) => props.fontSize || "22px"};
+  font-size: ${(props) => props.fontSize || "1.375rem"};
   margin: ${(props) => props.margin || "0"};
   text-align: ${(props) => props.textAlign || "left"};
   border-bottom: ${(props) => props.borderBottom || "none"};
@@ -467,19 +467,19 @@ export const SecondaryHeader = styled.h2<Props>`
 
 export const SecondaryHeaderForgotPassword = styled(SecondaryHeader)<Props>`
   @media (max-width: ${breakpoints.xl}px) {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 `;
 
 export const VerticalLine = styled.div<Props>`
-  border-right: 1px solid ${colors.borderColor};
+  border-right: 0.063rem solid ${colors.borderColor};
   height: ${(props) => props.height || "100%"};
   margin: ${(props) => props.margin || "0"};
 `;
 
 export const ForgotPasswordInput = styled(InputLogin)<Props>`
   @media (max-width: ${breakpoints.lg}px) {
-    max-width: 424px;
+    max-width: 26.5rem;
   }
   @media (max-width: ${breakpoints.md}px) {
     max-width: 100%;
@@ -489,7 +489,7 @@ export const ForgotPasswordInput = styled(InputLogin)<Props>`
 export const ForgotPasswordContainer = styled(Flex)<Props>`
   @media (max-width: ${breakpoints.md}px) {
     margin: 0;
-    margin-top: 2px;
+    margin-top: 0.125rem;
   }
 `;
 
@@ -499,7 +499,7 @@ export const SearchBarInput = styled.input<Props>`
   border: none;
   width: ${(props) => props.width || "100%"};
   padding: ${(props) => props.padding || "0"};
-  font-size: ${(props) => props.fontSize || "14px"};
+  font-size: ${(props) => props.fontSize || "0.875rem"};
   &::placeholder {
     color: ${(props) => props.placeholderColor || colors.black};
     font-weight: ${(props) => props.fontWeight || "400"};
@@ -507,6 +507,7 @@ export const SearchBarInput = styled.input<Props>`
 `;
 export const Icon = styled.img<Props>`
   position: ${(props) => props.position || "static"};
+  width: ${(props) => props.width || "auto"};
 
   ${(props) =>
     props.left &&
@@ -549,11 +550,11 @@ export const Table = styled.table`
 `;
 
 export const Th = styled.th<Props>`
-  padding: 15px;
+  padding: 0.938rem;
   border-bottom: ${(props) => props.borderBottom || "none"};
   font-weight: 600;
   color: #7288aa;
-  font-size: 14px;
+  font-size: 0.875rem;
   width: ${(props) => props.width || "auto"};
   text-align: left;
 `;
@@ -562,7 +563,7 @@ export const Td = styled.td<Props>`
   padding: ${(props) => props.padding || "0"};
   border-bottom: ${(props) => props.borderBottom || "none"};
   color: #000;
-  font-size: 14px;
+  font-size: 0.875rem;
   width: ${(props) => props.width || "auto"};
 `;
 
@@ -581,28 +582,28 @@ export const Tr = styled.tr<Props>`
 export const DashboardSidebarContainer = styled(Flex)<Props>`
   overflow: auto;
   flex-shrink: 0;
-  width: 226px;
+  width: 14.125rem;
   @media (max-width: 1023px) {
     position: fixed;
   }
 `;
 
 export const DashboardMainContainer = styled(Flex)<Props>`
-  margin-top: 80px;
-  margin-left: 236px;
+  margin-top: 5rem;
+  margin-left: 14.75rem;
   @media (max-width: ${breakpoints.xl}px) {
     flex-wrap: wrap;
   }
   @media (max-width: ${breakpoints.lg}px) {
     width: 100%;
-    margin: 1px 0;
-    margin-top: 45px;
+    margin: 0.063rem 0;
+    margin-top: 2.813rem;
   }
 `;
 
 export const NavbarContainer = styled(Flex)<Props>`
   z-index: 1;
-   boxShadow="0 1px 3px 0 rgba(50, 50, 50, 0.1)"
+   boxShadow="0 0.063rem 0.188rem 0 rgba(50, 50, 50, 0.1)"
 `;
 
 export const ChartDiv = styled(Flex)<Props>`

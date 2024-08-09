@@ -9,22 +9,22 @@ const Navbar: React.FC = () => {
     <Flex
       justifyContent="space-between"
       alignItems="center"
-      width="840px"
+      width="52.5rem"
       padding="0.5rem 0"
       responsiveFull
     >
-      <Link href="https://www.isbank.com.tr/" margin="0 0 0 25px ">
+      <Link href="https://www.isbank.com.tr/" margin="0 0 0 1.563rem ">
         <img src="/assets/isbank_logo.png" alt="isbank_logo" />
       </Link>
 
       <FlexColumn
         alignItems="center"
         padding="1rem 0 0 0 0"
-        gap="3px"
-        margin="0 25px 0  0"
+        gap="0.188rem"
+        margin="0 1.563rem 0  0"
       >
         <img src="/assets/lock.png" alt="lockIcon" />
-        <Text color={colors.specialBlue} fontSize="11px" fontWeight="500">
+        <Text color={colors.specialBlue} fontSize="10.063rem" fontWeight="500">
           {t("Secure")}
         </Text>
       </FlexColumn>

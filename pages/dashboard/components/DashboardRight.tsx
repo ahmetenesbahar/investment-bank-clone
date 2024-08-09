@@ -12,33 +12,33 @@ const DashboardRight: React.FC = () => {
   return (
     <Flex
       flexDirection="column"
-      borderBottom={`1px solid ${colors.borderColor}`}
+      borderBottom={`0.063rem solid ${colors.borderColor}`}
       justifyContent="center"
       width={width < breakpoints.md ? "100%" : "auto"}
       alignItems="center"
     >
       {width < breakpoints.xl && (
-        <Flex width="100%" padding="0 20px">
+        <Flex width="100%" padding="0 1.25rem">
           <Text fontWeight="700" color={colors.secondaryBlue}>
             {t("My Agenda")}
           </Text>
         </Flex>
       )}
       <Calendar />
-      <Flex padding="0 12px 20px 12px" width="100%" zIndex="0">
+      <Flex padding="0 0.75rem 1.25rem 0.75rem" width="100%" zIndex="0">
         <FullBorderFlex
           justifyContent="center"
           alignItems="center"
-          border={`1px solid  ${colors.borderColor}`}
-          padding="10px 20px "
-          gap="10px"
+          border={`0.063rem solid  ${colors.borderColor}`}
+          padding="0.625rem 1.25rem "
+          gap="0.625rem"
           width="100%"
           cursor="pointer"
         >
           <Icon src="/assets/plus_blue.png" alt="plus_icon" />
           <Button backgroundColor={colors.white} padding="0">
             <Text
-              fontSize="14px"
+              fontSize="0.875rem"
               fontWeight="600"
               color={colors.textBlue}
               cursor="pointer"

@@ -11,13 +11,13 @@ const Tabs: React.FC = () => {
     <Flex
       alignItems="center"
       width="100%"
-      borderBottom={`1px solid ${colors.borderColor}`}
+      borderBottom={`0.063rem solid ${colors.borderColor}`}
     >
       <Flex
         padding="1rem 2rem"
         cursor="pointer"
         borderBottom={
-          tab === "bireysel" ? `2px solid ${colors.secondaryBlue}` : "none"
+          tab === "bireysel" ? `0.125rem solid ${colors.secondaryBlue}` : "none"
         }
         onClick={() => handleTabChange("bireysel")}
       >
@@ -33,12 +33,12 @@ const Tabs: React.FC = () => {
           {t("Personal")}
         </Text>
       </Flex>
-      <VerticalLine height="26px" />
+      <VerticalLine height="1.625rem" />
       <Flex
         padding="1rem 2rem"
         cursor="pointer"
         borderBottom={
-          tab === "ticari" ? `2px solid ${colors.secondaryBlue}` : "none"
+          tab === "ticari" ? `0.125rem solid ${colors.secondaryBlue}` : "none"
         }
         onClick={() => handleTabChange("ticari")}
       >
@@ -52,7 +52,7 @@ const Tabs: React.FC = () => {
           {t("Commercial")}
         </Text>
       </Flex>
-      <VerticalLine height="26px" />
+      <VerticalLine height="1.625rem" />
     </Flex>
   );
 };

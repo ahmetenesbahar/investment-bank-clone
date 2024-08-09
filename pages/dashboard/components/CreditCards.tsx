@@ -9,12 +9,12 @@ const CreditCards: React.FC = () => {
     <Flex
       flexDirection="column"
       width="100%"
-      height="225px"
-      borderBottom={`1px solid ${colors.borderColor}`}
+      height="14.063rem"
+      borderBottom={`0.063rem solid ${colors.borderColor}`}
     >
       <Table>
         <thead>
-          <Tr borderBottom={`1px solid ${colors.borderColor}`}>
+          <Tr borderBottom={`0.063rem solid ${colors.borderColor}`}>
             <Th>{t("Card Number")}</Th>
             <Th>{t("Card Type")}</Th>
             <Th>{t("Available Limit")}</Th>
@@ -24,8 +24,8 @@ const CreditCards: React.FC = () => {
           <Tr>
             <Td
               colSpan={3}
-              borderBottom={`1px solid ${colors.borderColor}`}
-              padding="15px"
+              borderBottom={`0.063rem solid ${colors.borderColor}`}
+              padding="0.938rem"
             >
               <Flex alignItems="center">
                 <Text fontWeight="450" color={colors.black}>

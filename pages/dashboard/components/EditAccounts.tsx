@@ -23,27 +23,27 @@ const EditAccounts: React.FC = () => {
     <Flex flexDirection="column" width="100%">
       <Table>
         <thead>
-          <Tr borderBottom={`1px solid ${colors.borderColor}`}>
-            <Th width="206px">{t("Account Type")}</Th>
+          <Tr borderBottom={`0.063rem solid ${colors.borderColor}`}>
+            <Th width="12.875rem">{t("Account Type")}</Th>
             <Th width="298">{t("Nickname / Account Number")}</Th>
-            <Th width="225px">{t("Net Balance")}</Th>
+            <Th width="14.063rem">{t("Net Balance")}</Th>
           </Tr>
         </thead>
         <tbody>
           {user?.accounts.map((account: any, index: number) => (
             <React.Fragment key={index}>
-              <Tr borderBottom={`1px solid ${colors.borderColor}`}>
-                <Td padding="15px">
+              <Tr borderBottom={`0.063rem solid ${colors.borderColor}`}>
+                <Td padding="0.938rem">
                   <SelectBox
                     options={accountTypes}
-                    width="133px"
+                    width="8.313rem"
                     defaultValue={accountTypes[0]}
                   />
                 </Td>
-                <Td padding="15px">
+                <Td padding="0.938rem">
                   <SelectBox
                     options={accountNumbers}
-                    width="200px"
+                    width="12.5rem"
                     defaultValue={accountNumbers[0]}
                   />
                 </Td>
@@ -53,7 +53,7 @@ const EditAccounts: React.FC = () => {
                     alignItems="center"
                     cursor="pointer"
                   >
-                    <Flex gap="4px" cursor="pointer">
+                    <Flex gap="0.25rem" cursor="pointer">
                       <Text
                         fontWeight="450"
                         color={colors.black}
@@ -74,12 +74,12 @@ const EditAccounts: React.FC = () => {
               </Tr>
             </React.Fragment>
           ))}
-          <Tr borderBottom={`1px solid ${colors.borderColor}`}>
-            <Td padding="15px">
-              <SelectBox options={accountTypes} width="133px" />
+          <Tr borderBottom={`0.063rem solid ${colors.borderColor}`}>
+            <Td padding="0.938rem">
+              <SelectBox options={accountTypes} width="8.313rem" />
             </Td>
-            <Td padding="15px">
-              <SelectBox options={accountNumbers} width="200px" />
+            <Td padding="0.938rem">
+              <SelectBox options={accountNumbers} width="12.5rem" />
             </Td>
           </Tr>
         </tbody>
@@ -87,16 +87,16 @@ const EditAccounts: React.FC = () => {
       <Flex
         width="100%"
         alignItems="center"
-        padding="10px 0 10px 15px"
-        borderBottom={`1px solid ${colors.borderColor}`}
-        gap="10px"
+        padding="0.625rem 0 0.625rem 0.938rem"
+        borderBottom={`0.063rem solid ${colors.borderColor}`}
+        gap="0.625rem"
       >
         <Button
           backgroundColor={colors.secondaryOrange}
           color={colors.white}
-          border={`1px solid  ${colors.borderColor}`}
+          border={`0.063rem solid  ${colors.borderColor}`}
           padding="0.6rem 2rem"
-          width="120px"
+          width="7.5rem"
           onClick={() => {
             handlePageChange("");
           }}
@@ -104,10 +104,10 @@ const EditAccounts: React.FC = () => {
           {t("Save")}
         </Button>
         <Button
-          border={`1px solid  ${colors.borderColor}`}
+          border={`0.063rem solid  ${colors.borderColor}`}
           backgroundColor="transparent"
           padding="0.6rem 2rem"
-          width="120px"
+          width="7.5rem"
           onClick={() => {
             handlePageChange("");
           }}

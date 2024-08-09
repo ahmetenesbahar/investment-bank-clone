@@ -17,14 +17,14 @@ import { colors } from "@/styles/colors";
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
     color: `${colors.textBlue}`,
-    fontSize: "14px",
+    fontSize: "0.875rem",
     "&.Mui-selected": {
       backgroundColor: `${colors.calendarGreen} !important`,
       color: "white",
     },
     "&.MuiPickersDay-today": {
       backgroundColor: "white",
-      border: "1px solid lightblue",
+      border: "0.063rem solid lightblue",
     },
     "&.MuiPickersDay-dayOutsideMonth": {
       color: `${colors.black}`,
@@ -37,41 +37,41 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
       color: `${colors.loginHeaderBlue}`,
       textTransform: "uppercase",
       textDecoration: "underline dotted",
-      height: "15px",
+      height: "0.938rem",
     },
   },
   ".MuiButtonBase-root": {
     "&.MuiPickersArrowSwitcher-previousIconButton": {
       position: "absolute",
-      left: "5px",
-      top: "10px",
+      left: "0.313rem",
+      top: "0.625rem",
       background: `${colors.hoverWhite}`,
       color: `${colors.black}`,
       borderRadius: "0px",
-      width: "25px",
-      height: "38px",
+      width: "1.563rem",
+      height: "2.375rem",
     },
     "&.MuiPickersArrowSwitcher-nextIconButton": {
       position: "absolute",
-      left: "180px",
-      top: "10px",
+      left: "11.25rem",
+      top: "0.625rem",
       background: `${colors.hoverWhite}`,
       color: `${colors.black}`,
       borderRadius: "0px",
-      width: "25px",
-      height: "38px",
+      width: "1.563rem",
+      height: "2.375rem",
     },
   },
   ".MuiPickersCalendarHeader-labelContainer": {
     display: "none",
   },
   ".MuiPickersSlideTransition-root": {
-    minHeight: "200px",
+    minHeight: "12.5rem",
   },
   "&.MuiDateCalendar-root": {
     height: "auto !important",
-    paddingBottom: "20px",
-    paddingTop: "10px",
+    paddingBottom: "1.25rem",
+    paddingTop: "0.625rem",
     width: "90%",
   },
   ".MuiDayCalendar-root": {
@@ -161,7 +161,7 @@ const Calendar: React.FC = () => {
   return (
     <Flex
       position="relative"
-      width={width < breakpoints.md ? "100%" : "320px"}
+      width={width < breakpoints.md ? "100%" : "20rem"}
       justifyContent={width < breakpoints.md ? "center" : "start"}
     >
       <Flex zIndex="2">
@@ -174,12 +174,12 @@ const Calendar: React.FC = () => {
             container: (provided) => ({
               ...provided,
               position: "absolute",
-              left: "40px",
-              top: "10px",
+              left: "2.5rem",
+              top: "0.625rem",
               zIndex: 999,
-              fontSize: "10px",
+              fontSize: "0.625rem",
               color: `${colors.black}`,
-              width: "118px",
+              width: "7.375rem",
             }),
             control: (provided, state) => ({
               ...provided,
@@ -197,7 +197,7 @@ const Calendar: React.FC = () => {
             }),
             singleValue: (provided) => ({
               ...provided,
-              fontSize: "14px",
+              fontSize: "0.875rem",
               whiteSpace: "normal",
               color: `${colors.black}`,
               fontWeight: 450,
@@ -210,7 +210,7 @@ const Calendar: React.FC = () => {
             menuList: (provided) => ({
               ...provided,
               padding: 0,
-              height: "150px",
+              height: "9.375rem",
             }),
             option: (provided, state) => ({
               ...provided,
@@ -225,12 +225,12 @@ const Calendar: React.FC = () => {
                 ? `${colors.black}`
                 : "black",
               cursor: "pointer",
-              fontSize: "14px",
+              fontSize: "0.875rem",
             }),
             dropdownIndicator: (provided) => ({
               ...provided,
               color: `${colors.black}`,
-              width: "33px",
+              width: "2.063rem",
             }),
           }}
         />
@@ -245,9 +245,9 @@ const Calendar: React.FC = () => {
             container: (provided) => ({
               ...provided,
               position: "absolute",
-              left: width < breakpoints.md ? "205px" : undefined,
-              right: width >= breakpoints.md ? "25px" : undefined,
-              top: "10px",
+              left: width < breakpoints.md ? "12.813rem" : undefined,
+              right: width >= breakpoints.md ? "1.563rem" : undefined,
+              top: "0.625rem",
             }),
             control: (provided, state) => ({
               ...provided,
@@ -265,7 +265,7 @@ const Calendar: React.FC = () => {
             }),
             singleValue: (provided) => ({
               ...provided,
-              fontSize: "14px",
+              fontSize: "0.875rem",
               whiteSpace: "normal",
               color: `${colors.black}`,
               fontWeight: 450,
@@ -279,7 +279,7 @@ const Calendar: React.FC = () => {
               ...provided,
               padding: 0,
               zIndex: 999,
-              height: "150px",
+              height: "9.375rem",
             }),
             option: (provided, state) => ({
               ...provided,
@@ -294,7 +294,7 @@ const Calendar: React.FC = () => {
                 ? `${colors.black}`
                 : "black",
               cursor: "pointer",
-              fontSize: "14px",
+              fontSize: "0.875rem",
             }),
             dropdownIndicator: (provided) => ({
               ...provided,

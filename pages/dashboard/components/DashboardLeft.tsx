@@ -14,7 +14,7 @@ const DashboardLeft: React.FC = () => {
   const { tab } = useTab();
   return (
     <Flex
-      borderRight={`1px solid ${colors.borderColor}`}
+      borderRight={`0.063rem solid ${colors.borderColor}`}
       width="100%"
       flexDirection="column"
     >

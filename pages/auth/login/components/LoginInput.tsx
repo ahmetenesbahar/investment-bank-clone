@@ -97,8 +97,8 @@ const LoginInput: React.FC<LoginInputProps> = ({
         onChange={(e) => handleInputChange(e)}
       />
       {error && (
-        <Flex position="absolute" bottom="-24px" width="100%">
-          <Text color="red" fontSize="14px">
+        <Flex position="absolute" bottom="-1.5rem" width="100%">
+          <Text color="red" fontSize="0.875rem">
             {error.message}
           </Text>
         </Flex>
@@ -108,8 +108,8 @@ const LoginInput: React.FC<LoginInputProps> = ({
         windowWidth > breakpoints.md && (
           <Flex
             position="absolute"
-            right="100px"
-            bottom="-195px"
+            right="6.25rem"
+            bottom="-12.188rem"
             justifyContent="center"
           >
             <Keyboard onKeyPress={handleKeyPress} />

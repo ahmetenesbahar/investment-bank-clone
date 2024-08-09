@@ -22,7 +22,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
     : data;
 
   return (
-    <Flex margin="0px  0 0 -60px">
+    <Flex margin="0px  0 0 -3.75rem">
       <Flex
         width="100%"
         position="relative"
@@ -31,25 +31,25 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
       >
         <Flex
           backgroundColor={colors.white}
-          width="4px"
-          height="20px"
+          width="0.25rem"
+          height="1.25rem"
           position="absolute"
-          left="150px"
+          left="9.375rem"
           top="10%"
           zIndex="999"
         />
         <Flex
           flexDirection="column"
           position="absolute"
-          left="120px"
+          left="7.5rem"
           top="38%"
           justifyContent="center"
           alignItems="center"
         >
-          <Text color={colors.black} fontWeight="500" fontSize="12px">
+          <Text color={colors.black} fontWeight="500" fontSize="0.75rem">
             {chartText}
           </Text>
-          <Text fontWeight="700" color={colors.black} fontSize="16px">
+          <Text fontWeight="700" color={colors.black} fontSize="1rem">
             {!hideNumbers && totalValue}
           </Text>
           <Text textAlign="center" color={colors.black} fontWeight="500">
@@ -76,21 +76,21 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
 
         <Flex
           position="absolute"
-          right="50px"
-          top="20px"
+          right="3.125rem"
+          top="1.25rem"
           flexDirection="column"
         >
-          <Flex gap="5px" justifyContent="center" alignItems="center">
+          <Flex gap="0.313rem" justifyContent="center" alignItems="center">
             <Flex
               backgroundColor={backgroundColor[0]}
-              width="16px"
-              height="16px"
-              borderRadius="5px"
+              width="1rem"
+              height="1rem"
+              borderRadius="0.313rem"
             ></Flex>
             <Text>{chartLabels}</Text>
           </Flex>
           <Flex width="100%" alignItems="center" justifyContent="center">
-            <Text fontWeight="700" color={colors.black} fontSize="14px">
+            <Text fontWeight="700" color={colors.black} fontSize="0.875rem">
               {!hideNumbers && `${totalValue} TL`}
             </Text>
           </Flex>

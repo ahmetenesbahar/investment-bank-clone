@@ -55,8 +55,12 @@ const LeftHeader: React.FC = () => {
       <Flex
         alignItems="center"
         width="100%"
-        borderBottom={`1px solid ${colors.borderColor}`}
-        padding={width >= breakpoints.md ? "10px 20px 0 0" : "0 10px 0 10px"}
+        borderBottom={`0.063rem solid ${colors.borderColor}`}
+        padding={
+          width >= breakpoints.md
+            ? "0.625rem 1.25rem 0 0"
+            : "0 0.625rem 0 0.625rem"
+        }
         justifyContent="space-between"
       >
         <Droppable droppableId="tabs" direction="horizontal">
@@ -75,7 +79,7 @@ const LeftHeader: React.FC = () => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       padding="1rem"
-                      width={width <= breakpoints.md ? "auto" : "170px"}
+                      width={width <= breakpoints.md ? "auto" : "10.625rem"}
                       cursor="grab"
                       justifyContent="space-between"
                       alignItems="center"
@@ -83,7 +87,7 @@ const LeftHeader: React.FC = () => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       borderBottom={
                         tab === tabId
-                          ? `2px solid ${colors.secondaryBlue}`
+                          ? `0.125rem solid ${colors.secondaryBlue}`
                           : "none"
                       }
                       onClick={() => handleTabChange(tabId)}
@@ -113,25 +117,25 @@ const LeftHeader: React.FC = () => {
                 </Draggable>
               ))}
               {provided.placeholder}
-              <VerticalLine height="26px" />
+              <VerticalLine height="1.625rem" />
             </Flex>
           )}
         </Droppable>
         {page !== "editAccounts" &&
           (width >= breakpoints.md ? (
-            <Flex padding="0 0 6px 0">
+            <Flex padding="0 0 0.375rem 0">
               <FullBorderFlex
                 justifyContent="center"
                 alignItems="center"
-                border={`1px solid  ${colors.borderColor}`}
-                padding="10px "
-                gap="10px"
+                border={`0.063rem solid  ${colors.borderColor}`}
+                padding="0.625rem "
+                gap="0.625rem"
                 cursor="pointer"
               >
                 <Icon src="/assets/plus_blue.png" alt="plusIcon" />
                 <Button backgroundColor={colors.white} padding="0">
                   <Text
-                    fontSize="14px"
+                    fontSize="0.875rem"
                     fontWeight="600"
                     color={colors.textBlue}
                     cursor="pointer"
@@ -144,11 +148,14 @@ const LeftHeader: React.FC = () => {
               </FullBorderFlex>
             </Flex>
           ) : (
-            <Flex backgroundColor={colors.borderBlue} padding="10px 12px">
+            <Flex
+              backgroundColor={colors.borderBlue}
+              padding="0.625rem 1.025rem"
+            >
               <Icon
                 src="/assets/white_plus_icon.png"
                 alt="plusIcon"
-                width="15px"
+                width="0.938rem"
               />
             </Flex>
           ))}
