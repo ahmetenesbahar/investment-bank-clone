@@ -35,7 +35,7 @@ const ChartTab: React.FC = () => {
     <Flex
       flexDirection="column"
       width="100%"
-      padding="15px"
+      padding="0.938rem"
       position="relative"
     >
       {width >= breakpoints.md ? (
@@ -62,12 +62,12 @@ const ChartTab: React.FC = () => {
         <>
           <Flex
             width="100%"
-            borderBottom={`1px solid ${colors.borderColor}`}
+            borderBottom={`0.063rem solid ${colors.borderColor}`}
             alignItems="center"
           >
             <Flex
               borderBottom={
-                tab === 0 ? `2px solid ${colors.secondaryBlue}` : ""
+                tab === 0 ? `0.125rem solid ${colors.secondaryBlue}` : ""
               }
               padding="1rem"
               onClick={() => setTab(0)}
@@ -82,10 +82,10 @@ const ChartTab: React.FC = () => {
                 {t("My Assets")}
               </Text>
             </Flex>
-            <VerticalLine height="26px" />
+            <VerticalLine height="1.625rem" />
             <Flex
               borderBottom={
-                tab === 1 ? `2px solid ${colors.secondaryBlue}` : ""
+                tab === 1 ? `0.125rem solid ${colors.secondaryBlue}` : ""
               }
               padding="1rem"
               onClick={() => setTab(1)}
@@ -100,7 +100,7 @@ const ChartTab: React.FC = () => {
                 {t("My Debts")}
               </Text>
             </Flex>
-            <VerticalLine height="26px" />
+            <VerticalLine height="1.625rem" />
           </Flex>
           <ChartDiv width="90%">
             {tab === 0 ? (
@@ -127,9 +127,9 @@ const ChartTab: React.FC = () => {
         justifyContent="space-between"
         alignItems="center"
         borderBottom={
-          width >= breakpoints.lg ? `1px solid ${colors.borderColor}` : ""
+          width >= breakpoints.lg ? `0.063rem solid ${colors.borderColor}` : ""
         }
-        padding="10px 5px"
+        padding="0.625rem 0.313rem"
       >
         <Text
           textDecoration="underline"
@@ -142,7 +142,7 @@ const ChartTab: React.FC = () => {
           {hideNumbers ? `${t("Hide Ammount")}` : `${t("Show Ammount")}`}
         </Text>
         <Button
-          border={`1px solid  ${colors.borderColor}`}
+          border={`0.063rem solid  ${colors.borderColor}`}
           backgroundColor="transparent"
           padding="0.6rem 1rem"
         >

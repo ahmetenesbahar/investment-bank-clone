@@ -11,8 +11,8 @@ const ForgotPasswordMain: React.FC = () => {
   const { tab } = useTab();
   return (
     <FlexColumn
-      width="788px"
-      padding="20px"
+      width="49.25rem"
+      padding="1.25rem"
       backgroundColor={colors.white}
       responsiveFull
     >

@@ -28,7 +28,10 @@ const ForgotPasswordPage: NextPage = () => {
           >
             <Navbar />
           </Flex>
-          <ForgotPasswordContainer justifyContent="center" margin="40px 0 0 0">
+          <ForgotPasswordContainer
+            justifyContent="center"
+            margin="2.5rem 0 0 0"
+          >
             <ForgotPasswordMain />
           </ForgotPasswordContainer>
         </Container>

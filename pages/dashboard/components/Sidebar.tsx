@@ -38,7 +38,7 @@ const Sidebar: React.FC = () => {
       flexDirection="column"
       zIndex="2"
       position="fixed"
-      top="44px"
+      top="2.75rem"
     >
       {width < breakpoints.xl && (
         <Flex
@@ -54,12 +54,12 @@ const Sidebar: React.FC = () => {
       {itemsToRender.map((item, index) => (
         <Flex
           key={index}
-          padding="8px 10px"
-          gap="20px"
+          padding="0.5rem 0.625rem"
+          gap="1.25rem"
           borderBottom={
             width <= breakpoints.xl
-              ? `1px solid ${colors.darkBlue}`
-              : `1px solid ${colors.secondaryDarkBlue}`
+              ? `0.063rem solid ${colors.darkBlue}`
+              : `0.063rem solid ${colors.secondaryDarkBlue}`
           }
           justifyContent="start"
           alignItems="center"
@@ -82,7 +82,7 @@ const Sidebar: React.FC = () => {
             {item.label}
           </Text>
           {item.arrow && (
-            <Icon src={item.arrow} position="absolute" right="20px" />
+            <Icon src={item.arrow} position="absolute" right="1.25rem" />
           )}
         </Flex>
       ))}
@@ -97,11 +97,11 @@ const Sidebar: React.FC = () => {
               setActiveMenu(!activeMenu);
             }}
           >
-            <Flex gap="3px" width="100%">
+            <Flex gap="0.188rem" width="100%">
               <Flex>
                 <Icon
-                  width="44px"
-                  height="44px"
+                  width="2.75rem"
+                  height="2.75rem"
                   src="/assets/DefaultProfilePic.jpg"
                   alt="profilePic"
                 />
@@ -125,7 +125,7 @@ const Sidebar: React.FC = () => {
                   <Text
                     color={colors.secondaryBlue}
                     fontWeight="500"
-                    fontSize="12px"
+                    fontSize="0.75rem"
                     cursor="pointer"
                   >{`${t("Last Login")} : ${formatDateTime(today)}`}</Text>
                 </Flex>
@@ -141,7 +141,7 @@ const Sidebar: React.FC = () => {
                 <Flex
                   backgroundColor={colors.hoverWhite}
                   width="100%"
-                  padding="10px"
+                  padding="0.625rem"
                   cursor="pointer "
                 >
                   <Text
@@ -155,8 +155,8 @@ const Sidebar: React.FC = () => {
                 <Flex
                   backgroundColor={colors.hoverWhite}
                   width="100%"
-                  borderBottom={`5px solid ${colors.secondaryBlue}`}
-                  padding="10px"
+                  borderBottom={`0.313rem solid ${colors.secondaryBlue}`}
+                  padding="0.625rem"
                   justifyContent="space-between"
                   cursor="pointer"
                 >
@@ -178,7 +178,7 @@ const Sidebar: React.FC = () => {
             backgroundColor={colors.hoverWhite}
             width="100%"
             alignItems="center"
-            margin="0 0 44px 0"
+            margin="0 0 2.75rem 0"
           >
             <Icon src="/assets/header_logout.png" alt="logoutIcon" />
             <Text

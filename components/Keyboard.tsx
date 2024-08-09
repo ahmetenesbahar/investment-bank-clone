@@ -5,26 +5,26 @@ import { colors } from "@/styles/colors";
 const KeyboardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 203px;
-  height: 184px;
+  width: 12.688rem;
+  height: 11.5rem;
   margin: 0 auto;
-  gap: 1px;
+  gap: 0.06rem;
   background-color: ${colors.white};
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  padding: 0.625rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
 `;
 
 const Key = styled.button`
-  width: 60px;
-  height: 40px;
-  font-size: 12px;
+  width: 3.75rem;
+  height: 2.5rem;
+  font-size: 0.75rem;
   cursor: pointer;
   outline: none;
   border: none;
   background-color: ${colors.secondaryBorderColor};
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: ${colors.white};
 `;
 

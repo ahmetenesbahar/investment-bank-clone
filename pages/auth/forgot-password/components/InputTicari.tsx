@@ -24,7 +24,7 @@ const InputTicari: React.FC = () => {
     <Form width="100%" onSubmit={handleSubmit}>
       <FlexColumn width="100%">
         <FlexColumn width="100%">
-          <Flex gap="8px" position="relative">
+          <Flex gap="0.5rem" position="relative">
             <Text fontWeight="700" color={colors.secondaryBlue}>
               {t("Commercial Customer Number")}
             </Text>
@@ -40,8 +40,8 @@ const InputTicari: React.FC = () => {
               left={currentLang === "en" ? "38%" : "23%"}
               top="150%"
               backgroundColor={colors.secondaryBlue}
-              width="300px"
-              padding="18px 21px 21px 21px"
+              width="18.75rem"
+              padding="1.125rem 1.313rem 1.313rem 1.313rem"
               triangleLeft="50%"
             >
               <Text color={colors.white}>
@@ -58,7 +58,7 @@ const InputTicari: React.FC = () => {
           />
         </FlexColumn>
         <FlexColumn position="relative" width="100%">
-          <Flex gap="8px" position="relative">
+          <Flex gap="0.5rem" position="relative">
             <Text fontWeight="700" color={colors.secondaryBlue}>
               {t("Customer Number / TCKN / YKN")}
             </Text>
@@ -73,8 +73,8 @@ const InputTicari: React.FC = () => {
               left={currentLang === "en" ? "42%" : "32%"}
               top="150%"
               backgroundColor={colors.secondaryBlue}
-              width="300px"
-              padding="18px 21px 21px 21px"
+              width="18.75rem"
+              padding="1.125rem 1.313rem 1.313rem 1.313rem"
               triangleLeft="50%"
             >
               <Text color={colors.white}>{t("Customer Number Info")}</Text>
@@ -89,7 +89,7 @@ const InputTicari: React.FC = () => {
           />
         </FlexColumn>
         <FlexColumn width="100%">
-          <Flex gap="8px" position="relative">
+          <Flex gap="0.5rem" position="relative">
             <Text fontWeight="700" color={colors.secondaryBlue}>
               {t("Mobile Phone Number")}
             </Text>
@@ -104,8 +104,8 @@ const InputTicari: React.FC = () => {
               left={currentLang === "en" ? "17%" : "23%"}
               top="150%"
               backgroundColor={colors.secondaryBlue}
-              width="300px"
-              padding="18px 21px 21px 21px"
+              width="18.75rem"
+              padding="1.125rem 1.313rem 1.313rem 1.313rem"
               triangleLeft="50%"
             >
               <Text color={colors.white}>{t("Mobile Phone Number Info")}</Text>
@@ -123,7 +123,7 @@ const InputTicari: React.FC = () => {
           <Text fontWeight="700" color={colors.secondaryBlue}>
             {t("Confirmation Code")}
           </Text>
-          <Flex gap="8px">
+          <Flex gap="0.5rem">
             <img src="/assets/captcha.jpeg" alt="Captcha" />
             <Flex cursor="pointer">
               <img src="/assets/refresh.png" alt="RefreshIcon" />
@@ -131,7 +131,7 @@ const InputTicari: React.FC = () => {
           </Flex>
           <Input
             name="captcha"
-            width={"250px"}
+            width={"15.625"}
             control={control}
             placeholder=""
             pattern="^[0-9]*$"
@@ -142,7 +142,7 @@ const InputTicari: React.FC = () => {
           <Button
             padding="1rem 3rem"
             fontWeight="700"
-            fontSize="14px"
+            fontSize="0.875rem"
             type="submit"
           >
             {t("Continue")}

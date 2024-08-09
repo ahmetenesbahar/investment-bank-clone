@@ -8,7 +8,7 @@ const Main: React.FC = () => {
   return (
     <DashboardMainContainer
       backgroundColor={colors.white}
-      margin="40px 20px 40px 10px"
+      margin="2.5rem 1.25rem 2.5rem 0.625rem"
     >
       <DashboardLeft />
       <DashboardRight />

@@ -48,15 +48,15 @@ const Navbar: React.FC = () => {
       width="100%"
     >
       <Flex justifyContent="center" alignItems="center">
-        <Flex borderRight={`1px solid ${colors.borderColor}`}>
+        <Flex borderRight={`0.063rem solid ${colors.borderColor}`}>
           {width >= breakpoints.lg ? (
             <img src="/assets/header_logo.png" alt="isbankLogo" />
           ) : (
             <Flex
               justifyContent="center"
-              height="44px"
+              height="2.75rem"
               alignItems="center"
-              padding="10px"
+              padding="0.625rem"
               cursor="pointer"
               onClick={() => {
                 handleOpenMenu();
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
       </Flex>
 
       {width >= breakpoints.lg && (
-        <Flex height="44px">
+        <Flex height="2.75rem">
           {iconData.map((icon, index) => (
             <Flex
               key={index}
@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
             >
               <Icon
                 src={icon.src}
-                borderLeft={`1px solid ${colors.borderColor}`}
+                borderLeft={`0.063rem solid ${colors.borderColor}`}
                 alt="NavbarIcon"
               />
             </Flex>
@@ -101,16 +101,15 @@ const Navbar: React.FC = () => {
           >
             <Icon
               src="/assets/DefaultProfilePic.jpg"
-              alt="ProfilePic"
-              width="44px"
-              height="44px"
+              alt="profilePicture"
+              width="2.75rem"
             />
             {width >= breakpoints.xl && (
               <Flex
                 flexDirection="column"
                 justifyContent="center"
-                width="220px"
-                padding="5px 10px"
+                width="13.75rem"
+                padding="0.313rem 0.625rem"
                 cursor="pointer"
               >
                 <Text
@@ -129,15 +128,15 @@ const Navbar: React.FC = () => {
             {userAvatarMenu && (
               <Flex
                 position="absolute"
-                width="264px"
-                bottom="-84px"
+                width="16.5rem"
+                bottom="-5.25rem"
                 flexDirection="column"
-                gap="3px"
+                gap="0.188rem"
               >
                 <Flex
                   backgroundColor={colors.hoverWhite}
                   width="100%"
-                  padding="10px"
+                  padding="0.625rem"
                   cursor="pointer "
                 >
                   <Text
@@ -151,8 +150,8 @@ const Navbar: React.FC = () => {
                 <Flex
                   backgroundColor={colors.hoverWhite}
                   width="100%"
-                  borderBottom={`5px solid ${colors.secondaryBlue}`}
-                  padding="10px"
+                  borderBottom={`0.313rem solid ${colors.secondaryBlue}`}
+                  padding="0.625rem"
                   justifyContent="space-between"
                   cursor="pointer"
                 >
@@ -174,7 +173,7 @@ const Navbar: React.FC = () => {
             backgroundColor={colors.hoverWhite}
             justifyContent="center"
             alignItems="center"
-            padding="0px 10px"
+            padding="0px 0.625rem"
             cursor="pointer"
           >
             <Text
@@ -198,7 +197,7 @@ const Navbar: React.FC = () => {
       {width < breakpoints.lg && (
         <Flex
           backgroundColor={colors.hoverWhite}
-          width="55px"
+          width="3.438rem"
           justifyContent="center"
         >
           <Icon src="/assets/header_logout.png" alt="logoutIcon" />

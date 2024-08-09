@@ -9,8 +9,8 @@ const Header: React.FC = () => {
     <FlexColumn width="100%">
       <SecondaryHeaderForgotPassword
         fontWeight="600"
-        borderBottom={`1px solid ${colors.borderColor}`}
-        padding="0 0 20px 0"
+        borderBottom={`0.063rem solid ${colors.borderColor}`}
+        padding="0 0 1.25rem 0"
       >
         {t("Instant PIN")}
       </SecondaryHeaderForgotPassword>

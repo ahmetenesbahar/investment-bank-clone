@@ -52,10 +52,10 @@ const SearchBar: React.FC = () => {
           <Icon
             src="/assets/search_icon.png"
             alt="searchIcon"
-            margin="0 0 0 5px"
+            margin="0 0 0 0.313rem"
           />
           <SearchBarInput
-            padding=" 0 2px 0 10px"
+            padding=" 0 0.125rem 0 0.625rem"
             placeholder={t("Find Transaction")}
             placeholderColor={colors.placeholderGray}
             fontWeight="400"
@@ -78,17 +78,17 @@ const SearchBar: React.FC = () => {
           <Flex
             position="relative"
             alignItems="center"
-            padding="8px 24px 8px 10px"
-            borderBottom={`1px solid ${colors.darkBlue}`}
+            padding="0.5rem 1.5rem 0.5rem 0.625rem"
+            borderBottom={`0.063rem solid ${colors.darkBlue}`}
           >
             <Icon
               src="/assets/blue_search_icon.png"
               alt="searchIcon"
               position="absolute"
-              left="14px"
+              left="0.875rem"
             />
             <SearchBarInput
-              padding="8px 30px"
+              padding="0.5rem 1.875rem"
               placeholder={t("Find Transaction")}
               placeholderColor={colors.placeholderGray}
               fontWeight="400"
@@ -100,7 +100,7 @@ const SearchBar: React.FC = () => {
               src="/assets/responsive_close_icon.png"
               alt="closeIcon"
               position="absolute"
-              right="28px"
+              right="1.75rem"
               active={closeIcon}
               onClick={() => {
                 setSearchValue("");

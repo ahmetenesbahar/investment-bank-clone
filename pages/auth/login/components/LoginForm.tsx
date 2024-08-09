@@ -43,7 +43,7 @@ const LoginForm: React.FC = () => {
         <Flex
           alignItems="center"
           width="100%"
-          gap="5px"
+          gap="0.313rem"
           margin={errors.customerNumber ? "0 0 1rem 0" : "0"}
         >
           <Flex position="relative" alignItems="center" width="inherit">
@@ -69,7 +69,7 @@ const LoginForm: React.FC = () => {
 
           <HoverBubble
             visible={isHovered === "customerNumber" ? "visible" : "hidden"}
-            top="100px"
+            top="6.25rem"
             display={isHovered === "customerNumber" ? "block" : "none"}
           >
             <div>
@@ -82,7 +82,7 @@ const LoginForm: React.FC = () => {
         <Flex
           width="100%"
           alignItems="center"
-          gap="5px"
+          gap="0.313rem"
           margin={errors.password ? "0 0 1rem 0" : "0"}
         >
           <Flex position="relative" alignItems="center" width="inherit">
@@ -108,7 +108,7 @@ const LoginForm: React.FC = () => {
 
           <HoverBubble
             visible={isHovered === "password" ? "visible" : "hidden"}
-            top="165px"
+            top="10.313rem"
             display={isHovered === "password" ? "block" : "none"}
           >
             <div>
@@ -125,7 +125,7 @@ const LoginForm: React.FC = () => {
       <Flex width="100%" margin="1rem 0 0 0 ">
         <Flex
           alignItems="center"
-          gap="3px"
+          gap="0.188rem"
           cursor="pointer"
           onClick={() => {
             handleForgotPasswordClick();
@@ -140,13 +140,13 @@ const LoginForm: React.FC = () => {
       <Flex
         width="100%"
         justifyContent="flex-end"
-        gap="8px"
+        gap="0.5rem"
         alignItems="center"
       >
         <Button
           type="submit"
-          padding="15px 40px"
-          margin="20px 0px 20px 0px"
+          padding="0.938rem 2.5rem"
+          margin="1.25rem 0px 1.25rem 0px"
           responsiveFull
         >
           {t("login")}

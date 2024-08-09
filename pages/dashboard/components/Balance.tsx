@@ -42,8 +42,8 @@ const Balance: React.FC = () => {
               <Tr
                 borderBottom={
                   activeIndex === ActiveIndexEnum.Account1
-                    ? `1px solid ${colors.borderBlue}`
-                    : `1px solid ${colors.borderColor}`
+                    ? `0.063rem solid ${colors.borderBlue}`
+                    : `0.063rem solid ${colors.borderColor}`
                 }
               >
                 <Th>{t("Account Type")}</Th>
@@ -70,25 +70,25 @@ const Balance: React.FC = () => {
                     borderBottom={
                       activeIndex === index || activeIndex === index + 1
                         ? "none"
-                        : `1px solid ${colors.borderColor}`
+                        : `0.063rem solid ${colors.borderColor}`
                     }
                     borderTop={
                       activeIndex === index
-                        ? `1px solid ${colors.borderBlue}`
+                        ? `0.063rem solid ${colors.borderBlue}`
                         : "none"
                     }
                     borderLeft={
                       activeIndex === index
-                        ? `1px solid ${colors.borderBlue}`
+                        ? `0.063rem solid ${colors.borderBlue}`
                         : "none"
                     }
                     borderRight={
                       activeIndex === index
-                        ? `1px solid ${colors.borderBlue}`
+                        ? `0.063rem solid ${colors.borderBlue}`
                         : "none"
                     }
                   >
-                    <Td padding="15px">
+                    <Td padding="0.938rem">
                       <Text
                         textTransform="capitalize"
                         fontWeight="450"
@@ -112,9 +112,9 @@ const Balance: React.FC = () => {
                         justifyContent="space-between"
                         alignItems="center"
                         cursor="pointer"
-                        padding="0 15px"
+                        padding="0 0.938rem"
                       >
-                        <Flex gap="4px" cursor="pointer">
+                        <Flex gap="0.25rem" cursor="pointer">
                           <Text
                             fontWeight="450"
                             color={colors.black}
@@ -152,30 +152,30 @@ const Balance: React.FC = () => {
                       hoverBackground={colors.hoverWhite}
                       borderBottom={
                         activeIndex === index
-                          ? `1px solid ${colors.borderBlue}`
+                          ? `0.063rem solid ${colors.borderBlue}`
                           : "none"
                       }
                       borderLeft={
                         activeIndex === index
-                          ? `1px solid ${colors.borderBlue}`
+                          ? `0.063rem solid ${colors.borderBlue}`
                           : "none"
                       }
                       borderRight={
                         activeIndex === index
-                          ? `1px solid ${colors.borderBlue}`
+                          ? `0.063rem solid ${colors.borderBlue}`
                           : "none"
                       }
                     >
-                      <Td colSpan={3} padding="15px">
+                      <Td colSpan={3} padding="0.938rem">
                         <Flex
                           justifyContent="center"
                           alignItems="center"
-                          gap="5px"
+                          gap="0.313rem"
                         >
                           <Text
                             fontWeight="450"
                             color={colors.borderBlue}
-                            padding="0 5px"
+                            padding="0 0.313rem"
                             cursor="pointer"
                             hover
                             hoverBackground={colors.secondaryHoverBlue}
@@ -183,11 +183,11 @@ const Balance: React.FC = () => {
                           >
                             {t("Transfer")}
                           </Text>
-                          <VerticalLine width="1px" height="16px" />
+                          <VerticalLine width="0.063rem" height="1rem" />
                           <Text
                             fontWeight="450"
                             color={colors.borderBlue}
-                            padding="0 5px"
+                            padding="0 0.313rem"
                             cursor="pointer"
                             hover
                             hoverBackground={colors.secondaryHoverBlue}
@@ -195,11 +195,11 @@ const Balance: React.FC = () => {
                           >
                             EFT
                           </Text>
-                          <VerticalLine width="1px" height="16px" />
+                          <VerticalLine width="0.063rem" height="1rem" />
                           <Text
                             fontWeight="450"
                             color={colors.borderBlue}
-                            padding="0 5px"
+                            padding="0 0.313rem"
                             cursor="pointer"
                             hover
                             hoverBackground={colors.secondaryHoverBlue}
@@ -216,8 +216,8 @@ const Balance: React.FC = () => {
               <Tr>
                 <Td
                   colSpan={3}
-                  borderBottom={`1px solid ${colors.borderColor}`}
-                  padding="15px"
+                  borderBottom={`0.063rem solid ${colors.borderColor}`}
+                  padding="0.938rem"
                 >
                   <Flex alignItems="center">
                     <Text fontWeight="450" color={colors.black}>
@@ -234,8 +234,8 @@ const Balance: React.FC = () => {
             width="100%"
             alignItems="center"
             justifyContent="space-between"
-            padding="15px 20px 15px 15px"
-            borderBottom={`1px solid ${colors.borderColor}`}
+            padding="0.938rem 1.25rem 0.938rem 0.938rem"
+            borderBottom={`0.063rem solid ${colors.borderColor}`}
           >
             <Text
               color={colors.textBlue}
@@ -248,7 +248,7 @@ const Balance: React.FC = () => {
               {t("Edit Accounts")}
             </Text>
             <Button
-              border={`1px solid  ${colors.borderColor}`}
+              border={`0.063rem solid  ${colors.borderColor}`}
               backgroundColor="transparent"
             >
               <Text color={colors.textBlue} cursor="pointer" textAlign="center">
@@ -258,11 +258,11 @@ const Balance: React.FC = () => {
           </Flex>
         </>
       ) : (
-        <Flex flexDirection="column" width="100%" margin="1px 0 0 0">
+        <Flex flexDirection="column" width="100%" margin="0.063rem 0 0 0">
           {user?.accounts.map((account: any, index: number) => (
             <React.Fragment key={index}>
               <Flex
-                padding="10px"
+                padding="0.625rem"
                 backgroundColor={
                   activeIndex === index ? `${colors.hoverWhite}` : "transparent"
                 }
@@ -277,25 +277,25 @@ const Balance: React.FC = () => {
                 borderBottom={
                   activeIndex === index || activeIndex === index + 1
                     ? "none"
-                    : `1px solid ${colors.borderColor}`
+                    : `0.063rem solid ${colors.borderColor}`
                 }
                 borderTop={
                   activeIndex === index
-                    ? `1px solid ${colors.borderBlue}`
+                    ? `0.063rem solid ${colors.borderBlue}`
                     : "none"
                 }
                 borderLeft={
                   activeIndex === index
-                    ? `1px solid ${colors.borderBlue}`
+                    ? `0.063rem solid ${colors.borderBlue}`
                     : "none"
                 }
                 borderRight={
                   activeIndex === index
-                    ? `1px solid ${colors.borderBlue}`
+                    ? `0.063rem solid ${colors.borderBlue}`
                     : "none"
                 }
               >
-                <Flex flexDirection="column" gap="8px" width="100%">
+                <Flex flexDirection="column" gap="0.5rem" width="100%">
                   <Text
                     textTransform="capitalize"
                     fontWeight="700"
@@ -312,7 +312,7 @@ const Balance: React.FC = () => {
                   >
                     {formatIBAN(account.iban)}
                   </Text>
-                  <Flex gap="4px" cursor="pointer">
+                  <Flex gap="0.25rem" cursor="pointer">
                     <Text
                       fontWeight="450"
                       color={colors.black}
@@ -342,7 +342,7 @@ const Balance: React.FC = () => {
                   width="100%"
                   justifyContent="center"
                   alignItems="center"
-                  padding="10px 0"
+                  padding="0.625rem 0"
                   backgroundColor={
                     activeIndex === index
                       ? `${colors.hoverWhite}`
@@ -350,24 +350,24 @@ const Balance: React.FC = () => {
                   }
                   borderBottom={
                     activeIndex === index
-                      ? `1px solid ${colors.borderBlue}`
+                      ? `0.063rem solid ${colors.borderBlue}`
                       : "none"
                   }
                   borderLeft={
                     activeIndex === index
-                      ? `1px solid ${colors.borderBlue}`
+                      ? `0.063rem solid ${colors.borderBlue}`
                       : "none"
                   }
                   borderRight={
                     activeIndex === index
-                      ? `1px solid ${colors.borderBlue}`
+                      ? `0.063rem solid ${colors.borderBlue}`
                       : "none"
                   }
                 >
                   <Text
                     fontWeight="450"
                     color={colors.borderBlue}
-                    padding="0 5px"
+                    padding="0 0.313rem"
                     cursor="pointer"
                     hover
                     hoverBackground={colors.secondaryHoverBlue}
@@ -375,11 +375,11 @@ const Balance: React.FC = () => {
                   >
                     {t("Transfer")}
                   </Text>
-                  <VerticalLine width="1px" height="16px" />
+                  <VerticalLine width="0.063rem" height="1rem" />
                   <Text
                     fontWeight="450"
                     color={colors.borderBlue}
-                    padding="0 5px"
+                    padding="0 0.313rem"
                     cursor="pointer"
                     hover
                     hoverBackground={colors.secondaryHoverBlue}
@@ -387,11 +387,11 @@ const Balance: React.FC = () => {
                   >
                     EFT
                   </Text>
-                  <VerticalLine width="1px" height="16px" />
+                  <VerticalLine width="0.063rem" height="1rem" />
                   <Text
                     fontWeight="450"
                     color={colors.borderBlue}
-                    padding="0 5px"
+                    padding="0 0.313rem"
                     cursor="pointer"
                     hover
                     hoverBackground={colors.secondaryHoverBlue}
@@ -406,28 +406,50 @@ const Balance: React.FC = () => {
           <Flex
             justifyContent="space-between"
             alignItems="center"
-            padding="15px"
+            padding={width < breakpoints.md ? "0.625rem" : "0.938rem 1.25rem"}
             width="100%"
-            borderBottom={`1px solid ${colors.borderColor}`}
+            borderBottom={`0.063rem solid ${colors.borderColor}`}
           >
-            <Text
-              color={colors.textBlue}
-              textDecoration="underline"
-              cursor="pointer"
-              onClick={() => {
-                handlePageChange("editAccounts");
-              }}
-            >
-              {t("Edit Accounts")}
-            </Text>
-            <Button
-              border={`1px solid  ${colors.borderColor}`}
-              backgroundColor="transparent"
-            >
-              <Text color={colors.textBlue} cursor="pointer" textAlign="center">
-                {t("My Accounts")}
-              </Text>
-            </Button>
+            {width < breakpoints.md ? (
+              <Button
+                border={`0.063rem solid  ${colors.borderColor}`}
+                backgroundColor="transparent"
+                width="100%"
+              >
+                <Text
+                  color={colors.textBlue}
+                  cursor="pointer"
+                  textAlign="center"
+                >
+                  {t("My Accounts")}
+                </Text>
+              </Button>
+            ) : (
+              <>
+                <Text
+                  color={colors.textBlue}
+                  textDecoration="underline"
+                  cursor="pointer"
+                  onClick={() => {
+                    handlePageChange("editAccounts");
+                  }}
+                >
+                  {t("Edit Accounts")}
+                </Text>
+                <Button
+                  border={`0.063rem solid  ${colors.borderColor}`}
+                  backgroundColor="transparent"
+                >
+                  <Text
+                    color={colors.textBlue}
+                    cursor="pointer"
+                    textAlign="center"
+                  >
+                    {t("My Accounts")}
+                  </Text>
+                </Button>
+              </>
+            )}
           </Flex>
         </Flex>
       )}
