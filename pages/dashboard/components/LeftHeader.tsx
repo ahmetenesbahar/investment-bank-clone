@@ -125,8 +125,6 @@ const LeftHeader: React.FC = () => {
           (width >= breakpoints.md ? (
             <Flex padding="0 0 0.375rem 0">
               <FullBorderFlex
-                justifyContent="center"
-                alignItems="center"
                 border={`0.063rem solid  ${colors.borderColor}`}
                 padding="0.625rem "
                 gap="0.625rem"

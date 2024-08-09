@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { Flex, Text } from "@/styles/styles";
+import { Flex, Text, CenteredFlex } from "@/styles/styles";
 import { usePage } from "../context/PageContext";
 import { colors } from "@/styles/colors";
 
@@ -23,12 +23,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
 
   return (
     <Flex margin="0px  0 0 -3.75rem">
-      <Flex
-        width="100%"
-        position="relative"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <CenteredFlex width="100%" position="relative">
         <Flex
           backgroundColor={colors.white}
           width="0.25rem"
@@ -38,13 +33,11 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           top="10%"
           zIndex="999"
         />
-        <Flex
+        <CenteredFlex
           flexDirection="column"
           position="absolute"
           left="7.5rem"
           top="38%"
-          justifyContent="center"
-          alignItems="center"
         >
           <Text color={colors.black} fontWeight="500" fontSize="0.75rem">
             {chartText}
@@ -55,7 +48,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           <Text textAlign="center" color={colors.black} fontWeight="500">
             {!hideNumbers && "TL"}
           </Text>
-        </Flex>
+        </CenteredFlex>
         <PieChart
           series={[
             {
@@ -80,7 +73,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           top="1.25rem"
           flexDirection="column"
         >
-          <Flex gap="0.313rem" justifyContent="center" alignItems="center">
+          <CenteredFlex gap="0.313rem">
             <Flex
               backgroundColor={backgroundColor[0]}
               width="1rem"
@@ -88,14 +81,14 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
               borderRadius="0.313rem"
             ></Flex>
             <Text>{chartLabels}</Text>
-          </Flex>
-          <Flex width="100%" alignItems="center" justifyContent="center">
+          </CenteredFlex>
+          <CenteredFlex width="100%">
             <Text fontWeight="700" color={colors.black} fontSize="0.875rem">
               {!hideNumbers && `${totalValue} TL`}
             </Text>
-          </Flex>
+          </CenteredFlex>
         </Flex>
-      </Flex>
+      </CenteredFlex>
     </Flex>
   );
 };

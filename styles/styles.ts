@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
+import { padding } from "@/utils/constants";
 
 interface Props {
   justifyContent?: string;
   alignItems?: string;
-  padding?: string;
+  padding?: keyof typeof padding | string;
   width?: string;
   color?: string;
   textAlign?: string;
@@ -19,12 +20,12 @@ interface Props {
   gap?: string;
   cursor?: string;
   display?: string;
+  border?: string;
   borderTop?: string;
   borderRight?: string;
   borderBottom?: string;
   borderLeft?: string;
   borderRadius?: string;
-  border?: string;
   height?: string;
   top?: string;
   visible?: string;
@@ -534,6 +535,8 @@ export const SearchBarCloseIcon = styled(Icon)<Props>`
 
 export const FullBorderFlex = styled(Flex)<Props>`
   border: ${(props) => props.border || "none"};
+  justify-content: center;
+  align-items: center;
 `;
 
 export const NavbarAvatarDiv = styled(Flex)<Props>`
@@ -571,10 +574,9 @@ export const Tr = styled.tr<Props>`
   cursor: ${(props) => (props.cursor ? "pointer" : "auto")};
   background-color: ${(props) => props.backgroundColor || "transparent"};
   height: ${(props) => props.height || "auto"};
+  border: ${(props) => props.border || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
-  border-top: ${(props) => props.borderTop || "none"};
-  border-left: ${(props) => props.borderLeft || "none"};
-  border-right: ${(props) => props.borderRight || "none"};
+
   &:hover {
     background-color: ${(props) => props.hoverBackground || "transparent"};
   }
@@ -610,4 +612,9 @@ export const ChartDiv = styled(Flex)<Props>`
   @media (max-width: ${breakpoints.xl}px) {
     justify-content: space-between;
   }
+`;
+
+export const CenteredFlex = styled(Flex)<Props>`
+  justify-content: center !important;
+  align-items: center !important;
 `;

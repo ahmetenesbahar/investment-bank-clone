@@ -6,6 +6,7 @@ import {
   NavbarAvatarDiv,
   Text,
   NavbarContainer,
+  CenteredFlex,
 } from "@/styles/styles";
 import SearchBar from "./SearchBar";
 import useUser from "@/hooks/useGetUser";
@@ -47,15 +48,13 @@ const Navbar: React.FC = () => {
       position="fixed"
       width="100%"
     >
-      <Flex justifyContent="center" alignItems="center">
+      <CenteredFlex>
         <Flex borderRight={`0.063rem solid ${colors.borderColor}`}>
           {width >= breakpoints.lg ? (
             <img src="/assets/header_logo.png" alt="isbankLogo" />
           ) : (
-            <Flex
-              justifyContent="center"
+            <CenteredFlex
               height="2.75rem"
-              alignItems="center"
               padding="0.625rem"
               cursor="pointer"
               onClick={() => {
@@ -69,11 +68,11 @@ const Navbar: React.FC = () => {
               >
                 {t("Menu")}
               </Text>
-            </Flex>
+            </CenteredFlex>
           )}
         </Flex>
         {width > breakpoints.xl && <SearchBar />}
-      </Flex>
+      </CenteredFlex>
 
       {width >= breakpoints.lg && (
         <Flex height="2.75rem">
@@ -169,10 +168,8 @@ const Navbar: React.FC = () => {
               </Flex>
             )}
           </NavbarAvatarDiv>
-          <LogoutDiv
+          <CenteredFlex
             backgroundColor={colors.hoverWhite}
-            justifyContent="center"
-            alignItems="center"
             padding="0px 0.625rem"
             cursor="pointer"
           >
@@ -184,7 +181,7 @@ const Navbar: React.FC = () => {
               {t("logout")}
             </Text>
             <Icon src="/assets/header_logout.png" alt="logoutIcon" />
-          </LogoutDiv>
+          </CenteredFlex>
         </Flex>
       )}
 

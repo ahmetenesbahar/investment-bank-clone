@@ -1,6 +1,13 @@
 import React from "react";
 import Calendar from "./Calendar";
-import { Flex, Icon, Text, Button, FullBorderFlex } from "@/styles/styles";
+import {
+  Flex,
+  Icon,
+  Text,
+  Button,
+  FullBorderFlex,
+  CenteredFlex,
+} from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
 import { breakpoints } from "@/utils/constants";
@@ -10,12 +17,10 @@ const DashboardRight: React.FC = () => {
   const { t } = useTranslation();
   const width = useMediaQuery();
   return (
-    <Flex
+    <CenteredFlex
       flexDirection="column"
       borderBottom={`0.063rem solid ${colors.borderColor}`}
-      justifyContent="center"
       width={width < breakpoints.md ? "100%" : "auto"}
-      alignItems="center"
     >
       {width < breakpoints.xl && (
         <Flex width="100%" padding="0 1.25rem">
@@ -27,8 +32,6 @@ const DashboardRight: React.FC = () => {
       <Calendar />
       <Flex padding="0 0.75rem 1.25rem 0.75rem" width="100%" zIndex="0">
         <FullBorderFlex
-          justifyContent="center"
-          alignItems="center"
           border={`0.063rem solid  ${colors.borderColor}`}
           padding="0.625rem 1.25rem "
           gap="0.625rem"
@@ -48,7 +51,7 @@ const DashboardRight: React.FC = () => {
           </Button>
         </FullBorderFlex>
       </Flex>
-    </Flex>
+    </CenteredFlex>
   );
 };
 

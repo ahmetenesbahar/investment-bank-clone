@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Flex,
+  CenteredFlex,
   Text,
   Table,
   Td,
@@ -72,17 +73,7 @@ const Balance: React.FC = () => {
                         ? "none"
                         : `0.063rem solid ${colors.borderColor}`
                     }
-                    borderTop={
-                      activeIndex === index
-                        ? `0.063rem solid ${colors.borderBlue}`
-                        : "none"
-                    }
-                    borderLeft={
-                      activeIndex === index
-                        ? `0.063rem solid ${colors.borderBlue}`
-                        : "none"
-                    }
-                    borderRight={
+                    border={
                       activeIndex === index
                         ? `0.063rem solid ${colors.borderBlue}`
                         : "none"
@@ -167,11 +158,7 @@ const Balance: React.FC = () => {
                       }
                     >
                       <Td colSpan={3} padding="0.938rem">
-                        <Flex
-                          justifyContent="center"
-                          alignItems="center"
-                          gap="0.313rem"
-                        >
+                        <CenteredFlex gap="0.313rem">
                           <Text
                             fontWeight="450"
                             color={colors.borderBlue}
@@ -207,7 +194,7 @@ const Balance: React.FC = () => {
                           >
                             {t("Account Activities")}
                           </Text>
-                        </Flex>
+                        </CenteredFlex>
                       </Td>
                     </Tr>
                   )}
@@ -338,10 +325,8 @@ const Balance: React.FC = () => {
                 />
               </Flex>
               {activeIndex === index && (
-                <Flex
+                <CenteredFlex
                   width="100%"
-                  justifyContent="center"
-                  alignItems="center"
                   padding="0.625rem 0"
                   backgroundColor={
                     activeIndex === index
@@ -399,7 +384,7 @@ const Balance: React.FC = () => {
                   >
                     {t("Account Activities")}
                   </Text>
-                </Flex>
+                </CenteredFlex>
               )}
             </React.Fragment>
           ))}

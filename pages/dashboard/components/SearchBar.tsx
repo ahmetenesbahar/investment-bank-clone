@@ -4,6 +4,7 @@ import {
   SearchBarCloseIcon,
   Flex,
   Icon,
+  CenteredFlex,
 } from "@/styles/styles";
 
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -46,7 +47,7 @@ const SearchBar: React.FC = () => {
   }, [searchRef]);
 
   return (
-    <Flex justifyContent="center" alignItems="center" ref={searchRef}>
+    <CenteredFlex ref={searchRef}>
       {width > breakpoints.xl ? (
         <>
           <Icon
@@ -110,7 +111,7 @@ const SearchBar: React.FC = () => {
           </Flex>
         </>
       )}
-    </Flex>
+    </CenteredFlex>
   );
 };
 
