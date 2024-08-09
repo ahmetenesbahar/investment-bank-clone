@@ -1,6 +1,6 @@
 # Investment Bank Clone Application
 
-Welcome to the Bank Clone Application repository! This project is a banking application clone developed using Next.js and TypeScript.
+Welcome to the Investment Bank Clone Application repository! This project is a banking application clone developed using Next.js and TypeScript.
 
 ## Table of Contents
 
