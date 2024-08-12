@@ -23,6 +23,8 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { AddNoteResponse } from "@/types/api";
 import useNotes from "../../hooks/useNotes";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { breakpoints } from "@/utils/constants";
 
 interface FormData {
   title: string;
@@ -51,6 +53,7 @@ const schema = object({
 
 const NotesModal: React.FC = () => {
   const { t } = useTranslation();
+  const width = useMediaQuery();
   const { inputSelectedDate } = useDate();
   const [displayDateValue, setDisplayDateValue] = useState<string>(
     inputSelectedDate ? inputSelectedDate.format("DD/MM/YYYY") : ""
@@ -174,9 +177,10 @@ const NotesModal: React.FC = () => {
         backgroundColor="white"
         flexDirection="column"
         padding="16px"
-        width="31.25rem"
+        width={width <= breakpoints.md ? "100%" : "31.25rem"}
+        height={width <= breakpoints.md ? "100%" : "auto"}
         position="absolute"
-        top="5rem"
+        top={width <= breakpoints.md ? "0" : "5rem"}
       >
         <Flex
           alignItems="center"
