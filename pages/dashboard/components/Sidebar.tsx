@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
           : `${colors.loginHeaderBlue}`
       }
       flexDirection="column"
-      zIndex="2"
+      zIndex="1"
       position="fixed"
       top="2.75rem"
     >
