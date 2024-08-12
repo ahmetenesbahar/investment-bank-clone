@@ -26,4 +26,5 @@ export const colors = {
   zeroValue: "#E0E0E0",
   brown: "#B23508",
   placeholderGray: "#ABABAB",
+  yellow: "#fefdeb",
 };

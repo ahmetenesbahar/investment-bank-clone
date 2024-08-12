@@ -100,5 +100,12 @@
   "September": "Eylül",
   "October": "Ekim",
   "November": "Kasım",
-  "December": "Aralık"
+  "December": "Aralık",
+  "Monday": "Pazartesi",
+  "Tuesday": "Salı",
+  "Wednesday": "Çarşamba",
+  "Thursday": "Perşembe",
+  "Friday": "Cuma",
+  "Saturday": "Cumartesi",
+  "Sunday": "Pazar"
 }

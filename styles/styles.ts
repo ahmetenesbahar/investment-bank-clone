@@ -48,6 +48,8 @@ interface Props {
   hoverColor?: string;
   textDecoration?: string;
   zIndex?: string;
+  maxHeight?: string;
+  overflow?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -87,7 +89,9 @@ export const Flex = styled.div<Props>`
   border-left: ${(props) => props.borderLeft || "none"};
   border-radius: ${(props) => props.borderRadius || "0"};
   box-shadow: ${(props) => props.boxShadow || "none"};
-  z-index: ${(props) => props.zIndex || "0"};
+  z-index: ${(props) => props.zIndex || "auto"};
+  max-height: ${(props) => props.maxHeight || "auto"};
+  overflow-y: ${(props) => props.overflow || "visible"};
   ${(props) =>
     props.responsiveFull &&
     `
@@ -617,4 +621,14 @@ export const ChartDiv = styled(Flex)<Props>`
 export const CenteredFlex = styled(Flex)<Props>`
   justify-content: center !important;
   align-items: center !important;
+`;
+
+export const NotesModalInput = styled.input<Props>`
+  width: 100%;
+  padding: 0.625rem 3.75rem 0.625rem 0.625rem;
+  border: 1px solid
+    ${(props) => (props.error ? "red" : `${colors.secondaryBorderColor}`)};
+  &:focus {
+    border: 1px solid ${colors.black};
+  }
 `;
