@@ -31,7 +31,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           position="absolute"
           left="9.375rem"
           top="10%"
-          zIndex="999"
+          zIndex="3"
         />
         <CenteredFlex
           flexDirection="column"

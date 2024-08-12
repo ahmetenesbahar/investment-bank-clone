@@ -13,6 +13,8 @@ import { getMonths } from "../utils/months";
 import { useRouter } from "next/router";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
+import { useDate } from "../context/DateContext";
+import { useModal } from "../context/ModalContext";
 
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
@@ -66,11 +68,10 @@ const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
     display: "none",
   },
   ".MuiPickersSlideTransition-root": {
-    minHeight: "12.5rem",
+    minHeight: "14.5rem",
   },
   "&.MuiDateCalendar-root": {
     height: "auto !important",
-    paddingBottom: "1.25rem",
     paddingTop: "0.625rem",
     width: "90%",
   },
@@ -99,6 +100,8 @@ const Calendar: React.FC = () => {
   const width = useMediaQuery();
   const router = useRouter();
   const currentLang = router.locale;
+  const { formatSelectedDate, handleSelectInputDate } = useDate();
+  const { isOpen, modalType } = useModal();
 
   const currentYear = Dayjs().year();
   const [selectedDate, setSelectedDate] = useState(Dayjs());
@@ -157,6 +160,15 @@ const Calendar: React.FC = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (!isOpen && modalType !== "newNote") {
+      formatSelectedDate(selectedDate);
+    }
+    if (isOpen && modalType === "newNote") {
+      handleSelectInputDate(selectedDate);
+    }
+  }, [selectedDate]);
 
   return (
     <Flex

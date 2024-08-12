@@ -22,7 +22,7 @@ export interface ForgotPasswordResponse {
   message: string;
 }
 
-interface User {
+export interface User {
   customerNumber: number;
   firstName: string;
   lastName: string;
@@ -34,4 +34,17 @@ interface User {
     iban: string;
     balance: number;
   }[];
+}
+
+export interface FormData {
+  title: string;
+  description: string;
+  displayDate: string;
+  recurrence: string;
+  lastViewedDate: string;
+}
+
+export interface AddNoteResponse {
+  message: string;
+  note: FormData;
 }
