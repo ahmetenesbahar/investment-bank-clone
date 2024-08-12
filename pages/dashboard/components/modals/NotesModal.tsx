@@ -64,15 +64,20 @@ const NotesModal: React.FC = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
     defaultValues: {
       title: "",
       description: "",
-      displayDate: displayDateValue,
+      displayDate: inputSelectedDate
+        ? inputSelectedDate.format("DD/MM/YYYY")
+        : "",
       recurrence: selectedRecurrence ? selectedRecurrence.toString() : "",
-      lastViewedDate: lastViewedDateValue,
+      lastViewedDate: inputSelectedDate
+        ? inputSelectedDate.format("DD/MM/YYYY")
+        : "",
     },
   });
 
@@ -102,6 +107,8 @@ const NotesModal: React.FC = () => {
   });
 
   const onSubmit = (data: FormData) => {
+    console.log(data.displayDate, data.lastViewedDate);
+
     mutation.mutate(data);
     handleCloseModal();
   };
@@ -134,12 +141,24 @@ const NotesModal: React.FC = () => {
 
   useEffect(() => {
     if (displayDate) {
-      setDisplayDateValue(inputSelectedDate?.format("DD/MM/YYYY"));
+      setValue("displayDate", inputSelectedDate?.format("DD/MM/YYYY") || "");
+      setDisplayDateValue(inputSelectedDate?.format("DD/MM/YYYY") || "");
     }
     if (lastViewedDate) {
-      setLastViewedDateValue(inputSelectedDate?.format("DD/MM/YYYY"));
+      setValue("lastViewedDate", inputSelectedDate?.format("DD/MM/YYYY") || "");
+      setLastViewedDateValue(inputSelectedDate?.format("DD/MM/YYYY") || "");
     }
   }, [inputSelectedDate]);
+
+  useEffect(() => {
+    console.log(
+      "inputSelectedDate",
+      inputSelectedDate?.format("DD/MM/YYYY"),
+      "displayDateValue",
+      displayDateValue,
+      lastViewedDateValue
+    );
+  }, [inputSelectedDate, displayDateValue, lastViewedDateValue]);
 
   return ReactDOM.createPortal(
     <CenteredFlex
@@ -224,10 +243,14 @@ const NotesModal: React.FC = () => {
                       {...field}
                       error={!!errors.displayDate}
                       onClick={() => {
-                        setDisplayDate(!displayDate);
+                        setDisplayDate(true);
                         setLastViewedDate(false);
                       }}
                       value={displayDateValue}
+                      onChange={(e) => {
+                        field.onChange(e);
+                        setDisplayDateValue(e.target.value);
+                      }}
                       ref={displayDateRef}
                     />
                   )}
@@ -369,6 +392,10 @@ const NotesModal: React.FC = () => {
                           setDisplayDate(false);
                         }}
                         value={lastViewedDateValue}
+                        onChange={(e) => {
+                          field.onChange(e);
+                          setLastViewedDateValue(e.target.value);
+                        }}
                         ref={lastViewedDateRef}
                       />
                     )}

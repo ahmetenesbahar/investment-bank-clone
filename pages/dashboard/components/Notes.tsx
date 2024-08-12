@@ -32,6 +32,11 @@ const Notes: React.FC<Props> = ({ selectedDate }) => {
   const { getNotes } = useNotes();
   const notes = getNotes();
 
+  const parseDate = (dateString: string) => {
+    const [day, month, year] = dateString.split("/");
+    return new Date(`${year}-${month}-${day}`);
+  };
+
   const formatDate = (formattedDate: FormattedDate): string => {
     const { day, month, year } = formattedDate;
     return `${day.toString().padStart(2, "0")}/${month
@@ -40,18 +45,75 @@ const Notes: React.FC<Props> = ({ selectedDate }) => {
   };
 
   const formattedSelectedDate = formatDate(selectedDate.formattedDate);
+  const isValid = (
+    displayDate: string,
+    lastViewedDate: string,
+    recurrence: string
+  ): boolean => {
+    const parsedDisplayDate = parseDate(displayDate);
+    const parsedLastViewedDate = parseDate(lastViewedDate);
+    const parsedSelectedDate = parseDate(formattedSelectedDate);
 
-  console.log(notes);
+    if (recurrence === "0") {
+      // Eğer recurrence 0 ise, sadece displayDate ile selectedDate eşleşmelidir
+      return parsedDisplayDate.getTime() === parsedSelectedDate.getTime();
+    } else if (recurrence === "1") {
+      // Eğer recurrence 1 ise, selectedDate ile displayDate arasındaki günleri kontrol et
+      const oneDay = 24 * 60 * 60 * 1000; // Bir günün milisaniye cinsinden değeri
+      const daysBetween = Math.round(
+        (parsedSelectedDate.getTime() - parsedDisplayDate.getTime()) / oneDay
+      );
+
+      return (
+        parsedSelectedDate.getTime() >= parsedDisplayDate.getTime() &&
+        parsedSelectedDate.getTime() <= parsedLastViewedDate.getTime() &&
+        daysBetween >= 0
+      );
+    } else if (recurrence === "2") {
+      // Eğer recurrence 2 ise, displayDate ve lastViewedDate arasındaki her ayın aynı günü kontrol et
+      const monthsBetween =
+        (parsedSelectedDate.getFullYear() - parsedDisplayDate.getFullYear()) *
+          12 +
+        parsedSelectedDate.getMonth() -
+        parsedDisplayDate.getMonth();
+
+      const isMonthlyMatch =
+        parsedSelectedDate.getDate() === parsedDisplayDate.getDate() &&
+        parsedSelectedDate.getTime() <= parsedLastViewedDate.getTime() &&
+        monthsBetween >= 0 &&
+        (parsedSelectedDate.getMonth() - parsedDisplayDate.getMonth()) % 1 ===
+          0;
+
+      return isMonthlyMatch;
+    } else if (recurrence === "3") {
+      // Eğer recurrence 3 ise, displayDate ve lastViewedDate arasındaki her yılın aynı günü kontrol et
+      const yearsBetween =
+        parsedSelectedDate.getFullYear() - parsedDisplayDate.getFullYear();
+
+      const isYearlyMatch =
+        parsedSelectedDate.getDate() === parsedDisplayDate.getDate() &&
+        parsedSelectedDate.getMonth() === parsedDisplayDate.getMonth() &&
+        parsedSelectedDate.getTime() <= parsedLastViewedDate.getTime() &&
+        yearsBetween >= 0 &&
+        (parsedSelectedDate.getFullYear() - parsedDisplayDate.getFullYear()) %
+          1 ===
+          0;
+
+      return isYearlyMatch;
+    }
+
+    return false; // `recurrence` değeri 0, 1, 2 veya 3 dışında bir değer içeriyorsa false döner
+  };
   return (
     <Flex
       width="100%"
       flexDirection="column"
       maxHeight="17.5rem"
-      overflow="scroll"
+      overflow="auto"
     >
       {notes.map(
         (note: Note, index: number) =>
-          note.displayDate === formattedSelectedDate && (
+          isValid(note.displayDate, note.lastViewedDate, note.recurrence) && (
             <React.Fragment key={index}>
               <Flex
                 justifyContent="space-between"
