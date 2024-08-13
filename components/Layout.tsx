@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import Main from "./Main";
 import { Container, Flex } from "@/styles/styles";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -19,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Navbar />
         <Flex>
           <Sidebar />
-          {children}
+          <Main>{children}</Main>
         </Flex>
       </Container>
     </QueryClientProvider>

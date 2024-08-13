@@ -642,5 +642,5 @@ export const NotesModalInput = styled.input<Props>`
 `;
 
 export const ActiveSidebarMenuContainer = styled(Flex)<Props>`
-  transition: left 0.3s ease-in-out; /* Add transition here */
+  transition: left 0.3s ease-in-out;
 `;

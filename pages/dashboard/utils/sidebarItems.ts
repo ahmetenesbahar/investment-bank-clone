@@ -242,7 +242,7 @@ export const getSidebarSubItems = (t: TFunction) => [
     items: [
       {
         label: t("Hesap Bilgilerim"),
-        id: "accountInfo",
+        id: "account_info",
       },
       {
         label: t("Diğer Banka Hesaplarım"),

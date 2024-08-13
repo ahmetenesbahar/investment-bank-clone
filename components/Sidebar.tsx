@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import {
   Flex,
   Text,
@@ -9,6 +9,7 @@ import {
 import useMediaQuery from "@/hooks/useMediaQuery";
 import SearchBar from "../pages/dashboard/components/SearchBar";
 import { usePage } from "../pages/dashboard/context/PageContext";
+import { useSidebar } from "../context/SidebarContext";
 import useUser from "@/hooks/useGetUser";
 import { useTranslation } from "next-i18next";
 import {
@@ -19,10 +20,12 @@ import {
 import { formatDateTime } from "../pages/dashboard/utils/formatting";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
+import { useRouter } from "next/router";
 
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
   const { menu } = usePage();
+  const router = useRouter();
   const user = useUser();
   const width = useMediaQuery();
   const today = new Date();
@@ -31,11 +34,35 @@ const Sidebar: React.FC = () => {
   const sidebarSubItems = getSidebarSubItems(t);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [activeMenu, setActiveMenu] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("home");
-  const [sidebarSubActive, setSidebarSubActive] = useState<string>("");
-  const [mouseEnter, setMouseEnter] = useState<boolean>(false);
+  const {
+    activeTab,
+    handleActiveTab,
+    sidebarSubActive,
+    handleSidebarSubActive,
+  } = useSidebar();
+  const [mouseEnter, setMouseEnter] = useState<boolean>(true);
+  const [redirect, setRedirect] = useState<string | null>(null);
   const itemsToRender =
     width < breakpoints.lg ? smallSidebarItems : sidebarItems;
+
+  useEffect(() => {
+    console.log(activeTab);
+  });
+
+  useEffect(() => {
+    if (redirect) {
+      router.push(redirect);
+      setRedirect(null);
+    }
+  }, [redirect, router]);
+
+  const handleClick = (itemId: string) => {
+    handleActiveTab(itemId);
+    handleSidebarSubActive(itemId);
+    if (itemId === "home") {
+      setRedirect("dashboard");
+    }
+  };
 
   if (!menu && width < breakpoints.lg) {
     return null;
@@ -87,7 +114,7 @@ const Sidebar: React.FC = () => {
             }}
             onMouseLeave={() => setActiveIndex(null)}
             onClick={() => {
-              setActiveTab(item.id);
+              handleClick(item.id);
               setMouseEnter(true);
             }}
             backgroundColor={
@@ -222,7 +249,7 @@ const Sidebar: React.FC = () => {
           </>
         )}
       </DashboardSidebarContainer>
-      {activeTab !== "home" && (
+      {activeTab !== "home" && activeTab !== "" && (
         <ActiveSidebarMenuContainer
           left={mouseEnter ? "14.125rem" : "3rem"}
           backgroundColor={colors.activeSidebar}
@@ -264,7 +291,8 @@ const Sidebar: React.FC = () => {
                     hoverBackground={colors.sidebarHoverItem}
                     width="100%"
                     onClick={() => {
-                      setSidebarSubActive(item.id);
+                      handleSidebarSubActive(item.id);
+                      router.push(item.id);
                     }}
                   >
                     <Text
