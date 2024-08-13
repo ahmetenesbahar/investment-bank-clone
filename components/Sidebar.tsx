@@ -41,28 +41,18 @@ const Sidebar: React.FC = () => {
     handleSidebarSubActive,
   } = useSidebar();
   const [mouseEnter, setMouseEnter] = useState<boolean>(true);
-  const [redirect, setRedirect] = useState<string | null>(null);
   const itemsToRender =
     width < breakpoints.lg ? smallSidebarItems : sidebarItems;
-
-  useEffect(() => {
-    console.log(activeTab);
-  });
-
-  useEffect(() => {
-    if (redirect) {
-      router.push(redirect);
-      setRedirect(null);
-    }
-  }, [redirect, router]);
 
   const handleClick = (itemId: string) => {
     handleActiveTab(itemId);
     handleSidebarSubActive(itemId);
     if (itemId === "home") {
-      setRedirect("dashboard");
+      router.replace("/dashboard");
     }
   };
+
+  const handleSidebarSubItemClick = (itemId: string) => {};
 
   if (!menu && width < breakpoints.lg) {
     return null;
@@ -292,7 +282,8 @@ const Sidebar: React.FC = () => {
                     width="100%"
                     onClick={() => {
                       handleSidebarSubActive(item.id);
-                      router.push(item.id);
+                      router.replace(`/${activeTab}/${item.id}`);
+                      handleSidebarSubItemClick(item.id);
                     }}
                   >
                     <Text
