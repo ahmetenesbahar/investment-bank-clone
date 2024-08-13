@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Flex, Text, Icon, DashboardSidebarContainer } from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import SearchBar from "./SearchBar";
-import { usePage } from "../context/PageContext";
+import SearchBar from "../pages/dashboard/components/SearchBar";
+import { usePage } from "../pages/dashboard/context/PageContext";
 import useUser from "@/hooks/useGetUser";
 import { useTranslation } from "next-i18next";
-import { getSidebarItems, getSmallSidebarItems } from "../utils/sidebarItems";
-import { formatDateTime } from "../utils/formatting";
+import {
+  getSidebarItems,
+  getSmallSidebarItems,
+} from "../pages/dashboard/utils/sidebarItems";
+import { formatDateTime } from "../pages/dashboard/utils/formatting";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
 

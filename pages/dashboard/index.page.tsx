@@ -1,9 +1,10 @@
 import React from "react";
 import { NextPage } from "next";
 
-import Sidebar from "./components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import Main from "./components/Main";
-import Navbar from "./components/Navbar";
+import Navbar from "../../components/Navbar";
+import Layout from "@/components/Layout";
 
 import { Container, Flex } from "@/styles/styles";
 
@@ -22,23 +23,17 @@ const queryClient = new QueryClient();
 
 const Dashboard: NextPage = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <DateProvider>
-        <ModalProvider>
-          <PageProvider>
-            <TabProvider>
-              <Container backgroundColor={colors.secondaryWhite}>
-                <Navbar />
-                <Flex>
-                  <Sidebar />
-                  <Main />
-                </Flex>
-              </Container>
-            </TabProvider>
-          </PageProvider>
-        </ModalProvider>
-      </DateProvider>
-    </QueryClientProvider>
+    <DateProvider>
+      <ModalProvider>
+        <PageProvider>
+          <TabProvider>
+            <Layout>
+              <Main />
+            </Layout>
+          </TabProvider>
+        </PageProvider>
+      </ModalProvider>
+    </DateProvider>
   );
 };
 
