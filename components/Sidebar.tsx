@@ -8,7 +8,7 @@ import {
 } from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import SearchBar from "../pages/dashboard/components/SearchBar";
-import { usePage } from "../pages/dashboard/context/PageContext";
+import { usePage } from "../context/PageContext";
 import { useSidebar } from "../context/SidebarContext";
 import useUser from "@/hooks/useGetUser";
 import { useTranslation } from "next-i18next";

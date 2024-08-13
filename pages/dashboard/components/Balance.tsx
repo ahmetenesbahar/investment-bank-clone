@@ -12,7 +12,7 @@ import {
   Button,
 } from "@/styles/styles";
 import useUser from "@/hooks/useGetUser";
-import { usePage } from "../context/PageContext";
+import { usePage } from "../../../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
 import { formatIBAN } from "../utils/formatting";

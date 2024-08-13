@@ -4,7 +4,6 @@ import { NextPage } from "next";
 import Layout from "@/components/Layout";
 
 import { TabProvider } from "./context/TabContext";
-import { PageProvider } from "./context/PageContext";
 import { DateProvider } from "./context/DateContext";
 import { ModalProvider } from "./context/ModalContext";
 
@@ -16,13 +15,11 @@ const Dashboard: NextPage = () => {
   return (
     <DateProvider>
       <ModalProvider>
-        <PageProvider>
-          <TabProvider>
-            <Layout>
-              <DashboardMain />
-            </Layout>
-          </TabProvider>
-        </PageProvider>
+        <TabProvider>
+          <Layout>
+            <DashboardMain />
+          </Layout>
+        </TabProvider>
       </ModalProvider>
     </DateProvider>
   );

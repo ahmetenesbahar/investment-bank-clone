@@ -5,10 +5,10 @@ import { Flex } from "@/styles/styles";
 
 const DashboardMain: React.FC = () => {
   return (
-    <Flex>
+    <>
       <DashboardLeft />
       <DashboardRight />
-    </Flex>
+    </>
   );
 };
 

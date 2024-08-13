@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Flex, Text, Table, Td, Th, Tr, Button } from "@/styles/styles";
 import useUser from "@/hooks/useGetUser";
-import { usePage } from "../context/PageContext";
+import { usePage } from "../../../context/PageContext";
 import SelectBox from "./SelectBox";
 import { useTranslation } from "next-i18next";
 import { formatAccountNumbers } from "../utils/formatting";

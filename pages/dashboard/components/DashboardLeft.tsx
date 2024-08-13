@@ -3,7 +3,7 @@ import { Flex } from "@/styles/styles";
 import LeftHeader from "./LeftHeader";
 import Balance from "./Balance";
 import EditAccounts from "./EditAccounts";
-import { usePage } from "../context/PageContext";
+import { usePage } from "../../../context/PageContext";
 import ChartTab from "./ChartTab";
 import { useTab } from "../context/TabContext";
 import CreditCards from "./CreditCards";

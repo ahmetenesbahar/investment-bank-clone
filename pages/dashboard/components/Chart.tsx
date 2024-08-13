@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Flex, Text, CenteredFlex } from "@/styles/styles";
-import { usePage } from "../context/PageContext";
+import { usePage } from "../../../context/PageContext";
 import { colors } from "@/styles/colors";
 
 interface ChartProps {

@@ -9,7 +9,7 @@ import {
 } from "@/styles/styles";
 import { useTab } from "../context/TabContext";
 import { useTranslation } from "next-i18next";
-import { usePage } from "../context/PageContext";
+import { usePage } from "../../../context/PageContext";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
