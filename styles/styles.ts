@@ -99,6 +99,14 @@ export const Flex = styled.div<Props>`
         width: 100%;
       }
     `}
+
+  ${(props) =>
+    props.hover &&
+    `
+      &:hover {
+        background-color: ${props.hoverBackground || "transparent"};
+      }
+    `}
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -631,4 +639,8 @@ export const NotesModalInput = styled.input<Props>`
   &:focus {
     border: 1px solid ${colors.black};
   }
+`;
+
+export const ActiveSidebarMenuContainer = styled(Flex)<Props>`
+  transition: left 0.3s ease-in-out; /* Add transition here */
 `;

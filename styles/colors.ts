@@ -27,4 +27,8 @@ export const colors = {
   brown: "#B23508",
   placeholderGray: "#ABABAB",
   yellow: "#fefdeb",
+  activeSidebar: "#03213D",
+  sidebarSubTitle: "#6C8EB0",
+  sidebarBorderColor: "#163858",
+  sidebarHoverItem: "#083B7E",
 };
