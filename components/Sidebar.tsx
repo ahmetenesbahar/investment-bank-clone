@@ -16,7 +16,7 @@ import {
   getSidebarItems,
   getSmallSidebarItems,
   getSidebarSubItems,
-} from "../pages/dashboard/utils/sidebarItems";
+} from "@/utils/sidebarItems";
 import { formatDateTime } from "../pages/dashboard/utils/formatting";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";

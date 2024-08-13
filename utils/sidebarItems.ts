@@ -12,7 +12,7 @@ export const getSidebarItems = (t: TFunction) => [
     hoveredIcon: "/assets/icon_hesaplarim_selected.png",
     label: `${t("My Accounts")}`,
     arrow: "/assets/menu_arrow.png",
-    id: "myAccounts",
+    id: "my_accounts",
   },
   {
     icon: "/assets/icon_paraaktarma.png",
@@ -238,7 +238,7 @@ export const getSmallSidebarItems = (t: TFunction) => [
 export const getSidebarSubItems = (t: TFunction) => [
   {
     title: t("Hesaplarım"),
-    id: "myAccounts",
+    id: "my_accounts",
     items: [
       {
         label: t("Hesap Bilgilerim"),
