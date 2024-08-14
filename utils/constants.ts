@@ -9,7 +9,18 @@ export const padding = {
   xsm: "0.25rem",
   sm: "0.5rem",
   md: "1rem",
-  lg: "1.5rem",
-  xl: "2rem",
-  xxl: "3rem",
+  lg: "1.25rem",
+  xl: "1.5rem",
+  xxl: "2rem",
+  xxxl: "2.5rem",
+};
+
+export const margin = {
+  xsm: "0.25rem",
+  sm: "0.5rem",
+  md: "1rem",
+  lg: "1.25rem",
+  xl: "1.5rem",
+  xxl: "2rem",
+  xxxl: "2.5rem",
 };
