@@ -13,6 +13,7 @@ const KeyboardContainer = styled.div`
   padding: 0.625rem;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
+  z-index: 1;
 `;
 
 const Key = styled.button`
