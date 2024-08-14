@@ -586,8 +586,10 @@ export const Tr = styled.tr<Props>`
   cursor: ${(props) => (props.cursor ? "pointer" : "auto")};
   background-color: ${(props) => props.backgroundColor || "transparent"};
   height: ${(props) => props.height || "auto"};
-  border: ${(props) => props.border || "none"};
+  border-right: ${(props) => props.borderRight || "none"};
+  border-left: ${(props) => props.borderLeft || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
+  border-top: ${(props) => props.borderTop || "none"};
 
   &:hover {
     background-color: ${(props) => props.hoverBackground || "transparent"};

@@ -73,7 +73,17 @@ const Balance: React.FC = () => {
                         ? "none"
                         : `0.063rem solid ${colors.borderColor}`
                     }
-                    border={
+                    borderTop={
+                      activeIndex === index
+                        ? `0.063rem solid ${colors.borderBlue}`
+                        : "none"
+                    }
+                    borderLeft={
+                      activeIndex === index
+                        ? `0.063rem solid ${colors.borderBlue}`
+                        : "none"
+                    }
+                    borderRight={
                       activeIndex === index
                         ? `0.063rem solid ${colors.borderBlue}`
                         : "none"
