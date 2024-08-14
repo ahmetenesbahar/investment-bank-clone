@@ -31,4 +31,5 @@ export const colors = {
   sidebarSubTitle: "#6C8EB0",
   sidebarBorderColor: "#163858",
   sidebarHoverItem: "#083B7E",
+  tableBackground: "#F8F8F8",
 };
