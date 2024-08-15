@@ -59,7 +59,7 @@ const Sidebar: React.FC = () => {
   }
 
   return (
-    <Flex>
+    <Flex zIndex="4">
       <DashboardSidebarContainer
         height=" 100% "
         backgroundColor={
