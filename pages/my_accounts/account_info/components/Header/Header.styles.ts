@@ -17,15 +17,22 @@ interface Props {
 }
 
 export const HeaderContainer = styled(Flex)`
-  width: 788px;
+  width: 100%;
   flex-direction: column;
+
+  @media (max-width: ${breakpoints.lg}) {
+    width: 100% !important;
+  }
 `;
 
 export const HeaderFlex = styled(Flex)<Props>`
   margin-top: ${padding.sm};
   gap: 15px;
   position: relative;
-  padding-right: ${padding.md};
+  ${(props) =>
+    props.active &&
+    `
+    padding-right: ${padding.md};`}
 `;
 
 export const HeaderFlexBorderBottom = styled(Flex)<Props>`
@@ -58,7 +65,10 @@ export const SelectBoxDiv = styled.div<Props>`
   background-color: ${colors.white};
   z-index: 3;
 
-  &::before {
+  ${(props) =>
+    props.active &&
+    `
+    &::before {
     content: "";
     position: absolute;
     top: -8px;
@@ -79,6 +89,12 @@ export const SelectBoxDiv = styled.div<Props>`
     border-color: transparent transparent ${colors.white} transparent;
     z-index: 2;
   }
+    `}
+
+  @media (max-width: ${breakpoints.md}px) {
+    width: 100%;
+    top: 42px;
+  }
 `;
 
 export const FlexDiv = styled(Flex)<Props>`
@@ -96,4 +112,18 @@ export const Image = styled(Icon)`
     props.active &&
     `
     transform: rotate(180deg);`}
+`;
+
+export const Dropdown = styled(Flex)<Props>`
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.filterBlue};
+  padding: ${padding.smd};
+`;
+
+export const DropdownIcon = styled(Icon)<Props>`
+  position: absolute;
+  right: 10px;
 `;

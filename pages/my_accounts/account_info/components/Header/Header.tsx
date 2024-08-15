@@ -9,8 +9,12 @@ import {
   SelectBoxDiv,
   SelectBoxItem,
   FlexDiv,
+  Dropdown,
+  DropdownIcon,
 } from "./Header.styles";
 import { colors } from "@/styles/colors";
+import { breakpoints } from "@/utils/constants";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 const selectBoxOptions = [
   { value: "0", label: "Vadesiz" },
@@ -20,6 +24,7 @@ const selectBoxOptions = [
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const width = useMediaQuery();
   return (
     <HeaderContainer>
       <HeaderFlexBorderBottom>
@@ -29,27 +34,41 @@ const Header: React.FC = () => {
         justifyContent="flex-end"
         alignItems="center"
         width="100%"
+        active={width > breakpoints.md ? true : false}
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
-        <FlexDiv cursor="pointer">
-          <FlexDiv>
+        {width > breakpoints.md ? (
+          <FlexDiv cursor="pointer">
+            <FlexDiv>
+              <Image
+                src="/assets/create_account_icon.png"
+                alt="create_account_icon"
+              />
+              <HeaderNormalText color={colors.secondaryBlue}>
+                Anında Hesap Aç
+              </HeaderNormalText>
+            </FlexDiv>
             <Image
-              src="/assets/create_account_icon.png"
-              alt="create_account_icon"
+              src="/assets/lower_arrow_dark_blue.png"
+              alt="downArrow"
+              active={isOpen}
             />
-            <HeaderNormalText color={colors.secondaryBlue}>
+          </FlexDiv>
+        ) : (
+          <Dropdown>
+            <HeaderNormalText color={colors.white}>
               Anında Hesap Aç
             </HeaderNormalText>
-          </FlexDiv>
-          <Image
-            src="/assets/lower_arrow_dark_blue.png"
-            alt="downArrow"
-            active={isOpen}
-          />
-        </FlexDiv>
-        <SelectBoxDiv display={isOpen ? "flex" : "none"}>
+            <DropdownIcon src="/assets/white_arrow_down.png" />
+          </Dropdown>
+        )}
+
+        <SelectBoxDiv
+          display={isOpen ? "flex" : "none"}
+          active={width > breakpoints.md ? true : false}
+        >
           {selectBoxOptions.map((option, index) => (
             <SelectBoxItem key={index}>
               <HeaderNormalText color={colors.secondaryBlue}>
