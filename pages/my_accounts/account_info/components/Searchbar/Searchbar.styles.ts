@@ -22,6 +22,9 @@ export const SearchbarContainer = styled(Flex)<Props>`
   justify-content: center;
   align-items: center;
   max-width: 24.25rem;
+  @media (max-width: ${breakpoints.md}px) {
+    max-width: none;
+  }
 `;
 
 export const Input = styled.input<Props>`
