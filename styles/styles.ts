@@ -646,3 +646,10 @@ export const NotesModalInput = styled.input<Props>`
 export const ActiveSidebarMenuContainer = styled(Flex)<Props>`
   transition: left 0.3s ease-in-out;
 `;
+
+export const ContentContainer = styled(Flex)<Props>`
+  width: 49.25rem;
+  @media (max-width: ${breakpoints.lg}px) {
+    width: 100%;
+  }
+`;

@@ -3,15 +3,15 @@ import { NextPage } from "next";
 import Header from "./Header/Header";
 import Filter from "./Filter/Filter";
 import Account from "./Account/Account";
-import { Flex } from "@/styles/styles";
+import { ContentContainer } from "@/styles/styles";
 
 const Content: NextPage = () => {
   return (
-    <Flex flexDirection="column" padding="1.25rem">
+    <ContentContainer flexDirection="column" padding="1.25rem" width="100%">
       <Header />
       <Filter />
       <Account />
-    </Flex>
+    </ContentContainer>
   );
 };
 
