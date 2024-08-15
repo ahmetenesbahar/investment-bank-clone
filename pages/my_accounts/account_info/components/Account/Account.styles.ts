@@ -33,6 +33,9 @@ export const HeaderDiv = styled(Flex)<Props>`
   background-color: ${colors.tableBackground};
   padding: ${padding.sm} ${padding.md};
   border-bottom: 1px solid ${colors.borderColor};
+  @media (max-width: ${breakpoints.md}px) {
+    display: none;
+  }
 `;
 export const HeaderText = styled(Text)<Props>`
   color: ${colors.sidebarSubTitle};
