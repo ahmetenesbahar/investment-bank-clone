@@ -105,7 +105,7 @@ export const getSmallSidebarItems = (t: TFunction) => [
     hoveredIcon: "/assets/icon_hesaplarim_selected.png",
     label: `${t("My Accounts")}`,
     arrow: "/assets/menu_arrow.png",
-    id: "accounts",
+    id: "my_accounts",
   },
   {
     icon: "/assets/icon_paraaktarma.png",
