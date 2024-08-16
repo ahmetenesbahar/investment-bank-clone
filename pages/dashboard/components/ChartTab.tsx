@@ -3,7 +3,7 @@ import { Flex, ChartDiv, Text, Button, VerticalLine } from "@/styles/styles";
 import Chart from "./Chart";
 import useUser from "@/hooks/useGetUser";
 import useCurrency from "../hooks/useCurrency";
-import { usePage } from "../context/PageContext";
+import { usePage } from "../../../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
 import { breakpoints } from "@/utils/constants";

@@ -99,6 +99,14 @@ export const Flex = styled.div<Props>`
         width: 100%;
       }
     `}
+
+  ${(props) =>
+    props.hover &&
+    `
+      &:hover {
+        background-color: ${props.hoverBackground || "transparent"};
+      }
+    `}
 `;
 
 export const LoginSidebarContainer = styled(Container)<Props>`
@@ -578,8 +586,10 @@ export const Tr = styled.tr<Props>`
   cursor: ${(props) => (props.cursor ? "pointer" : "auto")};
   background-color: ${(props) => props.backgroundColor || "transparent"};
   height: ${(props) => props.height || "auto"};
-  border: ${(props) => props.border || "none"};
+  border-right: ${(props) => props.borderRight || "none"};
+  border-left: ${(props) => props.borderLeft || "none"};
   border-bottom: ${(props) => props.borderBottom || "none"};
+  border-top: ${(props) => props.borderTop || "none"};
 
   &:hover {
     background-color: ${(props) => props.hoverBackground || "transparent"};
@@ -630,5 +640,16 @@ export const NotesModalInput = styled.input<Props>`
     ${(props) => (props.error ? "red" : `${colors.secondaryBorderColor}`)};
   &:focus {
     border: 1px solid ${colors.black};
+  }
+`;
+
+export const ActiveSidebarMenuContainer = styled(Flex)<Props>`
+  transition: left 0.3s ease-in-out;
+`;
+
+export const ContentContainer = styled(Flex)<Props>`
+  width: 49.25rem;
+  @media (max-width: ${breakpoints.lg}px) {
+    width: 100%;
   }
 `;

@@ -11,7 +11,7 @@ import {
 import SearchBar from "../pages/dashboard/components/SearchBar";
 import useUser from "@/hooks/useGetUser";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { usePage } from "../pages/dashboard/context/PageContext";
+import { usePage } from "../context/PageContext";
 import { useTranslation } from "next-i18next";
 import { formatDateTime } from "../pages/dashboard/utils/formatting";
 import { breakpoints } from "@/utils/constants";
