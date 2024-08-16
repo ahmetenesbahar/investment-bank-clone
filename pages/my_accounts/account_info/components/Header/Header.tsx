@@ -15,20 +15,22 @@ import {
 import { colors } from "@/styles/colors";
 import { breakpoints } from "@/utils/constants";
 import useMediaQuery from "@/hooks/useMediaQuery";
-
-const selectBoxOptions = [
-  { value: "0", label: "Vadesiz" },
-  { value: "1", label: "Vadeli" },
-  { value: "2", label: "Yatırım" },
-];
+import { useTranslation } from "next-i18next";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const width = useMediaQuery();
+  const { t } = useTranslation();
+
+  const selectBoxOptions = [
+    { value: "0", label: t("Demand") },
+    { value: "1", label: t("Time Deposit") },
+    { value: "2", label: t("Investment") },
+  ];
   return (
     <HeaderContainer>
       <HeaderFlexBorderBottom>
-        <HeaderText>Hesaplarım</HeaderText>
+        <HeaderText>{t("My Accounts")}</HeaderText>
       </HeaderFlexBorderBottom>
       <HeaderFlex
         justifyContent="flex-end"
@@ -47,7 +49,7 @@ const Header: React.FC = () => {
                 alt="create_account_icon"
               />
               <HeaderNormalText color={colors.secondaryBlue}>
-                Anında Hesap Aç
+                {t("Open New Account")}
               </HeaderNormalText>
             </FlexDiv>
             <Image
@@ -59,7 +61,7 @@ const Header: React.FC = () => {
         ) : (
           <Dropdown>
             <HeaderNormalText color={colors.white}>
-              Anında Hesap Aç
+              {t("Open New Account")}
             </HeaderNormalText>
             <DropdownIcon src="/assets/white_arrow_down.png" />
           </Dropdown>

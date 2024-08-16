@@ -44,7 +44,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
   return (
     <AccountTableContainer>
       <AccountTableHeader>
-        <HeaderText>Vadesiz Hesaplarım</HeaderText>
+        <HeaderText>{t("Current Accounts")}</HeaderText>
       </AccountTableHeader>
       <AccountTableBody>
         {user?.accounts.map((account: Account, index: number) => (
@@ -67,13 +67,12 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                       <BlueText>{account.currency}</BlueText>
                     </FlexDiv>
                     <NormalText>
-                      {account.accountType === "checking" ? "Vadesiz" : "Hesap"}{" "}
-                      {account.currency}
+                      {account.accountType} {account.currency}
                     </NormalText>
                   </FlexColumn>
                   <FlexColumn width="55%">
                     <NormalText textTransform="uppercase">
-                      1056- Üsküdar İstanbul
+                      1056 - Üsküdar İstanbul
                     </NormalText>
                     <NormalText opacity="0.5">{account.iban}</NormalText>
                   </FlexColumn>
@@ -102,7 +101,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                         hoverBackground={colors.secondaryHoverBlue}
                         hoverColor={colors.hoverBlue}
                       >
-                        {"Hesap Detayı"}
+                        {t("Account Details")}
                       </BlueText>
                       <GrayLine width="0.063rem" height="1rem" />
                       <BlueText
@@ -113,7 +112,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                         hoverBackground={colors.secondaryHoverBlue}
                         hoverColor={colors.hoverBlue}
                       >
-                        {"Hesap Kapatma"}
+                        {t("Close Account")}
                       </BlueText>
                       <GrayLine width="0.063rem" height="1rem" />
                       <BlueText
@@ -124,7 +123,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                         hoverBackground={colors.secondaryHoverBlue}
                         hoverColor={colors.hoverBlue}
                       >
-                        {"Hesap Hareketleri"}
+                        {t("Account Activities")}
                       </BlueText>
                     </CenteredFlex>
                   </AccountTableItemDetail>
@@ -155,7 +154,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                 </FlexDiv>
                 <FlexDiv>
                   <NormalText textTransform="uppercase">
-                    1056- Üsküdar İstanbul
+                    1056 - Üsküdar İstanbul
                   </NormalText>
                 </FlexDiv>
                 <FlexDiv>

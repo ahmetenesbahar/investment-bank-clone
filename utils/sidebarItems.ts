@@ -241,23 +241,23 @@ export const getSidebarSubItems = (t: TFunction) => [
     id: "my_accounts",
     items: [
       {
-        label: t("Hesap Bilgilerim"),
+        label: t("My Account Information"),
         id: "account_info",
       },
       {
-        label: t("Diğer Banka Hesaplarım"),
+        label: t("Other Bank Accounts"),
         id: "otherBankAccounts",
       },
       {
-        label: t("Dekontlarım"),
+        label: t("My Statements"),
         id: "receipts",
       },
       {
-        label: t("Son İşlemlerim"),
+        label: t("My Last Transactions"),
         id: "recentTransactions",
       },
       {
-        label: t("Anında Hesap Aç"),
+        label: t("Open an Account"),
         id: "openAccount",
       },
       {
@@ -265,11 +265,11 @@ export const getSidebarSubItems = (t: TFunction) => [
         id: "closeAccount",
       },
       {
-        label: t("Sözleşme ve Formlar"),
+        label: t("Close Account"),
         id: "contractsAndForms",
       },
       {
-        label: t("Düzenli Birikim Talimatı"),
+        label: t("Automatic Deposition Order"),
         id: "regularSavingInstruction",
       },
     ],

@@ -107,5 +107,21 @@
   "Thursday": "Perşembe",
   "Friday": "Cuma",
   "Saturday": "Cumartesi",
-  "Sunday": "Pazar"
+  "Sunday": "Pazar",
+  "My Account Information": "Hesap Bilgilerim",
+  "Other Bank Accounts": "Diğer Banka Hesaplarım",
+  "My Statements": "Dekontlarım",
+  "My Last Transactions": "Son İşlemlerim",
+  "Open an Account": "Anında Hesap Aç",
+  "Close Account": "Hesap Kapatma",
+  "Automatic Deposition Order": "Düzenli Birikim Talimatı",
+  "Branch / IBAN": "Şube / IBAN",
+  "Balance": "Bakiye",
+  "Search": "Ara",
+  "Open New Account": "Anında Hesap Aç",
+  "Demand": "Vadesiz",
+  "Time Deposit": "Vadeli",
+  "Currency": "Para Birimi",
+  "Current Accounts": "Vadesiz Hesaplarım",
+  "Account Details": "Hesap Detayları"
 }

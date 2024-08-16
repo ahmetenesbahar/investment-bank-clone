@@ -18,9 +18,7 @@ interface Props {
 
 export const AccountContainer = styled(Flex)<Props>`
   flex-direction: column;
-
   width: 100%;
-  justify-content: space-between;
   margin-top: ${margin.lg};
 `;
 export const FlexContainer = styled(Flex)<Props>`

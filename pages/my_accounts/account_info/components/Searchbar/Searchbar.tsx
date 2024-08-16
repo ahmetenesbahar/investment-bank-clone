@@ -5,10 +5,12 @@ import {
   SearchIcon,
   SearchCloseIcon,
 } from "./Searchbar.styles";
+import { useTranslation } from "next-i18next";
 
 const Searchbar: React.FC = () => {
   const [search, setSearch] = useState("");
   const [searchActive, setSearchActive] = useState(false);
+  const { t } = useTranslation();
 
   const handleSearchbarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -28,7 +30,7 @@ const Searchbar: React.FC = () => {
   return (
     <SearchbarContainer>
       <Input
-        placeholder="Hesap Ara..."
+        placeholder={t("Search")}
         value={search}
         onChange={(e) => {
           handleSearchbarChange(e);

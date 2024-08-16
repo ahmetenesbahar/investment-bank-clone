@@ -7,18 +7,23 @@ import {
   HeaderIcon,
 } from "./Account.styles";
 import AccountTable from "../AccountTable/AccountTable";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 const Account: React.FC = () => {
   const [isAllSelected, setIsAllSelected] = useState(false);
+  const { t } = useTranslation();
+  const router = useRouter();
+  const currentLang = router.locale;
   const handleToggleAll = () => {
     setIsAllSelected(!isAllSelected);
   };
   return (
     <AccountContainer>
       <HeaderDiv>
-        <FlexContainer gap="4rem">
-          <HeaderText>Hesap Adı / Tipi</HeaderText>
-          <HeaderText>Şube / IBAN</HeaderText>
+        <FlexContainer gap={currentLang === "en" ? "2rem" : "4rem"}>
+          <HeaderText>{t("Nickname / Account Number")}</HeaderText>
+          <HeaderText>{t("Branch / IBAN")}</HeaderText>
         </FlexContainer>
         <FlexContainer
           justifyContent="flex-end"
@@ -26,7 +31,7 @@ const Account: React.FC = () => {
           cursor="pointer"
           onClick={handleToggleAll}
         >
-          <HeaderText cursor="pointer">Bakiye</HeaderText>
+          <HeaderText cursor="pointer">{t("Balance")}</HeaderText>
           <HeaderIcon src="/assets/lower_double_arrow.png" alt="lowerArrow" />
         </FlexContainer>
       </HeaderDiv>

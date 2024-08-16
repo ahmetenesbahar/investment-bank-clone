@@ -9,23 +9,26 @@ import Searchbar from "../Searchbar/Searchbar";
 import Selectbox from "../Selectbox/Selectbox";
 import { breakpoints } from "@/utils/constants";
 import useMediaQuery from "@/hooks/useMediaQuery";
-
-const accountTypeOptions = [
-  { label: "Vadesiz", value: "vadesiz" },
-  { label: "Vadeli", value: "vadeli" },
-  { label: "Yatırım", value: "yatirim" },
-];
-
-const currencyTypeOptions = [
-  { label: "GR", value: "gr" },
-  { label: "TL", value: "tl" },
-  { label: "USD", value: "usd" },
-];
+import { useTranslation } from "next-i18next";
 
 const Filter: React.FC = () => {
   const width = useMediaQuery();
   const [isAccountFilterOpen, setIsAccountFilterOpen] = useState(false);
   const [isCurrencyFilterOpen, setIsCurrencyFilterOpen] = useState(false);
+  const { t } = useTranslation();
+
+  const accountTypeOptions = [
+    { label: t("Demand"), value: "vadesiz" },
+    { label: t("Time Deposit"), value: "vadeli" },
+    { label: t("Investment"), value: "yatirim" },
+  ];
+
+  const currencyTypeOptions = [
+    { label: "GR", value: "gr" },
+    { label: "TL", value: "tl" },
+    { label: "USD", value: "usd" },
+  ];
+
   return (
     <FilterContainer>
       <Searchbar />
@@ -37,7 +40,10 @@ const Filter: React.FC = () => {
             }}
           >
             <FilterIcon src="/assets/filter_icon.png" alt="filterIcon" />
-            <Selectbox options={accountTypeOptions} placeholder="Hesap Tipi" />
+            <Selectbox
+              options={accountTypeOptions}
+              placeholder={t("Account Type")}
+            />
             <ArrowIcon
               src="/assets/lower_arrow_dark_blue.png"
               alt="downArrow"
@@ -52,7 +58,7 @@ const Filter: React.FC = () => {
             <FilterIcon src="/assets/filter_icon.png" alt="filterIcon" />
             <Selectbox
               options={currencyTypeOptions}
-              placeholder="Para Birimi"
+              placeholder={t("Currency")}
             />
             <ArrowIcon
               src="/assets/lower_arrow_dark_blue.png"

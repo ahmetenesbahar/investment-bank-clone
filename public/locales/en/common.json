@@ -107,5 +107,21 @@
   "Thursday": "Thursday",
   "Friday": "Friday",
   "Saturday": "Saturday",
-  "Sunday": "Sunday"
+  "Sunday": "Sunday",
+  "My Account Information": "My Account Information",
+  "Other Bank Accounts": "Other Bank Accounts",
+  "My Statements": "My Statements",
+  "My Last Transactions": "My Last Transactions",
+  "Open an Account": "Open an Account",
+  "Close Account": "Close Account",
+  "Automatic Deposition Order": "Automatic Deposition Order",
+  "Branch / IBAN": "Branch / IBAN",
+  "Balance": "Balance",
+  "Search": "Search",
+  "Open New Account": "Open New Account",
+  "Demand": "Demand",
+  "Time Deposit": "Time Deposit",
+  "Currency": "Currency",
+  "Current Accounts": "Current Accounts",
+  "Account Details": "Account Deatils"
 }
