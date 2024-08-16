@@ -42,7 +42,7 @@ const user: User = {
   accounts: [
     {
       accountType: "checking",
-      currency: "TR",
+      currency: "TL",
       iban: "TR800006400000111234567890",
       balance: 1500.75,
       accountName: "Vadesiz TL Hesabı",
@@ -56,7 +56,7 @@ const user: User = {
     },
     {
       accountType: "checking",
-      currency: "Gold",
+      currency: "GR",
       iban: "TR800006400000113456789012",
       balance: 100.0,
       accountName: "Vadesiz Altın Hesabı",

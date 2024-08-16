@@ -15,7 +15,7 @@ import useUser from "@/hooks/useGetUser";
 import { usePage } from "../../../context/PageContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
-import { formatIBAN } from "../utils/formatting";
+import { formatIBAN, formatCurrency } from "../utils/formatting";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
 
@@ -121,7 +121,7 @@ const Balance: React.FC = () => {
                             color={colors.black}
                             cursor="pointer"
                           >
-                            {account.balance}
+                            {formatCurrency(account.balance)}
                           </Text>
                           <Text
                             fontWeight="450"

@@ -26,3 +26,12 @@ export const formatDateTime = (date: Date) => {
 
   return `${day}.${month}.${year} ${hours}:${minutes}`;
 };
+
+export const formatCurrency = (amount: number): string => {
+  const formatted = amount.toFixed(2);
+  const [whole, fraction] = formatted.split(".");
+
+  const formattedWhole = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  return `${formattedWhole},${fraction}`;
+};

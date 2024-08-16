@@ -3,6 +3,7 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { Flex, Text, CenteredFlex } from "@/styles/styles";
 import { usePage } from "../../../context/PageContext";
 import { colors } from "@/styles/colors";
+import { formatCurrency } from "../utils/formatting";
 
 interface ChartProps {
   labels: string[];
@@ -36,14 +37,14 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
         <CenteredFlex
           flexDirection="column"
           position="absolute"
-          left="7.5rem"
+          left="7rem"
           top="38%"
         >
           <Text color={colors.black} fontWeight="500" fontSize="0.75rem">
             {chartText}
           </Text>
           <Text fontWeight="700" color={colors.black} fontSize="1rem">
-            {!hideNumbers && totalValue}
+            {!hideNumbers && formatCurrency(totalValue)}
           </Text>
           <Text textAlign="center" color={colors.black} fontWeight="500">
             {!hideNumbers && "TL"}
@@ -84,7 +85,7 @@ const Chart: React.FC<ChartProps> = ({ backgroundColor, data, chartText }) => {
           </CenteredFlex>
           <CenteredFlex width="100%">
             <Text fontWeight="700" color={colors.black} fontSize="0.875rem">
-              {!hideNumbers && `${totalValue} TL`}
+              {!hideNumbers && `${formatCurrency(totalValue)} TL`}
             </Text>
           </CenteredFlex>
         </Flex>

@@ -31,12 +31,21 @@ const useNotes = () => {
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
   }, []);
 
+  const updateNote = useCallback((updatedNote: Note) => {
+    const existingNotes = JSON.parse(localStorage.getItem("notes") || "[]");
+    const updatedNotes = existingNotes.map((note: Note) =>
+      note.title === updatedNote.title ? updatedNote : note
+    );
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  }, []);
+
   const notes = getNotes();
 
   return {
     notes,
     addNote,
     removeNote,
+    updateNote,
     getNotes,
   };
 };
