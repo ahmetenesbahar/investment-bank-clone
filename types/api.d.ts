@@ -21,19 +21,28 @@ export interface ForgotPasswordRequestBody {
 export interface ForgotPasswordResponse {
   message: string;
 }
+interface Branch {
+  code: number;
+  name: string;
+}
 
-export interface User {
+interface Account {
+  accountType: string;
+  currency: string;
+  iban: string;
+  balance: number;
+  accountName: string;
+}
+
+interface User {
   customerNumber: number;
   firstName: string;
   lastName: string;
   email: string;
   lastLogin: string;
-  accounts: {
-    accountType: string;
-    currency: string;
-    iban: string;
-    balance: number;
-  }[];
+  debts: number;
+  branch: Branch;
+  accounts: Account[];
 }
 
 export interface FormData {

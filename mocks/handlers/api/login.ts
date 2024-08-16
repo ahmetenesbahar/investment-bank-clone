@@ -4,18 +4,28 @@ import { LoginRequestBody, LoginResponse } from "@/types/api";
 
 const SECRET_KEY = "mysecretkey";
 
+interface Branch {
+  code: number;
+  name: string;
+}
+
+interface Account {
+  accountType: string;
+  currency: string;
+  iban: string;
+  balance: number;
+  accountName: string;
+}
+
 interface User {
   customerNumber: number;
   firstName: string;
   lastName: string;
   email: string;
   lastLogin: string;
-  accounts: {
-    accountType: string;
-    currency: string;
-    iban: string;
-    balance: number;
-  }[];
+  debts: number;
+  branch: Branch;
+  accounts: Account[];
 }
 
 const user: User = {
@@ -24,18 +34,32 @@ const user: User = {
   lastName: "Doe",
   email: "john.doe@example.com",
   lastLogin: "2024-07-30T12:34:56Z",
+  debts: 3000.45,
+  branch: {
+    code: 1056,
+    name: "Üsküdar İstanbul",
+  },
   accounts: [
     {
       accountType: "checking",
-      currency: "TRY",
-      iban: "TR330006100519786457841326",
+      currency: "TR",
+      iban: "TR800006400000111234567890",
       balance: 1500.75,
+      accountName: "Vadesiz TL Hesabı",
     },
     {
       accountType: "checking",
       currency: "USD",
-      iban: "US440029310008232645891123",
+      iban: "TR800006400000112345678901",
       balance: 250.5,
+      accountName: "Vadesiz Dolar Hesabı",
+    },
+    {
+      accountType: "checking",
+      currency: "Gold",
+      iban: "TR800006400000113456789012",
+      balance: 100.0,
+      accountName: "Vadesiz Altın Hesabı",
     },
   ],
 };
