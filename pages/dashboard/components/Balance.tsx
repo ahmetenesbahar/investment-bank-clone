@@ -96,7 +96,7 @@ const Balance: React.FC = () => {
                         color={colors.black}
                         cursor="pointer"
                       >
-                        {account.accountType}
+                        {t(`${account.accountName}`)}
                       </Text>
                     </Td>
                     <Td>

@@ -1,6 +1,7 @@
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 
 interface Note {
+  id?: string;
   title: string;
   description: string;
   displayDate: string;
@@ -9,6 +10,10 @@ interface Note {
 }
 
 const useNotes = () => {
+  const generateId = () => {
+    return Math.random().toString(36).substr(2, 9);
+  };
+
   const getNotes = () => {
     if (typeof window !== "undefined") {
       const notes = localStorage.getItem("notes");
@@ -17,25 +22,30 @@ const useNotes = () => {
     return [];
   };
 
-  const addNote = useCallback((newNote: Note) => {
+  const addNote = useCallback((newNote: Omit<Note, "id">) => {
     const existingNotes = JSON.parse(localStorage.getItem("notes") || "[]");
-    existingNotes.push(newNote);
+
+    const noteWithId: Note = { ...newNote, id: generateId() };
+
+    existingNotes.push(noteWithId);
     localStorage.setItem("notes", JSON.stringify(existingNotes));
   }, []);
 
-  const removeNote = useCallback((title: string) => {
+  const removeNote = useCallback((id: string) => {
     const existingNotes = JSON.parse(localStorage.getItem("notes") || "[]");
-    const updatedNotes = existingNotes.filter(
-      (note: Note) => note.title !== title
-    );
+    const updatedNotes = existingNotes.filter((note: Note) => note.id !== id);
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
   }, []);
 
-  const updateNote = useCallback((updatedNote: Note) => {
+  const editNote = useCallback((updatedNote: Note) => {
     const existingNotes = JSON.parse(localStorage.getItem("notes") || "[]");
+    console.log("Existing Notes:", existingNotes);
+
     const updatedNotes = existingNotes.map((note: Note) =>
-      note.title === updatedNote.title ? updatedNote : note
+      note.id === updatedNote.id ? { ...note, ...updatedNote } : note
     );
+    console.log("Updated Notes:", updatedNotes);
+
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
   }, []);
 
@@ -45,7 +55,7 @@ const useNotes = () => {
     notes,
     addNote,
     removeNote,
-    updateNote,
+    editNote,
     getNotes,
   };
 };
