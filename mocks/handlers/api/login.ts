@@ -3,6 +3,21 @@ import jwt from "jsonwebtoken";
 import { LoginRequestBody, LoginResponse } from "@/types/api";
 
 const SECRET_KEY = "mysecretkey";
+interface Receipt {
+  date: string;
+  channel: string;
+  type: string;
+  amount: string;
+  currency: string;
+  receipt: string;
+}
+
+interface Transaction {
+  date: string;
+  amount: string;
+  description: string;
+  channel: string;
+}
 
 interface Branch {
   code: number;
@@ -26,6 +41,8 @@ interface User {
   debts: number;
   branch: Branch;
   accounts: Account[];
+  receipts: Receipt[];
+  lastTransactions: Transaction[];
 }
 
 const user: User = {
@@ -60,6 +77,80 @@ const user: User = {
       iban: "TR800006400000113456789012",
       balance: 100.0,
       accountName: "Current Gold",
+    },
+  ],
+  receipts: [
+    {
+      date: "16/08/2024 14:34",
+      channel: "Otomatik",
+      type: "FAST",
+      amount: "1,500.00",
+      currency: "TL",
+      receipt: "receipt",
+    },
+    {
+      date: "11/08/2024 00:26",
+      channel: "İşCep",
+      type: "Havale",
+      amount: "1,502.22",
+      currency: "TL",
+      receipt: "receipt",
+    },
+    {
+      date: "05/08/2024 21:01",
+      channel: "İşCep",
+      type: "FAST",
+      amount: "1,004.43",
+      currency: "TL",
+      receipt: "receipt",
+    },
+    {
+      date: "05/08/2024 16:10",
+      channel: "İşCep",
+      type: "Havale",
+      amount: "1,000.00",
+      currency: "TL",
+      receipt: "receipt",
+    },
+    {
+      date: "26/07/2024 13:09",
+      channel: "İşCep",
+      type: "Havale",
+      amount: "322.22",
+      currency: "TL",
+      receipt: "receipt",
+    },
+  ],
+  lastTransactions: [
+    {
+      date: "15/08/2024 09:34",
+      amount: "1,200.00 TL",
+      description: "Grocery shopping",
+      channel: "İşCep",
+    },
+    {
+      date: "14/08/2024 11:15",
+      amount: "850.00 TL",
+      description: "Electricity bill payment",
+      channel: "Otomatik",
+    },
+    {
+      date: "12/08/2024 18:22",
+      amount: "500.00 TL",
+      description: "Dining at restaurant",
+      channel: "İşCep",
+    },
+    {
+      date: "10/08/2024 13:45",
+      amount: "250.00 TL",
+      description: "Fuel purchase",
+      channel: "İşCep",
+    },
+    {
+      date: "08/08/2024 16:20",
+      amount: "150.00 TL",
+      description: "Online shopping",
+      channel: "İşCep",
     },
   ],
 };

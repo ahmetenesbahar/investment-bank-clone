@@ -254,7 +254,7 @@ export const getSidebarSubItems = (t: TFunction) => [
       },
       {
         label: t("My Last Transactions"),
-        id: "recentTransactions",
+        id: "recent_transactions",
       },
       {
         label: t("Open an Account"),
