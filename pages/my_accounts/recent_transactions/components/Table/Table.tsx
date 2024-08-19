@@ -18,6 +18,7 @@ interface Transaction {
 
 const Table: React.FC = () => {
   const user = useUser();
+
   return (
     <TableContainer>
       {user?.lastTransactions?.map(
@@ -25,10 +26,10 @@ const Table: React.FC = () => {
           <TableItemRow key={index}>
             <TableFlex>
               <TableText>{transaction.date}</TableText>
-              <TableText>İşlem Tutarı</TableText>
-              <TableText>İşlem Açıklaması</TableText>
+              <TableText>{transaction.amount}</TableText>
+              <TableText>{transaction.description}</TableText>
+              <TableText>{transaction.channel}</TableText>
             </TableFlex>
-            <TableText>asd</TableText>
           </TableItemRow>
         )
       )}
