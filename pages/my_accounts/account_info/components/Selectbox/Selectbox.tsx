@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select, { components, MultiValue } from "react-select";
 import { SelectBoxDiv, CheckBoxInput } from "./Selectbox.styles";
 import { Flex, Text } from "@/styles/styles";
 import { colors } from "@/styles/colors";
+import { useFilter } from "../../context/FilterContext";
 
 interface Option {
   label: string;
@@ -13,21 +14,30 @@ interface SelectboxProps {
   options: Option[];
   placeholder?: string;
   menuIsOpen?: boolean;
+  type?: string;
 }
 
 const Selectbox: React.FC<SelectboxProps> = ({
   options,
   placeholder,
   menuIsOpen,
+  type,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState<MultiValue<Option>>(
     []
   );
 
+  const { handleCurrencyFilter, handleAccountTypeFilter } = useFilter();
+
   const handleChange = (options: MultiValue<Option>) => {
     setSelectedOptions(options);
-  };
 
+    if (type === "currency") {
+      handleCurrencyFilter(options.map((option) => option.value));
+    } else if (type === "accountType") {
+      handleAccountTypeFilter(options.map((option) => option.value));
+    }
+  };
   const CustomMultiValueLabel = (props: any) => {
     if (props.data.value === selectedOptions[0]?.value) {
       return (

@@ -7,11 +7,15 @@ import Content from "./components/Content";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 
+import { FilterProvider } from "./context/FilterContext";
+
 const AccountInfo: NextPage = () => {
   return (
-    <Layout>
-      <Content />
-    </Layout>
+    <FilterProvider>
+      <Layout>
+        <Content />
+      </Layout>
+    </FilterProvider>
   );
 };
 

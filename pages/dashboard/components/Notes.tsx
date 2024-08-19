@@ -3,6 +3,7 @@ import { Flex, Text, Icon } from "@/styles/styles";
 import { colors } from "@/styles/colors";
 import useNotes from "../hooks/useNotes";
 import { useTranslation } from "next-i18next";
+import { useModal } from "../context/ModalContext";
 
 interface FormattedDate {
   day: number;
@@ -16,6 +17,7 @@ interface DateInterface {
 }
 
 interface Note {
+  id: string;
   description: string;
   displayDate: string;
   lastViewedDate: string;
@@ -31,6 +33,7 @@ const Notes: React.FC<Props> = ({ selectedDate }) => {
   const { t } = useTranslation();
   const { getNotes } = useNotes();
   const notes = getNotes();
+  const { handleOpenEditModal } = useModal();
 
   const parseDate = (dateString: string) => {
     const [day, month, year] = dateString.split("/");
@@ -104,6 +107,7 @@ const Notes: React.FC<Props> = ({ selectedDate }) => {
 
     return false; // `recurrence` değeri 0, 1, 2 veya 3 dışında bir değer içeriyorsa false döner
   };
+
   return (
     <Flex
       width="100%"
@@ -145,11 +149,17 @@ const Notes: React.FC<Props> = ({ selectedDate }) => {
                   justifyContent="space-between"
                   width="100%"
                   padding="0.2rem 0"
+                  className="editButton"
                 >
                   <Text className="noteDescription" color={colors.black}>
                     {note.description}
                   </Text>
-                  <Icon src="/assets/edit_pencil_icon.png" />
+                  <Icon
+                    src="/assets/edit_pencil_icon.png"
+                    onClick={() => {
+                      handleOpenEditModal("newNote", note.id);
+                    }}
+                  />
                 </Flex>
               </Flex>
             </React.Fragment>

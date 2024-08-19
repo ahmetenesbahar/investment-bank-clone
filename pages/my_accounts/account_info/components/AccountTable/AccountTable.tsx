@@ -23,6 +23,7 @@ import { colors } from "@/styles/colors";
 import { useTranslation } from "next-i18next";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
+import { useFilter } from "../../context/FilterContext";
 
 interface AccountTableProps {
   isAllSelected: boolean;
@@ -32,6 +33,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
   const user = useUser();
   const width = useMediaQuery();
   const { t } = useTranslation();
+  const { currencyFilter, accountTypeFilter, searchParameter } = useFilter();
   const [activeIndices, setActiveIndices] = useState<number[]>([0]);
 
   const handleBoxToggle = (index: number) => {
@@ -41,13 +43,38 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
       setActiveIndices([...activeIndices, index]);
     }
   };
+
+  const currencyFilters = Array.isArray(currencyFilter)
+    ? currencyFilter
+    : [currencyFilter];
+  const accountTypeFilters = Array.isArray(accountTypeFilter)
+    ? accountTypeFilter
+    : [accountTypeFilter];
+
+  const filteredAccounts = user?.accounts.filter((account: Account) => {
+    const isCurrencyMatch =
+      !currencyFilters.length || currencyFilters.includes(account.currency);
+    const isAccountTypeMatch =
+      !accountTypeFilters.length ||
+      accountTypeFilters.includes(account.accountType);
+    const isSearchMatch =
+      !searchParameter ||
+      account.currency.toLowerCase().includes(searchParameter.toLowerCase()) ||
+      account.accountName
+        .toLowerCase()
+        .includes(searchParameter.toLowerCase()) ||
+      account.iban.toLowerCase().includes(searchParameter.toLowerCase());
+
+    return isCurrencyMatch && isAccountTypeMatch && isSearchMatch;
+  });
+
   return (
     <AccountTableContainer>
       <AccountTableHeader>
         <HeaderText>{t("Current Accounts")}</HeaderText>
       </AccountTableHeader>
       <AccountTableBody>
-        {user?.accounts.map((account: Account, index: number) => (
+        {filteredAccounts?.map((account: Account, index: number) => (
           <React.Fragment key={index}>
             {width > breakpoints.md ? (
               <AccountTableItem
@@ -66,13 +93,11 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                       />
                       <BlueText>{account.currency}</BlueText>
                     </FlexDiv>
-                    <NormalText>
-                      {account.accountType} {account.currency}
-                    </NormalText>
+                    <NormalText>{t(`${account.accountName}`)}</NormalText>
                   </FlexColumn>
                   <FlexColumn width="55%">
                     <NormalText textTransform="uppercase">
-                      1056 - Üsküdar İstanbul
+                      {user.branch.code}-{user.branch.name}
                     </NormalText>
                     <NormalText opacity="0.5">{account.iban}</NormalText>
                   </FlexColumn>

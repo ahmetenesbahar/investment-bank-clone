@@ -18,7 +18,7 @@ const useCurrency = (user: User): number => {
           acc[account.currency] += account.balance;
           return acc;
         }, {} as GroupedByCurrency)
-      : { TRY: 0 };
+      : { TL: 0 };
 
   const convertToCurrency = (
     amount: number,
@@ -26,8 +26,9 @@ const useCurrency = (user: User): number => {
     toCurrency: string
   ): number => {
     const conversionRates: ConversionRates = {
-      TRY: 1,
+      TL: 1,
       USD: 30,
+      GR: 2000,
     };
     if (!conversionRates[fromCurrency] || !conversionRates[toCurrency]) {
       throw new Error(
@@ -39,19 +40,17 @@ const useCurrency = (user: User): number => {
     );
   };
 
-  const totalCurrencyInTRY = Object.entries(groupedByCurrency).reduce(
+  const totalCurrencyInTL = Object.entries(groupedByCurrency).reduce(
     (acc: number, [currency, amount]: [string, number]) => {
       return (
         acc +
-        (currency === "TRY"
-          ? amount
-          : convertToCurrency(amount, currency, "TRY"))
+        (currency === "TL" ? amount : convertToCurrency(amount, currency, "TL"))
       );
     },
     0
   );
 
-  return totalCurrencyInTRY;
+  return totalCurrencyInTL;
 };
 
 export default useCurrency;

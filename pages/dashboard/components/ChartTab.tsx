@@ -27,7 +27,7 @@ const ChartTab: React.FC = () => {
   const cardData = [
     {
       label: `${t("Credit Card")}`,
-      value: 0,
+      value: user?.debts,
     },
   ];
 

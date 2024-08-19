@@ -27,6 +27,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
 
 interface FormData {
+  id?: string;
   title: string;
   description: string;
   displayDate: string;
@@ -84,14 +85,14 @@ const NotesModal: React.FC = () => {
     },
   });
 
-  const { handleCloseModal } = useModal();
+  const { handleCloseModal, isEdit, modalId } = useModal();
   const [displayDate, setDisplayDate] = useState(false);
   const [lastViewedDate, setLastViewedDate] = useState(false);
 
   const displayDateRef = useRef<HTMLInputElement>(null);
   const lastViewedDateRef = useRef<HTMLInputElement>(null);
   const calendarRef = useRef<HTMLDivElement>(null);
-  const { addNote } = useNotes();
+  const { addNote, editNote, removeNote } = useNotes();
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
@@ -109,10 +110,28 @@ const NotesModal: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data.displayDate, data.lastViewedDate);
+  const editMutation = useMutation({
+    mutationFn: async (data: FormData) => {
+      const response = await axios.post<AddNoteResponse>("/api/editNote", data);
+      return response.data;
+    },
+    onSuccess: (data) => {
+      console.log("Not eklendi");
+      if (data.note) {
+        editNote(data.note);
+      }
+    },
+    onError: (error) => {
+      console.error("Not eklenemedi", error);
+    },
+  });
 
-    mutation.mutate(data);
+  const onSubmit = (data: FormData) => {
+    if (isEdit && modalId) {
+      editMutation.mutate({ ...data, id: modalId });
+    } else {
+      mutation.mutate(data);
+    }
     handleCloseModal();
   };
 
@@ -154,14 +173,26 @@ const NotesModal: React.FC = () => {
   }, [inputSelectedDate]);
 
   useEffect(() => {
-    console.log(
-      "inputSelectedDate",
-      inputSelectedDate?.format("DD/MM/YYYY"),
-      "displayDateValue",
-      displayDateValue,
-      lastViewedDateValue
-    );
-  }, [inputSelectedDate, displayDateValue, lastViewedDateValue]);
+    if (isEdit && modalId) {
+      const storedNotes = JSON.parse(localStorage.getItem("notes") || "[]");
+      const foundNote = storedNotes.find(
+        (note: FormData & { id: string }) => note.id === modalId
+      );
+
+      if (foundNote) {
+        setValue("title", foundNote.title);
+        setValue("description", foundNote.description);
+        setValue("displayDate", foundNote.displayDate);
+        setValue("recurrence", foundNote.recurrence);
+        setValue("lastViewedDate", foundNote.lastViewedDate);
+
+        const recurrenceOption = selectBoxValues.find(
+          (option) => option.value === Number(foundNote.recurrence)
+        );
+        setSelectedRecurrence(recurrenceOption || null);
+      }
+    }
+  }, []);
 
   return ReactDOM.createPortal(
     <CenteredFlex
@@ -209,7 +240,7 @@ const NotesModal: React.FC = () => {
                 name="title"
                 control={control}
                 render={({ field }) => (
-                  <NotesModalInput error={!!errors.title} {...field} />
+                  <NotesModalInput {...field} error={!!errors.title} />
                 )}
               />
               {errors.title && <Text color="red">{errors.title.message}</Text>}
@@ -426,17 +457,37 @@ const NotesModal: React.FC = () => {
                 )}
               </Flex>
             )}
-            <Flex justifyContent="center">
-              <Button
-                backgroundColor={colors.secondaryOrange}
-                type="submit"
-                color={colors.white}
-                border={`0.063rem solid  ${colors.borderColor}`}
-                padding="0.6rem 2rem"
-                width="7.5rem"
-              >
-                Kaydet
-              </Button>
+            <Flex gap="1rem" width="100%">
+              {isEdit && (
+                <Flex justifyContent="center">
+                  <Button
+                    backgroundColor={colors.white}
+                    type="submit"
+                    color={colors.black}
+                    border={`0.063rem solid  ${colors.borderColor}`}
+                    padding="0.6rem 2rem"
+                    width="7.5rem"
+                    onClick={() => {
+                      removeNote(modalId);
+                      handleCloseModal();
+                    }}
+                  >
+                    Sil
+                  </Button>
+                </Flex>
+              )}
+              <Flex justifyContent="center">
+                <Button
+                  backgroundColor={colors.secondaryOrange}
+                  type="submit"
+                  color={colors.white}
+                  border={`0.063rem solid  ${colors.borderColor}`}
+                  padding="0.6rem 2rem"
+                  width="7.5rem"
+                >
+                  Kaydet
+                </Button>
+              </Flex>
             </Flex>
           </Flex>
         </Form>

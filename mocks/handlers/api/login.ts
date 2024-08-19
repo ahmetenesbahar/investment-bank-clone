@@ -42,24 +42,24 @@ const user: User = {
   accounts: [
     {
       accountType: "checking",
-      currency: "TR",
+      currency: "TL",
       iban: "TR800006400000111234567890",
       balance: 1500.75,
-      accountName: "Vadesiz TL Hesabı",
+      accountName: "Current TL",
     },
     {
       accountType: "checking",
       currency: "USD",
       iban: "TR800006400000112345678901",
       balance: 250.5,
-      accountName: "Vadesiz Dolar Hesabı",
+      accountName: "Current FC",
     },
     {
       accountType: "checking",
-      currency: "Gold",
+      currency: "GR",
       iban: "TR800006400000113456789012",
       balance: 100.0,
-      accountName: "Vadesiz Altın Hesabı",
+      accountName: "Current Gold",
     },
   ],
 };

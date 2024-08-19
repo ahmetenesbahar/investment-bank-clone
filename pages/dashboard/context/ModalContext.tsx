@@ -11,6 +11,9 @@ const ModalContext = createContext({
   modalType: "",
   isOpen: false,
   handleCloseModal: () => {},
+  handleOpenEditModal: (type: string, id: string) => {},
+  isEdit: false,
+  modalId: "",
 });
 
 interface ModalProviderProps {
@@ -22,6 +25,8 @@ export const useModal = () => useContext(ModalContext);
 export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState("");
+  const [modalId, setModalId] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
 
   const handleOpenModal = (type: string) => {
     setIsOpen(true);
@@ -30,7 +35,15 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
 
   const handleCloseModal = () => {
     setIsOpen(false);
+    setIsEdit(false);
     setModalType("");
+  };
+
+  const handleOpenEditModal = (type: string, id: string) => {
+    setIsOpen(true);
+    setModalType(type);
+    setModalId(id);
+    setIsEdit(true);
   };
 
   return (
@@ -40,6 +53,9 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
         modalType,
         isOpen,
         handleCloseModal,
+        handleOpenEditModal,
+        isEdit,
+        modalId,
       }}
     >
       {children}
