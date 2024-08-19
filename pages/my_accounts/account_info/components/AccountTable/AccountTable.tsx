@@ -33,7 +33,7 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
   const user = useUser();
   const width = useMediaQuery();
   const { t } = useTranslation();
-  const { currencyFilter, accountTypeFilter } = useFilter();
+  const { currencyFilter, accountTypeFilter, searchParameter } = useFilter();
   const [activeIndices, setActiveIndices] = useState<number[]>([0]);
 
   const handleBoxToggle = (index: number) => {
@@ -57,7 +57,15 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
     const isAccountTypeMatch =
       !accountTypeFilters.length ||
       accountTypeFilters.includes(account.accountType);
-    return isCurrencyMatch && isAccountTypeMatch;
+    const isSearchMatch =
+      !searchParameter ||
+      account.currency.toLowerCase().includes(searchParameter.toLowerCase()) ||
+      account.accountName
+        .toLowerCase()
+        .includes(searchParameter.toLowerCase()) ||
+      account.iban.toLowerCase().includes(searchParameter.toLowerCase());
+
+    return isCurrencyMatch && isAccountTypeMatch && isSearchMatch;
   });
 
   return (

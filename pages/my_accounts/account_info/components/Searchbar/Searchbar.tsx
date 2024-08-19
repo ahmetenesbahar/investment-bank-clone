@@ -6,11 +6,19 @@ import {
   SearchCloseIcon,
 } from "./Searchbar.styles";
 import { useTranslation } from "next-i18next";
+import { useFilter } from "../../context/FilterContext";
+import useDebounce from "@/hooks/useDebounce";
 
 const Searchbar: React.FC = () => {
   const [search, setSearch] = useState("");
+  const { handleSearch } = useFilter();
+  const debouncedSearch = useDebounce(search, 300);
   const [searchActive, setSearchActive] = useState(false);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    handleSearch(debouncedSearch);
+  }, [debouncedSearch, handleSearch]);
 
   const handleSearchbarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;

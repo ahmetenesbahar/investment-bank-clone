@@ -1,17 +1,21 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface FilterContextProps {
+  searchParameter: string;
   currencyFilter: string[];
   accountTypeFilter: string[];
   handleCurrencyFilter: (currency: string[]) => void;
   handleAccountTypeFilter: (accountType: string[]) => void;
+  handleSearch: (search: string) => void;
 }
 
 const FilterContext = createContext<FilterContextProps>({
+  searchParameter: "",
   currencyFilter: [],
   accountTypeFilter: [],
   handleCurrencyFilter: () => {},
   handleAccountTypeFilter: () => {},
+  handleSearch: () => {},
 });
 
 interface FilterProviderProps {
@@ -23,7 +27,7 @@ export const useFilter = () => useContext(FilterContext);
 export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
   const [currencyFilter, setCurrencyFilter] = useState<string[]>([]);
   const [accountTypeFilter, setAccountTypeFilter] = useState<string[]>([]);
-  const [search, setSearch] = useState("");
+  const [searchParameter, setSearchParameter] = useState("");
 
   const handleCurrencyFilter = (currencies: string[]) => {
     setCurrencyFilter((prevFilters) => {
@@ -51,6 +55,11 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     });
   };
 
+  const handleSearch = (search: string) => {
+    setSearchParameter(search);
+    console.log("Search parameter:", search);
+  };
+
   return (
     <FilterContext.Provider
       value={{
@@ -58,6 +67,8 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
         accountTypeFilter,
         handleCurrencyFilter,
         handleAccountTypeFilter,
+        searchParameter,
+        handleSearch,
       }}
     >
       {children}
