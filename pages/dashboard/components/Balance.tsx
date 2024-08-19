@@ -18,6 +18,7 @@ import { useTranslation } from "next-i18next";
 import { formatIBAN, formatCurrency } from "../utils/formatting";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
+import { useRouter } from "next/router";
 
 enum ActiveIndexEnum {
   None = -1,
@@ -28,6 +29,7 @@ enum ActiveIndexEnum {
 const Balance: React.FC = () => {
   const user = useUser();
   const width = useMediaQuery();
+  const router = useRouter();
   const { t } = useTranslation();
   const { handlePageChange } = usePage();
   const [activeIndex, setActiveIndex] = useState<ActiveIndexEnum>(
@@ -247,6 +249,9 @@ const Balance: React.FC = () => {
             <Button
               border={`0.063rem solid  ${colors.borderColor}`}
               backgroundColor="transparent"
+              onClick={() => {
+                router.replace("/my_accounts/account_info");
+              }}
             >
               <Text color={colors.textBlue} cursor="pointer" textAlign="center">
                 {t("My Accounts")}
