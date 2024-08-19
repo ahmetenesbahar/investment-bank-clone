@@ -66,13 +66,11 @@ const AccountTable: React.FC<AccountTableProps> = ({ isAllSelected }) => {
                       />
                       <BlueText>{account.currency}</BlueText>
                     </FlexDiv>
-                    <NormalText>
-                      {account.accountType} {account.currency}
-                    </NormalText>
+                    <NormalText>{t(`${account.accountName}`)}</NormalText>
                   </FlexColumn>
                   <FlexColumn width="55%">
                     <NormalText textTransform="uppercase">
-                      1056 - Üsküdar İstanbul
+                      {user.branch.code}-{user.branch.name}
                     </NormalText>
                     <NormalText opacity="0.5">{account.iban}</NormalText>
                   </FlexColumn>

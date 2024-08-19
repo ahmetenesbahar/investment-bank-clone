@@ -43,6 +43,7 @@ const Filter: React.FC = () => {
             <Selectbox
               options={accountTypeOptions}
               placeholder={t("Account Type")}
+              type="account"
             />
             <ArrowIcon
               src="/assets/lower_arrow_dark_blue.png"
@@ -59,6 +60,7 @@ const Filter: React.FC = () => {
             <Selectbox
               options={currencyTypeOptions}
               placeholder={t("Currency")}
+              type="currency"
             />
             <ArrowIcon
               src="/assets/lower_arrow_dark_blue.png"
