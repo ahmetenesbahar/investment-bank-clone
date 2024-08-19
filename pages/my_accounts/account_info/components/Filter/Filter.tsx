@@ -18,15 +18,15 @@ const Filter: React.FC = () => {
   const { t } = useTranslation();
 
   const accountTypeOptions = [
-    { label: t("Demand"), value: "vadesiz" },
+    { label: t("Demand"), value: "checking" },
     { label: t("Time Deposit"), value: "vadeli" },
     { label: t("Investment"), value: "yatirim" },
   ];
 
   const currencyTypeOptions = [
-    { label: "GR", value: "gr" },
-    { label: "TL", value: "tl" },
-    { label: "USD", value: "usd" },
+    { label: "GR", value: "GR" },
+    { label: "TL", value: "TL" },
+    { label: "USD", value: "USD" },
   ];
 
   return (
@@ -43,7 +43,7 @@ const Filter: React.FC = () => {
             <Selectbox
               options={accountTypeOptions}
               placeholder={t("Account Type")}
-              type="account"
+              type="accountType"
             />
             <ArrowIcon
               src="/assets/lower_arrow_dark_blue.png"
