@@ -2,29 +2,45 @@ import React, { useState } from "react";
 import { FilterContainer, FilterText } from "./Filter.stlyes";
 import Select, { SingleValue } from "react-select";
 import { colors } from "@/styles/colors";
+import { useFilter } from "../../context/FilterContext";
 
 const options = [
   { value: "all", label: "Tümü" },
-  { value: "internet_branch", label: "İnternet Şubesi" },
-  { value: "isCep", label: "İşCep" },
-  { value: "isIpad", label: "İşPad" },
-  { value: "maximumMobile", label: "Maximum Mobil" },
-  { value: "telefon", label: "Telefon Şubesi" },
-  { value: "isWap", label: "İşWap" },
-  { value: "customer_service", label: "Müşteri Hizmetleri" },
+  { value: "Internet Branch", label: "İnternet Şubesi" },
+  { value: "İşCep", label: "İşCep" },
+  { value: "İşPad", label: "İşPad" },
+  { value: "Maximum Mobile", label: "Maximum Mobil" },
+  { value: "Telephone Branch", label: "Telefon Şubesi" },
+  { value: "İşWap", label: "İşWap" },
+  { value: "Customer Service", label: "Müşteri Hizmetleri" },
 ];
 
 const Filter: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<
     SingleValue<(typeof options)[0]>
   >(options[0]);
+
+  const { handleFilterData } = useFilter();
+
+  const handleChange = (
+    selectedOption: SingleValue<{
+      value: string;
+      label: string;
+    }>
+  ) => {
+    setSelectedOption(selectedOption);
+    if (selectedOption) {
+      handleFilterData(selectedOption.value);
+    }
+  };
+
   return (
     <FilterContainer>
       <FilterText>Anında Bankacılık Kanalı:</FilterText>
       <Select
         value={selectedOption}
         options={options}
-        onChange={(selectedOption) => setSelectedOption(selectedOption)}
+        onChange={(selectedOption) => handleChange(selectedOption)}
         components={{ IndicatorSeparator: () => null }}
         styles={{
           container: (provided) => ({

@@ -58,3 +58,33 @@ export const TdCenter = styled.td`
 export const Thead = styled.thead``;
 
 export const Tbody = styled.tbody``;
+
+export const FlexBetween = styled(Flex)`
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+`;
+
+export const TableDiv = styled(Flex)`
+  width: 100%;
+  margin-top: ${margin.md};
+  flex-direction: column;
+`;
+
+export const HeaderText = styled(Text)`
+  color: ${colors.sidebarSubTitle};
+  font-size: 0.875rem;
+`;
+
+export const NormalText = styled(Text)`
+  color: ${colors.black};
+  font-size: 0.875rem;
+  font-weight: 500;
+`;
+
+export const TableItem = styled(Flex)<Props>`
+  padding: ${padding.md};
+  width: 100%;
+  border-bottom: 1px solid ${colors.borderColor};
+  flex-direction: column;
+`;
