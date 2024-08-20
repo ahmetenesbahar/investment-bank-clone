@@ -43,7 +43,7 @@ export const HeaderFlexBorderBottom = styled(Flex)<Props>`
 
 export const HeaderText = styled.p`
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: ${colors.secondaryBlue};
   cursor: pointer;
 `;
