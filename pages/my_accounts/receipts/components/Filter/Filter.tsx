@@ -8,6 +8,7 @@ import {
   FlexFilterDiv,
   FlexBetween,
 } from "./Filter.styles";
+import DateSelect from "../DateSelect/DateSelect";
 
 const Filter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -33,6 +34,7 @@ const Filter: React.FC = () => {
             active={isExpanded}
           />
         </FlexBetween>
+        {isExpanded && <DateSelect />}
       </FilterDiv>
     </FilterContainer>
   );

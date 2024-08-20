@@ -29,7 +29,9 @@ export const FilterIcon = styled(Icon)<Props>``;
 
 export const FilterDiv = styled(Flex)<Props>`
   width: 100%;
+  flex-direction: column;
   border: 1px solid ${colors.secondaryBorderColor};
+  padding: ${padding.sm} ${padding.md};
   ${({ active }) => active && `height: 23.125rem;`}
 `;
 
@@ -45,7 +47,6 @@ export const FlexBetween = styled(Flex)<Props>`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  padding: ${padding.sm} ${padding.md};
 `;
 
 export const NormalText = styled(Text)<Props>`
