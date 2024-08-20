@@ -49,6 +49,14 @@ export const FlexBetween = styled(Flex)<Props>`
   cursor: pointer;
 `;
 
+export const FlexColumn = styled(Flex)<Props>`
+  flex-direction: column;
+`;
+
+export const FlexDiv = styled(Flex)<Props>`
+  gap: 3rem;
+`;
+
 export const NormalText = styled(Text)<Props>`
   font-size: 0.875rem;
   font-weight: 500;

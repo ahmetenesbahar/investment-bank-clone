@@ -7,8 +7,11 @@ import {
   NormalText,
   FlexFilterDiv,
   FlexBetween,
+  FlexColumn,
+  FlexDiv,
 } from "./Filter.styles";
 import DateSelect from "../DateSelect/DateSelect";
+import AmountRange from "../AmountRange/AmountRange";
 
 const Filter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -34,7 +37,21 @@ const Filter: React.FC = () => {
             active={isExpanded}
           />
         </FlexBetween>
-        {isExpanded && <DateSelect />}
+        {isExpanded && (
+          <FlexColumn>
+            <DateSelect />
+            <FlexDiv>
+              <FlexColumn>
+                <AmountRange />
+                <AmountRange />
+              </FlexColumn>
+              <FlexColumn>
+                <AmountRange />
+                <AmountRange />
+              </FlexColumn>
+            </FlexDiv>
+          </FlexColumn>
+        )}
       </FilterDiv>
     </FilterContainer>
   );
