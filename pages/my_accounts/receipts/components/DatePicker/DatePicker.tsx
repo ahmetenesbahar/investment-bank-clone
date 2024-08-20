@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Calendar from "@/pages/dashboard/components/Calendar";
+import Calendar from "@/components/Calendar";
 import {
   FlexDiv,
   Input,

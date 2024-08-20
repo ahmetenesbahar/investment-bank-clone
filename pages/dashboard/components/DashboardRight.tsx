@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "./Calendar";
+import Calendar from "../../../components/Calendar";
 import {
   Flex,
   Icon,

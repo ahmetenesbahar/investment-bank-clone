@@ -9,12 +9,12 @@ import "dayjs/locale/tr";
 import { Flex } from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
-import { getMonths } from "../utils/months";
+import { getMonths } from "../pages/dashboard/utils/months";
 import { useRouter } from "next/router";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
-import { useDate } from "../context/DateContext";
-import { useModal } from "../context/ModalContext";
+import { useDate } from "../pages/dashboard/context/DateContext";
+import { useModal } from "../pages/dashboard/context/ModalContext";
 
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
