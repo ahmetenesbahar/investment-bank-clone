@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import {
   FilterContainer,
   FilterDiv,
@@ -9,10 +10,15 @@ import {
   FlexBetween,
   FlexColumn,
   FlexDiv,
+  FullPageFilter,
+  ExitText,
+  FilterButton,
 } from "./Filter.styles";
 import DateSelect from "../DateSelect/DateSelect";
 import AmountRange from "../AmountRange/AmountRange";
 import Selectbox from "../Selectbox/Selectbox";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { breakpoints } from "@/utils/constants";
 
 const channelOptions = [
   { value: "tümü", label: "Tümü" },
@@ -30,6 +36,7 @@ const channelOptions = [
 
 const Filter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const width = useMediaQuery();
 
   useEffect(() => {
     console.log(isExpanded);
@@ -52,33 +59,75 @@ const Filter: React.FC = () => {
             active={isExpanded}
           />
         </FlexBetween>
-        {isExpanded && (
-          <FlexColumn>
-            <DateSelect />
-            <FlexDiv>
-              <FlexColumn gap="2rem">
-                <AmountRange />
-                <Selectbox
-                  type="channelFilter"
-                  options={channelOptions}
-                  placeholder="Kanal"
-                />
-              </FlexColumn>
-              <FlexColumn gap="2rem">
-                <Selectbox
-                  type="currency"
-                  options={channelOptions}
-                  placeholder="Para Birimi"
-                />
-                <Selectbox
-                  type="transactionTypeFilter"
-                  options={channelOptions}
-                  placeholder="İşlem Tipi"
-                />
-              </FlexColumn>
-            </FlexDiv>
-          </FlexColumn>
-        )}
+        {isExpanded &&
+          (width >= breakpoints.md ? (
+            <FlexColumn>
+              <DateSelect />
+              <FlexDiv>
+                <FlexColumn gap="2rem">
+                  <AmountRange />
+                  <Selectbox
+                    type="channelFilter"
+                    options={channelOptions}
+                    placeholder="Kanal"
+                  />
+                </FlexColumn>
+                <FlexColumn gap="2rem">
+                  <Selectbox
+                    type="currency"
+                    options={channelOptions}
+                    placeholder="Para Birimi"
+                  />
+                  <Selectbox
+                    type="transactionTypeFilter"
+                    options={channelOptions}
+                    placeholder="İşlem Tipi"
+                  />
+                </FlexColumn>
+              </FlexDiv>
+            </FlexColumn>
+          ) : (
+            (() => {
+              const portalRoot = document.getElementById("portal-root");
+              return portalRoot
+                ? ReactDOM.createPortal(
+                    <FullPageFilter>
+                      <ExitText
+                        onClick={() => {
+                          setIsExpanded(!isExpanded);
+                        }}
+                      >
+                        Vazgeç
+                      </ExitText>
+                      <FlexColumn>
+                        <DateSelect />
+                        <AmountRange />
+                        <Selectbox
+                          type="channelFilter"
+                          options={channelOptions}
+                          placeholder="Kanal"
+                        />
+                        <Selectbox
+                          type="currency"
+                          options={channelOptions}
+                          placeholder="Para Birimi"
+                        />
+                        <Selectbox
+                          type="transactionTypeFilter"
+                          options={channelOptions}
+                          placeholder="İşlem Tipi"
+                        />
+
+                        <FlexDiv width="100%" justifyContent="flex-end">
+                          <FilterButton>Filtrele</FilterButton>
+                        </FlexDiv>
+                      </FlexColumn>
+                    </FullPageFilter>,
+                    portalRoot
+                  )
+                : null;
+            })()
+          ))}
       </FilterDiv>
     </FilterContainer>
   );

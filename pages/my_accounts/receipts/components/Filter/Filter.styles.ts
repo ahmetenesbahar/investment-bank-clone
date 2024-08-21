@@ -52,6 +52,9 @@ export const FlexBetween = styled(Flex)<Props>`
 export const FlexColumn = styled(Flex)<Props>`
   flex-direction: column;
   width: 100%;
+  @media (max-width: ${breakpoints.md}px) {
+    gap: 2rem;
+  }
 `;
 
 export const FlexDiv = styled(Flex)<Props>`
@@ -65,4 +68,37 @@ export const NormalText = styled(Text)<Props>`
   font-weight: 500;
   color: ${colors.secondaryBlue};
   cursor: pointer;
+`;
+
+export const FullPageFilter = styled(Flex)<Props>`
+  position: fixed;
+  background-color: ${colors.white};
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  padding: ${padding.xl};
+`;
+
+export const ExitText = styled(Text)<Props>`
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  color: ${colors.specialBlue};
+`;
+
+export const FilterButton = styled(Flex)<Props>`
+  outline: none;
+  border: 1px solid ${colors.borderColor};
+  background-color: ${colors.secondaryBlue};
+  color: ${colors.white};
+  font-size: 0.875rem;
+  font-weight: 600;
+  width: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: ${padding.md};
 `;

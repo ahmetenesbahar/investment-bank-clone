@@ -81,6 +81,7 @@ export const BoldText = styled(Text)<Props>`
   color: ${colors.black};
   text-align: center;
   margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : "0")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
   cursor: pointer;
 `;
 
@@ -113,6 +114,32 @@ export const FlexDiv = styled(Flex)<Props>`
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  @media (max-width: ${breakpoints.md}px) {
+    gap: 1rem;
+  }
+`;
+
+export const NormalText = styled(Text)<Props>`
+  color: ${colors.black};
+  font-weight: 500;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+`;
+
+export const Items = styled(Flex)<Props>`
+  flex-direction: column;
+  width: 100%;
+  margin-top: ${margin.xl};
+`;
+
+export const Item = styled(Flex)<Props>`
+  width: 100%;
+  height: 3.875rem;
+  padding: ${padding.sm} ${padding.xl};
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1px solid ${colors.borderColor};
 `;
 
 export const ReceiptIcon = styled(Icon)<Props>`
@@ -120,11 +147,9 @@ export const ReceiptIcon = styled(Icon)<Props>`
   top: 50%;
   transform: translateY(-50%);
   right: 2rem;
-`;
-export const NormalText = styled(Text)<Props>`
-  color: ${colors.black};
-  font-weight: 500;
-  padding-left: 1rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
+
+  @media (max-width: ${breakpoints.md}px) {
+    position: block !important;
+    right: 0;
+  }
 `;
