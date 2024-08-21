@@ -7,11 +7,18 @@ import Content from "./components/Content";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 
+import { FilterProvider } from "./context/FilterContext";
+import { ItemProvider } from "./context/ItemContext";
+
 const Receipts: NextPage = () => {
   return (
-    <Layout>
-      <Content />
-    </Layout>
+    <ItemProvider>
+      <FilterProvider>
+        <Layout>
+          <Content />
+        </Layout>
+      </FilterProvider>
+    </ItemProvider>
   );
 };
 
