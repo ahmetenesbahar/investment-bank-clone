@@ -51,10 +51,13 @@ export const FlexBetween = styled(Flex)<Props>`
 
 export const FlexColumn = styled(Flex)<Props>`
   flex-direction: column;
+  width: 100%;
 `;
 
 export const FlexDiv = styled(Flex)<Props>`
-  gap: 3rem;
+  gap: 5rem;
+  width: 100%;
+  margin-top: ${margin.lg};
 `;
 
 export const NormalText = styled(Text)<Props>`

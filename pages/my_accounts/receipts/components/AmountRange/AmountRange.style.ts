@@ -18,7 +18,6 @@ interface Props {
 
 export const AmountRangeContainer = styled(Flex)<Props>`
   position: relative;
-  margin-top: ${margin.lg};
 `;
 
 export const Input = styled.input<Props>`

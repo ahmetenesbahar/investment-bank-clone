@@ -12,6 +12,21 @@ import {
 } from "./Filter.styles";
 import DateSelect from "../DateSelect/DateSelect";
 import AmountRange from "../AmountRange/AmountRange";
+import Selectbox from "../Selectbox/Selectbox";
+
+const channelOptions = [
+  { value: "tümü", label: "Tümü" },
+  { value: "şube", label: "Şube" },
+  { value: "internet şubesi", label: "Internet Şubesi" },
+  { value: "telefon şubesi", label: "Telefon Şubesi" },
+  { value: "diğer", label: "Diğer" },
+  { value: "çağrı merkezi", label: "Çağrı Merkezi" },
+  { value: "işcep", label: "İşcep" },
+  { value: "işwap", label: "İşwap" },
+  { value: "iştablet", label: "İştablet" },
+  { value: "otomatik", label: "Otomatik" },
+  { value: "bankamatik", label: "Bankamatik" },
+];
 
 const Filter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -41,13 +56,25 @@ const Filter: React.FC = () => {
           <FlexColumn>
             <DateSelect />
             <FlexDiv>
-              <FlexColumn>
+              <FlexColumn gap="2rem">
                 <AmountRange />
-                <AmountRange />
+                <Selectbox
+                  type="channelFilter"
+                  options={channelOptions}
+                  placeholder="Kanal"
+                />
               </FlexColumn>
-              <FlexColumn>
-                <AmountRange />
-                <AmountRange />
+              <FlexColumn gap="2rem">
+                <Selectbox
+                  type="currency"
+                  options={channelOptions}
+                  placeholder="Para Birimi"
+                />
+                <Selectbox
+                  type="transactionTypeFilter"
+                  options={channelOptions}
+                  placeholder="İşlem Tipi"
+                />
               </FlexColumn>
             </FlexDiv>
           </FlexColumn>
