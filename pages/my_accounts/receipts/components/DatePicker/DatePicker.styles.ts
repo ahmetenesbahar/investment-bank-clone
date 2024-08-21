@@ -19,6 +19,7 @@ interface Props {
 export const FlexDiv = styled(Flex)<Props>`
   position: relative;
   align-items: center;
+  z-index: 3;
 `;
 
 export const Input = styled.input<Props>`
