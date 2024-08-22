@@ -35,7 +35,7 @@ const channelOptions = [
 ];
 
 const currencyOptions = [
-  { value: "tümü", label: "Tümü" },
+  { value: "all", label: "Tümü" },
   { value: "TL", label: "TL" },
   { value: "USD", label: "USD" },
   { value: "EUR", label: "EUR" },
@@ -135,7 +135,7 @@ const Filter: React.FC = () => {
                         />
                         <Selectbox
                           type="transactionTypeFilter"
-                          options={channelOptions}
+                          options={transactionTypeOptions}
                           placeholder="İşlem Tipi"
                         />
 

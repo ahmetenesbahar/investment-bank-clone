@@ -35,20 +35,43 @@ const Selectbox: React.FC<SelectboxProps> = ({
     []
   );
 
-  const { handleCurrencyFilter, handleChannelFilter, handleTransactionFilter } =
-    useFilter();
+  const {
+    handleCurrencyFilter,
+    handleChannelFilter,
+    handleTransactionFilter,
+    channelFilter,
+  } = useFilter();
 
-  const handleChange = (options: MultiValue<Option>) => {
-    setSelectedOptions(options);
+  const handleChange = (selectedOptions: MultiValue<Option>) => {
+    const isSelectAllSelected = selectedOptions.some(
+      (option) => option.value === options[0].value
+    );
+
+    if (isSelectAllSelected) {
+      if (selectedOptions.length === options.length) {
+        setSelectedOptions([]);
+      } else {
+        setSelectedOptions(options);
+      }
+    } else {
+      if (selectedOptions.length === options.length - 1) {
+        setSelectedOptions([]);
+      } else {
+        setSelectedOptions(selectedOptions);
+      }
+    }
+
+    const selectedValues = selectedOptions.map((option) => option.value);
 
     if (type === "currency") {
-      handleCurrencyFilter(options.map((option) => option.value));
+      handleCurrencyFilter(selectedValues);
     } else if (type === "channelFilter") {
-      handleChannelFilter(options.map((option) => option.value));
+      handleChannelFilter(selectedValues);
     } else if (type === "transactionTypeFilter") {
-      handleTransactionFilter(options.map((option) => option.value));
+      handleTransactionFilter(selectedValues);
     }
   };
+
   const CustomMultiValueLabel = (props: any) => {
     if (props.data.value === selectedOptions[0]?.value) {
       return (
