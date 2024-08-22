@@ -15,7 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useModal } from "../../context/ModalContext";
 import { colors } from "@/styles/colors";
 import Calendar from "../../../../components/Calendar";
-import { useDate } from "../../context/DateContext";
+import { useDate } from "../../../../context/DateContext";
 import Select, { SingleValue } from "react-select";
 import { getNoteValues } from "../../utils/noteValues";
 import { useTranslation } from "next-i18next";

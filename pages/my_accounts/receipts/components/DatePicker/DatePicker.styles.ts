@@ -28,6 +28,7 @@ export const Input = styled.input<Props>`
   margin-top: ${margin.xsm};,
   outline: none !important;
   border: 1px solid ${colors.secondaryBorderColor};
+  cursor: pointer;
 
   &:focus {
   outline: none !important;

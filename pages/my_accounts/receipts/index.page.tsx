@@ -9,16 +9,19 @@ import { GetStaticProps } from "next";
 
 import { FilterProvider } from "./context/FilterContext";
 import { ItemProvider } from "./context/ItemContext";
+import { DateProvider } from "@/context/DateContext";
 
 const Receipts: NextPage = () => {
   return (
-    <ItemProvider>
-      <FilterProvider>
-        <Layout>
-          <Content />
-        </Layout>
-      </FilterProvider>
-    </ItemProvider>
+    <DateProvider>
+      <ItemProvider>
+        <FilterProvider>
+          <Layout>
+            <Content />
+          </Layout>
+        </FilterProvider>
+      </ItemProvider>
+    </DateProvider>
   );
 };
 

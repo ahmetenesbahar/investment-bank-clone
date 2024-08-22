@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import Dayjs from "dayjs";
 
 interface FilterContextProps {
   currencyFilter: string[];
@@ -7,6 +8,13 @@ interface FilterContextProps {
   handleCurrencyFilter: (currency: string[]) => void;
   handleChannelFilter: (channelFilter: string[]) => void;
   handleTransactionFilter: (transactionTypeFilter: string[]) => void;
+  amountRange: string[];
+  isStartDateSelected: boolean;
+  startDate: Dayjs.Dayjs;
+  endDate: Dayjs.Dayjs;
+  handleSelectStartDate: (date: Dayjs.Dayjs) => void;
+  handleSelectEndDate: (date: Dayjs.Dayjs) => void;
+  handleAmountRange: (range: string[]) => void;
 }
 
 const FilterContext = createContext<FilterContextProps>({
@@ -16,6 +24,13 @@ const FilterContext = createContext<FilterContextProps>({
   handleCurrencyFilter: () => {},
   handleChannelFilter: () => {},
   handleTransactionFilter: () => {},
+  amountRange: ["0", "0"],
+  isStartDateSelected: false,
+  startDate: Dayjs(),
+  endDate: Dayjs(),
+  handleSelectStartDate: () => {},
+  handleSelectEndDate: () => {},
+  handleAmountRange: () => {},
 });
 
 interface FilterProviderProps {
@@ -25,11 +40,18 @@ interface FilterProviderProps {
 export const useFilter = () => useContext(FilterContext);
 
 export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
+  const defaultStartDate = Dayjs().subtract(1, "month");
+  const defaultEndDate = Dayjs();
+
   const [currencyFilter, setCurrencyFilter] = useState<string[]>([]);
   const [channelFilter, setChannelFilter] = useState<string[]>([]);
   const [transactionTypeFilter, setTransactionTypeFilter] = useState<string[]>(
     []
   );
+  const [amountRange, setAmountRange] = useState<string[]>(["0", "0"]);
+  const [isStartDateSelected, setIsStartDateSelected] = useState(false);
+  const [startDate, setStartDate] = useState<Dayjs.Dayjs>(defaultStartDate);
+  const [endDate, setEndDate] = useState<Dayjs.Dayjs>(defaultEndDate);
 
   const handleCurrencyFilter = (currencies: string[]) => {
     setCurrencyFilter((prevFilters) => {
@@ -67,15 +89,35 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     });
   };
 
+  const handleSelectStartDate = (date: Dayjs.Dayjs) => {
+    setStartDate(date);
+    console.log(startDate);
+  };
+  const handleSelectEndDate = (date: Dayjs.Dayjs) => {
+    setEndDate(date);
+    console.log(endDate);
+  };
+
+  const handleAmountRange = (range: string[]) => {
+    setAmountRange(range);
+  };
+
   return (
     <FilterContext.Provider
       value={{
         currencyFilter,
         channelFilter,
         transactionTypeFilter,
+        amountRange,
+        isStartDateSelected,
+        startDate,
+        endDate,
         handleCurrencyFilter,
         handleChannelFilter,
         handleTransactionFilter,
+        handleSelectStartDate,
+        handleSelectEndDate,
+        handleAmountRange,
       }}
     >
       {children}

@@ -21,26 +21,47 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
 
 const channelOptions = [
+  { value: "all", label: "Tümü" },
+  { value: "branch", label: "Şube" },
+  { value: "internet-branch", label: "Internet Şubesi" },
+  { value: "phone-branch", label: "Telefon Şubesi" },
+  { value: "other", label: "Diğer" },
+  { value: "call-center", label: "Çağrı Merkezi" },
+  { value: "iscep", label: "İşcep" },
+  { value: "iswap", label: "İşwap" },
+  { value: "istablet", label: "İştablet" },
+  { value: "automatic", label: "Otomatik" },
+  { value: "atm", label: "Bankamatik" },
+];
+
+const currencyOptions = [
   { value: "tümü", label: "Tümü" },
-  { value: "şube", label: "Şube" },
-  { value: "internet şubesi", label: "Internet Şubesi" },
-  { value: "telefon şubesi", label: "Telefon Şubesi" },
-  { value: "diğer", label: "Diğer" },
-  { value: "çağrı merkezi", label: "Çağrı Merkezi" },
-  { value: "işcep", label: "İşcep" },
-  { value: "işwap", label: "İşwap" },
-  { value: "iştablet", label: "İştablet" },
-  { value: "otomatik", label: "Otomatik" },
-  { value: "bankamatik", label: "Bankamatik" },
+  { value: "TL", label: "TL" },
+  { value: "USD", label: "USD" },
+  { value: "EUR", label: "EUR" },
+  { value: "GR", label: "GR" },
+];
+
+const transactionTypeOptions = [
+  { value: "all", label: "Tümü" },
+  { value: "checks-and-promissory-notes", label: "Çek ve Senet" },
+  { value: "foreign-trade", label: "Dış Ticaret" },
+  { value: "other", label: "Diğer" },
+  { value: "currency-transactions", label: "Döviz İşlemleri" },
+  { value: "account-transactions", label: "Hesap İşlemleri" },
+  { value: "card", label: "Kart" },
+  { value: "safe-deposit-box", label: "Kiralık Kasa" },
+  { value: "credit", label: "Kredi" },
+  { value: "cash-transactions", label: "Nakit İşlemler" },
+  { value: "payments", label: "Ödemeler" },
+  { value: "money-transfer", label: "Para Aktarma" },
+  { value: "term", label: "Vadeli" },
 ];
 
 const Filter: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const width = useMediaQuery();
 
-  useEffect(() => {
-    console.log(isExpanded);
-  }, [isExpanded]);
   return (
     <FilterContainer>
       <FilterDiv active={isExpanded}>
@@ -75,7 +96,7 @@ const Filter: React.FC = () => {
                 <FlexColumn gap="2rem">
                   <Selectbox
                     type="currency"
-                    options={channelOptions}
+                    options={currencyOptions}
                     placeholder="Para Birimi"
                   />
                   <Selectbox

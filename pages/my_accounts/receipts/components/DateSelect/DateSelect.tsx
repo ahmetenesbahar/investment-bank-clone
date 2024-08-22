@@ -15,9 +15,9 @@ const DateSelect: React.FC = () => {
         <InfoIcon src="/assets/infoForgot_icon.png" />
       </FlexDiv>
       <FlexDiv>
-        <DatePicker />
+        <DatePicker type="start" />
         -
-        <DatePicker />
+        <DatePicker type="end" />
       </FlexDiv>
     </DateSelectContainer>
   );

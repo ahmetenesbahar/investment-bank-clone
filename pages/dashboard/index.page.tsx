@@ -4,7 +4,7 @@ import { NextPage } from "next";
 import Layout from "@/components/Layout";
 
 import { TabProvider } from "./context/TabContext";
-import { DateProvider } from "./context/DateContext";
+import { DateProvider } from "../../context/DateContext";
 import { ModalProvider } from "./context/ModalContext";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
