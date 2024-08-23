@@ -27,7 +27,7 @@ const channelOptions = [
   { value: "phone-branch", label: "Telefon Şubesi" },
   { value: "other", label: "Diğer" },
   { value: "call-center", label: "Çağrı Merkezi" },
-  { value: "iscep", label: "İşcep" },
+  { value: "İşCep", label: "İşcep" },
   { value: "iswap", label: "İşwap" },
   { value: "istablet", label: "İştablet" },
   { value: "automatic", label: "Otomatik" },

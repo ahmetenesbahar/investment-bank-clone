@@ -91,11 +91,9 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
 
   const handleSelectStartDate = (date: Dayjs.Dayjs) => {
     setStartDate(date);
-    console.log(startDate);
   };
   const handleSelectEndDate = (date: Dayjs.Dayjs) => {
     setEndDate(date);
-    console.log(endDate);
   };
 
   const handleAmountRange = (range: string[]) => {

@@ -81,7 +81,7 @@ const user: User = {
   ],
   receipts: [
     {
-      date: "16/08/2024 14:34",
+      date: "16/08/2024",
       channel: "Otomatik",
       type: "FAST",
       amount: "1,500.00",
@@ -89,7 +89,7 @@ const user: User = {
       receipt: "receipt",
     },
     {
-      date: "11/08/2024 00:26",
+      date: "11/08/2024",
       channel: "İşCep",
       type: "Havale",
       amount: "1,502.22",
@@ -97,7 +97,7 @@ const user: User = {
       receipt: "receipt",
     },
     {
-      date: "05/08/2024 21:01",
+      date: "05/08/2024",
       channel: "İşCep",
       type: "FAST",
       amount: "1,004.43",
@@ -105,7 +105,7 @@ const user: User = {
       receipt: "receipt",
     },
     {
-      date: "05/08/2024 16:10",
+      date: "05/08/2024",
       channel: "İşCep",
       type: "Havale",
       amount: "1,000.00",

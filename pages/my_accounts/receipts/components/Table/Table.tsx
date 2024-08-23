@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   TableDiv,
   Th,
@@ -23,6 +23,13 @@ import useUser from "@/hooks/useGetUser";
 import { useItem } from "../../context/ItemContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/utils/constants";
+import { useFilter } from "../../context/FilterContext";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import Dayjs from "dayjs";
+
+Dayjs.extend(isSameOrAfter);
+Dayjs.extend(isSameOrBefore);
 
 interface Receipt {
   date: string;
@@ -37,6 +44,90 @@ const Table: React.FC = () => {
   const user = useUser();
   const width = useMediaQuery();
   const { checkedItems, handleCheckBoxClick } = useItem();
+  const {
+    currencyFilter,
+    channelFilter,
+    transactionTypeFilter,
+    amountRange,
+    startDate,
+    endDate,
+  } = useFilter();
+
+  const formattedStartDate = startDate.format("DD/MM/YYYY");
+  const formattedEndDate = endDate.format("DD/MM/YYYY");
+
+  useEffect(() => {
+    console.log(
+      currencyFilter,
+      channelFilter,
+      transactionTypeFilter,
+      amountRange,
+      formattedStartDate,
+      formattedEndDate
+    );
+  }, [
+    formattedStartDate,
+    formattedEndDate,
+    currencyFilter,
+    channelFilter,
+    transactionTypeFilter,
+    amountRange,
+  ]);
+
+  const currencyFilters = Array.isArray(currencyFilter)
+    ? currencyFilter
+    : [currencyFilter];
+  const channelFilters = Array.isArray(channelFilter)
+    ? channelFilter
+    : [channelFilter];
+  const transactionFilters = Array.isArray(transactionTypeFilter)
+    ? transactionTypeFilter
+    : [transactionTypeFilter];
+
+  const filteredReceipts = user?.receipts.filter((receipt: Receipt) => {
+    const isCurrencyMatch =
+      !currencyFilters.length || currencyFilters.includes(receipt.currency);
+
+    const isChannelMatch =
+      !channelFilters.length || channelFilters.includes(receipt.channel);
+
+    const isTransactionTypeMatch =
+      !transactionFilters.length || transactionFilters.includes(receipt.type);
+    const cleanedDate = receipt.date.trim();
+    const receiptDate = Dayjs(cleanedDate, "DD/MM/YYYY");
+    console.log("Receipt Date:", receiptDate.format("DD/MM/YYYY"));
+    console.log("Start Date:", formattedStartDate);
+    console.log("End Date:", formattedEndDate);
+
+    const isDateInRange =
+      Dayjs(receipt.date, "DD/MM/YYYY").isSameOrAfter(
+        Dayjs(startDate, "DD/MM/YYYY"),
+        "day"
+      ) &&
+      Dayjs(receipt.date, "DD/MM/YYYY").isSameOrBefore(
+        Dayjs(endDate, "DD/MM/YYYY"),
+        "day"
+      );
+
+    console.log({
+      receiptDate: receipt.date,
+      isDateInRange,
+      formattedStartDate,
+      formattedEndDate,
+    });
+
+    const isAmountInRange =
+      (!amountRange[0] ||
+        parseFloat(receipt.amount) >= parseFloat(amountRange[0])) &&
+      (!amountRange[1] ||
+        parseFloat(receipt.amount) <= parseFloat(amountRange[1]));
+
+    return (
+      isCurrencyMatch && isChannelMatch && isTransactionTypeMatch
+      // isDateInRange &&
+      // isAmountInRange
+    );
+  });
 
   const dateSplitter = (date: string) => {
     const newDate = date.split(" ")[0];
@@ -53,7 +144,7 @@ const Table: React.FC = () => {
             <ThCenter>Tutar</ThCenter>
           </Thead>
           <Tbody>
-            {user?.receipts?.map((receipt: Receipt, index: number) => (
+            {filteredReceipts?.map((receipt: Receipt, index: number) => (
               <Tr
                 key={index}
                 onClick={() => {
@@ -84,7 +175,7 @@ const Table: React.FC = () => {
         </TableDiv>
       ) : (
         <Items>
-          {user?.receipts?.map((receipt: Receipt, index: number) => (
+          {filteredReceipts?.map((receipt: Receipt, index: number) => (
             <Item
               key={index}
               onClick={() => {
@@ -102,7 +193,7 @@ const Table: React.FC = () => {
               </FlexDiv>
               <FlexDiv>
                 <FlexDiv>
-                  <BoldText marginBottom="1rem" margin="0 2rem 0  0 ">
+                  <BoldText marginBottom="1rem" margin="0 2rem 0 0">
                     {receipt.amount} {receipt.currency}
                   </BoldText>
                 </FlexDiv>
