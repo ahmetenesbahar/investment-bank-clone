@@ -30,11 +30,15 @@ const DateContext = createContext<{
   formatSelectedDate: (date: Dayjs.Dayjs) => void;
   handleSelectInputDate: (date: Dayjs.Dayjs) => void;
   inputSelectedDate: Dayjs.Dayjs;
+  handleSelectDateOthers: (date: Dayjs.Dayjs) => void;
+  selectDateOthers: Dayjs.Dayjs;
 }>({
   selectedDate: defaultDate,
   formatSelectedDate: () => {},
   handleSelectInputDate: () => {},
   inputSelectedDate: Dayjs(),
+  handleSelectDateOthers: () => {},
+  selectDateOthers: Dayjs(),
 });
 
 interface DateProviderProps {
@@ -46,6 +50,9 @@ export const useDate = () => useContext(DateContext);
 export const DateProvider: React.FC<DateProviderProps> = ({ children }) => {
   const [selectedDate, setSelectedDate] = useState<dateInterface>(defaultDate);
   const [inputSelectedDate, setInputSelectedDate] = useState<Dayjs.Dayjs>(
+    Dayjs()
+  );
+  const [selectDateOthers, setSelectDateOthers] = useState<Dayjs.Dayjs>(
     Dayjs()
   );
 
@@ -63,13 +70,19 @@ export const DateProvider: React.FC<DateProviderProps> = ({ children }) => {
     setInputSelectedDate(date);
   };
 
+  const handleSelectDateOthers = (date: Dayjs.Dayjs) => {
+    setSelectDateOthers(date);
+  };
+
   return (
     <DateContext.Provider
       value={{
         selectedDate,
+        selectDateOthers,
         inputSelectedDate,
         formatSelectedDate,
         handleSelectInputDate,
+        handleSelectDateOthers,
       }}
     >
       {children}

@@ -9,12 +9,12 @@ import "dayjs/locale/tr";
 import { Flex } from "@/styles/styles";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useTranslation } from "next-i18next";
-import { getMonths } from "../utils/months";
+import { getMonths } from "../pages/dashboard/utils/months";
 import { useRouter } from "next/router";
 import { breakpoints } from "@/utils/constants";
 import { colors } from "@/styles/colors";
 import { useDate } from "../context/DateContext";
-import { useModal } from "../context/ModalContext";
+import { useModal } from "../pages/dashboard/context/ModalContext";
 
 const StyledDateCalendar = styled(DateCalendar)(({ theme }) => ({
   ".MuiPickersDay-root": {
@@ -100,7 +100,8 @@ const Calendar: React.FC = () => {
   const width = useMediaQuery();
   const router = useRouter();
   const currentLang = router.locale;
-  const { formatSelectedDate, handleSelectInputDate } = useDate();
+  const { formatSelectedDate, handleSelectInputDate, handleSelectDateOthers } =
+    useDate();
   const { isOpen, modalType } = useModal();
 
   const currentYear = Dayjs().year();
@@ -168,6 +169,8 @@ const Calendar: React.FC = () => {
     if (isOpen && modalType === "newNote") {
       handleSelectInputDate(selectedDate);
     }
+
+    handleSelectDateOthers(selectedDate);
   }, [selectedDate]);
 
   return (

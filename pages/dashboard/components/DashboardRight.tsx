@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "./Calendar";
+import Calendar from "../../../components/Calendar";
 import {
   Flex,
   Icon,
@@ -15,7 +15,7 @@ import { colors } from "@/styles/colors";
 import Notes from "./Notes";
 import NotesModal from "./modals/NotesModal";
 import { useModal } from "../context/ModalContext";
-import { useDate } from "../context/DateContext";
+import { useDate } from "../../../context/DateContext";
 
 const DashboardRight: React.FC = () => {
   const { t } = useTranslation();
